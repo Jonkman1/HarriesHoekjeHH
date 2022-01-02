@@ -1,0 +1,1834 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { color: #20794d; } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007ba5; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #007ba5; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #007ba5; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #20794d; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+</style>
+
+  <!--radix_placeholder_meta_tags-->
+  <title>Classificeren met Tidymodels</title>
+  
+  <meta property="description" itemprop="description" content="Dit is bewerking van een blog die [Rahul Raoniar, Towards data science](https://towardsdatascience.com/modelling-binary-logistic-regression-using-tidymodels-library-in-r-part-1-c1bdce0ac055) begin 2021 schreef."/>
+  
+  
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2021-07-05"/>
+  <meta property="article:created" itemprop="dateCreated" content="2021-07-05"/>
+  <meta name="article:author" content="Rahul Raoniar, bewerking Harrie Jonkman"/>
+  
+  <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+  <meta property="og:title" content="Classificeren met Tidymodels"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:description" content="Dit is bewerking van een blog die [Rahul Raoniar, Towards data science](https://towardsdatascience.com/modelling-binary-logistic-regression-using-tidymodels-library-in-r-part-1-c1bdce0ac055) begin 2021 schreef."/>
+  <meta property="og:locale" content="en_US"/>
+  
+  <!--  https://dev.twitter.com/cards/types/summary -->
+  <meta property="twitter:card" content="summary"/>
+  <meta property="twitter:title" content="Classificeren met Tidymodels"/>
+  <meta property="twitter:description" content="Dit is bewerking van een blog die [Rahul Raoniar, Towards data science](https://towardsdatascience.com/modelling-binary-logistic-regression-using-tidymodels-library-in-r-part-1-c1bdce0ac055) begin 2021 schreef."/>
+  
+  <!--/radix_placeholder_meta_tags-->
+  <!--radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-rmarkdown-metadata">
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Classificeren met Tidymodels"]},{"type":"character","attributes":{},"value":["Dit is bewerking van een blog die [Rahul Raoniar, Towards data science](https://towardsdatascience.com/modelling-binary-logistic-regression-using-tidymodels-library-in-r-part-1-c1bdce0ac055) begin 2021 schreef. \n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Rahul Raoniar, bewerking Harrie Jonkman"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":[]}},"value":[]}]}]},{"type":"character","attributes":{},"value":["07-05-2021"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
+  </script>
+  <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["classificeren-met-tidymodels_files/anchor-4.2.2/anchor.min.js","classificeren-met-tidymodels_files/bowser-1.9.3/bowser.min.js","classificeren-met-tidymodels_files/distill-2.2.21/template.v2.js","classificeren-met-tidymodels_files/figure-html5/unnamed-chunk-25-1.png","classificeren-met-tidymodels_files/jquery-1.11.3/jquery.min.js","classificeren-met-tidymodels_files/popper-2.6.0/popper.min.js","classificeren-met-tidymodels_files/tippy-6.2.7/tippy-bundle.umd.min.js","classificeren-met-tidymodels_files/tippy-6.2.7/tippy-light-border.css","classificeren-met-tidymodels_files/tippy-6.2.7/tippy.css","classificeren-met-tidymodels_files/tippy-6.2.7/tippy.umd.min.js","classificeren-met-tidymodels_files/webcomponents-2.0.0/webcomponents.js","Screenshot1.png"]}
+  </script>
+  <!--radix_placeholder_navigation_in_header-->
+  <!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+  
+  <style type="text/css">
+  
+  body {
+    background-color: white;
+  }
+  
+  .pandoc-table {
+    width: 100%;
+  }
+  
+  .pandoc-table>caption {
+    margin-bottom: 10px;
+  }
+  
+  .pandoc-table th:not([align]) {
+    text-align: left;
+  }
+  
+  .pagedtable-footer {
+    font-size: 15px;
+  }
+  
+  d-byline .byline {
+    grid-template-columns: 2fr 2fr;
+  }
+  
+  d-byline .byline h3 {
+    margin-block-start: 1.5em;
+  }
+  
+  d-byline .byline .authors-affiliations h3 {
+    margin-block-start: 0.5em;
+  }
+  
+  .authors-affiliations .orcid-id {
+    width: 16px;
+    height:16px;
+    margin-left: 4px;
+    margin-right: 4px;
+    vertical-align: middle;
+    padding-bottom: 2px;
+  }
+  
+  d-title .dt-tags {
+    margin-top: 1em;
+    grid-column: text;
+  }
+  
+  .dt-tags .dt-tag {
+    text-decoration: none;
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0em 0.4em;
+    margin-right: 0.5em;
+    margin-bottom: 0.4em;
+    font-size: 70%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  
+  d-article table.gt_table td,
+  d-article table.gt_table th {
+    border-bottom: none;
+  }
+  
+  .html-widget {
+    margin-bottom: 2.0em;
+  }
+  
+  .l-screen-inset {
+    padding-right: 16px;
+  }
+  
+  .l-screen .caption {
+    margin-left: 10px;
+  }
+  
+  .shaded {
+    background: rgb(247, 247, 247);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .shaded .html-widget {
+    margin-bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .shaded .shaded-content {
+    background: white;
+  }
+  
+  .text-output {
+    margin-top: 0;
+    line-height: 1.5em;
+  }
+  
+  .hidden {
+    display: none !important;
+  }
+  
+  d-article {
+    padding-top: 2.5rem;
+    padding-bottom: 30px;
+  }
+  
+  d-appendix {
+    padding-top: 30px;
+  }
+  
+  d-article>p>img {
+    width: 100%;
+  }
+  
+  d-article h2 {
+    margin: 1rem 0 1.5rem 0;
+  }
+  
+  d-article h3 {
+    margin-top: 1.5rem;
+  }
+  
+  d-article iframe {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 2.0em;
+    width: 100%;
+  }
+  
+  /* Tweak code blocks */
+  
+  d-article div.sourceCode code,
+  d-article pre code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+  
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: auto;
+  }
+  
+  d-article div.sourceCode {
+    background-color: white;
+  }
+  
+  d-article div.sourceCode pre {
+    padding-left: 10px;
+    font-size: 12px;
+    border-left: 2px solid rgba(0,0,0,0.1);
+  }
+  
+  d-article pre {
+    font-size: 12px;
+    color: black;
+    background: none;
+    margin-top: 0;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+  
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+  
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+  
+  d-article pre a {
+    border-bottom: none;
+  }
+  
+  d-article pre a:hover {
+    border-bottom: none;
+    text-decoration: underline;
+  }
+  
+  d-article details {
+    grid-column: text;
+    margin-bottom: 0.8em;
+  }
+  
+  @media(min-width: 768px) {
+  
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: visible !important;
+  }
+  
+  d-article div.sourceCode pre {
+    padding-left: 18px;
+    font-size: 14px;
+  }
+  
+  d-article pre {
+    font-size: 14px;
+  }
+  
+  }
+  
+  figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+  
+  /* CSS for d-contents */
+  
+  .d-contents {
+    grid-column: text;
+    color: rgba(0,0,0,0.8);
+    font-size: 0.9em;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+    padding-left: 0.25em;
+    justify-self: start;
+  }
+  
+  @media(min-width: 1000px) {
+    .d-contents.d-contents-float {
+      height: 0;
+      grid-column-start: 1;
+      grid-column-end: 4;
+      justify-self: center;
+      padding-right: 3em;
+      padding-left: 2em;
+    }
+  }
+  
+  .d-contents nav h3 {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+  
+  .d-contents li {
+    list-style-type: none
+  }
+  
+  .d-contents nav > ul {
+    padding-left: 0;
+  }
+  
+  .d-contents ul {
+    padding-left: 1em
+  }
+  
+  .d-contents nav ul li {
+    margin-top: 0.6em;
+    margin-bottom: 0.2em;
+  }
+  
+  .d-contents nav a {
+    font-size: 13px;
+    border-bottom: none;
+    text-decoration: none
+    color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .d-contents nav a:hover {
+    text-decoration: underline solid rgba(0, 0, 0, 0.6)
+  }
+  
+  .d-contents nav > ul > li > a {
+    font-weight: 600;
+  }
+  
+  .d-contents nav > ul > li > ul {
+    font-weight: inherit;
+  }
+  
+  .d-contents nav > ul > li > ul > li {
+    margin-top: 0.2em;
+  }
+  
+  
+  .d-contents nav ul {
+    margin-top: 0;
+    margin-bottom: 0.25em;
+  }
+  
+  .d-article-with-toc h2:nth-child(2) {
+    margin-top: 0;
+  }
+  
+  
+  /* Figure */
+  
+  .figure {
+    position: relative;
+    margin-bottom: 2.5em;
+    margin-top: 1.5em;
+  }
+  
+  .figure img {
+    width: 100%;
+  }
+  
+  .figure .caption {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    line-height: 1.5em;
+  }
+  
+  .figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+  
+  .figure .caption a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+  
+  .figure .caption b,
+  .figure .caption strong, {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1.0);
+  }
+  
+  /* Citations */
+  
+  d-article .citation {
+    color: inherit;
+    cursor: inherit;
+  }
+  
+  div.hanging-indent{
+    margin-left: 1em; text-indent: -1em;
+  }
+  
+  /* Citation hover box */
+  
+  .tippy-box[data-theme~=light-border] {
+    background-color: rgba(250, 250, 250, 0.95);
+  }
+  
+  .tippy-content > p {
+    margin-bottom: 0;
+    padding: 2px;
+  }
+  
+  
+  /* Tweak 1000px media break to show more text */
+  
+  @media(min-width: 1000px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 16px;
+    }
+  
+    .grid {
+      grid-column-gap: 16px;
+    }
+  
+    d-article {
+      font-size: 1.06rem;
+      line-height: 1.7em;
+    }
+    figure .caption, .figure .caption, figure figcaption {
+      font-size: 13px;
+    }
+  }
+  
+  @media(min-width: 1180px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 32px;
+    }
+  
+    .grid {
+      grid-column-gap: 32px;
+    }
+  }
+  
+  
+  /* Get the citation styles for the appendix (not auto-injected on render since
+     we do our own rendering of the citation appendix) */
+  
+  d-appendix .citation-appendix,
+  .d-appendix .citation-appendix {
+    font-size: 11px;
+    line-height: 15px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 18px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.02);
+    padding: 10px 18px;
+    border-radius: 3px;
+    color: rgba(150, 150, 150, 1);
+    overflow: hidden;
+    margin-top: -12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  
+  /* Include appendix styles here so they can be overridden */
+  
+  d-appendix {
+    contain: layout style;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-top: 60px;
+    margin-bottom: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    color: rgba(0,0,0,0.5);
+    padding-top: 60px;
+    padding-bottom: 48px;
+  }
+  
+  d-appendix h3 {
+    grid-column: page-start / text-start;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 1em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.65);
+  }
+  
+  d-appendix h3 + * {
+    margin-top: 1em;
+  }
+  
+  d-appendix ol {
+    padding: 0 0 0 15px;
+  }
+  
+  @media (min-width: 768px) {
+    d-appendix ol {
+      padding: 0 0 0 30px;
+      margin-left: -30px;
+    }
+  }
+  
+  d-appendix li {
+    margin-bottom: 1em;
+  }
+  
+  d-appendix a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+  
+  d-appendix > * {
+    grid-column: text;
+  }
+  
+  d-appendix > d-footnote-list,
+  d-appendix > d-citation-list,
+  d-appendix > distill-appendix {
+    grid-column: screen;
+  }
+  
+  /* Include footnote styles here so they can be overridden */
+  
+  d-footnote-list {
+    contain: layout style;
+  }
+  
+  d-footnote-list > * {
+    grid-column: text;
+  }
+  
+  d-footnote-list a.footnote-backlink {
+    color: rgba(0,0,0,0.3);
+    padding-left: 0.5em;
+  }
+  
+  
+  
+  /* Anchor.js */
+  
+  .anchorjs-link {
+    /*transition: all .25s linear; */
+    text-decoration: none;
+    border-bottom: none;
+  }
+  *:hover > .anchorjs-link {
+    margin-left: -1.125em !important;
+    text-decoration: none;
+    border-bottom: none;
+  }
+  
+  /* Social footer */
+  
+  .social_footer {
+    margin-top: 30px;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.67);
+  }
+  
+  .disqus-comments {
+    margin-right: 30px;
+  }
+  
+  .disqus-comment-count {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+  
+  #disqus_thread {
+    margin-top: 30px;
+  }
+  
+  .article-sharing a {
+    border-bottom: none;
+    margin-right: 8px;
+  }
+  
+  .article-sharing a:hover {
+    border-bottom: none;
+  }
+  
+  .sidebar-section.subscribe {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+  
+  .subscribe p {
+    margin-bottom: 0.5em;
+  }
+  
+  
+  .article-footer .subscribe {
+    font-size: 15px;
+    margin-top: 45px;
+  }
+  
+  
+  .sidebar-section.custom {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+  
+  .custom p {
+    margin-bottom: 0.5em;
+  }
+  
+  /* Styles for listing layout (hide title) */
+  .layout-listing d-title, .layout-listing .d-title {
+    display: none;
+  }
+  
+  /* Styles for posts lists (not auto-injected) */
+  
+  
+  .posts-with-sidebar {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+  
+  .posts-list .description h2,
+  .posts-list .description p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+  
+  .posts-list .description h2 {
+    font-weight: 700;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  
+  .posts-list h2.post-tag {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 12px;
+  }
+  .posts-list {
+    margin-top: 60px;
+    margin-bottom: 24px;
+  }
+  
+  .posts-list .post-preview {
+    text-decoration: none;
+    overflow: hidden;
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 24px 0;
+  }
+  
+  .post-preview-last {
+    border-bottom: none !important;
+  }
+  
+  .posts-list .posts-list-caption {
+    grid-column: screen;
+    font-weight: 400;
+  }
+  
+  .posts-list .post-preview h2 {
+    margin: 0 0 6px 0;
+    line-height: 1.2em;
+    font-style: normal;
+    font-size: 24px;
+  }
+  
+  .posts-list .post-preview p {
+    margin: 0 0 12px 0;
+    line-height: 1.4em;
+    font-size: 16px;
+  }
+  
+  .posts-list .post-preview .thumbnail {
+    box-sizing: border-box;
+    margin-bottom: 24px;
+    position: relative;
+    max-width: 500px;
+  }
+  .posts-list .post-preview img {
+    width: 100%;
+    display: block;
+  }
+  
+  .posts-list .metadata {
+    font-size: 12px;
+    line-height: 1.4em;
+    margin-bottom: 18px;
+  }
+  
+  .posts-list .metadata > * {
+    display: inline-block;
+  }
+  
+  .posts-list .metadata .publishedDate {
+    margin-right: 2em;
+  }
+  
+  .posts-list .metadata .dt-authors {
+    display: block;
+    margin-top: 0.3em;
+    margin-right: 2em;
+  }
+  
+  .posts-list .dt-tags {
+    display: block;
+    line-height: 1em;
+  }
+  
+  .posts-list .dt-tags .dt-tag {
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0.3em 0.4em;
+    margin-right: 0.2em;
+    margin-bottom: 0.4em;
+    font-size: 60%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  
+  .posts-list img {
+    opacity: 1;
+  }
+  
+  .posts-list img[data-src] {
+    opacity: 0;
+  }
+  
+  .posts-more {
+    clear: both;
+  }
+  
+  
+  .posts-sidebar {
+    font-size: 16px;
+  }
+  
+  .posts-sidebar h3 {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+  
+  .sidebar-section {
+    margin-bottom: 30px;
+  }
+  
+  .categories ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .categories li {
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 0;
+  }
+  
+  .categories li>a {
+    border-bottom: none;
+  }
+  
+  .categories li>a:hover {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  }
+  
+  .categories .active {
+    font-weight: 600;
+  }
+  
+  .categories .category-count {
+    color: rgba(0, 0, 0, 0.4);
+  }
+  
+  
+  @media(min-width: 768px) {
+    .posts-list .post-preview h2 {
+      font-size: 26px;
+    }
+    .posts-list .post-preview .thumbnail {
+      float: right;
+      width: 30%;
+      margin-bottom: 0;
+    }
+    .posts-list .post-preview .description {
+      float: left;
+      width: 45%;
+    }
+    .posts-list .post-preview .metadata {
+      float: left;
+      width: 20%;
+      margin-top: 8px;
+    }
+    .posts-list .post-preview p {
+      margin: 0 0 12px 0;
+      line-height: 1.5em;
+      font-size: 16px;
+    }
+    .posts-with-sidebar .posts-list {
+      float: left;
+      width: 75%;
+    }
+    .posts-with-sidebar .posts-sidebar {
+      float: right;
+      width: 20%;
+      margin-top: 60px;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+  }
+  
+  
+  /* Improve display for browsers without grid (IE/Edge <= 15) */
+  
+  .downlevel {
+    line-height: 1.6em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+  }
+  
+  .downlevel .d-title {
+    padding-top: 6rem;
+    padding-bottom: 1.5rem;
+  }
+  
+  .downlevel .d-title h1 {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.1em;
+    margin: 0 0 0.5rem;
+  }
+  
+  .downlevel .d-title p {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.55em;
+    margin-top: 0;
+  }
+  
+  .downlevel .d-byline {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    font-size: 0.8rem;
+    line-height: 1.8em;
+  }
+  
+  .downlevel .section-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .downlevel .d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+  
+  
+  .downlevel .d-appendix {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.5);
+    padding-top: 40px;
+    padding-bottom: 48px;
+  }
+  
+  .downlevel .footnotes ol {
+    padding-left: 13px;
+  }
+  
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  
+  @media(min-width: 768px) {
+    .downlevel .base-grid,
+    .downlevel .distill-header,
+    .downlevel .d-title,
+    .downlevel .d-abstract,
+    .downlevel .d-article,
+    .downlevel .d-appendix,
+    .downlevel .distill-appendix,
+    .downlevel .d-byline,
+    .downlevel .d-footnote-list,
+    .downlevel .d-citation-list,
+    .downlevel .distill-footer,
+    .downlevel .appendix-bottom,
+    .downlevel .posts-container {
+    padding-left: 150px;
+    padding-right: 150px;
+    max-width: 900px;
+  }
+  }
+  
+  .downlevel pre code {
+    display: block;
+    border-left: 2px solid rgba(0, 0, 0, .1);
+    padding: 0 0 0 20px;
+    font-size: 14px;
+  }
+  
+  .downlevel code, .downlevel pre {
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+  
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+  
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+  
+  .downlevel .posts-list .post-preview {
+    color: inherit;
+  }
+  
+  
+  
+  </style>
+  
+  <script type="application/javascript">
+  
+  function is_downlevel_browser() {
+    if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                   window.navigator.userAgent)) {
+      return true;
+    } else {
+      return window.load_distill_framework === undefined;
+    }
+  }
+  
+  // show body when load is complete
+  function on_load_complete() {
+  
+    // add anchors
+    if (window.anchors) {
+      window.anchors.options.placement = 'left';
+      window.anchors.add('d-article > h2, d-article > h3, d-article > h4, d-article > h5');
+    }
+  
+  
+    // set body to visible
+    document.body.style.visibility = 'visible';
+  
+    // force redraw for leaflet widgets
+    if (window.HTMLWidgets) {
+      var maps = window.HTMLWidgets.findAll(".leaflet");
+      $.each(maps, function(i, el) {
+        var map = this.getMap();
+        map.invalidateSize();
+        map.eachLayer(function(layer) {
+          if (layer instanceof L.TileLayer)
+            layer.redraw();
+        });
+      });
+    }
+  
+    // trigger 'shown' so htmlwidgets resize
+    $('d-article').trigger('shown');
+  }
+  
+  function init_distill() {
+  
+    init_common();
+  
+    // create front matter
+    var front_matter = $('<d-front-matter></d-front-matter>');
+    $('#distill-front-matter').wrap(front_matter);
+  
+    // create d-title
+    $('.d-title').changeElementType('d-title');
+  
+    // create d-byline
+    var byline = $('<d-byline></d-byline>');
+    $('.d-byline').replaceWith(byline);
+  
+    // create d-article
+    var article = $('<d-article></d-article>');
+    $('.d-article').wrap(article).children().unwrap();
+  
+    // move posts container into article
+    $('.posts-container').appendTo($('d-article'));
+  
+    // create d-appendix
+    $('.d-appendix').changeElementType('d-appendix');
+  
+    // flag indicating that we have appendix items
+    var appendix = $('.appendix-bottom').children('h3').length > 0;
+  
+    // replace footnotes with <d-footnote>
+    $('.footnote-ref').each(function(i, val) {
+      appendix = true;
+      var href = $(this).attr('href');
+      var id = href.replace('#', '');
+      var fn = $('#' + id);
+      var fn_p = $('#' + id + '>p');
+      fn_p.find('.footnote-back').remove();
+      var text = fn_p.html();
+      var dtfn = $('<d-footnote></d-footnote>');
+      dtfn.html(text);
+      $(this).replaceWith(dtfn);
+    });
+    // remove footnotes
+    $('.footnotes').remove();
+  
+    // move refs into #references-listing
+    $('#references-listing').replaceWith($('#refs'));
+  
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      var id = $(this).attr('id');
+      $('.d-contents a[href="#' + id + '"]').parent().remove();
+      appendix = true;
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+    });
+  
+    // show d-appendix if we have appendix content
+    $("d-appendix").css('display', appendix ? 'grid' : 'none');
+  
+    // localize layout chunks to just output
+    $('.layout-chunk').each(function(i, val) {
+  
+      // capture layout
+      var layout = $(this).attr('data-layout');
+  
+      // apply layout to markdown level block elements
+      var elements = $(this).children().not('details, div.sourceCode, pre, script');
+      elements.each(function(i, el) {
+        var layout_div = $('<div class="' + layout + '"></div>');
+        if (layout_div.hasClass('shaded')) {
+          var shaded_content = $('<div class="shaded-content"></div>');
+          $(this).wrap(shaded_content);
+          $(this).parent().wrap(layout_div);
+        } else {
+          $(this).wrap(layout_div);
+        }
+      });
+  
+  
+      // unwrap the layout-chunk div
+      $(this).children().unwrap();
+    });
+  
+    // remove code block used to force  highlighting css
+    $('.distill-force-highlighting-css').parent().remove();
+  
+    // remove empty line numbers inserted by pandoc when using a
+    // custom syntax highlighting theme
+    $('code.sourceCode a:empty').remove();
+  
+    // load distill framework
+    load_distill_framework();
+  
+    // wait for window.distillRunlevel == 4 to do post processing
+    function distill_post_process() {
+  
+      if (!window.distillRunlevel || window.distillRunlevel < 4)
+        return;
+  
+      // hide author/affiliations entirely if we have no authors
+      var front_matter = JSON.parse($("#distill-front-matter").html());
+      var have_authors = front_matter.authors && front_matter.authors.length > 0;
+      if (!have_authors)
+        $('d-byline').addClass('hidden');
+  
+      // article with toc class
+      $('.d-contents').parent().addClass('d-article-with-toc');
+  
+      // strip links that point to #
+      $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+  
+      // add orcid ids
+      $('.authors-affiliations').find('.author').each(function(i, el) {
+        var orcid_id = front_matter.authors[i].orcidID;
+        if (orcid_id) {
+          var a = $('<a></a>');
+          a.attr('href', 'https://orcid.org/' + orcid_id);
+          var img = $('<img></img>');
+          img.addClass('orcid-id');
+          img.attr('alt', 'ORCID ID');
+          img.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==');
+          a.append(img);
+          $(this).append(a);
+        }
+      });
+  
+      // hide elements of author/affiliations grid that have no value
+      function hide_byline_column(caption) {
+        $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+      }
+  
+      // affiliations
+      var have_affiliations = false;
+      for (var i = 0; i<front_matter.authors.length; ++i) {
+        var author = front_matter.authors[i];
+        if (author.affiliation !== "&nbsp;") {
+          have_affiliations = true;
+          break;
+        }
+      }
+      if (!have_affiliations)
+        $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+  
+      // published date
+      if (!front_matter.publishedDate)
+        hide_byline_column("Published");
+  
+      // document object identifier
+      var doi = $('d-byline').find('h3:contains("DOI")');
+      var doi_p = doi.next().empty();
+      if (!front_matter.doi) {
+        // if we have a citation and valid citationText then link to that
+        if ($('#citation').length > 0 && front_matter.citationText) {
+          doi.html('Citation');
+          $('<a href="#citation"></a>')
+            .text(front_matter.citationText)
+            .appendTo(doi_p);
+        } else {
+          hide_byline_column("DOI");
+        }
+      } else {
+        $('<a></a>')
+           .attr('href', "https://doi.org/" + front_matter.doi)
+           .html(front_matter.doi)
+           .appendTo(doi_p);
+      }
+  
+       // change plural form of authors/affiliations
+      if (front_matter.authors.length === 1) {
+        var grid = $('.authors-affiliations');
+        grid.children('h3:contains("Authors")').text('Author');
+        grid.children('h3:contains("Affiliations")').text('Affiliation');
+      }
+  
+      // remove d-appendix and d-footnote-list local styles
+      $('d-appendix > style:first-child').remove();
+      $('d-footnote-list > style:first-child').remove();
+  
+      // move appendix-bottom entries to the bottom
+      $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+      $('.appendix-bottom').remove();
+  
+      // hoverable references
+      $('span.citation[data-cites]').each(function() {
+        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        window.tippy(this, {
+          allowHTML: true,
+          content: refHtml,
+          maxWidth: 500,
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        });
+      });
+  
+      // clear polling timer
+      clearInterval(tid);
+  
+      // show body now that everything is ready
+      on_load_complete();
+    }
+  
+    var tid = setInterval(distill_post_process, 50);
+    distill_post_process();
+  
+  }
+  
+  function init_downlevel() {
+  
+    init_common();
+  
+     // insert hr after d-title
+    $('.d-title').after($('<hr class="section-separator"/>'));
+  
+    // check if we have authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+  
+    // manage byline/border
+    if (!have_authors)
+      $('.d-byline').remove();
+    $('.d-byline').after($('<hr class="section-separator"/>'));
+    $('.d-byline a').remove();
+  
+    // remove toc
+    $('.d-contents').remove();
+  
+    // move appendix elements
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+    });
+  
+  
+    // inject headers into references and footnotes
+    var refs_header = $('<h3></h3>');
+    refs_header.text('References');
+    $('#refs').prepend(refs_header);
+  
+    var footnotes_header = $('<h3></h3');
+    footnotes_header.text('Footnotes');
+    $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+  
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+  
+    // remove appendix if it's empty
+    if ($('.d-appendix').children().length === 0)
+      $('.d-appendix').remove();
+  
+    // prepend separator above appendix
+    $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+  
+    // trim code
+    $('pre>code').each(function(i, val) {
+      $(this).html($.trim($(this).html()));
+    });
+  
+    // move posts-container right before article
+    $('.posts-container').insertBefore($('.d-article'));
+  
+    $('body').addClass('downlevel');
+  
+    on_load_complete();
+  }
+  
+  
+  function init_common() {
+  
+    // jquery plugin to change element types
+    (function($) {
+      $.fn.changeElementType = function(newType) {
+        var attrs = {};
+  
+        $.each(this[0].attributes, function(idx, attr) {
+          attrs[attr.nodeName] = attr.nodeValue;
+        });
+  
+        this.replaceWith(function() {
+          return $("<" + newType + "/>", attrs).append($(this).contents());
+        });
+      };
+    })(jQuery);
+  
+    // prevent underline for linked images
+    $('a > img').parent().css({'border-bottom' : 'none'});
+  
+    // mark non-body figures created by knitr chunks as 100% width
+    $('.layout-chunk').each(function(i, val) {
+      var figures = $(this).find('img, .html-widget');
+      if ($(this).attr('data-layout') !== "l-body") {
+        figures.css('width', '100%');
+      } else {
+        figures.css('max-width', '100%');
+        figures.filter("[width]").each(function(i, val) {
+          var fig = $(this);
+          fig.css('width', fig.attr('width') + 'px');
+        });
+  
+      }
+    });
+  
+    // auto-append index.html to post-preview links in file: protocol
+    // and in rstudio ide preview
+    $('.post-preview').each(function(i, val) {
+      if (window.location.protocol === "file:")
+        $(this).attr('href', $(this).attr('href') + "index.html");
+    });
+  
+    // get rid of index.html references in header
+    if (window.location.protocol !== "file:") {
+      $('.distill-site-header a[href]').each(function(i,val) {
+        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+      });
+    }
+  
+    // add class to pandoc style tables
+    $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+    $('.kable-table').children('table').addClass('pandoc-table');
+  
+    // add figcaption style to table captions
+    $('caption').parent('table').addClass("figcaption");
+  
+    // initialize posts list
+    if (window.init_posts_list)
+      window.init_posts_list();
+  
+    // implmement disqus comment link
+    $('.disqus-comment-count').click(function() {
+      window.headroom_prevent_pin = true;
+      $('#disqus_thread').toggleClass('hidden');
+      if (!$('#disqus_thread').hasClass('hidden')) {
+        var offset = $(this).offset();
+        $(window).resize();
+        $('html, body').animate({
+          scrollTop: offset.top - 35
+        });
+      }
+    });
+  }
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    if (is_downlevel_browser())
+      init_downlevel();
+    else
+      window.addEventListener('WebComponentsReady', init_distill);
+  });
+  
+  </script>
+  
+  <!--/radix_placeholder_distill-->
+  <script src="classificeren-met-tidymodels_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="classificeren-met-tidymodels_files/popper-2.6.0/popper.min.js"></script>
+  <link href="classificeren-met-tidymodels_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="classificeren-met-tidymodels_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="classificeren-met-tidymodels_files/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="classificeren-met-tidymodels_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="classificeren-met-tidymodels_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="classificeren-met-tidymodels_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="classificeren-met-tidymodels_files/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+  <!--/radix_placeholder_site_in_header-->
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"Classificeren met Tidymodels","description":"Dit is bewerking van een blog die [Rahul Raoniar, Towards data science](https://towardsdatascience.com/modelling-binary-logistic-regression-using-tidymodels-library-in-r-part-1-c1bdce0ac055) begin 2021 schreef.","authors":[{"author":"Rahul Raoniar, bewerking Harrie Jonkman","authorURL":{},"affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-07-05T00:00:00.000+00:00","citationText":"Jonkman, 2021"}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>Classificeren met Tidymodels</h1>
+<!--radix_placeholder_categories-->
+<!--/radix_placeholder_categories-->
+<p><p>Dit is bewerking van een blog die <a href="https://towardsdatascience.com/modelling-binary-logistic-regression-using-tidymodels-library-in-r-part-1-c1bdce0ac055">Rahul Raoniar, Towards data science</a> begin 2021 schreef.</p></p>
+</div>
+
+<div class="d-byline">
+  Rahul Raoniar, bewerking Harrie Jonkman true 
+  
+<br/>07-05-2021
+</div>
+
+<div class="d-article">
+<p>Een gids om stap voor stap een logissche regressie uit te voeren met gebruik van het <code>tidymodels</code> pakket</p>
+<p>Dit is bewerking van een blog die <a href="https://towardsdatascience.com/modelling-binary-logistic-regression-using-tidymodels-library-in-r-part-1-c1bdce0ac055">Rahul Raoniar, Towards data science</a> begin 2021 schreef.</p>
+<p>In de wereld van ‘supervised machine learning’ worden vaak twee soorten analyses uitgevoerd. De ene heet regressie (voorspellen van continue waarden), de andere heet classificatie (voorspellen van discrete waarden). In deze blog geef ik een voorbeeld van een binair classificatiealgoritme, “<strong>Binaire Logistische Regressie</strong>” genaamd. Dat valt onder de Binomiale familie met een logit koppelingsfunctie. Binaire logistische regressie wordt gebruikt voor het voorspellen van binaire klassen. Bijvoorbeeld in gevallen waarin je ja/nee, winst/verlies, negatief/positief, waar/onwaar enzovoort wilt voorspellen.</p>
+<p><em>Deze blog leidt jou door een proces van hoe het ‘tidymodels’-pakket te gebruiken om een model toe te passen en te evalueren met heel weinig en eenvoudige stappen.</em></p>
+<h3 id="achtergrond-van-de-data">Achtergrond van de data</h3>
+<p>In dit voorbeeld maak je gebruik maken van de <strong>Pima Indian Diabetes 2</strong> data, verkregen uit de UCI Repository van de machine learning data (<em>Newman et al. 1998</em>).</p>
+<p>Deze data zijn oorspronkelijk afkomstig van het ‘National Institute of Diabetes and Digestive and Kidney Diseases’. Het doel van de dataset is diagnostisch te voorspellen of een patiënt al dan niet diabetes heeft, op basis bepaalde diagnostische metingen die in de dataset zijn opgenomen. Bij de selectie van deze data uit een grotere databank werden verschillende beperkingen opgelegd. In het bijzonder zijn alle patiënten hier vrouwen van ten minste 21 jaar oud van Pima Indiaanse afkomst. De Pima Indian Diabetes 2-data is de verfijnde versie (alle ontbrekende waarden zijn toegewezen als NA) van de Pima Indian diabetes-gegevens. De dataset bevat de volgende onafhankelijke en afhankelijke variabelen.</p>
+<p><em>Onafhankelijke variabelen (met symbool: O)</em> - O1: pregnant: Aantal keren zwanger<br />
+- O2: glucose: Plasma glucose concentratie (glucose tolerantie test)<br />
+- O3: pressure: Diastolische bloed druk (mm Hg)<br />
+- O4: triceps: Triceps huidplooidikte (mm)<br />
+- O5: insulin: 2-uur serum insuline (mu U/ml)<br />
+- O6: mass: Body mass index (gewicht in kg/(lengte in m)\²)<br />
+- O7: pedigree: Diabetes pedigree functie<br />
+- O8: age: Leeftijd (jaren)</p>
+<p><em>Dependent Variable (met symbool: A)</em><br />
+- A1: diabetes: diabetes geval (pos/neg)</p>
+<h3 id="doel-van-de-modellering">Doel van de modellering</h3>
+<ul>
+<li>aanpassen van een binair logistisch regressie-machineleermodel met behulp van de bibliotheek <code>tidymodels</code><br />
+</li>
+<li>het testen van de voorspellingskracht van het getrainde model (evaluatie van het model) op de ongeziene/geteste dataset met behulp van verschillende evaluatiemetrieken.</li>
+</ul>
+<h3 id="bibliotheken-en-datasets-laden">Bibliotheken en Datasets laden</h3>
+<p><strong>Stap1:</strong> Eerst moeten we de volgende pakketten worden geïnstalleerd met de <code>install.packages( )</code> functie (als ze al niet zijn geïnstalleerd en ze laden met de <code>library( )</code> functie.</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p><strong>Stap2:</strong> Vervolgens moet je de dataset binnen halen uit het <code>mlbench</code> pakket met behulp van de <code>data( )</code> functie.</p>
+<p>Na het laden van de data, is de volgende essentiële stap het uitvoeren van een verkennende data-analyse, die zal helpen bij het vertrouwd raken met de data. Gebruik de <code>head( )</code> functie om de bovenste zes rijen van de data te bekijken.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>  pregnant glucose pressure triceps insulin mass pedigree age
+1        6     148       72      35      NA 33.6    0.627  50
+2        1      85       66      29      NA 26.6    0.351  31
+3        8     183       64      NA      NA 23.3    0.672  32
+4        1      89       66      23      94 28.1    0.167  21
+5        0     137       40      35     168 43.1    2.288  33
+6        5     116       74      NA      NA 25.6    0.201  30
+  diabetes
+1      pos
+2      neg
+3      pos
+4      neg
+5      pos
+6      neg</code></pre>
+</div>
+<p>De Diabetes-gegevensreeks telt 768 waarnemingen en negen variabelen. De eerste acht variabelen zijn van het numerieke type en de afhankelijke/output variabele (diabetes) is een factor/categorische variabele. Het is ook merkbaar dat veel variabelen <code>NA</code> waarden bevatten (missende waarde). Onze volgende taak is het de gegevens te verfijnen/wijzigen, zodat ze compatibel worden met het modelleeralgoritme. Eerst nog eens beter naar de data kijken.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>Rows: 768
+Columns: 9
+$ pregnant &lt;dbl&gt; 6, 1, 8, 1, 0, 5, 3, 10, 2, 8, 4, 10, 10, 1, 5, 7, …
+$ glucose  &lt;dbl&gt; 148, 85, 183, 89, 137, 116, 78, 115, 197, 125, 110,…
+$ pressure &lt;dbl&gt; 72, 66, 64, 66, 40, 74, 50, NA, 70, 96, 92, 74, 80,…
+$ triceps  &lt;dbl&gt; 35, 29, NA, 23, 35, NA, 32, NA, 45, NA, NA, NA, NA,…
+$ insulin  &lt;dbl&gt; NA, NA, NA, 94, 168, NA, 88, NA, 543, NA, NA, NA, N…
+$ mass     &lt;dbl&gt; 33.6, 26.6, 23.3, 28.1, 43.1, 25.6, 31.0, 35.3, 30.…
+$ pedigree &lt;dbl&gt; 0.627, 0.351, 0.672, 0.167, 2.288, 0.201, 0.248, 0.…
+$ age      &lt;dbl&gt; 50, 31, 32, 21, 33, 30, 26, 29, 53, 54, 30, 34, 57,…
+$ diabetes &lt;fct&gt; pos, neg, pos, neg, pos, neg, pos, neg, pos, pos, n…</code></pre>
+</div>
+<h3 id="voorbereiding-van-de-gegevens">Voorbereiding van de gegevens</h3>
+<p>De eerste stap is het verwijderen van data rijen met <code>NA</code> waarden met behulp van <code>na.omit( )</code> functie. De volgende stap is nogmaals het controleren van de gegevens met behulp van de <code>glimpse( )</code> functie.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>Rows: 392
+Columns: 9
+$ pregnant &lt;dbl&gt; 1, 0, 3, 2, 1, 5, 0, 1, 1, 3, 11, 10, 1, 13, 3, 3, …
+$ glucose  &lt;dbl&gt; 89, 137, 78, 197, 189, 166, 118, 103, 115, 126, 143…
+$ pressure &lt;dbl&gt; 66, 40, 50, 70, 60, 72, 84, 30, 70, 88, 94, 70, 66,…
+$ triceps  &lt;dbl&gt; 23, 35, 32, 45, 23, 19, 47, 38, 30, 41, 33, 26, 15,…
+$ insulin  &lt;dbl&gt; 94, 168, 88, 543, 846, 175, 230, 83, 96, 235, 146, …
+$ mass     &lt;dbl&gt; 28.1, 43.1, 31.0, 30.5, 30.1, 25.8, 45.8, 43.3, 34.…
+$ pedigree &lt;dbl&gt; 0.167, 2.288, 0.248, 0.158, 0.398, 0.587, 0.551, 0.…
+$ age      &lt;dbl&gt; 21, 33, 26, 53, 59, 51, 31, 33, 32, 27, 51, 41, 22,…
+$ diabetes &lt;fct&gt; neg, pos, pos, pos, pos, pos, pos, neg, pos, neg, p…</code></pre>
+</div>
+<p>De uiteindelijke (voorbereide) gegevens bevatten 392 waarnemingen en 9 kolommen. De onafhankelijke variabelen zijn van het type numeriek/dubbel, terwijl de afhankelijke/uitgaande binaire variabele van het type factor/categorie is (neg/ pos).</p>
+<h3 id="gegevensniveaus">Gegevensniveaus</h3>
+<p>We kunnen het referentieniveau van de afhankelijke variabele controleren met de functie <code>levels( )</code>. We kunnen zien dat het referentieniveau <em>neg</em> is (het allereerste niveau).</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>[1] &quot;neg&quot; &quot;pos&quot;</code></pre>
+</div>
+<h3 id="instellen-referentieniveau">Instellen referentieniveau</h3>
+<p>Voor een betere interpretatie (later voor het uitzetten van de ROC curve) moeten we het referentieniveau van onze afhankelijke variabele “diabetes” op <em>positief (pos)</em> zetten met de <code>relevel( )</code> functie.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>[1] &quot;pos&quot; &quot;neg&quot;</code></pre>
+</div>
+<h3 id="splitsing-training-en-testset">Splitsing training en testset</h3>
+<p>De volledige dataset wordt in het algemeen opgesplitst in 75% train en 25% test data set (algemene vuistregel). 75% van de trainingsdata wordt gebruikt om het model te trainen, terwijl de overige 25% wordt gebruikt om te controleren hoe het model generaliseerde op ongeziene/test data set.</p>
+<p>Om een split object te maken kun je de <code>initial_split( )</code> functie gebruiken waar je de dataset, proportie en een strata argument voor moet opgeven. Door de afhankelijke variabele in het strata-attribuut op te geven, wordt gestratificeerde steekproeftrekking uitgevoerd. Gestratificeerde steekproeftrekking is nuttig als je afhankelijke variabele een ongelijke klasse heeft.</p>
+<p>De volgende stap is het aanroepen van de <code>training( )</code> en <code>testing( )</code> functies op het split object (d.w.z. <code>diabetes_split</code>) om de trainings- (<code>diabetes_train</code>) en test- (<code>diabetes_test</code>) datasets op te slaan.</p>
+<p>De training set bevat 295 waarnemingen, terwijl de test set 97 waarnemingen bevat.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>[1] 295</code></pre>
+<pre><code>[1] 97</code></pre>
+</div>
+<h3 id="fitten-van-logistische-regressie">Fitten van logistische regressie</h3>
+<p>Je kunt met <code>tidymodels</code> elk type model pasklaar maken met behulp van de volgende stappen. l <em>Stap 1</em>: roep de modelfunctie op: hier gebruiken we <code>logistic_reg( )</code> omdat we een logistisch regressiemodel willen draaien.</p>
+<p><em>Stap 2</em>: gebruik de <code>set_engine( )</code> functie om de familie van het model op te geven. We geven het <code>glm</code> argument op, omdat logistische regressie onder de ‘Generalized Linear Regression’-familie valt.</p>
+<p><em>Stap 3</em>: gebruik de <code>set_mode( )</code> functie en geef het type model op dat je wilt toepassen. Hier willen we pos vs neg classificeren, dus het is een <em>classificatie</em>.</p>
+<p><em>Stap 4</em>: Vervolgens moet je de <code>fit( )</code> functie gebruiken om het model te fitten en daarbinnen moet je de formule notatie en de dataset (<code>diabetes_train</code>) opgeven.</p>
+<p><em>plus notatie →</em> <code>diabetes ~ ind_variable 1 + ind_variable 2 + …….so on</code></p>
+<p><em>tilde punt notatioe →</em><br />
+diabetes~. betekent dat diabetes wordt voorspeld door de rest van de variabelen in het gegevensbestand (d.w.z. alle onafhankelijke variabelen), behalve de afhankelijke variabele, d.w.z. diabetes.</p>
+<p>Na het draaien van het model is de volgende stap het genereren van de modeloverzichtstabel. Je kunt een mooie tabel maken met behulp van de <code>tidy( )</code> functie van de <code>broom</code> bibliotheek (die is ingebouwd in de <code>tidymodels</code> bibliotheek). De gerapporteerde coëfficiënten zijn in log-odds termen.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># A tibble: 9 x 5
+  term         estimate std.error statistic  p.value
+  &lt;chr&gt;           &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+1 (Intercept)  8.64       1.35       6.42   1.36e-10
+2 pregnant    -0.0669     0.0591    -1.13   2.57e- 1
+3 glucose     -0.0352     0.00642   -5.49   4.05e- 8
+4 pressure     0.00931    0.0130     0.715  4.74e- 1
+5 triceps      0.00123    0.0196     0.0629 9.50e- 1
+6 insulin      0.000802   0.00151    0.530  5.96e- 1
+7 mass        -0.0715     0.0302    -2.37   1.79e- 2
+8 pedigree    -0.840      0.452     -1.86   6.31e- 2
+9 age         -0.0375     0.0199    -1.88   6.01e- 2</code></pre>
+</div>
+<p><strong>Opgelet:</strong> <em>Het teken en de waarde van de coëfficiënten veranderen afhankelijk van de referentie die u voor de afhankelijke variabele hebt ingesteld (in ons geval is pos het referentieniveau) en de waarneming die u op basis van de aselecte steekproefselectie in de opleidingssteekproef hebt opgenomen [bovenstaande resultaten zijn slechts een voorbeeld].</em></p>
+<p>De interpretatie van coëfficiënten in de log-odds term heeft niet veel zin als je die moet rapporteren in je artikel of publicatie. Daarom werd het begrip odds ratio geïntroduceerd.</p>
+<p>De ODDS is de verhouding van de kans dat een gebeurtenis zich voordoet tot de kans dat de gebeurtenis zich niet voordoet. Wanneer we een verhouding van twee zulke kansen nemen, noemen we dat Odds Ratio.</p>
+<figure>
+<img src="Screenshot1.png" alt="" /><figcaption>Odds ratio</figcaption>
+</figure>
+<p>Wiskundig kan men de odds ratio berekenen door de exponent van de geschatte coëfficiënten te nemen. Je kunt bijvoorbeeld direct de odds ratio’s van de coëfficiënten krijgen door de <em>exponentiate = True</em> mee te geven in de <code>tidy( )</code> functie.</p>
+<p>Het resultaat is alleen afhankelijk van de steekproeven die we hebben verkregen tijdens het splitsen. Je kunt een ander resultaat krijgen (odds ratio waarden).</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># A tibble: 9 x 5
+  term        estimate std.error statistic  p.value
+  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+1 (Intercept) 5660.      1.35       6.42   1.36e-10
+2 pregnant       0.935   0.0591    -1.13   2.57e- 1
+3 glucose        0.965   0.00642   -5.49   4.05e- 8
+4 pressure       1.01    0.0130     0.715  4.74e- 1
+5 triceps        1.00    0.0196     0.0629 9.50e- 1
+6 insulin        1.00    0.00151    0.530  5.96e- 1
+7 mass           0.931   0.0302    -2.37   1.79e- 2
+8 pedigree       0.432   0.452     -1.86   6.31e- 2
+9 age            0.963   0.0199    -1.88   6.01e- 2</code></pre>
+</div>
+<h3 id="significante-kansen">Significante kansen</h3>
+<p>De tabel geproduceerd door <code>tidy( )</code> functie kan worden gefilterd. Hier hebben we de variabelen uitgefilterd waarvan de p-waarden lager zijn dan 0.05 (5%) significant niveau. Voor onze steekproef hebben glucose en massa een significante invloed op diabetes.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># A tibble: 3 x 5
+  term        estimate std.error statistic  p.value
+  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+1 (Intercept) 5660.      1.35         6.42 1.36e-10
+2 glucose        0.965   0.00642     -5.49 4.05e- 8
+3 mass           0.931   0.0302      -2.37 1.79e- 2</code></pre>
+</div>
+<h3 id="model-voorspelling">Model voorspelling</h3>
+<h3 id="voorspelling-van-de-testgegevensklasse">Voorspelling van de testgegevensklasse</h3>
+<p>De volgende stap is het genereren van de testvoorspellingen die we kunnen gebruiken voor de evaluatie van het model. Om de klassevoorspelling (pos/neg) te genereren kunnen wij de predict-functie gebruiken en het <em>getrainde modelobject, de testdataset</em> en het type opgeven, dat hier “klasse” is, aangezien wij de klassevoorspelling willen, geen waarschijnlijkheden.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># A tibble: 5 x 1
+  .pred_class
+  &lt;fct&gt;      
+1 pos        
+2 neg        
+3 neg        
+4 pos        
+5 pos        </code></pre>
+</div>
+<h3 id="testdata-klasse-waarschijnlijkheden">Testdata klasse waarschijnlijkheden</h3>
+<p>We kunnen ook voorspellingen genereren voor de klassenwaarschijnlijkheden door het argument “prob” in het type-attribuut mee te geven.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># A tibble: 5 x 2
+  .pred_pos .pred_neg
+      &lt;dbl&gt;     &lt;dbl&gt;
+1     0.820    0.180 
+2     0.352    0.648 
+3     0.150    0.850 
+4     0.932    0.0683
+5     0.875    0.125 </code></pre>
+</div>
+<h3 id="voorbereiding-van-de-uiteindelijke-gegevens-voor-de-evaluatie-van-het-model">Voorbereiding van de uiteindelijke gegevens voor de evaluatie van het model</h3>
+<p>De volgende stap is het voorbereiden van een gegevensframe dat de kolom diabetes uit de oorspronkelijke testdataset, de voorspelde klasse en de klassevoorspellingswaarschijnlijkheid bevat. We gaan dit dataframe gebruiken voor de evaluatie van het model.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>   diabetes .pred_class .pred_pos  .pred_neg
+14      pos         pos 0.8197657 0.18023425
+17      pos         neg 0.3520320 0.64796802
+36      neg         neg 0.1499556 0.85004441
+44      pos         pos 0.9317037 0.06829634
+54      pos         pos 0.8752335 0.12476646</code></pre>
+</div>
+<h3 id="modelevaluatie">Modelevaluatie</h3>
+<h3 id="confusiematrix">Confusiematrix</h3>
+<p>We kunnen een confusiematrix genereren met de <code>conf_mat( )</code>-functie door het uiteindelijke dataframe, <code>diabetes_results</code>, de waarheidskolom, <code>diabetes</code> en <code>voorspelde klasse (.pred_class)</code> in het schattingsattribuut op te geven.</p>
+<p>Uit de confusiematrix blijkt dat de testdataset 65 gevallen van negatieve (neg) en 32 gevallen van positieve (pos) waarnemingen bevat. Het getrainde model classificeert 61 negatieven (neg) en 18 positieven (pos) accuraat.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>          Truth
+Prediction pos neg
+       pos  18   4
+       neg  14  61</code></pre>
+</div>
+<p>We kunnen ook het <code>yardstick</code> pakket gebruiken dat bij het <code>tidymodels</code> pakket hoort om verschillende evaluatie metrieken te genereren voor de testdata set.</p>
+<h3 id="nauwkeurigheid">Nauwkeurigheid</h3>
+<p>We kunnen de classificatienauwkeurigheid berekenen met de <code>accuracy( )</code>-functie door het uiteindelijke dataframe, <code>diabetes_results</code>, de waarheidskolom, <code>diabetes</code> en <code>voorspelde klasse (.pred_class)</code> in het schattingsattribuut op te geven. De classificatienauwkeurigheid van het model op de testdataset is ongeveer 81,4%.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># A tibble: 1 x 3
+  .metric  .estimator .estimate
+  &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;
+1 accuracy binary         0.814</code></pre>
+</div>
+<h3 id="sensitiviteit">Sensitiviteit</h3>
+<p>De <em>sensitiviteit</em> van een classificator is de verhouding tussen het aantal dat correct als positief wordt geïdentificeerd (TP) en het aantal dat daadwerkelijk positief is (FN+TP).</p>
+<p><em>Sensitivity = TP / FN+TP</em></p>
+<p>De geschatte sensitiviteitswaarde is 0,562, wat wijst op een slechte detectie van positieve klassen in de testdataset.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># A tibble: 1 x 3
+  .metric .estimator .estimate
+  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
+1 sens    binary         0.562</code></pre>
+</div>
+<h3 id="specificiteit">Specificiteit</h3>
+<p><em>Specificiteit</em> van een classificator is de verhouding tussen het aantal dat correct als negatief werd geclassificeerd (TN) en het aantal dat werkelijk negatief was (FP+TN).</p>
+<p><em>Specificity = TN/FP+TN</em></p>
+<p>De geschatte specificiteitswaarde is 0,938, wat wijst op een algemeen goede detectie van negatieve klassen in de testdataset.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># A tibble: 1 x 3
+  .metric .estimator .estimate
+  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
+1 spec    binary         0.938</code></pre>
+</div>
+<h3 id="precisie">Precisie</h3>
+<p>Hoeveel van alle positieven werden correct als positief geclassificeerd?</p>
+<p><em>Precisie = TP/TP+FP</em></p>
+<p>De geschatte <em>precisie</em> waarde is 0.818.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># A tibble: 1 x 3
+  .metric   .estimator .estimate
+  &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt;
+1 precision binary         0.818</code></pre>
+</div>
+<h3 id="recall">Recall</h3>
+<p><em>Recall</em> en sensitiviteit zijn hetzelfde.</p>
+<p><em>Recall = TP / FN+TP</em></p>
+<p>De geschatte recall-waarde is 0.562.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># A tibble: 1 x 3
+  .metric .estimator .estimate
+  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
+1 recall  binary         0.562</code></pre>
+</div>
+<h3 id="f-maat">F-maat</h3>
+<p><em>F-maat</em> is een gewogen harmonisch gemiddelde van precisie en recall met de beste score 1 en de slechtste score 0. De F-maatscore geeft het evenwicht tussen precisie en recall weer. De F1-score is ongeveer 0,667, wat betekent dat het getrainde model een classificatiekracht van 66,7% heeft.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># A tibble: 1 x 3
+  .metric .estimator .estimate
+  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
+1 f_meas  binary         0.667</code></pre>
+</div>
+<h3 id="kappa">Kappa</h3>
+<p>Cohen Kappa geeft informatie over hoeveel beter een model is dan de willekeurige classificator. Kappa kan gaan van -1 tot +1. De waarde &lt;0 betekent geen overeenstemming, terwijl 1,0 een perfecte overeenstemming aangeeft. Uit de geschatte kappastatistieken bleek een matige overeenkomst.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># A tibble: 1 x 3
+  .metric .estimator .estimate
+  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
+1 kap     binary         0.544</code></pre>
+</div>
+<h3 id="matthews-correlatie-coefficient-mcc">Matthews Correlatie Coefficient (MCC)</h3>
+<p>De <em>Matthews correlatiecoëfficiënt (MCC)</em> wordt gebruikt als maatstaf voor de kwaliteit van een binaire classificator. De waarde varieert van -1 tot +1.</p>
+<p>MCC: -1 wijst op totale onenigheid MCC: 0 wijst op geen overeenstemming MCC: +1 wijst op totale overeenstemming</p>
+<p>Uit de geschatte MCC-statistieken bleek een matige overeenstemming.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># A tibble: 1 x 3
+  .metric .estimator .estimate
+  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
+1 mcc     binary         0.562</code></pre>
+</div>
+<h3 id="evaluatiematen-genereren">Evaluatiematen genereren</h3>
+<p>We kunnen de <code>custom_metrics( )</code>-functie gebruiken om verschillende metrieken tegelijk te genereren.</p>
+<p><em>Stap 1:</em> laat eerst zien wat je wilt laten zien door <code>metric_set( )</code> te gebruiken <em>Step 2:</em> gebruik de<code>custom_metrics( )</code> functie en betrek dit op de <code>diabetes_results</code> dataframe, <code>diabaets</code> kolom en op de voorspelde klasse (<code>.pred_class</code>).</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># A tibble: 8 x 3
+  .metric   .estimator .estimate
+  &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt;
+1 accuracy  binary         0.814
+2 sens      binary         0.562
+3 spec      binary         0.938
+4 precision binary         0.818
+5 recall    binary         0.562
+6 f_meas    binary         0.667
+7 kap       binary         0.544
+8 mcc       binary         0.562</code></pre>
+</div>
+<h3 id="roc-auc">ROC-AUC</h3>
+<p>ROC-AUC is a performance measurement for the classification problem at various thresholds settings. ROC_AUC tells how much the model is capable of distinguishing between classes. The trained logistic regression model has a ROC-AUC of 0.921 indicating overall good predictive performance.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># A tibble: 1 x 3
+  .metric .estimator .estimate
+  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
+1 roc_auc binary         0.921</code></pre>
+</div>
+<h3 id="roc-curve">ROC-curve</h3>
+<p>ROC-AUC is een evaluatiemaat voor het classificatieprobleem bij verschillende drempelinstellingen. ROC-AUC geeft aan in welke mate het model in staat is een onderscheid te maken tussen de klassen. Het getrainde logistische regressiemodel heeft een ROC-AUC van 0,921, wat wijst op een algemeen goede voorspellende prestatie.</p>
+<p>De ROC-curve wordt uitgezet met TPR (Sensitiviteit) tegen de FPR/ (1- Specificiteit), waarbij Sensitiviteit op de y-as staat en 1-Specificiteit op de x-as. Een lijn wordt diagonaal getrokken om de 50-50 verdeling van de grafiek aan te geven. Als de kromme dichter bij de lijn ligt, is de prestatie van de classificeerder lager en dan niet beter dan een toevallige gok.</p>
+<p>Je kunt een ROC Curve genereren met de <code>roc_curve( )</code> functie waarbij je de waarheidskolom (<code>diabetes</code>) en de voorspelde kansen voor de positieve klasse (<code>.pred_pos</code>) moet opgeven.</p>
+<p>Ons model heeft een ROC-AUC score van 0.921 wat aangeeft dat het een goed model is dat onderscheid kan maken tussen patiënten met diabetes en zonder diabetes.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="classificeren-met-tidymodels_files/figure-html5/unnamed-chunk-25-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>Confusion Matrix and Statistics
+
+          Reference
+Prediction pos neg
+       pos  18   4
+       neg  14  61
+                                          
+               Accuracy : 0.8144          
+                 95% CI : (0.7227, 0.8862)
+    No Information Rate : 0.6701          
+    P-Value [Acc &gt; NIR] : 0.001173        
+                                          
+                  Kappa : 0.5441          
+                                          
+ Mcnemar&#39;s Test P-Value : 0.033895        
+                                          
+            Sensitivity : 0.5625          
+            Specificity : 0.9385          
+         Pos Pred Value : 0.8182          
+         Neg Pred Value : 0.8133          
+             Prevalence : 0.3299          
+         Detection Rate : 0.1856          
+   Detection Prevalence : 0.2268          
+      Balanced Accuracy : 0.7505          
+                                          
+       &#39;Positive&#39; Class : pos             
+                                          </code></pre>
+</div>
+<p>Binaire logistische regressie is nog steeds een enorm populair ML-algoritme (voor binaire classificatie) in het bèta/technische onderzoeksdomein. Het is nog steeds zeer eenvoudig te trainen en te interpreteren, in vergelijking met veel complexere modellen.</p>
+<h3 id="referenties">Referenties</h3>
+<p>Newman, C. B. D. &amp; Merz, C. (1998). <em>UCI Repository of machine learning databases, Technical report</em>, University of California, Irvine, Dept. of Information and Computer Sciences.</p>
+<p>Shrikant I. Bangdiwala (2018). Regression: binary logistic, <em>International Journal of Injury Control and Safety Promotion</em>, DOI: 10.1080/17457300.2018.1486503</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<!--radix_placeholder_article_footer-->
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom"></div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+</body>
+
+</html>

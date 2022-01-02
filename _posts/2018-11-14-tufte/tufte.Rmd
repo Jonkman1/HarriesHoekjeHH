@@ -1,0 +1,15 @@
+---
+title: "Tufte"
+description: |
+  De Tufte-stijl is een stijl die Edward Tufte gebruikt in zijn boeken en handouts. Tufte's stijl is bekend vanwege zijn veelvuldig gebruik van opmerkingen aan de zijkant (sidenotes), strakke integratie van zijn grafieken met tekst en zijn duidelijk gezette typografie. Deze stijl is geimplementeerd in repectievelijk LaTeX en HTML/CSS^[Zie Github repositories [tufte-latex](https://github.com/tufte-latex/tufte-latex) en [tufte-css](https://github.com/edwardtufte/tufte-css)], respectively. Beide implementaties zitten nu ook in het [**tufte** pakket](https://github.com/rstudio/tufte). Als je een LaTeX/PDF output wilt, gebruik dan `tufte_handout` format voor handouts en `tufte_book` voor boeken. Voor HTML output, gebruik je `tufte_html`. Deze formatten kunnen worden gespecificeerd in de YAML metadata aan het begin van een R Markdown-document (zie het voorbeeld hieronder), of overgebracht via de `rmarkdown::render()` functie. Zie @R-rmarkdown voor meer informatie over **rmarkdown**.
+
+author:
+  - name: Harrie Jonkman
+    url: https://Harriejonkman.nl
+date: 9-14-2017
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+[Hier](http://www.harriejonkman.nl/wp-content/uploads/2018/01/TufteProberen.pdf) vind je een document over het werken in de Tufte stijl

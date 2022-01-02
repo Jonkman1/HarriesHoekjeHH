@@ -1,0 +1,2037 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { color: #20794d; } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007ba5; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #007ba5; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #007ba5; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #20794d; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+</style>
+
+  <!--radix_placeholder_meta_tags-->
+  <title>Testen met Bayes</title>
+  
+  <meta property="description" itemprop="description" content="Resultaten testen met Bayesiaanse onderzoekstechnieken."/>
+  
+  
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2020-11-17"/>
+  <meta property="article:created" itemprop="dateCreated" content="2020-11-17"/>
+  <meta name="article:author" content="Makowski en anderen, vertaling Harrie Jonkman"/>
+  
+  <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+  <meta property="og:title" content="Testen met Bayes"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:description" content="Resultaten testen met Bayesiaanse onderzoekstechnieken."/>
+  <meta property="og:locale" content="en_US"/>
+  
+  <!--  https://dev.twitter.com/cards/types/summary -->
+  <meta property="twitter:card" content="summary"/>
+  <meta property="twitter:title" content="Testen met Bayes"/>
+  <meta property="twitter:description" content="Resultaten testen met Bayesiaanse onderzoekstechnieken."/>
+  
+  <!--/radix_placeholder_meta_tags-->
+  <!--radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-rmarkdown-metadata">
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Testen met Bayes"]},{"type":"character","attributes":{},"value":["Resultaten testen met Bayesiaanse onderzoekstechnieken. \n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Makowski en anderen, vertaling Harrie Jonkman"]},{"type":"character","attributes":{},"value":["https://easystats.github.io/bayestestR/"]}]}]},{"type":"character","attributes":{},"value":["11-17-2020"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
+  </script>
+  <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["testen-met-bayes_files/anchor-4.2.2/anchor.min.js","testen-met-bayes_files/bowser-1.9.3/bowser.min.js","testen-met-bayes_files/distill-2.2.21/template.v2.js","testen-met-bayes_files/figure-html5/unnamed-chunk-12-1.png","testen-met-bayes_files/figure-html5/unnamed-chunk-16-1.png","testen-met-bayes_files/figure-html5/unnamed-chunk-21-1.png","testen-met-bayes_files/figure-html5/unnamed-chunk-37-1.png","testen-met-bayes_files/figure-html5/unnamed-chunk-38-1.png","testen-met-bayes_files/figure-html5/unnamed-chunk-7-1.png","testen-met-bayes_files/jquery-1.11.3/jquery.min 2.js","testen-met-bayes_files/jquery-1.11.3/jquery.min.js","testen-met-bayes_files/jquery-3.6.0/jquery-3.6.0.js","testen-met-bayes_files/jquery-3.6.0/jquery-3.6.0.min.js","testen-met-bayes_files/jquery-3.6.0/jquery-3.6.0.min.map","testen-met-bayes_files/popper-2.6.0/popper.min.js","testen-met-bayes_files/tippy-6.2.7/tippy-bundle.umd.min.js","testen-met-bayes_files/tippy-6.2.7/tippy-light-border.css","testen-met-bayes_files/tippy-6.2.7/tippy.css","testen-met-bayes_files/tippy-6.2.7/tippy.umd.min.js","testen-met-bayes_files/webcomponents-2.0.0/webcomponents.js"]}
+  </script>
+  <!--radix_placeholder_navigation_in_header-->
+  <!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+  
+  <style type="text/css">
+  
+  body {
+    background-color: white;
+  }
+  
+  .pandoc-table {
+    width: 100%;
+  }
+  
+  .pandoc-table>caption {
+    margin-bottom: 10px;
+  }
+  
+  .pandoc-table th:not([align]) {
+    text-align: left;
+  }
+  
+  .pagedtable-footer {
+    font-size: 15px;
+  }
+  
+  d-byline .byline {
+    grid-template-columns: 2fr 2fr;
+  }
+  
+  d-byline .byline h3 {
+    margin-block-start: 1.5em;
+  }
+  
+  d-byline .byline .authors-affiliations h3 {
+    margin-block-start: 0.5em;
+  }
+  
+  .authors-affiliations .orcid-id {
+    width: 16px;
+    height:16px;
+    margin-left: 4px;
+    margin-right: 4px;
+    vertical-align: middle;
+    padding-bottom: 2px;
+  }
+  
+  d-title .dt-tags {
+    margin-top: 1em;
+    grid-column: text;
+  }
+  
+  .dt-tags .dt-tag {
+    text-decoration: none;
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0em 0.4em;
+    margin-right: 0.5em;
+    margin-bottom: 0.4em;
+    font-size: 70%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  
+  d-article table.gt_table td,
+  d-article table.gt_table th {
+    border-bottom: none;
+  }
+  
+  .html-widget {
+    margin-bottom: 2.0em;
+  }
+  
+  .l-screen-inset {
+    padding-right: 16px;
+  }
+  
+  .l-screen .caption {
+    margin-left: 10px;
+  }
+  
+  .shaded {
+    background: rgb(247, 247, 247);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .shaded .html-widget {
+    margin-bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .shaded .shaded-content {
+    background: white;
+  }
+  
+  .text-output {
+    margin-top: 0;
+    line-height: 1.5em;
+  }
+  
+  .hidden {
+    display: none !important;
+  }
+  
+  d-article {
+    padding-top: 2.5rem;
+    padding-bottom: 30px;
+  }
+  
+  d-appendix {
+    padding-top: 30px;
+  }
+  
+  d-article>p>img {
+    width: 100%;
+  }
+  
+  d-article h2 {
+    margin: 1rem 0 1.5rem 0;
+  }
+  
+  d-article h3 {
+    margin-top: 1.5rem;
+  }
+  
+  d-article iframe {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 2.0em;
+    width: 100%;
+  }
+  
+  /* Tweak code blocks */
+  
+  d-article div.sourceCode code,
+  d-article pre code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+  
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: auto;
+  }
+  
+  d-article div.sourceCode {
+    background-color: white;
+  }
+  
+  d-article div.sourceCode pre {
+    padding-left: 10px;
+    font-size: 12px;
+    border-left: 2px solid rgba(0,0,0,0.1);
+  }
+  
+  d-article pre {
+    font-size: 12px;
+    color: black;
+    background: none;
+    margin-top: 0;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+  
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+  
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+  
+  d-article pre a {
+    border-bottom: none;
+  }
+  
+  d-article pre a:hover {
+    border-bottom: none;
+    text-decoration: underline;
+  }
+  
+  d-article details {
+    grid-column: text;
+    margin-bottom: 0.8em;
+  }
+  
+  @media(min-width: 768px) {
+  
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: visible !important;
+  }
+  
+  d-article div.sourceCode pre {
+    padding-left: 18px;
+    font-size: 14px;
+  }
+  
+  d-article pre {
+    font-size: 14px;
+  }
+  
+  }
+  
+  figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+  
+  /* CSS for d-contents */
+  
+  .d-contents {
+    grid-column: text;
+    color: rgba(0,0,0,0.8);
+    font-size: 0.9em;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+    padding-left: 0.25em;
+    justify-self: start;
+  }
+  
+  @media(min-width: 1000px) {
+    .d-contents.d-contents-float {
+      height: 0;
+      grid-column-start: 1;
+      grid-column-end: 4;
+      justify-self: center;
+      padding-right: 3em;
+      padding-left: 2em;
+    }
+  }
+  
+  .d-contents nav h3 {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+  
+  .d-contents li {
+    list-style-type: none
+  }
+  
+  .d-contents nav > ul {
+    padding-left: 0;
+  }
+  
+  .d-contents ul {
+    padding-left: 1em
+  }
+  
+  .d-contents nav ul li {
+    margin-top: 0.6em;
+    margin-bottom: 0.2em;
+  }
+  
+  .d-contents nav a {
+    font-size: 13px;
+    border-bottom: none;
+    text-decoration: none
+    color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .d-contents nav a:hover {
+    text-decoration: underline solid rgba(0, 0, 0, 0.6)
+  }
+  
+  .d-contents nav > ul > li > a {
+    font-weight: 600;
+  }
+  
+  .d-contents nav > ul > li > ul {
+    font-weight: inherit;
+  }
+  
+  .d-contents nav > ul > li > ul > li {
+    margin-top: 0.2em;
+  }
+  
+  
+  .d-contents nav ul {
+    margin-top: 0;
+    margin-bottom: 0.25em;
+  }
+  
+  .d-article-with-toc h2:nth-child(2) {
+    margin-top: 0;
+  }
+  
+  
+  /* Figure */
+  
+  .figure {
+    position: relative;
+    margin-bottom: 2.5em;
+    margin-top: 1.5em;
+  }
+  
+  .figure img {
+    width: 100%;
+  }
+  
+  .figure .caption {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    line-height: 1.5em;
+  }
+  
+  .figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+  
+  .figure .caption a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+  
+  .figure .caption b,
+  .figure .caption strong, {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1.0);
+  }
+  
+  /* Citations */
+  
+  d-article .citation {
+    color: inherit;
+    cursor: inherit;
+  }
+  
+  div.hanging-indent{
+    margin-left: 1em; text-indent: -1em;
+  }
+  
+  /* Citation hover box */
+  
+  .tippy-box[data-theme~=light-border] {
+    background-color: rgba(250, 250, 250, 0.95);
+  }
+  
+  .tippy-content > p {
+    margin-bottom: 0;
+    padding: 2px;
+  }
+  
+  
+  /* Tweak 1000px media break to show more text */
+  
+  @media(min-width: 1000px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 16px;
+    }
+  
+    .grid {
+      grid-column-gap: 16px;
+    }
+  
+    d-article {
+      font-size: 1.06rem;
+      line-height: 1.7em;
+    }
+    figure .caption, .figure .caption, figure figcaption {
+      font-size: 13px;
+    }
+  }
+  
+  @media(min-width: 1180px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 32px;
+    }
+  
+    .grid {
+      grid-column-gap: 32px;
+    }
+  }
+  
+  
+  /* Get the citation styles for the appendix (not auto-injected on render since
+     we do our own rendering of the citation appendix) */
+  
+  d-appendix .citation-appendix,
+  .d-appendix .citation-appendix {
+    font-size: 11px;
+    line-height: 15px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 18px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.02);
+    padding: 10px 18px;
+    border-radius: 3px;
+    color: rgba(150, 150, 150, 1);
+    overflow: hidden;
+    margin-top: -12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  
+  /* Include appendix styles here so they can be overridden */
+  
+  d-appendix {
+    contain: layout style;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-top: 60px;
+    margin-bottom: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    color: rgba(0,0,0,0.5);
+    padding-top: 60px;
+    padding-bottom: 48px;
+  }
+  
+  d-appendix h3 {
+    grid-column: page-start / text-start;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 1em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.65);
+  }
+  
+  d-appendix h3 + * {
+    margin-top: 1em;
+  }
+  
+  d-appendix ol {
+    padding: 0 0 0 15px;
+  }
+  
+  @media (min-width: 768px) {
+    d-appendix ol {
+      padding: 0 0 0 30px;
+      margin-left: -30px;
+    }
+  }
+  
+  d-appendix li {
+    margin-bottom: 1em;
+  }
+  
+  d-appendix a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+  
+  d-appendix > * {
+    grid-column: text;
+  }
+  
+  d-appendix > d-footnote-list,
+  d-appendix > d-citation-list,
+  d-appendix > distill-appendix {
+    grid-column: screen;
+  }
+  
+  /* Include footnote styles here so they can be overridden */
+  
+  d-footnote-list {
+    contain: layout style;
+  }
+  
+  d-footnote-list > * {
+    grid-column: text;
+  }
+  
+  d-footnote-list a.footnote-backlink {
+    color: rgba(0,0,0,0.3);
+    padding-left: 0.5em;
+  }
+  
+  
+  
+  /* Anchor.js */
+  
+  .anchorjs-link {
+    /*transition: all .25s linear; */
+    text-decoration: none;
+    border-bottom: none;
+  }
+  *:hover > .anchorjs-link {
+    margin-left: -1.125em !important;
+    text-decoration: none;
+    border-bottom: none;
+  }
+  
+  /* Social footer */
+  
+  .social_footer {
+    margin-top: 30px;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.67);
+  }
+  
+  .disqus-comments {
+    margin-right: 30px;
+  }
+  
+  .disqus-comment-count {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+  
+  #disqus_thread {
+    margin-top: 30px;
+  }
+  
+  .article-sharing a {
+    border-bottom: none;
+    margin-right: 8px;
+  }
+  
+  .article-sharing a:hover {
+    border-bottom: none;
+  }
+  
+  .sidebar-section.subscribe {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+  
+  .subscribe p {
+    margin-bottom: 0.5em;
+  }
+  
+  
+  .article-footer .subscribe {
+    font-size: 15px;
+    margin-top: 45px;
+  }
+  
+  
+  .sidebar-section.custom {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+  
+  .custom p {
+    margin-bottom: 0.5em;
+  }
+  
+  /* Styles for listing layout (hide title) */
+  .layout-listing d-title, .layout-listing .d-title {
+    display: none;
+  }
+  
+  /* Styles for posts lists (not auto-injected) */
+  
+  
+  .posts-with-sidebar {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+  
+  .posts-list .description h2,
+  .posts-list .description p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+  
+  .posts-list .description h2 {
+    font-weight: 700;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  
+  .posts-list h2.post-tag {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 12px;
+  }
+  .posts-list {
+    margin-top: 60px;
+    margin-bottom: 24px;
+  }
+  
+  .posts-list .post-preview {
+    text-decoration: none;
+    overflow: hidden;
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 24px 0;
+  }
+  
+  .post-preview-last {
+    border-bottom: none !important;
+  }
+  
+  .posts-list .posts-list-caption {
+    grid-column: screen;
+    font-weight: 400;
+  }
+  
+  .posts-list .post-preview h2 {
+    margin: 0 0 6px 0;
+    line-height: 1.2em;
+    font-style: normal;
+    font-size: 24px;
+  }
+  
+  .posts-list .post-preview p {
+    margin: 0 0 12px 0;
+    line-height: 1.4em;
+    font-size: 16px;
+  }
+  
+  .posts-list .post-preview .thumbnail {
+    box-sizing: border-box;
+    margin-bottom: 24px;
+    position: relative;
+    max-width: 500px;
+  }
+  .posts-list .post-preview img {
+    width: 100%;
+    display: block;
+  }
+  
+  .posts-list .metadata {
+    font-size: 12px;
+    line-height: 1.4em;
+    margin-bottom: 18px;
+  }
+  
+  .posts-list .metadata > * {
+    display: inline-block;
+  }
+  
+  .posts-list .metadata .publishedDate {
+    margin-right: 2em;
+  }
+  
+  .posts-list .metadata .dt-authors {
+    display: block;
+    margin-top: 0.3em;
+    margin-right: 2em;
+  }
+  
+  .posts-list .dt-tags {
+    display: block;
+    line-height: 1em;
+  }
+  
+  .posts-list .dt-tags .dt-tag {
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0.3em 0.4em;
+    margin-right: 0.2em;
+    margin-bottom: 0.4em;
+    font-size: 60%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  
+  .posts-list img {
+    opacity: 1;
+  }
+  
+  .posts-list img[data-src] {
+    opacity: 0;
+  }
+  
+  .posts-more {
+    clear: both;
+  }
+  
+  
+  .posts-sidebar {
+    font-size: 16px;
+  }
+  
+  .posts-sidebar h3 {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+  
+  .sidebar-section {
+    margin-bottom: 30px;
+  }
+  
+  .categories ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .categories li {
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 0;
+  }
+  
+  .categories li>a {
+    border-bottom: none;
+  }
+  
+  .categories li>a:hover {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  }
+  
+  .categories .active {
+    font-weight: 600;
+  }
+  
+  .categories .category-count {
+    color: rgba(0, 0, 0, 0.4);
+  }
+  
+  
+  @media(min-width: 768px) {
+    .posts-list .post-preview h2 {
+      font-size: 26px;
+    }
+    .posts-list .post-preview .thumbnail {
+      float: right;
+      width: 30%;
+      margin-bottom: 0;
+    }
+    .posts-list .post-preview .description {
+      float: left;
+      width: 45%;
+    }
+    .posts-list .post-preview .metadata {
+      float: left;
+      width: 20%;
+      margin-top: 8px;
+    }
+    .posts-list .post-preview p {
+      margin: 0 0 12px 0;
+      line-height: 1.5em;
+      font-size: 16px;
+    }
+    .posts-with-sidebar .posts-list {
+      float: left;
+      width: 75%;
+    }
+    .posts-with-sidebar .posts-sidebar {
+      float: right;
+      width: 20%;
+      margin-top: 60px;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+  }
+  
+  
+  /* Improve display for browsers without grid (IE/Edge <= 15) */
+  
+  .downlevel {
+    line-height: 1.6em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+  }
+  
+  .downlevel .d-title {
+    padding-top: 6rem;
+    padding-bottom: 1.5rem;
+  }
+  
+  .downlevel .d-title h1 {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.1em;
+    margin: 0 0 0.5rem;
+  }
+  
+  .downlevel .d-title p {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.55em;
+    margin-top: 0;
+  }
+  
+  .downlevel .d-byline {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    font-size: 0.8rem;
+    line-height: 1.8em;
+  }
+  
+  .downlevel .section-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .downlevel .d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+  
+  
+  .downlevel .d-appendix {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.5);
+    padding-top: 40px;
+    padding-bottom: 48px;
+  }
+  
+  .downlevel .footnotes ol {
+    padding-left: 13px;
+  }
+  
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  
+  @media(min-width: 768px) {
+    .downlevel .base-grid,
+    .downlevel .distill-header,
+    .downlevel .d-title,
+    .downlevel .d-abstract,
+    .downlevel .d-article,
+    .downlevel .d-appendix,
+    .downlevel .distill-appendix,
+    .downlevel .d-byline,
+    .downlevel .d-footnote-list,
+    .downlevel .d-citation-list,
+    .downlevel .distill-footer,
+    .downlevel .appendix-bottom,
+    .downlevel .posts-container {
+    padding-left: 150px;
+    padding-right: 150px;
+    max-width: 900px;
+  }
+  }
+  
+  .downlevel pre code {
+    display: block;
+    border-left: 2px solid rgba(0, 0, 0, .1);
+    padding: 0 0 0 20px;
+    font-size: 14px;
+  }
+  
+  .downlevel code, .downlevel pre {
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+  
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+  
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+  
+  .downlevel .posts-list .post-preview {
+    color: inherit;
+  }
+  
+  
+  
+  </style>
+  
+  <script type="application/javascript">
+  
+  function is_downlevel_browser() {
+    if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                   window.navigator.userAgent)) {
+      return true;
+    } else {
+      return window.load_distill_framework === undefined;
+    }
+  }
+  
+  // show body when load is complete
+  function on_load_complete() {
+  
+    // add anchors
+    if (window.anchors) {
+      window.anchors.options.placement = 'left';
+      window.anchors.add('d-article > h2, d-article > h3, d-article > h4, d-article > h5');
+    }
+  
+  
+    // set body to visible
+    document.body.style.visibility = 'visible';
+  
+    // force redraw for leaflet widgets
+    if (window.HTMLWidgets) {
+      var maps = window.HTMLWidgets.findAll(".leaflet");
+      $.each(maps, function(i, el) {
+        var map = this.getMap();
+        map.invalidateSize();
+        map.eachLayer(function(layer) {
+          if (layer instanceof L.TileLayer)
+            layer.redraw();
+        });
+      });
+    }
+  
+    // trigger 'shown' so htmlwidgets resize
+    $('d-article').trigger('shown');
+  }
+  
+  function init_distill() {
+  
+    init_common();
+  
+    // create front matter
+    var front_matter = $('<d-front-matter></d-front-matter>');
+    $('#distill-front-matter').wrap(front_matter);
+  
+    // create d-title
+    $('.d-title').changeElementType('d-title');
+  
+    // create d-byline
+    var byline = $('<d-byline></d-byline>');
+    $('.d-byline').replaceWith(byline);
+  
+    // create d-article
+    var article = $('<d-article></d-article>');
+    $('.d-article').wrap(article).children().unwrap();
+  
+    // move posts container into article
+    $('.posts-container').appendTo($('d-article'));
+  
+    // create d-appendix
+    $('.d-appendix').changeElementType('d-appendix');
+  
+    // flag indicating that we have appendix items
+    var appendix = $('.appendix-bottom').children('h3').length > 0;
+  
+    // replace footnotes with <d-footnote>
+    $('.footnote-ref').each(function(i, val) {
+      appendix = true;
+      var href = $(this).attr('href');
+      var id = href.replace('#', '');
+      var fn = $('#' + id);
+      var fn_p = $('#' + id + '>p');
+      fn_p.find('.footnote-back').remove();
+      var text = fn_p.html();
+      var dtfn = $('<d-footnote></d-footnote>');
+      dtfn.html(text);
+      $(this).replaceWith(dtfn);
+    });
+    // remove footnotes
+    $('.footnotes').remove();
+  
+    // move refs into #references-listing
+    $('#references-listing').replaceWith($('#refs'));
+  
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      var id = $(this).attr('id');
+      $('.d-contents a[href="#' + id + '"]').parent().remove();
+      appendix = true;
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+    });
+  
+    // show d-appendix if we have appendix content
+    $("d-appendix").css('display', appendix ? 'grid' : 'none');
+  
+    // localize layout chunks to just output
+    $('.layout-chunk').each(function(i, val) {
+  
+      // capture layout
+      var layout = $(this).attr('data-layout');
+  
+      // apply layout to markdown level block elements
+      var elements = $(this).children().not('details, div.sourceCode, pre, script');
+      elements.each(function(i, el) {
+        var layout_div = $('<div class="' + layout + '"></div>');
+        if (layout_div.hasClass('shaded')) {
+          var shaded_content = $('<div class="shaded-content"></div>');
+          $(this).wrap(shaded_content);
+          $(this).parent().wrap(layout_div);
+        } else {
+          $(this).wrap(layout_div);
+        }
+      });
+  
+  
+      // unwrap the layout-chunk div
+      $(this).children().unwrap();
+    });
+  
+    // remove code block used to force  highlighting css
+    $('.distill-force-highlighting-css').parent().remove();
+  
+    // remove empty line numbers inserted by pandoc when using a
+    // custom syntax highlighting theme
+    $('code.sourceCode a:empty').remove();
+  
+    // load distill framework
+    load_distill_framework();
+  
+    // wait for window.distillRunlevel == 4 to do post processing
+    function distill_post_process() {
+  
+      if (!window.distillRunlevel || window.distillRunlevel < 4)
+        return;
+  
+      // hide author/affiliations entirely if we have no authors
+      var front_matter = JSON.parse($("#distill-front-matter").html());
+      var have_authors = front_matter.authors && front_matter.authors.length > 0;
+      if (!have_authors)
+        $('d-byline').addClass('hidden');
+  
+      // article with toc class
+      $('.d-contents').parent().addClass('d-article-with-toc');
+  
+      // strip links that point to #
+      $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+  
+      // add orcid ids
+      $('.authors-affiliations').find('.author').each(function(i, el) {
+        var orcid_id = front_matter.authors[i].orcidID;
+        if (orcid_id) {
+          var a = $('<a></a>');
+          a.attr('href', 'https://orcid.org/' + orcid_id);
+          var img = $('<img></img>');
+          img.addClass('orcid-id');
+          img.attr('alt', 'ORCID ID');
+          img.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==');
+          a.append(img);
+          $(this).append(a);
+        }
+      });
+  
+      // hide elements of author/affiliations grid that have no value
+      function hide_byline_column(caption) {
+        $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+      }
+  
+      // affiliations
+      var have_affiliations = false;
+      for (var i = 0; i<front_matter.authors.length; ++i) {
+        var author = front_matter.authors[i];
+        if (author.affiliation !== "&nbsp;") {
+          have_affiliations = true;
+          break;
+        }
+      }
+      if (!have_affiliations)
+        $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+  
+      // published date
+      if (!front_matter.publishedDate)
+        hide_byline_column("Published");
+  
+      // document object identifier
+      var doi = $('d-byline').find('h3:contains("DOI")');
+      var doi_p = doi.next().empty();
+      if (!front_matter.doi) {
+        // if we have a citation and valid citationText then link to that
+        if ($('#citation').length > 0 && front_matter.citationText) {
+          doi.html('Citation');
+          $('<a href="#citation"></a>')
+            .text(front_matter.citationText)
+            .appendTo(doi_p);
+        } else {
+          hide_byline_column("DOI");
+        }
+      } else {
+        $('<a></a>')
+           .attr('href', "https://doi.org/" + front_matter.doi)
+           .html(front_matter.doi)
+           .appendTo(doi_p);
+      }
+  
+       // change plural form of authors/affiliations
+      if (front_matter.authors.length === 1) {
+        var grid = $('.authors-affiliations');
+        grid.children('h3:contains("Authors")').text('Author');
+        grid.children('h3:contains("Affiliations")').text('Affiliation');
+      }
+  
+      // remove d-appendix and d-footnote-list local styles
+      $('d-appendix > style:first-child').remove();
+      $('d-footnote-list > style:first-child').remove();
+  
+      // move appendix-bottom entries to the bottom
+      $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+      $('.appendix-bottom').remove();
+  
+      // hoverable references
+      $('span.citation[data-cites]').each(function() {
+        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        window.tippy(this, {
+          allowHTML: true,
+          content: refHtml,
+          maxWidth: 500,
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        });
+      });
+  
+      // clear polling timer
+      clearInterval(tid);
+  
+      // show body now that everything is ready
+      on_load_complete();
+    }
+  
+    var tid = setInterval(distill_post_process, 50);
+    distill_post_process();
+  
+  }
+  
+  function init_downlevel() {
+  
+    init_common();
+  
+     // insert hr after d-title
+    $('.d-title').after($('<hr class="section-separator"/>'));
+  
+    // check if we have authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+  
+    // manage byline/border
+    if (!have_authors)
+      $('.d-byline').remove();
+    $('.d-byline').after($('<hr class="section-separator"/>'));
+    $('.d-byline a').remove();
+  
+    // remove toc
+    $('.d-contents').remove();
+  
+    // move appendix elements
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+    });
+  
+  
+    // inject headers into references and footnotes
+    var refs_header = $('<h3></h3>');
+    refs_header.text('References');
+    $('#refs').prepend(refs_header);
+  
+    var footnotes_header = $('<h3></h3');
+    footnotes_header.text('Footnotes');
+    $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+  
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+  
+    // remove appendix if it's empty
+    if ($('.d-appendix').children().length === 0)
+      $('.d-appendix').remove();
+  
+    // prepend separator above appendix
+    $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+  
+    // trim code
+    $('pre>code').each(function(i, val) {
+      $(this).html($.trim($(this).html()));
+    });
+  
+    // move posts-container right before article
+    $('.posts-container').insertBefore($('.d-article'));
+  
+    $('body').addClass('downlevel');
+  
+    on_load_complete();
+  }
+  
+  
+  function init_common() {
+  
+    // jquery plugin to change element types
+    (function($) {
+      $.fn.changeElementType = function(newType) {
+        var attrs = {};
+  
+        $.each(this[0].attributes, function(idx, attr) {
+          attrs[attr.nodeName] = attr.nodeValue;
+        });
+  
+        this.replaceWith(function() {
+          return $("<" + newType + "/>", attrs).append($(this).contents());
+        });
+      };
+    })(jQuery);
+  
+    // prevent underline for linked images
+    $('a > img').parent().css({'border-bottom' : 'none'});
+  
+    // mark non-body figures created by knitr chunks as 100% width
+    $('.layout-chunk').each(function(i, val) {
+      var figures = $(this).find('img, .html-widget');
+      if ($(this).attr('data-layout') !== "l-body") {
+        figures.css('width', '100%');
+      } else {
+        figures.css('max-width', '100%');
+        figures.filter("[width]").each(function(i, val) {
+          var fig = $(this);
+          fig.css('width', fig.attr('width') + 'px');
+        });
+  
+      }
+    });
+  
+    // auto-append index.html to post-preview links in file: protocol
+    // and in rstudio ide preview
+    $('.post-preview').each(function(i, val) {
+      if (window.location.protocol === "file:")
+        $(this).attr('href', $(this).attr('href') + "index.html");
+    });
+  
+    // get rid of index.html references in header
+    if (window.location.protocol !== "file:") {
+      $('.distill-site-header a[href]').each(function(i,val) {
+        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+      });
+    }
+  
+    // add class to pandoc style tables
+    $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+    $('.kable-table').children('table').addClass('pandoc-table');
+  
+    // add figcaption style to table captions
+    $('caption').parent('table').addClass("figcaption");
+  
+    // initialize posts list
+    if (window.init_posts_list)
+      window.init_posts_list();
+  
+    // implmement disqus comment link
+    $('.disqus-comment-count').click(function() {
+      window.headroom_prevent_pin = true;
+      $('#disqus_thread').toggleClass('hidden');
+      if (!$('#disqus_thread').hasClass('hidden')) {
+        var offset = $(this).offset();
+        $(window).resize();
+        $('html, body').animate({
+          scrollTop: offset.top - 35
+        });
+      }
+    });
+  }
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    if (is_downlevel_browser())
+      init_downlevel();
+    else
+      window.addEventListener('WebComponentsReady', init_distill);
+  });
+  
+  </script>
+  
+  <!--/radix_placeholder_distill-->
+  <script src="testen-met-bayes_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+  <script src="testen-met-bayes_files/popper-2.6.0/popper.min.js"></script>
+  <link href="testen-met-bayes_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="testen-met-bayes_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="testen-met-bayes_files/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="testen-met-bayes_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="testen-met-bayes_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="testen-met-bayes_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="testen-met-bayes_files/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+  <!--/radix_placeholder_site_in_header-->
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"Testen met Bayes","description":"Resultaten testen met Bayesiaanse onderzoekstechnieken.","authors":[{"author":"Makowski en anderen, vertaling Harrie Jonkman","authorURL":"https://easystats.github.io/bayestestR/","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2020-11-17T00:00:00.000+00:00","citationText":"Jonkman, 2020"}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>Testen met Bayes</h1>
+<!--radix_placeholder_categories-->
+<!--/radix_placeholder_categories-->
+<p><p>Resultaten testen met Bayesiaanse onderzoekstechnieken.</p></p>
+</div>
+
+<div class="d-byline">
+  Makowski en anderen, vertaling Harrie Jonkman <a href="https://easystats.github.io/bayestestR/" class="uri">https://easystats.github.io/bayestestR/</a> 
+  
+<br/>11-17-2020
+</div>
+
+<div class="d-article">
+<h1 id="korte-inleiding">Korte inleiding</h1>
+<p>De laatste weken lees ik weer regelmatig over de achtergronden, de principes en de voordelen van bayesiaanse onderzoekstechnieken. De update van <em>Statistical Rethinking. A Bayesian Course with Examples in R and Stan</em> (McElreath, 2020) en het nieuwe boek <em>Regression and other stories</em> (Gelman, Hill &amp; Vehtari, 2020) geven veel inspiratie. Daarover later meer. Ondertussen verscheen vorig jaar het R-pakket <code>bayestestR</code> met een hele duidelijke bijbehorende <a href="https://easystats.github.io/bayestestR/">website</a> waarin een aantal uitgangspunten heel duidelijk worden uitgelegd en de voordelen van deze manier van onderzoek doen worden vergeleken met de klassieke onderzoekstechniek. Ik kon het niet laten om een aantal lessen te vertalen. Mogelijk dat ik hier later nog een keer aandacht aan besteed. De website is gebaseerd op twee artikelen waar de wetenschappers naar refereren. Natuurlijk moet ik deze artikelen hier aan het begin noemen.</p>
+<p>Makowski, D., Ben-Shachar, M. S., &amp; Lüdecke, D. (2019). bayestestR: Describing Effects and their Uncertainty, Existence and Significance within the Bayesian Framework. <em>Journal of Open Source Software, 4(40), 1541.</em> <a href="https://joss.theoj.org/papers/10.21105/joss.01541">10.21105/joss.01541</a></p>
+<p>Makowski, D., Ben-Shachar, M. S., Chen, S. H. A., &amp; Lüdecke, D. (2019). Indices of Effect Existence and Significance in the Bayesian Framework. <em>Frontiers in Psychology 2019;10:2767</em>. <a href="https://www.frontiersin.org/articles/10.3389/fpsyg.2019.02767/full">10.3389/fpsyg.2019.02767</a></p>
+<h2 id="waarom-zou-je-het-bayesiaanse-kader-gebruiken">Waarom zou je het Bayesiaanse kader gebruiken?</h2>
+<p>Het Bayesiaanse statistische raamwerk wint snel aan populariteit onder wetenschappers, wat samenhangt met de algemene verschuiving naar <strong>open en eerlijke wetenschap</strong>. Redenen om de voorkeur te geven aan deze aanpak zijn <strong>betrouwbaarheid, nauwkeurigheid</strong> (in rommelige data en kleine steekproeven), de mogelijkheid om <strong>prior kennis</strong> in de analyse te introduceren en, kritisch gezien, de intuïtiviteit van de resultaten en hun <strong>rechtstreekse interpretatie</strong> (Andrews &amp; Baguley, 2013; Etz &amp; Vandekerckhove, 2016; Kruschke, 2010; Kruschke, Aguinis, &amp; Joo, 2012; Wagenmakers et al., 2018).</p>
+<p>In het algemeen wordt de frequentistische aanpak geassocieerd met de focus op null hypothesetests en het misbruik van p-waarden blijkt kritisch bij te dragen aan de reproduceerbaarheidscrisis van psychologische wetenschap (Chambers, Feredoes, Muthukumaraswamy, &amp; Etchells, 2014; Szucs &amp; Ioannidis, 2016). Men is het er algemeen over eens dat de veralgemening van de Bayesiaanse aanpak een manier is om deze problemen te overwinnen (Benjamin et al., 2018; Etz &amp; Vandekerckhove, 2016).</p>
+<p>Als we het er eenmaal over eens zijn dat het Bayesiaanse raamwerk de juiste weg is, kun je je vervolgens afvragen wat het Bayesiaanse raamwerk is.</p>
+<p><strong>Waar gaat al dat gedoe over?</strong></p>
+<h2 id="wat-is-het-bayesiaanse-kader">Wat is het Bayesiaanse kader?</h2>
+<p>Het aannemen van het Bayesiaanse raamwerk is meer een verschuiving in paradigma dan een verandering in methodologie. Inderdaad, alle gemeenschappelijke statistische procedures (t-tests, correlaties, ANOVA’s, regressies, …) kunnen nog steeds worden uitgevoerd met behulp van het Bayesiaanse raamwerk. Een van de kernverschillen is dat in het <strong>frequentische perspectief</strong> (de “klassieke” statistiek, met p- en t-waarden, evenals met die rare vrijheidsgraden), <strong>de effecten vastliggen</strong> (maar onbekend zijn) en <strong>data random zijn</strong>. Aan de andere kant wordt in het Bayesiaanse inferentieproces, in plaats van schattingen van het “ware effect”, de waarschijnlijkheid van verschillende effecten berekend gegeven de waargenomen gegevens. Dat resulteert in een verdeling van mogelijke waarden voor de parameters, de zogenaamde <strong>posterior-distributie</strong>.</p>
+<p>De onzekerheid in de Bayesiaanse inferentie kan bijvoorbeeld worden samengevat door de <strong>mediaan</strong> van de verdeling, evenals een reeks waarden van de posterior distributie die de 95% meest waarschijnlijke waarden omvat (het 95% <strong>waarschijnlijke interval</strong>). Deze kunnen worden beschouwd als de tegenhangers van de punt-schatting en het betrouwbaarheidsinterval in een frequentistisch kader. Om het verschil in interpretatie te illustreren, laat het Bayesiaanse raamwerk toe om te zeggen <em>“gezien de geobserveerde gegevens, heeft het effect een 95% kans om binnen dit bereik te vallen”</em>. Het minder eenvoudige alternatief voor de frequentist zou zijn <em>“wanneer herhaaldelijk betrouwbaarheidsintervallen uit deze reeks gegevens worden berekend, is er een 95% kans dat het effect binnen een bepaald bereik valt”</em>. In wezen geven de Bayesiaanse samplingsalgoritmen (met MCMC-technieken) een waarschijnlijkheidsverdeling (<em>de posterior</em>) van een effect dat compatibel is met de waargenomen gegevens. Zo kan een effect worden beschreven door de posterior verdeling te karakteriseren in relatie tot de centraliteit (punt-schattingen), en gaat het over onzekerheid en het bestaan en de betekenis ervan.</p>
+<p>Met andere woorden, als we de ingewikkelde wiskunde achterwege laten, kunnen we zeggen dat:</p>
+<ul>
+<li>De frequentist probeert “het <strong>reële effect</strong>” in te schatten, bijvoorbeeld, de “echte” waarde van de correlatie tussen x en y. Vandaar dat de modellen van frequentisten een “<strong>punt-schatting</strong>” opleveren. (d.w.z. één enkele waarde) van de “echte” correlatie (bv. r = 0,42) die wordt geschat op basis van een aantal onduidelijke veronderstellingen (minimaal, aangezien de gegevens willekeurig worden onttrokken van een “ouder”, meestal een normale verdeling).<br />
+</li>
+<li><strong>De Bayesiaan gaat niet van zoiets uit</strong>. De gegevens zijn wat ze zijn. Op basis van deze geobserveerde gegevens (en een eerdere overtuiging over het resultaat) geeft het Bayesiaanse samplingsalgoritme (soms ook wel <strong>MCMC</strong> sampling genoemd) een waarschijnlijkheidsverdeling (de zogenaamde <strong>posterior</strong>) van het effect dat compatibel is met de geobserveerde gegevens. Voor de correlatie tussen x en y geeft het een verdeling, die bijvoorbeeld zegt: “het meest waarschijnlijke effect is 0,42, maar deze gegevens zijn ook compatibel met correlaties tussen 0,12 en 0,74”.<br />
+</li>
+<li>Om onze effecten te karakteriseren is <strong>geen behoefte aan p-waarden</strong> of andere cryptische indices. We beschrijven gewoon de posterior verdeling van het effect. We kunnen bijvoorbeeld de mediaan, de 89% Credible Interval of andere indices rapporteren.</li>
+</ul>
+<p>Met andere woorden, als we de wiskunde even achterwege laten, kunnen we zeggen dat:</p>
+<blockquote>
+<p>Hoewel het doel van dit pakket is het gebruik van Bayesiaanse statistieken te verdedigen, zijn er serieuze argumenten die de frequentie-indexen ondersteunen (zie bijvoorbeeld <a href="https://discourse.datamethods.org/t/language-for-communicating-frequentist-results-about-treatment-effects/934/15">hier</a>). Zoals altijd is de wereld niet zwart-wit (p &lt; .001).</p>
+</blockquote>
+<p><strong>Nou… hoe werkt het?</strong></p>
+<h2 id="een-eenvoudig-voorbeeld">Een eenvoudig voorbeeld</h2>
+<h3 id="installatie-van-bayestestr">Installatie van BayestestR</h3>
+<p>U kunt bayestestR samen met de hele <a href="https://github.com/easystats/easystats">easystats</a> suite installeren (of alleen <code>bayestestR</code>, omdat de suite installeren bij mij niet werkte) door het volgende uit te voeren: ## A simple example</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>Laten we ook het pakket <code>rstanarm</code> installeren en laden, die het mogelijk maakt om de Bayesiaanse modellen, evenals de bayestestR, te werken.</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<h3 id="traditionele-lineaire-regressie">Traditionele lineaire regressie</h3>
+<p>Laten we beginnen met een eenvoudige frequentistische lineaire regressie (de <code>lm()</code> functie staat voor lineair model) tussen twee numerieke variabelen, Sepal.Length en Petal.Length uit de beroemde <code>iris</code>-dataset, standaard opgenomen in R.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+Call:
+lm(formula = Sepal.Length ~ Petal.Length, data = iris)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.24675 -0.29657 -0.01515  0.27676  1.00269 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   4.30660    0.07839   54.94   &lt;2e-16 ***
+Petal.Length  0.40892    0.01889   21.65   &lt;2e-16 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 0.4071 on 148 degrees of freedom
+Multiple R-squared:   0.76, Adjusted R-squared:  0.7583 
+F-statistic: 468.6 on 1 and 148 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<p>Deze analyse laat een <strong>significante</strong> (wat dat ook moge betekenen) en een <strong>positieve</strong> (met een coëfficiënt van 0,41) lineaire relatie zien tussen de twee variabelen.</p>
+<p>Het aanpassen en interpreteren van <strong>frequentiemodellen is zo eenvoudig</strong> dat het duidelijk is dat mensen het gebruiken in plaats van het Bayesiaanse kader… toch?</p>
+<p><strong>Niet meer</strong>.</p>
+<h3 id="bayesiaanse-lineaire-regressie">Bayesiaanse lineaire regressie</h3>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+SAMPLING FOR MODEL &#39;continuous&#39; NOW (CHAIN 1).
+Chain 1: 
+Chain 1: Gradient evaluation took 8.1e-05 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.81 seconds.
+Chain 1: Adjust your expectations accordingly!
+Chain 1: 
+Chain 1: 
+Chain 1: Iteration:    1 / 2000 [  0%]  (Warmup)
+Chain 1: Iteration:  200 / 2000 [ 10%]  (Warmup)
+Chain 1: Iteration:  400 / 2000 [ 20%]  (Warmup)
+Chain 1: Iteration:  600 / 2000 [ 30%]  (Warmup)
+Chain 1: Iteration:  800 / 2000 [ 40%]  (Warmup)
+Chain 1: Iteration: 1000 / 2000 [ 50%]  (Warmup)
+Chain 1: Iteration: 1001 / 2000 [ 50%]  (Sampling)
+Chain 1: Iteration: 1200 / 2000 [ 60%]  (Sampling)
+Chain 1: Iteration: 1400 / 2000 [ 70%]  (Sampling)
+Chain 1: Iteration: 1600 / 2000 [ 80%]  (Sampling)
+Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
+Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 0.026836 seconds (Warm-up)
+Chain 1:                0.0399 seconds (Sampling)
+Chain 1:                0.066736 seconds (Total)
+Chain 1: 
+
+SAMPLING FOR MODEL &#39;continuous&#39; NOW (CHAIN 2).
+Chain 2: 
+Chain 2: Gradient evaluation took 1.3e-05 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.13 seconds.
+Chain 2: Adjust your expectations accordingly!
+Chain 2: 
+Chain 2: 
+Chain 2: Iteration:    1 / 2000 [  0%]  (Warmup)
+Chain 2: Iteration:  200 / 2000 [ 10%]  (Warmup)
+Chain 2: Iteration:  400 / 2000 [ 20%]  (Warmup)
+Chain 2: Iteration:  600 / 2000 [ 30%]  (Warmup)
+Chain 2: Iteration:  800 / 2000 [ 40%]  (Warmup)
+Chain 2: Iteration: 1000 / 2000 [ 50%]  (Warmup)
+Chain 2: Iteration: 1001 / 2000 [ 50%]  (Sampling)
+Chain 2: Iteration: 1200 / 2000 [ 60%]  (Sampling)
+Chain 2: Iteration: 1400 / 2000 [ 70%]  (Sampling)
+Chain 2: Iteration: 1600 / 2000 [ 80%]  (Sampling)
+Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)
+Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 0.028608 seconds (Warm-up)
+Chain 2:                0.040535 seconds (Sampling)
+Chain 2:                0.069143 seconds (Total)
+Chain 2: 
+
+SAMPLING FOR MODEL &#39;continuous&#39; NOW (CHAIN 3).
+Chain 3: 
+Chain 3: Gradient evaluation took 1.2e-05 seconds
+Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.12 seconds.
+Chain 3: Adjust your expectations accordingly!
+Chain 3: 
+Chain 3: 
+Chain 3: Iteration:    1 / 2000 [  0%]  (Warmup)
+Chain 3: Iteration:  200 / 2000 [ 10%]  (Warmup)
+Chain 3: Iteration:  400 / 2000 [ 20%]  (Warmup)
+Chain 3: Iteration:  600 / 2000 [ 30%]  (Warmup)
+Chain 3: Iteration:  800 / 2000 [ 40%]  (Warmup)
+Chain 3: Iteration: 1000 / 2000 [ 50%]  (Warmup)
+Chain 3: Iteration: 1001 / 2000 [ 50%]  (Sampling)
+Chain 3: Iteration: 1200 / 2000 [ 60%]  (Sampling)
+Chain 3: Iteration: 1400 / 2000 [ 70%]  (Sampling)
+Chain 3: Iteration: 1600 / 2000 [ 80%]  (Sampling)
+Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)
+Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 0.028328 seconds (Warm-up)
+Chain 3:                0.040522 seconds (Sampling)
+Chain 3:                0.06885 seconds (Total)
+Chain 3: 
+
+SAMPLING FOR MODEL &#39;continuous&#39; NOW (CHAIN 4).
+Chain 4: 
+Chain 4: Gradient evaluation took 1.2e-05 seconds
+Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.12 seconds.
+Chain 4: Adjust your expectations accordingly!
+Chain 4: 
+Chain 4: 
+Chain 4: Iteration:    1 / 2000 [  0%]  (Warmup)
+Chain 4: Iteration:  200 / 2000 [ 10%]  (Warmup)
+Chain 4: Iteration:  400 / 2000 [ 20%]  (Warmup)
+Chain 4: Iteration:  600 / 2000 [ 30%]  (Warmup)
+Chain 4: Iteration:  800 / 2000 [ 40%]  (Warmup)
+Chain 4: Iteration: 1000 / 2000 [ 50%]  (Warmup)
+Chain 4: Iteration: 1001 / 2000 [ 50%]  (Sampling)
+Chain 4: Iteration: 1200 / 2000 [ 60%]  (Sampling)
+Chain 4: Iteration: 1400 / 2000 [ 70%]  (Sampling)
+Chain 4: Iteration: 1600 / 2000 [ 80%]  (Sampling)
+Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)
+Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 0.028263 seconds (Warm-up)
+Chain 4:                0.039091 seconds (Sampling)
+Chain 4:                0.067354 seconds (Total)
+Chain 4: </code></pre>
+<pre><code># Description of Posterior Distributions
+
+Parameter    | Median |         89% CI |      pd |        89% ROPE | % in ROPE |  Rhat |      ESS
+-------------------------------------------------------------------------------------------------
+(Intercept)  |  4.306 | [4.176, 4.433] | 100.00% | [-0.083, 0.083] |         0 | 1.000 | 3981.310
+Petal.Length |  0.409 | [0.380, 0.441] | 100.00% | [-0.083, 0.083] |         0 | 1.000 | 3967.091</code></pre>
+</div>
+<p><strong>Dat is het!</strong> Je hebt een Bayesiaanse versie van het model gedraaid door eenvoudigweg <code>stan_glm()</code> te gebruiken in plaats van <code>lm()</code> en hebt de posterior distributie van de parameters beschreven. De conclusie die we kunnen trekken, voor dit voorbeeld, zijn zeer vergelijkbaar. Het effect (de mediaan van de posterior verdeling van het effect) is ongeveer 0,41, en het kan ook als significant worden beschouwd in de Bayesiaanse zin (meer daarover later).</p>
+<p><strong>Dus, klaar om meer te leren?</strong></p>
+<h2 id="initiatie-tot-bayesiaanse-modellen">1. Initiatie tot Bayesiaanse modellen</h2>
+<p>Nu je de beginsectie hebt gelezen, laten we een duik nemen in de <strong>subtiliteiten van Bayesiaanse modellering met behulp van R</strong>.</p>
+<h3 id="laden-van-pakketten">Laden van pakketten</h3>
+<p>Als je de benodigde pakketten hebt geïnstalleerd, kun je <code>rstanarm</code> laden (om de modellen te draaien) en ook <code>bayestestR</code> (om bruikbare indices te berekenen) en <code>insight</code> (om toegang te krijgen tot de parameters).</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<h3 id="eenvoudig-lineair-model-ook-wel-regressie-genoemd">Eenvoudig lineair model (ook wel regressie genoemd)</h3>
+<p>We beginnen met het uitvoeren van een eenvoudige lineaire regressie om het verband tussen <code>Petal.Length</code> (onze voorspeller, of <em>onafhankelijke</em>, variabele) en <code>Sepal.Length</code> (onze respons-, of <em>afhankelijke</em>-variabele) te testen vanuit de <code>iris</code>dataset die standaard is opgenomen in R.</p>
+<h3 id="passend-bij-het-model">Passend bij het model</h3>
+<p>Laten we beginnen met het draaien van de <strong>frequentistische</strong> versie van het model, gewoon om een referentiepunt te hebben:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+Call:
+lm(formula = Sepal.Length ~ Petal.Length, data = iris)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.24675 -0.29657 -0.01515  0.27676  1.00269 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   4.30660    0.07839   54.94   &lt;2e-16 ***
+Petal.Length  0.40892    0.01889   21.65   &lt;2e-16 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 0.4071 on 148 degrees of freedom
+Multiple R-squared:   0.76, Adjusted R-squared:  0.7583 
+F-statistic: 468.6 on 1 and 148 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<p>In dit model is de lineaire relatie tussen Petal.Length en Sepal.Length <strong>positief en significant</strong> (beta = 0,41, t(148) = 21,6, p &lt; .001). Dit betekent dat je voor elke toename van Petal.Length (de voorspeller) met één eenheid kunt verwachten dat de Sepal.Length (het antwoord) met <strong>0,41</strong> zal toenemen. Dit effect kan worden gevisualiseerd door de voorspellingswaarden op de x-as en de responswaarden als y te plotten met behulp van het <code>ggplot2</code> pakket:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="testen-met-bayes_files/figure-html5/unnamed-chunk-7-1.png" width="624" /></p>
+</div>
+<p>Laten we nu een Bayesiaanse versie van het model draaien door gebruik te maken van de <code>stan_glm</code>-functie dat in het <code>rstanarm</code>pakket zit:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>Je ziet dat het samplingsalgoritme draait.</p>
+<h3 id="de-posterior-eruit-halen">De posterior eruit halen</h3>
+<p>Laten we, als het bovenstaande eenmaal gedaan is, de parameters (d.w.z. de coëfficiënten) van het model extraheren.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>  (Intercept) Petal.Length
+1    4.473657    0.3846090
+2    4.312237    0.4120467
+3    4.282567    0.4154728
+4    4.336305    0.4070268
+5    4.364582    0.4019826
+6    4.246177    0.4172826</code></pre>
+</div>
+<p>Zoals we kunnen zien, hebben de parameters de vorm van een lange dataframe met twee kolommen, die overeenkomen met de intercept en het effect van Petal.Length. Deze kolommen bevatten de <strong>posterior distributies</strong> van deze twee parameters. Eenvoudig gezegd is de posterior distributie een set van verschillende plausibele waarden voor elke parameter.</p>
+<h4 id="over-de-posterior-trekkingen">Over de posterior trekkingen</h4>
+<p>Laten we eerst eens kijken naar de lengtes van de posteriors.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>[1] 4000</code></pre>
+</div>
+<blockquote>
+<p>Waarom zijn dit er 4000, en niet meer of minder?</p>
+</blockquote>
+<p>In de eerste plaats worden deze waarnemingen (de rijen) meestal aangeduid als <strong>posterior ‘draws’ (trekkingen)</strong>. De achterliggende gedachte is dat het Bayesiaanse samplingsalgoritme (b.v. <strong>Monte Carlo Markov Chains - MCMC</strong>) zal putten uit de verborgen ware posterior distributie Het is dus door middel van deze ‘posterior draws’ dat we de onderliggende ware posterior distribution kunnen inschatten. <strong>Hoe meer trekkingen je hebt, hoe beter je de posterior distriubtion kunt inschatten.</strong> Meer trekkingen betekent echter ook een langere rekentijd.</p>
+<p>Als we kijken naar de documentatie (?sampling) voor het <code>rstanarm</code>“sampling”-algoritme dat standaard in het bovenstaande model wordt gebruikt, kunnen we verschillende parameters zien die het aantal posterior draws beïnvloeden. Standaard zijn er 4 ketens (je kunt het zien als aparte sampling runs), die elk <strong>2000</strong> iter (trekkingen, iteraties) aanmaken. Echter, slechts de helft van deze iteraties wordt behouden, aangezien de helft wordt gebruikt voor de opwarming (het convergeren van het algoritme). Het totaal is dus <strong>4 ketens * (2000 iteraties - 1000 warming-up) = 4000</strong> posterior trekkingen. Dat kunnen we aanpassen naar 2 ketens, bijvoorbeeld:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>In dit geval hebben we, zoals verwacht, <strong>2 ketens * (1000 iteraties - 250 warming-up) = 1500</strong> posterior trekkingen. Maar laten we ons eerste model de standaard instelling aanhouden (omdat het meer trekkingen heeft).</p>
+<h4 id="het-visualiseren-van-de-posterieure-verdeling">Het visualiseren van de posterieure verdeling</h4>
+<p>Nu we hebben begrepen waar deze waarden vandaan komen, laten we er eens naar kijken. We zullen beginnen met het visualiseren van de posterieure distributie van de parameter waarin we geïnteresseerd zijn, het effect van <code>Petal.Length</code>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="testen-met-bayes_files/figure-html5/unnamed-chunk-12-1.png" width="624" /></p>
+</div>
+<p>Deze verdeling vertegenwoordigt de <strong>waarschijnlijkheid</strong> (de y-as) van verschillende effecten (de x-as). De centrale waarden zijn waarschijnlijker dan de extreme waarden. Zoals u ziet varieert deze verdeling van ongeveer <strong>0,35 tot 0,50</strong>, waarbij het grootste deel rond <strong>0,41</strong> ligt.</p>
+<blockquote>
+<p>Gefeliciteerd! Je hebt zojuist je posterior distribution beschreven.</p>
+</blockquote>
+<p>En dit is het hart van de Bayesiaanse analyse. We hebben geen p-waarden, t-waarden of vrijheidsgraden nodig: <strong>Alles is aanwezig</strong>, binnen deze posterior verdeling.</p>
+<p>Onze beschrijving hierboven is consistent met de waarden verkregen uit de frequentistische regressie (die resulteerde in een bèta van <strong>0,41</strong>). Dit is geruststellend! Inderdaad, <strong>in de meeste gevallen verandert een Bayesiaanse analyse de resultaten niet drastisch</strong> of hun interpretatie. Het maakt de resultaten wel beter interpreteerbaar en intuïtief en uiteindelijk gemakkelijker te begrijpen en te beschrijven.</p>
+<p>We kunnen nu doorgaan en <strong>deze posterior verdeling</strong> nauwkeurig karakteriseren.</p>
+<h3 id="de-posterior-beschrijven">De Posterior beschrijven</h3>
+<p>Helaas, het is vaak niet praktisch om de hele posterior verdelingen als grafiek te rapporteren. We moeten een <strong>beknopte manier vinden om het samen te vatten</strong>. We raden aan om de posterior verdeling te beschrijven op basis van <strong>3 elementen</strong>:</p>
+<ol type="1">
+<li>Een <strong>puntschatting</strong> die een samenvatting is van één waarde (vergelijkbaar met de bèta in frequente regressies).<br />
+</li>
+<li>Een <strong>credible interval</strong> die de bijbehorende onzekerheid weergeeft.<br />
+</li>
+<li>Sommige <strong>indices van betekenis</strong>, die informatie geven over het relatieve belang van dit effect.</li>
+</ol>
+<h4 id="puntschatting">Puntschatting</h4>
+<p><strong>Welke ene waarde kan het beste mijn posterior distributie representeren?</strong></p>
+<p>Centrale indices, zoals het gemiddelde, de mediaan of de modus worden meestal gebruikt als puntschatting - maar wat is het verschil tussen het frequentische en Bayesiaanse raamwerk? Laten we dit beantwoorden door eerst het <strong>gemiddelde</strong> te inspecteren:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>[1] 0.4089701</code></pre>
+</div>
+<p>Dit ligt dicht bij de frequentistische beta. Maar zoals we weten, is het gemiddelde vrij gevoelig voor uitschieters of extremen. Misschien is de <strong>mediaan</strong> robuuster?</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>[1] 0.4087528</code></pre>
+</div>
+<p>Nou, dit ligt <strong>zeer dicht bij het gemiddelde</strong> (en identiek als de waarden worden afgerond). Misschien kunnen we de modus nemen, dat wil zeggen, de piek van de posterior verdeling? In het Bayesiaanse kader wordt deze waarde de <strong>Maximum A Posteriori (MAP)</strong> genoemd. Laten we daar eens kijken:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>MAP = 0.41</code></pre>
+</div>
+<p>Ze zitten allemaal heel dichtbij elkaar! Laten we deze drie waarden visualiseren op de posterior distributie:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="testen-met-bayes_files/figure-html5/unnamed-chunk-16-1.png" width="624" /></p>
+</div>
+<p>Nou, al deze waarden geven zeer gelijkaardige resultaten. We zullen <strong>de mediaan</strong> kiezen, omdat deze waarde een directe betekenis heeft vanuit een probabilistisch perspectief: <strong>er is 50% kans dat het werkelijke effect hoger is en 50% kans dat het effect lager is</strong> (omdat het de verdeling in twee gelijke delen verdeelt).</p>
+<h4 id="onzekerheid">Onzekerheid</h4>
+<p>Nu we een puntschatting hebben, moeten we de onzekerheid beschrijven. We zouden het bereik kunnen berekenen:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>[1] 0.3302504 0.4806783</code></pre>
+</div>
+<p>Maar heeft het zin om al deze extreme waarden op te nemen? Waarschijnlijk niet. Dus, we zullen een <strong>credible interval</strong> berekenen. Lang verhaal kort, het lijkt een beetje op een frequentistische <strong>confidence interval</strong>, maar is makkelijker te interpreteren en gemakkelijker te berekenen - <em>en het is logischer</em>.</p>
+<p>We zullen dit <strong>credible interval</strong> berekenen op basis van het <strong>Highest Density Interval (HDI)</strong>. Het geeft ons het bereik dat de 89% meest waarschijnlijke effectwaarden bevat. <strong>We zullen 89% CIs gebruiken in plaats van 95% CIs</strong> (zoals in het frequentistische kader), omdat het 89%-niveau stabielere resultaten geeft (Kruschke, 2014) en ons herinnert aan de willekeur van dergelijke conventies (McElreath, 2020).</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># Highest Density Interval
+
+89% HDI     
+------------
+[0.38, 0.44]</code></pre>
+</div>
+<p>Mooi, dus we kunnen concluderen dat <strong>het effect 89% kans heeft om binnen het [0,38, 0,44] bereik te vallen</strong>. We hebben zojuist de twee belangrijkste stukken informatie berekend om onze effecten te beschrijven.</p>
+<h3 id="effect-significantie">Effect significantie</h3>
+<p>Op veel wetenschappelijke gebieden is het echter niet voldoende om alleen de effecten te beschrijven. Wetenschappers willen ook weten of dit effect betekenis heeft in praktische of statistische termen. Of, om het met andere woorden te zeggen, of het effect belangrijk is. Wijkt het effect af van 0? Dus hoe berekenen we <strong>de significantie van een effect</strong>. Hoe kunnen we dit doen?</p>
+<p>Wel, in dit specifieke geval is het zeer welsprekend: <strong>Alle mogelijke effectwaarden (d.w.z. de hele posterior distributie) zijn positief en meer dan 0,35, wat al een substantieel bewijs is dat het effect niet nul is</strong>.</p>
+<p>Maar toch willen we een objectief beslissingscriterium, om te zeggen of <strong>het effect ja of nee ‘significant’ is</strong>. Een benadering, vergelijkbaar met het frequentistisch kader, zou zijn om te kijken of het <strong>Credible Interval</strong> een 0 bevat. Als dat niet het geval is, zou dat betekenen dat ons <strong>effect ‘significant’</strong> is.</p>
+<p>Maar deze index is toch niet erg fijnmazig? <strong>Kunnen we het beter doen? Ja</strong>.</p>
+<h3 id="een-lineair-model-met-een-categorische-voorspeller">Een lineair model met een categorische voorspeller</h3>
+<p>Stel je voor dat je geïnteresseerd bent in hoe het gewicht van de kippen varieert, afhankelijk van twee verschillende <strong>voedersoorten</strong>. Voor dit examen zullen we beginnen met het selecteren van twee voor ons interessante voersoorten uit de <code>chickwts</code>-dataset (zit ook in basis R) (we hebben wel bijzondere interesses): <strong>vleesmaaltijden (‘meat meals’)</strong> en <strong>zonnebloemen (‘sunflowers’)</strong>.</p>
+<h4 id="data-voorbereiden-en-model-draaien">Data voorbereiden en model draaien</h4>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>Laten we nog een Bayesiaanse regressie uitvoeren om het <strong>gewicht</strong> te voorspellen met de <strong>twee voertypesoorten</strong>.</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<h4 id="posterior-beschrijving">Posterior beschrijving</h4>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="testen-met-bayes_files/figure-html5/unnamed-chunk-21-1.png" width="624" /></p>
+</div>
+<p>Dit representeert de <strong>posterior distributie van het verschil tussen ‘meatmeal’ (‘0’) en ‘sunflowers’(‘1’)</strong>. Het lijkt erop dat het verschil eerder <strong>positief</strong> is (de waarden lijken geconcentreerd aan de rechterkant van 0). Het eten van zonnebloemen maakt je dikker (tenminste, als je een kip bent). Maar, <strong>door hoeveel? </strong> Laten we de <strong>mediaan</strong> en de <strong>CI</strong> berekenen:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>[1] 51.4211</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># Highest Density Interval
+
+89% HDI       
+--------------
+[12.36, 93.22]</code></pre>
+</div>
+<p>Het maakt je met ongeveer 51 gram (de mediaan) dikker. De onzekerheid is echter vrij groot: <strong>er is 89% kans dat het verschil tussen de twee voersoorten tussen 14 en 91</strong> ligt.</p>
+<blockquote>
+<p>Verschilt dit effect van 0?</p>
+</blockquote>
+<h4 id="rope-percentage">ROPE Percentage</h4>
+<p>Testen of deze verdeling anders is dan 0 heeft geen zin, omdat 0 een enkele waarde is (en de kans dat een verdeling anders is dan een enkele waarde is oneindig).</p>
+<p>Een manier om <strong>significantie</strong> te beoordelen kan echter zijn om een gebied rond 0 te definiëren, wat als praktisch equivalent van nul zal worden beschouwd (d.w.z. afwezigheid van, of verwaarloosbaar, effect). Dit wordt de ‘Region of Practical Equivalence’ (ROPE) genoemd en is een manier om de betekenis van de parameters te testen.</p>
+<p><strong>Hoe definiëren we dit gebied?</strong></p>
+<blockquote>
+<p>Tringgg Tringgg</p>
+</blockquote>
+<p>– <strong>U spreekt met het easystatsteam. Hoe kunnen we u helpen?</strong></p>
+<p>– <strong>Ja met Prof. Sanders. Ik ben kippenexpert. Ik bel u vanwege mijn expertkennis. Een effect tussen -20 en 20 is verwaarloosbaar. Tot ziens.</strong></p>
+<p>Nou, dat komt goed uit. Nu weten we dat we de ROPE kunnen definiëren als het [-20, 20] bereik. Alle effecten binnen dit bereik worden als nihil (te verwaarlozen) beschouwd. We kunnen nu het <strong>aandeel van de 89% meest waarschijnlijke waarden (de 89% CI) berekenen die niet nul zijn,</strong> d.w.z., die buiten dit bereik liggen.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># Proportion of samples inside the ROPE [-20.00, 20.00]:
+
+inside ROPE
+-----------
+4.38 %     </code></pre>
+</div>
+<p><strong>5% van de 89% CI kan als nihil worden beschouwd</strong>. Is dat veel? Gebaseerd op onze richtlijnen, ja, het is te veel. <strong>Op basis van deze specifieke definitie van ROPE</strong> concluderen we dat dit effect niet significant is (de kans dat het verwaarloosbaar is, is te groot).</p>
+<p>Hoewel, om eerlijk te zijn, heb ik <strong>een aantal twijfels over deze Prof. Sanders</strong>. Ik vertrouw zijn definitie van <strong>ROPE</strong> niet echt. Is er een meer <strong>objectieve</strong> manier om het te definiëren?</p>
+<p><strong>Ja</strong>. Een betrouwbare manier is bijvoorbeeld het gebruik van een <strong>tiende (1/10 = 0,1) van de standaardafwijking (SD)</strong> van de responsvariabele, die als een “verwaarloosbare” effectomvang kan worden beschouwd (Cohen, 1988).</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>[1] -6.17469  6.17469</code></pre>
+</div>
+<p>Laten we onze ROPE opnieuw definiëren als de regio binnen het [-6.2, 6.2] bereik. <strong>Merk op dat dit direct kan worden verkregen met de <code>rope_range</code> functie :)</strong></p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>[1] -6.17469  6.17469</code></pre>
+</div>
+<p>Laten we nu het <strong>percentage in ROPE</strong> opnieuw berekenen:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># Proportion of samples inside the ROPE [-6.17, 6.17]:
+
+inside ROPE
+-----------
+0.00 %     </code></pre>
+</div>
+<p>Met deze redelijke definitie van ROPE stellen we vast dat de 89% van de posterior distributie van het effect niet overlapt met de ROPE. We kunnen dus concluderen dat <strong>het effect significant is</strong> (in de zin van belangrijk genoeg om op te merken).</p>
+<h4 id="waarschijnlijkheid-van-richting-probability-of-direction-pd">Waarschijnlijkheid van Richting (Probability of Direction (pd))</h4>
+<p>Misschien zijn we niet geïnteresseerd in de vraag of het effect niet te verwaarlozen is. Misschien willen we <strong>alleen weten of dit effect positief of negatief is</strong>. In dit geval kunnen we eenvoudigweg berekenen welk deel van de posterior distributie positief is, ongeacht de “grootte” van het effect.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>[1] 97.575</code></pre>
+</div>
+<p>We kunnen concluderen dat <strong>het effect positief is met een waarschijnlijkheid van 98%</strong>. We noemen deze index de Waarschijnlijkheid van Richting (pd). Het kan in feite gemakkelijker worden berekend met het volgende:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>pd = 97.58%</code></pre>
+</div>
+<p>Interessant is dat <strong>deze index meestal sterk gecorreleerd is met de meest frequente p-waarde.</strong> We kunnen de overeenkomstige p-waarde bijna ruwweg afleiden met een eenvoudige transformatie:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>[1] 0.0436</code></pre>
+</div>
+<p>Als we ons model in het frequentistisch kader hebben uitgevoerd, zouden we ongeveer een effect moeten waarnemen met een p-waarde van 0.04. <strong>Is dat waar?</strong></p>
+<h4 id="vergelijking-met-frequentisten">Vergelijking met frequentisten</h4>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+Call:
+lm(formula = weight ~ feed, data = data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-123.909  -25.913   -6.917   32.091  103.091 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)     276.91      17.20  16.097 2.74e-13 ***
+feedsunflower    52.01      23.82   2.184   0.0405 *  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 57.05 on 21 degrees of freedom
+Multiple R-squared:  0.1851,    Adjusted R-squared:  0.1463 
+F-statistic: 4.769 on 1 and 21 DF,  p-value: 0.04047</code></pre>
+</div>
+<p>Het frequentistische model vertelt ons dat het verschil <strong>positief en significant</strong> (beta = 52, p = 0.04) is.</p>
+<p><strong>Alhoewel we tot een gelijkaardige conclusie kwamen, liet het Bayesiaanse kader ons toe om een meer diepgaand en intuïtief begrip te ontwikkelen van ons effect en van de onzekerheid van de inschatting ervan.</strong></p>
+<h3 id="alles-met-één-functie">Alles met één functie</h3>
+<p>En toch, ik ben het ermee eens, het was een beetje <strong>omslachtig</strong> om alle indices eruit te halen en te berekenen. <strong>Maar wat als ik je vertel dat we dit allemaal kunnen doen, en meer, met slechts één functie?</strong></p>
+<blockquote>
+<p>Zie, beschrijf_posterior!</p>
+</blockquote>
+<p>Deze functie berekent alle genoemde indexen, en kan direct op het model worden uitgevoerd:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># Description of Posterior Distributions
+
+Parameter     |  Median |             89% CI |      pd |        89% ROPE | % in ROPE |        BF |  Rhat |      ESS
+-------------------------------------------------------------------------------------------------------------------
+(Intercept)   | 277.412 | [248.675, 305.459] | 100.00% | [-6.175, 6.175] |         0 | 1.228e+11 | 1.001 | 3273.839
+feedsunflower |  51.421 | [ 12.363,  93.221] |  97.58% | [-6.175, 6.175] |         0 |     0.761 | 1.001 | 3144.829</code></pre>
+</div>
+<p><strong>Tada!</strong> Daar hebben we het! De <strong>mediaan</strong>, de <strong>CI</strong>, de <strong>pd</strong> en het <strong>ROPE percentage</strong>!</p>
+<p>Het begrijpen en beschrijven van posterior distributies is slechts één aspect van Bayesiaanse modellering… <strong>Ben je klaar voor meer? </strong></p>
+<h2 id="bevestiging-van-bayesiaanse-vaardigheden">Bevestiging van Bayesiaanse vaardigheden</h2>
+<p>Nu het beschrijven en begrijpen van posterior distributies van lineaire regressies voor jou geen geheimen meer heeft, zullen we een stap terug doen en wat eenvoudigere modellen bestuderen: <strong>correlaties</strong> en <strong>t-testen</strong>.</p>
+<p>Maar laten we eerst even stilstaan bij het feit dat <strong>alle statistische basisprocedures</strong> zoals correlaties, t-testen, ANOVA’s of Chisquare-testen ** lineaire regressies** zijn (we raden <a href="https://lindeloev.github.io/tests-as-linear/">deze</a> uitstekende demonstratie ten zeerste aan). Op basis van deze eenvoudige modellen introduceren we een complexere index, zoals de <strong>Bayes-factor</strong>.</p>
+<h3 id="correlaties">Correlaties</h3>
+<h4 id="frequentistische-versie">Frequentistische versie</h4>
+<p>Laten we opnieuw beginnen met een <strong>frequentistische correlatie</strong> tussen twee continue variabelen, de <strong>breedte</strong> en de <strong>lengte</strong> van de kelkbladen van sommige bloemen (‘sepals’). De gegevens zijn beschikbaar in R als de <code>iris</code> dataset (dezelfde die we hierboven hebben gebruikt).</p>
+<p>We zullen een Pearson’s correlatietest berekenen, de resultaten opslaan in een object met de naam resultaat en vervolgens deze resultaten weergeven:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+    Pearson&#39;s product-moment correlation
+
+data:  iris$Sepal.Width and iris$Sepal.Length
+t = -1.4403, df = 148, p-value = 0.1519
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ -0.27269325  0.04351158
+sample estimates:
+       cor 
+-0.1175698 </code></pre>
+</div>
+<p>Zoals je in de output kunt zien, heeft de test die we hebben gedaan eigenlijk twee hypothesen vergeleken: de <strong>nul-hypothese</strong> (h0; geen correlatie) met de <strong>alternatieve hypothese</strong> (h1; een niet-nul-correlatie). Op basis van de p-waarde kan de nulhypothese niet worden verworpen: de correlatie tussen de twee variabelen is <strong>negatief maar niet significant</strong> (r = -.12, p &gt; .05).</p>
+<h4 id="bayesiaanse-correlatie">Bayesiaanse correlatie</h4>
+<p>Om een Bayesiaanse correlatietest te berekenen, hebben we het BayesFactor-pakket nodig (u kunt het installeren door install.packages (“BayesFactor”) uit te voeren). We kunnen dan dit pakket laden, de correlatie berekenen met behulp van de correlatieBF() functie en de resultaten op een vergelijkbare manier opslaan.</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>Laten we nu eens onze <code>describe_posterior()</code>-functie hierop los:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>  Parameter     Median CI     CI_low    CI_high     pd ROPE_CI
+1       rho -0.1138341 89 -0.2369139 0.01535852 0.9165      89
+  ROPE_low ROPE_high ROPE_Percentage        BF Prior_Distribution
+1     -0.1       0.1        0.424319 0.5090175             cauchy
+  Prior_Location Prior_Scale
+1              0   0.3333333</code></pre>
+</div>
+<p>We zien hier weer veel dingen, maar de belangrijke indices voor nu zijn de <strong>mediaan</strong> van de posterior distributie, -.11. Dit komt (weer) dicht in de buurt van de frequentistische correlatie. We zouden, zoals eerder, het credible interval, de pd of het ROPE-percentage kunnen beschrijven, maar we zullen ons hier richten op een andere index die door het Bayesiaanse kader wordt geboden, de <strong>Bayes-factor (BF)</strong>.</p>
+<h4 id="bayes-factor-bf">Bayes-factor (BF)</h4>
+<p>We zeiden eerder dat een correlatietest eigenlijk twee hypothesen vergelijkt, een nul (afwezigheid van effect) met een alarmerende (aanwezigheid van een effect). De Bayes-factor (BF) laat dezelfde vergelijking toe en bepaalt <strong>onder welke van twee modellen de geobserveerde gegevens waarschijnlijker zijn</strong>: een model met het effect waarin we geinteresseerd zijn, en een nulmodel zonder het effect daarvan. We kunnen de <code>bayes-factor()</code> gebruiken om de Bayes-factor specifiek te berekenen bij het vergelijken van die modellen:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># Bayes Factors for Model Comparison
+
+  Model             BF
+  [2] (rho != 0) 0.509
+
+* Against Denominator: [1] (rho = 0)
+*   Bayes Factor Type: JZS (BayesFactor)</code></pre>
+</div>
+<p>We hebben een <em>BF</em> van 0,51. Wat betekent dat?</p>
+<p>Bayes-factoren zijn <strong>continue metingen van het relatieve bewijs</strong>, waarbij een Bayes-factor groter dan 1 bewijs geeft ten gunste van één van de modellen (vaak de <em>teller</em> genoemd), en een Bayes-factor kleiner dan 1 die bewijs geeft ten gunste van het andere model (de <em>noemer</em>).</p>
+<blockquote>
+<p>Ja, je hebt het goed gehoord, bewijs ten gunste van de nul!</p>
+</blockquote>
+<p>Dat is een van de redenen waarom het Bayesiaanse kader soms als superieur wordt beschouwd aan het frequentistische kader. Onthoud uit je statistiekenlessen, dat de <strong>p waarde alleen gebruikt kan worden om h0</strong> af te wijzen, maar niet om het te accepteren. Met de Bayes-factor kunt je <strong>-evidentie meten tegen - en ook ten gunste van - de nul</strong>.</p>
+<p>BF’s die het bewijs voor het alternatief tegen de null vertegenwoordigen kunnen worden teruggedraaid met 𝐵𝐹01=1/𝐵𝐹10 (de 01 en 10 komen respectievelijk overeen met h0 tegen h1 en h1 tegen h0) om het bewijs voor de null weer te geven. Dit verbetert de leesbaarheid in gevallen waarin het BF van het alternatief tegen de nul kleiner is dan 1 (d.w.z. ter ondersteuning van de nul).</p>
+<p>In ons geval, BF = 1/0,51 = 2, geeft aan dat de gegevens <strong>2 keer meer waarschijnlijk zijn onder de null in vergelijking met de alternatieve hypothese</strong>. Die weliswaar de voorkeur geeft aan de nul-hypothese, maar slechts als anekdotisch bewijs moet wordt beschouwd.</p>
+<p>We kunnen dus concluderen dat er <strong>anecdotisch bewijs is ten gunste van de hypothese ‘gebrek aan correlatie tussen de twee variabelen’ (mediaan = 0,11, BF = 0,51)</strong>, wat veel meer informatie geeft dan wat we kunnen doen met de frequentistische statistiek.</p>
+<p><strong>En dat is nog niet alles!</strong></p>
+<h4 id="visualiseren-van-de-bayes-factor">Visualiseren van de Bayes-factor</h4>
+<p>In het algemeen zijn <strong>taartgrafieken een absolute ‘no-go’ in datavisualisatie</strong>, omdat het waarnemingssysteem van onze hersenen de gepresenteerde informatie op deze manier sterk vervormt. Toch is er één uitzondering: pizzagrafieken.</p>
+<p>Het is een intuïtieve manier om de bewijskracht van BFs te interpreteren als een soort verrassing</p>
+<p>Dergelijke “pizzapercelen” kunnen direct worden aangemaakt via het zie visualisatiepakket voor easystats (u kunt het installeren door het uitvoeren van</p>
+<p>Dergelijke ‘pizzagrafieken’ kunnen direct worden aangemaakt met het visualisatiepakket voor <code>easystats</code> (u kunt het installeren door <code>install.packages("see")</code>) uit te voeren):</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="testen-met-bayes_files/figure-html5/unnamed-chunk-37-1.png" width="624" /></p>
+</div>
+<p>Dus, na het zien van deze pizza, ben je dan nog verrast door de uitkomst?</p>
+<h4 id="t-testen">t-testen</h4>
+<blockquote>
+<p>“Ik weet dat ik niets weet, en vooral niet als <code>versicolor</code> en <code>virginica</code> verschillen in termen van <code>Sepal.Width</code>”, zei de beroemde Socrates.</p>
+</blockquote>
+<p>Tijd om eindelijk een antwoord te geven op deze cruciale vraag!</p>
+<h4 id="versicolor-vs.-virginica">Versicolor vs. virginica</h4>
+<p>Bayesiaanse t-testen kunnen worden uitgevoerd op een zeer vergelijkbare manier als correlaties. We zijn met name geïnteresseerd in twee niveaus van de <code>Specie factor</code>, <em>versicolor</em> en <em>virginica</em>. We zullen beginnen met het uit <code>iris</code> uitfilteren van de niet-relevante waarnemingen die overeenkomen met de <code>setosa specie</code>, en we zullen dan de waarnemingen en de distributie van de <code>Sepal.Width</code> variabele visualiseren.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="testen-met-bayes_files/figure-html5/unnamed-chunk-38-1.png" width="624" /></p>
+</div>
+<h4 id="bereken-de-bayesiaanse-t-test">Bereken de Bayesiaanse t-test</h4>
+<p>Het lijkt er (visueel) op dat <em>virgnica</em> bloemen gemiddeld een iets grotere kelkbladbreedte hebben. Laten we dit verschil statistisch beoordelen met behulp van de <code>ttestBF</code> in het BayesFactor pakket.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>   Parameter    Median CI     CI_low   CI_high      pd ROPE_CI
+1 Difference 0.1854753 89 0.08450306 0.2857605 0.99825      89
+    ROPE_low ROPE_high ROPE_Percentage       BF Prior_Distribution
+1 -0.0332751 0.0332751               0 17.71872             cauchy
+  Prior_Location Prior_Scale
+1              0   0.7071068</code></pre>
+</div>
+<p>Op basis van de indexen kunnen we zeggen dat het verschil tussen virginica en versicolor (van Sepal.Width) een kans heeft van <strong>100% om negatief te zijn</strong> [van de pd en het teken van de mediaan] (mediaan = -0,19, 89% CI [-0,29, -0,092]). De gegevens leveren een <strong>sterk bewijs tegen de nulhypothese</strong> (BF = 18).</p>
+<p>Houd dat in gedachten, want we zullen een andere manier zien om deze vraag te onderzoeken.</p>
+<h4 id="logistisch-model">Logistisch Model</h4>
+<p>Een hypothese waarvoor men een t-test gebruikt, kan ook getest worden met een binomiaal model (bv. een <strong>logistisch model</strong>). Het is inderdaad mogelijk om de volgende hypothese te herformuleren, <em>“er is een belangrijk verschil in deze variabele tussen de twee groepen” door “deze variabele in staat te stellen om te discrimineren tussen (of te classificeren in) de twee groepen”.</em> Deze modellen zijn echter veel krachtiger dan een gewone t-test.</p>
+<p>In het geval van het verschil van <code>Sepal.Width</code> tussen <em>virginica</em> en <em>versicolor</em> wordt de vraag, <em>hoe goed kunnen we de twee soorten classificeren met alleen</em> <code>Sepal.Width</code>.</p>
+<h4 id="het-model-fitten">Het model fitten</h4>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<h4 id="prestatie-en-parameters">Prestatie en parameters</h4>
+<p>Eerst prestatie van het model in kaart brengen.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>Can&#39;t calculate log-loss.</code></pre>
+<pre><code># Indices of model performance
+
+ELPD   | ELPD_SE |  LOOIC | LOOIC_SE |   WAIC |   R2 | RMSE | Sigma | Score_log | Score_spherical
+-------------------------------------------------------------------------------------------------
+-66.34 |    3.07 | 132.69 |     6.14 | 132.68 | 0.10 | 1.11 |  1.00 |   -104.44 |            0.01</code></pre>
+</div>
+<p>Vervolgens de resultaten van enkele indices presenteren.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># Description of Posterior Distributions
+
+Parameter   | Median |           89% CI |     pd |        89% ROPE | % in ROPE |    BF |  Rhat |      ESS
+---------------------------------------------------------------------------------------------------------
+(Intercept) | -6.135 | [-9.619, -2.807] | 99.98% | [-0.181, 0.181] |         0 | 9.566 | 1.001 | 2640.283
+Sepal.Width |  2.131 | [ 0.979,  3.341] | 99.95% | [-0.181, 0.181] |         0 | 8.933 | 1.001 | 2653.992</code></pre>
+</div>
+<h3 id="referenties">Referenties</h3>
+<p>Andrews, M., &amp; Baguley, T. (2013). Prior approval: The growth of bayesian methods in psychology. <em>British Journal of Mathematical and Statistical Psychology, 66(1)</em>, 1–7.</p>
+<p>Benjamin, D. J., Berger, J. O., Johannesson, M., Nosek, B. A., Wagenmakers, E.-J., Berk, R., … others. (2018). Redefine statistical significance. <em>Nature Human Behaviour, 2(1), 6</em>.</p>
+<p>Chambers, C. D., Feredoes, E., Muthukumaraswamy, S. D., &amp; Etchells, P. (2014). Instead of ’playing the game’ it is time to change the rules: Registered reports at aims neuroscience and beyond. <em>AIMS Neuroscience, 1(1)</em>, 4–17.</p>
+<p>Etz, A., &amp; Vandekerckhove, J. (2016). A bayesian perspective on the reproducibility project: Psychology. <em>PloS One, 11(2)</em>, e0149794.</p>
+<p>Kruschke, J. K. (2010). What to believe: Bayesian methods for data analysis. <em>Trends in Cognitive Sciences, 14(7)</em>, 293–300.</p>
+<p>Kruschke, J. K., Aguinis, H., &amp; Joo, H. (2012). The time has come: Bayesian methods for data analysis in the organizational sciences. <em>Organizational Research Methods, 15(4)</em>, 722–752.</p>
+<p>Szucs, D., &amp; Ioannidis, J. P. (2016). Empirical assessment of published effect sizes and power in the recent cognitive neuroscience and psychology literature. <em>BioRxiv, 071530</em>.</p>
+<p>Wagenmakers, E.-J., Marsman, M., Jamil, T., Ly, A., Verhagen, J., Love, J., … others. (2018). Bayesian inference for psychology. Part i: Theoretical advantages and practical ramifications. <em>Psychonomic Bulletin &amp; Review, 25(1)</em>, 35–57.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<!--radix_placeholder_article_footer-->
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom"></div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+</body>
+
+</html>

@@ -1,0 +1,2488 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+  <!--radix_placeholder_meta_tags-->
+  <title>Dynamische documenten maken met RMarkdown en Knitr</title>
+  
+  <meta property="description" itemprop="description" content="RMarkdown en Knitr zijn pakketten die je in staat stellen om reproduceerbare en dynamische documenten te maken. In deze blog wordt uitgelegd hoe je hiermee kunt werken."/>
+  
+  
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2018-03-15"/>
+  <meta property="article:created" itemprop="dateCreated" content="2018-03-15"/>
+  <meta name="article:author" content="Marian L. Schmidt, bewerkt door Harrie Jonkman"/>
+  
+  <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+  <meta property="og:title" content="Dynamische documenten maken met RMarkdown en Knitr"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:description" content="RMarkdown en Knitr zijn pakketten die je in staat stellen om reproduceerbare en dynamische documenten te maken. In deze blog wordt uitgelegd hoe je hiermee kunt werken."/>
+  <meta property="og:locale" content="en_US"/>
+  
+  <!--  https://dev.twitter.com/cards/types/summary -->
+  <meta property="twitter:card" content="summary"/>
+  <meta property="twitter:title" content="Dynamische documenten maken met RMarkdown en Knitr"/>
+  <meta property="twitter:description" content="RMarkdown en Knitr zijn pakketten die je in staat stellen om reproduceerbare en dynamische documenten te maken. In deze blog wordt uitgelegd hoe je hiermee kunt werken."/>
+  
+  <!--/radix_placeholder_meta_tags-->
+  <!--radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-rmarkdown-metadata">
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Dynamische documenten maken met RMarkdown en Knitr"]},{"type":"character","attributes":{},"value":["RMarkdown en Knitr zijn pakketten die je in staat stellen om reproduceerbare en dynamische documenten te maken. In deze blog wordt uitgelegd hoe je hiermee kunt werken.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Marian L. Schmidt, bewerkt door Harrie Jonkman"]},{"type":"character","attributes":{},"value":["https://Harriejonkman.nl"]}]}]},{"type":"character","attributes":{},"value":["3-15-2018"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
+  </script>
+  <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["reproducable-research_files/bowser-1.9.3/bowser.min.js","reproducable-research_files/crosstalk-1.0.0/css/crosstalk.css","reproducable-research_files/crosstalk-1.0.0/js/crosstalk.js","reproducable-research_files/crosstalk-1.0.0/js/crosstalk.js.map","reproducable-research_files/crosstalk-1.0.0/js/crosstalk.min.js","reproducable-research_files/crosstalk-1.0.0/js/crosstalk.min.js.map","reproducable-research_files/datatables-binding-0.4/css/datatables-crosstalk.css","reproducable-research_files/datatables-binding-0.4/datatables.js","reproducable-research_files/datatables-binding-0.4/datatables.yaml","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/AutoFill/css/autoFill.bootstrap.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/AutoFill/css/autoFill.bootstrap4.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/AutoFill/css/autoFill.dataTables.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/AutoFill/css/autoFill.foundation.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/AutoFill/css/autoFill.jqueryui.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/AutoFill/css/autoFill.semanticui.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/AutoFill/js/autoFill.bootstrap.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/AutoFill/js/autoFill.bootstrap4.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/AutoFill/js/autoFill.foundation.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/AutoFill/js/autoFill.jqueryui.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/AutoFill/js/autoFill.semanticui.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/AutoFill/js/dataTables.autoFill.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Buttons/css/buttons.bootstrap.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Buttons/css/buttons.bootstrap4.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Buttons/css/buttons.dataTables.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Buttons/css/buttons.foundation.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Buttons/css/buttons.jqueryui.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Buttons/css/buttons.semanticui.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Buttons/js/buttons.bootstrap.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Buttons/js/buttons.bootstrap4.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Buttons/js/buttons.colVis.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Buttons/js/buttons.flash.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Buttons/js/buttons.foundation.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Buttons/js/buttons.html5.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Buttons/js/buttons.jqueryui.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Buttons/js/buttons.print.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Buttons/js/buttons.semanticui.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Buttons/js/dataTables.buttons.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Buttons/js/jszip.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Buttons/js/pdfmake.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Buttons/js/vfs_fonts.js","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Buttons/swf/flashExport.swf","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/ColReorder/css/colReorder.bootstrap.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/ColReorder/css/colReorder.bootstrap4.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/ColReorder/css/colReorder.dataTables.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/ColReorder/css/colReorder.foundation.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/ColReorder/css/colReorder.jqueryui.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/ColReorder/css/colReorder.semanticui.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/ColReorder/js/dataTables.colReorder.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/FixedColumns/css/fixedColumns.bootstrap.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/FixedColumns/css/fixedColumns.bootstrap4.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/FixedColumns/css/fixedColumns.dataTables.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/FixedColumns/css/fixedColumns.foundation.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/FixedColumns/css/fixedColumns.jqueryui.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/FixedColumns/css/fixedColumns.semanticui.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/FixedColumns/js/dataTables.fixedColumns.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/FixedHeader/css/fixedHeader.bootstrap.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/FixedHeader/css/fixedHeader.bootstrap4.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/FixedHeader/css/fixedHeader.dataTables.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/FixedHeader/css/fixedHeader.foundation.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/FixedHeader/css/fixedHeader.jqueryui.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/FixedHeader/css/fixedHeader.semanticui.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/FixedHeader/js/dataTables.fixedHeader.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/KeyTable/css/keyTable.bootstrap.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/KeyTable/css/keyTable.bootstrap4.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/KeyTable/css/keyTable.dataTables.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/KeyTable/css/keyTable.foundation.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/KeyTable/css/keyTable.jqueryui.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/KeyTable/css/keyTable.semanticui.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/KeyTable/js/dataTables.keyTable.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Responsive/css/responsive.bootstrap.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Responsive/css/responsive.bootstrap4.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Responsive/css/responsive.dataTables.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Responsive/css/responsive.foundation.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Responsive/css/responsive.jqueryui.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Responsive/css/responsive.semanticui.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Responsive/js/dataTables.responsive.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Responsive/js/responsive.bootstrap.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Responsive/js/responsive.bootstrap4.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Responsive/js/responsive.foundation.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Responsive/js/responsive.jqueryui.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Responsive/js/responsive.semanticui.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/RowGroup/css/rowGroup.bootstrap.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/RowGroup/css/rowGroup.bootstrap4.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/RowGroup/css/rowGroup.dataTables.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/RowGroup/css/rowGroup.foundation.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/RowGroup/css/rowGroup.jqueryui.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/RowGroup/css/rowGroup.semanticui.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/RowGroup/js/dataTables.rowGroup.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/RowReorder/css/rowReorder.bootstrap.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/RowReorder/css/rowReorder.bootstrap4.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/RowReorder/css/rowReorder.dataTables.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/RowReorder/css/rowReorder.foundation.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/RowReorder/css/rowReorder.jqueryui.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/RowReorder/css/rowReorder.semanticui.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/RowReorder/js/dataTables.rowReorder.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Scroller/css/scroller.bootstrap.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Scroller/css/scroller.bootstrap4.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Scroller/css/scroller.dataTables.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Scroller/css/scroller.foundation.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Scroller/css/scroller.jqueryui.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Scroller/css/scroller.semanticui.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Scroller/js/dataTables.scroller.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Select/css/select.bootstrap.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Select/css/select.bootstrap4.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Select/css/select.dataTables.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Select/css/select.foundation.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Select/css/select.jqueryui.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Select/css/select.semanticui.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-extensions/Select/js/dataTables.select.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables-plugins/natural/natural.js","reproducable-research_files/datatables-binding-0.4/lib/datatables-plugins/searchHighlight/dataTables.searchHighlight.css","reproducable-research_files/datatables-binding-0.4/lib/datatables-plugins/searchHighlight/dataTables.searchHighlight.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables-plugins/searchHighlight/jquery.highlight.js","reproducable-research_files/datatables-binding-0.4/lib/datatables/css/dataTables.bootstrap.extra.css","reproducable-research_files/datatables-binding-0.4/lib/datatables/css/dataTables.bootstrap.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables/css/dataTables.bootstrap4.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables/css/dataTables.foundation.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables/css/dataTables.jqueryui.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables/css/dataTables.material.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables/css/dataTables.semanticui.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables/css/dataTables.uikit.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables/css/jquery.dataTables.extra.css","reproducable-research_files/datatables-binding-0.4/lib/datatables/css/jquery.dataTables.min.css","reproducable-research_files/datatables-binding-0.4/lib/datatables/js/dataTables.bootstrap.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables/js/dataTables.bootstrap4.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables/js/dataTables.foundation.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables/js/dataTables.jqueryui.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables/js/dataTables.material.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables/js/dataTables.semanticui.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables/js/dataTables.uikit.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables/js/jquery.dataTables.min.js","reproducable-research_files/datatables-binding-0.4/lib/datatables/license.txt","reproducable-research_files/datatables-binding-0.4/lib/jquery/jquery.min.js","reproducable-research_files/datatables-binding-0.4/lib/jquery/LICENSE.txt","reproducable-research_files/datatables-binding-0.4/lib/nouislider/jquery.nouislider.min.css","reproducable-research_files/datatables-binding-0.4/lib/nouislider/jquery.nouislider.min.js","reproducable-research_files/datatables-binding-0.4/lib/selectize/selectize.bootstrap3.css","reproducable-research_files/datatables-binding-0.4/lib/selectize/selectize.min.js","reproducable-research_files/datatables-css-0.0.0/datatables-crosstalk.css","reproducable-research_files/distill-2.2.21/template.v2.js","reproducable-research_files/dt-core-1.10.16/css/jquery.dataTables.extra.css","reproducable-research_files/dt-core-1.10.16/css/jquery.dataTables.min.css","reproducable-research_files/dt-core-1.10.16/js/jquery.dataTables.min.js","reproducable-research_files/figure-html5/many-figs-1.png","reproducable-research_files/figure-html5/single-fig-center-1.png","reproducable-research_files/figure-html5/single-fig-left-1.png","reproducable-research_files/figure-html5/single-fig-right-1.png","reproducable-research_files/figure-html5/single-fig-size10-1.png","reproducable-research_files/figure-html5/single-fig-size2-1.png","reproducable-research_files/htmlwidgets-1.2/htmlwidgets.js","reproducable-research_files/jquery-1.12.4/jquery.min.js","reproducable-research_files/jquery-1.12.4/LICENSE.txt","reproducable-research_files/plotly-binding-4.8.0/lib/colourpicker/colourpicker.min.css","reproducable-research_files/plotly-binding-4.8.0/lib/colourpicker/colourpicker.min.js","reproducable-research_files/plotly-binding-4.8.0/lib/colourpicker/LICENSE","reproducable-research_files/plotly-binding-4.8.0/lib/mathjax/cdn.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/LICENSE","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/af.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/am.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/ar-dz.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/ar-eg.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/ar.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/az.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/bg.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/bs.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/ca.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/cs.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/da.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/de-ch.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/de.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/el.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/eo.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/es-ar.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/es-pe.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/es.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/et.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/eu.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/fa.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/fi.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/fo.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/fr-ch.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/fr.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/gl.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/gu.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/he.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/hi-in.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/hr.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/hu.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/hy.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/id.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/is.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/it.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/ja.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/ka.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/km.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/ko.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/lt.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/lv.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/me-me.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/me.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/mk.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/ml.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/ms.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/mt.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/nl-be.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/nl.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/no.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/pa.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/pl.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/pt-br.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/rm.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/ro.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/ru.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/sk.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/sl.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/sq.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/sr-sr.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/sr.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/sv.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/sw.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/ta.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/th.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/tr.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/tt.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/uk.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/ur.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/vi.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/zh-cn.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/zh-hk.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/locales/zh-tw.js","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/plotly-htmlwidgets.css","reproducable-research_files/plotly-binding-4.8.0/lib/plotlyjs/plotly-latest.min.js","reproducable-research_files/plotly-binding-4.8.0/lib/selectize/selectize.bootstrap3.css","reproducable-research_files/plotly-binding-4.8.0/lib/selectize/selectize.min.js","reproducable-research_files/plotly-binding-4.8.0/lib/typedarray/LICENSE","reproducable-research_files/plotly-binding-4.8.0/lib/typedarray/typedarray.min.js","reproducable-research_files/plotly-binding-4.8.0/plotly.js","reproducable-research_files/plotly-binding-4.8.0/plotly.yaml","reproducable-research_files/plotly-htmlwidgets-css-1.39.2/plotly-htmlwidgets.css","reproducable-research_files/plotly-main-1.39.2/plotly-latest.min.js","reproducable-research_files/typedarray-0.1/typedarray.min.js","reproducable-research_files/webcomponents-2.0.0/webcomponents.js"]}
+  </script>
+  <!--radix_placeholder_navigation_in_header-->
+  <!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+  
+  <style type="text/css">
+  
+  body {
+    background-color: white;
+  }
+  
+  .pandoc-table {
+    width: 100%;
+  }
+  
+  .pandoc-table>caption {
+    margin-bottom: 10px;
+  }
+  
+  .pandoc-table th:not([align]) {
+    text-align: left;
+  }
+  
+  .pagedtable-footer {
+    font-size: 15px;
+  }
+  
+  .html-widget {
+    margin-bottom: 2.0em;
+  }
+  
+  .l-screen-inset {
+    padding-right: 16px;
+  }
+  
+  .l-screen .caption {
+    margin-left: 10px;
+  }
+  
+  .shaded {
+    background: rgb(247, 247, 247);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .shaded .html-widget {
+    margin-bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .shaded .shaded-content {
+    background: white;
+  }
+  
+  .text-output {
+    margin-top: 0;
+    line-height: 1.5em;
+  }
+  
+  .hidden {
+    display: none !important;
+  }
+  
+  d-article {
+    padding-bottom: 30px;
+  }
+  
+  d-appendix {
+    padding-top: 30px;
+  }
+  
+  d-article>p>img {
+    width: 100%;
+  }
+  
+  d-article iframe {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 2.0em;
+    width: 100%;
+  }
+  
+  figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+  
+  /* CSS for table of contents */
+  
+  .d-toc {
+    color: rgba(0,0,0,0.8);
+    font-size: 0.8em;
+    line-height: 1em;
+  }
+  
+  .d-toc-header {
+    font-size: 0.6rem;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 1.3em;
+  }
+  
+  .d-toc a {
+    border-bottom: none;
+  }
+  
+  .d-toc ul {
+    padding-left: 0;
+  }
+  
+  .d-toc li>ul {
+    padding-top: 0.8em;
+    padding-left: 16px;
+    margin-bottom: 0.6em;
+  }
+  
+  .d-toc ul,
+  .d-toc li {
+    list-style-type: none;
+  }
+  
+  .d-toc li {
+    margin-bottom: 0.9em;
+  }
+  
+  .d-toc-separator {
+    margin-top: 20px;
+    margin-bottom: 2em;
+  }
+  
+  .d-article-with-toc {
+    border-top: none;
+    padding-top: 0;
+  }
+  
+  
+  
+  /* Tweak code blocks (note that this CSS is repeated above in an injection
+     into the d-code shadow dom) */
+  
+  d-code {
+    overflow-x: auto !important;
+  }
+  
+  pre.d-code code.d-code {
+    padding-left: 10px;
+    font-size: 12px;
+    border-left: 2px solid rgba(0,0,0,0.1);
+  }
+  
+  pre.text-output {
+  
+    font-size: 12px;
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+  
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+  
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+  
+  @media(min-width: 768px) {
+  
+  d-code {
+    overflow-x: visible !important;
+  }
+  
+  pre.d-code code.d-code  {
+      padding-left: 18px;
+      font-size: 14px;
+  }
+  pre.text-output {
+    font-size: 14px;
+  }
+  }
+  
+  /* Figure */
+  
+  .figure {
+    position: relative;
+    margin-bottom: 2.5em;
+    margin-top: 1.5em;
+  }
+  
+  .figure img {
+    width: 100%;
+  }
+  
+  .figure .caption {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    line-height: 1.5em;
+  }
+  
+  .figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+  
+  .figure .caption a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+  
+  .figure .caption b,
+  .figure .caption strong, {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1.0);
+  }
+  
+  
+  
+  /* Tweak 1000px media break to show more text */
+  
+  @media(min-width: 1000px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 16px;
+    }
+  
+    .grid {
+      grid-column-gap: 16px;
+    }
+  
+    d-article {
+      font-size: 1.06rem;
+      line-height: 1.7em;
+    }
+    figure .caption, .figure .caption, figure figcaption {
+      font-size: 13px;
+    }
+  }
+  
+  @media(min-width: 1180px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 32px;
+    }
+  
+    .grid {
+      grid-column-gap: 32px;
+    }
+  }
+  
+  
+  /* Get the citation styles for the appendix (not auto-injected on render since
+     we do our own rendering of the citation appendix) */
+  
+  d-appendix .citation-appendix,
+  .d-appendix .citation-appendix {
+    font-size: 11px;
+    line-height: 15px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 18px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.02);
+    padding: 10px 18px;
+    border-radius: 3px;
+    color: rgba(150, 150, 150, 1);
+    overflow: hidden;
+    margin-top: -12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  
+  
+  /* Social footer */
+  
+  .social_footer {
+    margin-top: 30px;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.67);
+  }
+  
+  .disqus-comments {
+    margin-right: 30px;
+  }
+  
+  .disqus-comment-count {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+  
+  #disqus_thread {
+    margin-top: 30px;
+  }
+  
+  .article-sharing a {
+    border-bottom: none;
+    margin-right: 8px;
+  }
+  
+  .article-sharing a:hover {
+    border-bottom: none;
+  }
+  
+  .sidebar-section.subscribe {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+  
+  .subscribe p {
+    margin-bottom: 0.5em;
+  }
+  
+  
+  .article-footer .subscribe {
+    font-size: 15px;
+    margin-top: 45px;
+  }
+  
+  
+  /* Improve display for browsers without grid (IE/Edge <= 15) */
+  
+  .downlevel {
+    line-height: 1.6em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+  }
+  
+  .downlevel .d-title {
+    padding-top: 6rem;
+    padding-bottom: 1.5rem;
+  }
+  
+  .downlevel .d-title h1 {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.1em;
+    margin: 0 0 0.5rem;
+  }
+  
+  .downlevel .d-title p {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.55em;
+    margin-top: 0;
+  }
+  
+  .downlevel .d-byline {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    font-size: 0.8rem;
+    line-height: 1.8em;
+  }
+  
+  .downlevel .section-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .downlevel .d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+  
+  
+  .downlevel .d-appendix {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.5);
+    padding-top: 40px;
+    padding-bottom: 48px;
+  }
+  
+  .downlevel .footnotes ol {
+    padding-left: 13px;
+  }
+  
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  
+  @media(min-width: 768px) {
+    .downlevel .base-grid,
+    .downlevel .distill-header,
+    .downlevel .d-title,
+    .downlevel .d-abstract,
+    .downlevel .d-article,
+    .downlevel .d-appendix,
+    .downlevel .distill-appendix,
+    .downlevel .d-byline,
+    .downlevel .d-footnote-list,
+    .downlevel .d-citation-list,
+    .downlevel .distill-footer,
+    .downlevel .appendix-bottom,
+    .downlevel .posts-container {
+    padding-left: 150px;
+    padding-right: 150px;
+    max-width: 900px;
+  }
+  }
+  
+  .downlevel pre code {
+    display: block;
+    border-left: 2px solid rgba(0, 0, 0, .1);
+    padding: 0 0 0 20px;
+    font-size: 14px;
+  }
+  
+  .downlevel code, .downlevel pre {
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+  
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+  
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+  
+  </style>
+  
+  <script type="application/javascript">
+  
+  function is_downlevel_browser() {
+    if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                   window.navigator.userAgent)) {
+      return true;
+    } else {
+      return window.load_distill_framework === undefined;
+    }
+  }
+  
+  // show body when load is complete
+  function on_load_complete() {
+  
+    // set body to visible
+    document.body.style.visibility = 'visible';
+  
+    // force redraw for leaflet widgets
+    if (window.HTMLWidgets) {
+      var maps = window.HTMLWidgets.findAll(".leaflet");
+      $.each(maps, function(i, el) {
+        var map = this.getMap();
+        map.invalidateSize();
+        map.eachLayer(function(layer) {
+          if (layer instanceof L.TileLayer)
+            layer.redraw();
+        });
+      });
+    }
+  
+    // trigger 'shown' so htmlwidgets resize
+    $('d-article').trigger('shown');
+  }
+  
+  function init_distill() {
+  
+    init_common();
+  
+    // create front matter
+    var front_matter = $('<d-front-matter></d-front-matter>');
+    $('#distill-front-matter').wrap(front_matter);
+  
+    // create d-title
+    $('.d-title').changeElementType('d-title');
+  
+    // create d-byline
+    var byline = $('<d-byline></d-byline>');
+    $('.d-byline').replaceWith(byline);
+  
+    // create d-article
+    var article = $('<d-article></d-article>');
+    $('.d-article').wrap(article).children().unwrap();
+  
+    // move posts container into article
+    $('.posts-container').appendTo($('d-article'));
+  
+    // create d-appendix
+    $('.d-appendix').changeElementType('d-appendix');
+  
+    // create d-bibliography
+    var bibliography = $('<d-bibliography></d-bibliography>');
+    $('#distill-bibliography').wrap(bibliography);
+  
+    // flag indicating that we have appendix items
+    var appendix = $('.appendix-bottom').children('h3').length > 0;
+  
+    // replace citations with <d-cite>
+    $('.citation').each(function(i, val) {
+      appendix = true;
+      var cites = $(this).attr('data-cites').split(" ");
+      var dt_cite = $('<d-cite></d-cite>');
+      dt_cite.attr('key', cites.join());
+      $(this).replaceWith(dt_cite);
+    });
+    // remove refs
+    $('#refs').remove();
+  
+    // replace footnotes with <d-footnote>
+    $('.footnote-ref').each(function(i, val) {
+      appendix = true;
+      var href = $(this).attr('href');
+      var id = href.replace('#', '');
+      var fn = $('#' + id);
+      var fn_p = $('#' + id + '>p');
+      fn_p.find('.footnote-back').remove();
+      var text = fn_p.html();
+      var dtfn = $('<d-footnote></d-footnote>');
+      dtfn.html(text);
+      $(this).replaceWith(dtfn);
+    });
+    // remove footnotes
+    $('.footnotes').remove();
+  
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      var id = $(this).attr('id');
+      $('.d-toc a[href="#' + id + '"]').parent().remove();
+      appendix = true;
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+    });
+  
+    // show d-appendix if we have appendix content
+    $("d-appendix").css('display', appendix ? 'grid' : 'none');
+  
+    // replace code blocks with d-code
+    $('pre>code').each(function(i, val) {
+      var code = $(this);
+      var pre = code.parent();
+      var clz = "";
+      var language = pre.attr('class');
+      if (language) {
+        // map unknown languages to "clike" (without this they just dissapear)
+        if ($.inArray(language, ["bash", "clike", "css", "go", "html",
+                                 "javascript", "js", "julia", "lua", "markdown",
+                                 "markup", "mathml", "python", "svg", "xml"]) == -1)
+          language = "clike";
+        language = ' language="' + language + '"';
+        var dt_code = $('<d-code block' + language + clz + '></d-code>');
+        dt_code.text(code.text());
+        pre.replaceWith(dt_code);
+      } else {
+        code.addClass('text-output').unwrap().changeElementType('pre');
+      }
+    });
+  
+    // localize layout chunks to just output
+    $('.layout-chunk').each(function(i, val) {
+  
+      // capture layout
+      var layout = $(this).attr('data-layout');
+  
+      // apply layout to markdown level block elements
+      var elements = $(this).children().not('d-code, pre.text-output, script');
+      elements.each(function(i, el) {
+        var layout_div = $('<div class="' + layout + '"></div>');
+        if (layout_div.hasClass('shaded')) {
+          var shaded_content = $('<div class="shaded-content"></div>');
+          $(this).wrap(shaded_content);
+          $(this).parent().wrap(layout_div);
+        } else {
+          $(this).wrap(layout_div);
+        }
+      });
+  
+  
+      // unwrap the layout-chunk div
+      $(this).children().unwrap();
+    });
+  
+    // load distill framework
+    load_distill_framework();
+  
+    // wait for window.distillRunlevel == 4 to do post processing
+    function distill_post_process() {
+  
+      if (!window.distillRunlevel || window.distillRunlevel < 4)
+        return;
+  
+      // hide author/affiliations entirely if we have no authors
+      var front_matter = JSON.parse($("#distill-front-matter").html());
+      var have_authors = front_matter.authors && front_matter.authors.length > 0;
+      if (!have_authors)
+        $('d-byline').addClass('hidden');
+  
+      // table of contents
+      if (have_authors) // adjust border if we are in authors
+        $('.d-toc').parent().addClass('d-article-with-toc');
+  
+      // strip links that point to #
+      $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+  
+      // hide elements of author/affiliations grid that have no value
+      function hide_byline_column(caption) {
+        $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+      }
+  
+      // affiliations
+      var have_affiliations = false;
+      for (var i = 0; i<front_matter.authors.length; ++i) {
+        var author = front_matter.authors[i];
+        if (author.affiliation !== "&nbsp;") {
+          have_affiliations = true;
+          break;
+        }
+      }
+      if (!have_affiliations)
+        $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+  
+      // published date
+      if (!front_matter.publishedDate)
+        hide_byline_column("Published");
+  
+      // document object identifier
+      var doi = $('d-byline').find('h3:contains("DOI")');
+      var doi_p = doi.next().empty();
+      if (!front_matter.doi) {
+        // if we have a citation and valid citationText then link to that
+        if ($('#citation').length > 0 && front_matter.citationText) {
+          doi.html('Citation');
+          $('<a href="#citation"></a>')
+            .text(front_matter.citationText)
+            .appendTo(doi_p);
+        } else {
+          hide_byline_column("DOI");
+        }
+      } else {
+        $('<a></a>')
+           .attr('href', "https://doi.org/" + front_matter.doi)
+           .html(front_matter.doi)
+           .appendTo(doi_p);
+      }
+  
+       // change plural form of authors/affiliations
+      if (front_matter.authors.length === 1) {
+        var grid = $('.authors-affiliations');
+        grid.children('h3:contains("Authors")').text('Author');
+        grid.children('h3:contains("Affiliations")').text('Affiliation');
+      }
+  
+      // inject pre code styles (can't do this with a global stylesheet b/c a shadow root is used)
+      $('d-code').each(function(i, val) {
+        var style = document.createElement('style');
+        style.innerHTML = 'pre code { padding-left: 10px; font-size: 12px; border-left: 2px solid rgba(0,0,0,0.1); } ' +
+                          '@media(min-width: 768px) { pre code { padding-left: 18px; font-size: 14px; } }';
+        if (this.shadowRoot)
+          this.shadowRoot.appendChild(style);
+      });
+  
+      // move appendix-bottom entries to the bottom
+      $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+      $('.appendix-bottom').remove();
+  
+      // clear polling timer
+      clearInterval(tid);
+  
+      // show body now that everything is ready
+      on_load_complete();
+    }
+  
+    var tid = setInterval(distill_post_process, 50);
+    distill_post_process();
+  
+  }
+  
+  function init_downlevel() {
+  
+    init_common();
+  
+     // insert hr after d-title
+    $('.d-title').after($('<hr class="section-separator"/>'));
+  
+    // check if we have authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+  
+    // manage byline/border
+    if (!have_authors)
+      $('.d-byline').remove();
+    $('.d-byline').after($('<hr class="section-separator"/>'));
+    $('.d-byline a').remove();
+  
+    // remove toc
+    $('.d-toc-header').remove();
+    $('.d-toc').remove();
+    $('.d-toc-separator').remove();
+  
+    // move appendix elements
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+    });
+  
+  
+    // inject headers into references and footnotes
+    var refs_header = $('<h3></h3>');
+    refs_header.text('References');
+    $('#refs').prepend(refs_header);
+  
+    var footnotes_header = $('<h3></h3');
+    footnotes_header.text('Footnotes');
+    $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+  
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+  
+    // remove appendix if it's empty
+    if ($('.d-appendix').children().length === 0)
+      $('.d-appendix').remove();
+  
+    // prepend separator above appendix
+    $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+  
+    // trim code
+    $('pre>code').each(function(i, val) {
+      $(this).html($.trim($(this).html()));
+    });
+  
+    // move posts-container right before article
+    $('.posts-container').insertBefore($('.d-article'));
+  
+    $('body').addClass('downlevel');
+  
+    on_load_complete();
+  }
+  
+  
+  function init_common() {
+  
+    // jquery plugin to change element types
+    (function($) {
+      $.fn.changeElementType = function(newType) {
+        var attrs = {};
+  
+        $.each(this[0].attributes, function(idx, attr) {
+          attrs[attr.nodeName] = attr.nodeValue;
+        });
+  
+        this.replaceWith(function() {
+          return $("<" + newType + "/>", attrs).append($(this).contents());
+        });
+      };
+    })(jQuery);
+  
+    // prevent underline for linked images
+    $('a > img').parent().css({'border-bottom' : 'none'});
+  
+    // mark non-body figures created by knitr chunks as 100% width
+    $('.layout-chunk').each(function(i, val) {
+      var figures = $(this).find('img, .html-widget');
+      if ($(this).attr('data-layout') !== "l-body") {
+        figures.css('width', '100%');
+      } else {
+        figures.css('max-width', '100%');
+        figures.filter("[width]").each(function(i, val) {
+          var fig = $(this);
+          fig.css('width', fig.attr('width') + 'px');
+        });
+  
+      }
+    });
+  
+    // auto-append index.html to post-preview links in file: protocol
+    // and in rstudio ide preview
+    $('.post-preview').each(function(i, val) {
+      if (window.location.protocol === "file:")
+        $(this).attr('href', $(this).attr('href') + "index.html");
+    });
+  
+    // get rid of index.html references in header
+    if (window.location.protocol !== "file:") {
+      $('.distill-site-header a[href]').each(function(i,val) {
+        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+      });
+    }
+  
+    // add class to pandoc style tables
+    $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+    $('.kable-table').children('table').addClass('pandoc-table');
+  
+    // add figcaption style to table captions
+    $('caption').parent('table').addClass("figcaption");
+  
+    // initialize posts list
+    if (window.init_posts_list)
+      window.init_posts_list();
+  
+    // implmement disqus comment link
+    $('.disqus-comment-count').click(function() {
+      window.headroom_prevent_pin = true;
+      $('#disqus_thread').toggleClass('hidden');
+      if (!$('#disqus_thread').hasClass('hidden')) {
+        var offset = $(this).offset();
+        $(window).resize();
+        $('html, body').animate({
+          scrollTop: offset.top - 35
+        });
+      }
+    });
+  }
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    if (is_downlevel_browser())
+      init_downlevel();
+    else
+      window.addEventListener('WebComponentsReady', init_distill);
+  });
+  
+  </script>
+  
+  <!--/radix_placeholder_distill-->
+  <script src="reproducable-research_files/htmlwidgets-1.3/htmlwidgets.js"></script>
+  <script src="reproducable-research_files/jquery-1.12.4/jquery.min.js"></script>
+  <link href="reproducable-research_files/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+  <script src="reproducable-research_files/datatables-binding-0.5/datatables.js"></script>
+  <link href="reproducable-research_files/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+  <link href="reproducable-research_files/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
+  <script src="reproducable-research_files/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
+  <link href="reproducable-research_files/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+  <script src="reproducable-research_files/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+  <script src="reproducable-research_files/plotly-binding-4.8.0/plotly.js"></script>
+  <script src="reproducable-research_files/typedarray-0.1/typedarray.min.js"></script>
+  <link href="reproducable-research_files/plotly-htmlwidgets-css-1.39.2/plotly-htmlwidgets.css" rel="stylesheet" />
+  <script src="reproducable-research_files/plotly-main-1.39.2/plotly-latest.min.js"></script>
+  <script src="reproducable-research_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="reproducable-research_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="reproducable-research_files/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+  <!--/radix_placeholder_site_in_header-->
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"Dynamische documenten maken met RMarkdown en Knitr","description":"RMarkdown en Knitr zijn pakketten die je in staat stellen om reproduceerbare en dynamische documenten te maken. In deze blog wordt uitgelegd hoe je hiermee kunt werken.","authors":[{"author":"Marian L. Schmidt, bewerkt door Harrie Jonkman","authorURL":"https://Harriejonkman.nl","affiliation":"&nbsp;","affiliationURL":"#"}],"publishedDate":"2018-03-15T00:00:00.000+01:00","citationText":"Jonkman, 2018"}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>Dynamische documenten maken met RMarkdown en Knitr</h1>
+<p>RMarkdown en Knitr zijn pakketten die je in staat stellen om reproduceerbare en dynamische documenten te maken. In deze blog wordt uitgelegd hoe je hiermee kunt werken.</p>
+</div>
+
+<div class="d-byline">
+  Marian L. Schmidt, bewerkt door Harrie Jonkman <a href="https://Harriejonkman.nl" class="uri">https://Harriejonkman.nl</a> 
+  
+<br/>3-15-2018
+</div>
+
+<div class="d-article">
+<!--Einde van opties instellen en R pakketten laden-->
+<hr />
+<h1 id="welkom">Welkom!</h1>
+<p>Deze workshop is eerder gegeven door Schmidt op <strong>11 Mei 2016</strong> en er waren wat aanvullende materialen beschikbaar:</p>
+<ol type="1">
+<li><strong>Klas notities</strong> die voor de workshop konden worden gebruikt <a href="http://pad.software-carpentry.org/2016-05-11-RMarkdown" target="_blank">etherpad</a>.<br />
+</li>
+<li>De workshop is ook live <strong>opgenomen</strong> en beschikbaar op <a href="http://youtu.be/WFAHJ0NHOEQ" target="_blank">YouTube</a>. Kijk naar dit college op YouTube! Zeer leerzaam.</li>
+</ol>
+<p>Deze tutorial is gemaakt als onderdeel van een programma van Dr. C Titus Brown’s <a href="http://dib-training.readthedocs.io/en/pub/index.html" target="_blank">Data Intensive Biology (DIB)</a> trainingsprogramma op de Universiteit van Californie, Davis. Dit DIB trainingsprogramma omvat lokale + remote workshops die onderwerpen en gereedschappen behandelen in de bio-informatica en data analyse.</p>
+<p>Het college werd gegeven vanuit Ann Arbor Michigan en drie klassen van elders deden tegelijkertijd mee:</p>
+<ol type="1">
+<li>Universiteit van Californi?, Davis<br />
+</li>
+<li>Simon Fraser Universiteit</li>
+<li>Ontario Instituut for Kanker Onderzoek</li>
+</ol>
+<p>De <strong>Github repository</strong>, die ik binnen heb gehaald en hier gebruik voor deze les, kan worden gevonden op <a href="https://github.com/marschmi/RMarkdown_May11_2016" target="_blank">hier</a>.</p>
+<p><strong>Opgelet:</strong> Dit soort werk introduceert wel een groot aantal Engelse woorden in onze Nederlandse taal. Enkele daarvan heb ik laten staan, niet omdat ik ze mooi vind maar omdat ze al overal gebruikt worden. Gewone mensen praten al over bijvoorbeeld renderen, cachen, files, widgets en output. Met excuses hiervoor, bij voorbaat.</p>
+<hr />
+<h2 id="instructies-bij-het-installeren">Instructies bij het installeren</h2>
+<p><strong>Voordat je gaat werken met de workshopmaterialen, zorg ervoor dat je het volgende hebt gedaan:</strong></p>
+<ol type="1">
+<li>Open <strong>RStudio</strong>.<br />
+</li>
+<li>Installeer en download het <strong>devtools</strong> R pakket door het volgende commando te runnen.</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<ol start="3" type="1">
+<li>Check of je de goede versie hebt van <strong>R</strong> en <strong>RStudio</strong> door <code>devtools::session_info()</code> in de R console te draaien.<br />
+Hier geeft <code>devtools::</code> aan om de <code>session_info()</code> functie in <strong>R</strong> te gebruiken ipv het <strong>devtools</strong> pakket en de <code>sessionInfo()</code> functie binnen het <strong>utils</strong> pakket. Het runnen van <code>devtools::session_info()</code> stelt ons in staat de versie van <strong>R</strong> en <strong>RStudio</strong> vast te stellen.</li>
+</ol>
+<p>Heb je de volgende versie van <strong>R</strong> en <strong>RStudio</strong>?</p>
+<ul>
+<li><strong>R:</strong> <code>Versie 3.3.0 (2016-05-03)</code><br />
+</li>
+<li><p><strong>RStudio:</strong> <code>0.99.1172</code></p>
+<ul>
+<li>Zo <strong>ja</strong> dan kun je van start gaan!<br />
+</li>
+<li>Zo <strong>nee</strong> dan heb je nieuwe versies van <strong>R</strong> en <strong>RStudio</strong> nodig, volg dan <a href="http://umswc.github.io/2016-05-11-RMarkdown/" target="_blank">Setup</a> in dit document.</li>
+</ul></li>
+</ul>
+<ol start="4" type="1">
+<li>Installeer andere R pakketten die nodig zijn voor deze workshop.</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<ol start="5" type="1">
+<li>Als je de pakketten zonder fouten hebt geladen, ben je klaar voor deze workshop!</li>
+</ol>
+<p>Zijn er nog problemen, meld het ajb!</p>
+<hr />
+<h1 id="goede-bronnen">Goede bronnen</h1>
+<p>Deze tutorial kon <strong>niet</strong> samengesteld worden zonder onderstaande goede bronnen:</p>
+<ol type="1">
+<li>De <a href="http://rmarkdown.rstudio.com/index.html" target="_blank">RMarkdown</a> website van RStudio.<br />
+</li>
+<li>Dr. Yuhui Xie’s boek: <a href="http://www.amazon.com/Dynamic-Documents-knitr-Chapman-Hall/dp/1482203537" target="_blank">Dynamic Documents with R and Knitr</a> 2<sup>nd</sup> Edition <span class="citation" data-cites="Xie2015">[@Xie2015]</span> en zijn <a href="http://yihui.name/knitr/" target="_blank">Knitr</a> website.
+<ul>
+<li><strong>HEEL VEEL DANK</strong> aan Dr. Xie voor het schrijven van het <strong>knitr</strong> pakket!!<br />
+</li>
+</ul></li>
+<li>Dr. Karl Broman’s <a href="http://kbroman.org/knitr_knutshell/" target="_blank">“Knitr in a Knutshell”</a>.<br />
+</li>
+<li><a href="https://www.rstudio.com/resources/cheatsheets/" target="_blank">Cheatsheets</a> released by RStudio.</li>
+</ol>
+<hr />
+<h1 id="dynamische-documenten">Dynamische documenten</h1>
+<p><a href="https://en.wikipedia.org/wiki/Literate_programming">Literate programming</a>, zoals dat in het Engels wordt genoemd, is het basisidee achter dynamische documenten en is ge?ntroduceerd door Donald Knuth in 1984. Oorspronkelijk om de broncode en de bijbehorende software documentatie samen te brengen. Tegenwoordig cre?ren we dynamische documenten waarin het programma of de analyse code samen draaien om tot ‘outputs’ te komen (bv. tabellen, plots, modellen, etc) die worden uitgelegd via narratief schrijven.</p>
+<p>De drie stappen van <strong>Literate Programming</strong>:</p>
+<ol type="1">
+<li><strong>Parse</strong> het bron document en haal de code en het verhaal uit elkaar.<br />
+</li>
+<li><strong>Execute</strong> bron code en laat de resultaten zien.<br />
+</li>
+<li><strong>Mix</strong> resultaten van de broncode met het orginele verhaal.</li>
+</ol>
+<p>Er blijven 2 stappen voor ons voor wat betreft het schrijven:</p>
+<ol type="1">
+<li>Analyse code<br />
+</li>
+<li>Een verhaal om de resultaten van de analyse code toe te lichten.</li>
+</ol>
+<p>Traditioneel gebruikten mensen commentaren om het verhaal in de code file kwijt te kunnen raken (voor <strong>R</strong> zou dat een <code>.R</code> file zijn). Deze file zou het volgende in kunnen houden:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+# Titel:  Relatie tussen Autogewicht en Gasefficientie/of-verbruik
+# Door :  Marian Schmidt  
+# Datum:  11 Mei 2016
+
+# Ik verspel dat er een relatie is tussen het gewicht van de auto en de afstand die met de brandstof afgelegd kan worden.  
+# Dat test ik met een lineaire analyse van de &#39;&#39;mtcarsdataset&#39; als onderdeel van de R datasets
+
+# Hoe zien de data eruit?
+#datatable(mtcars) # Interactieve tabel 
+
+# Is er een relatie tussen het gewicht en de afstand per, in dit geval, gallon?
+lm_mpg &lt;- lm(mpg ~ wt, data = mtcars) # Run het lineaire model dat mpg voorspelt op basis van wt
+coef_lm_mpg &lt;- coef(summary(lm_mpg))  # Haal de coefficienten eruit voor de tabel die komt 
+kable(coef_lm_mpg)                    # Maak een niet-interactieve tabel - een functie in knitr
+
+# Plot de relatie tussen gewicht en afstand in mijl per gallon   
+plot &lt;- ggplot(mtcars, aes(x = wt, y = mpg)) + geom_point() + # 
+  geom_smooth(method = &quot;lm&quot;) + theme_bw() +           # Maak een lineair model en maak het zwart en wit
+  xlab(&quot;Weight (1000lbs)&quot;) + ylab(&quot;Miles per Gallon&quot;) # Voeg tekst aan de assen toe
+ggplotly(plot)                                        # Maak de plot interactief  
+
+# Het lijkt erop dat met een toename van 1000 pounds er een afname is van brandstof gebruik met 5.34 mijl per gallon
+# Het eind</code></pre>
+</div>
+<p>De gebruiker zal de commentaren lezen en de codes zelf runnen.</p>
+<p>Echter, ‘literate programming’ stelt ons in staat de code te runnen en de resultaten te beschrijven, allemaal in een document dat we kunnen delen. We zouden bijvoorbeeld het volgende kunnen doen:</p>
+<hr />
+<p><strong>Relatie tussen gewicht van de auto en het brandstofverbruik</strong><br />
+<em>Door:</em> Marian Schmidt<br />
+<em>Datum:</em> 11 Mei 2016</p>
+<p>Ik voorspel dat er een relatie is tussen het gewicht en de afstand die met de brandstof kan worden afgelegd.</p>
+<p>Ik test dat met een lineair model op een dataset in R.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div id="htmlwidget-646ce526759f87505be2" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-646ce526759f87505be2">{"x":{"filter":"none","data":[["Mazda RX4","Mazda RX4 Wag","Datsun 710","Hornet 4 Drive","Hornet Sportabout","Valiant","Duster 360","Merc 240D","Merc 230","Merc 280","Merc 280C","Merc 450SE","Merc 450SL","Merc 450SLC","Cadillac Fleetwood","Lincoln Continental","Chrysler Imperial","Fiat 128","Honda Civic","Toyota Corolla","Toyota Corona","Dodge Challenger","AMC Javelin","Camaro Z28","Pontiac Firebird","Fiat X1-9","Porsche 914-2","Lotus Europa","Ford Pantera L","Ferrari Dino","Maserati Bora","Volvo 142E"],[21,21,22.8,21.4,18.7,18.1,14.3,24.4,22.8,19.2,17.8,16.4,17.3,15.2,10.4,10.4,14.7,32.4,30.4,33.9,21.5,15.5,15.2,13.3,19.2,27.3,26,30.4,15.8,19.7,15,21.4],[6,6,4,6,8,6,8,4,4,6,6,8,8,8,8,8,8,4,4,4,4,8,8,8,8,4,4,4,8,6,8,4],[160,160,108,258,360,225,360,146.7,140.8,167.6,167.6,275.8,275.8,275.8,472,460,440,78.7,75.7,71.1,120.1,318,304,350,400,79,120.3,95.1,351,145,301,121],[110,110,93,110,175,105,245,62,95,123,123,180,180,180,205,215,230,66,52,65,97,150,150,245,175,66,91,113,264,175,335,109],[3.9,3.9,3.85,3.08,3.15,2.76,3.21,3.69,3.92,3.92,3.92,3.07,3.07,3.07,2.93,3,3.23,4.08,4.93,4.22,3.7,2.76,3.15,3.73,3.08,4.08,4.43,3.77,4.22,3.62,3.54,4.11],[2.62,2.875,2.32,3.215,3.44,3.46,3.57,3.19,3.15,3.44,3.44,4.07,3.73,3.78,5.25,5.424,5.345,2.2,1.615,1.835,2.465,3.52,3.435,3.84,3.845,1.935,2.14,1.513,3.17,2.77,3.57,2.78],[16.46,17.02,18.61,19.44,17.02,20.22,15.84,20,22.9,18.3,18.9,17.4,17.6,18,17.98,17.82,17.42,19.47,18.52,19.9,20.01,16.87,17.3,15.41,17.05,18.9,16.7,16.9,14.5,15.5,14.6,18.6],[0,0,1,1,0,1,0,1,1,1,1,0,0,0,0,0,0,1,1,1,1,0,0,0,0,1,0,1,0,0,0,1],[1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,1,1,1,1,1,1,1],[4,4,4,3,3,3,3,4,4,4,4,3,3,3,3,3,3,4,4,4,3,3,3,3,3,4,5,5,5,5,5,4],[4,4,1,1,2,1,4,2,2,4,4,3,3,3,4,4,4,1,2,1,1,2,2,4,2,1,2,2,4,6,8,2]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>mpg<\/th>\n      <th>cyl<\/th>\n      <th>disp<\/th>\n      <th>hp<\/th>\n      <th>drat<\/th>\n      <th>wt<\/th>\n      <th>qsec<\/th>\n      <th>vs<\/th>\n      <th>am<\/th>\n      <th>gear<\/th>\n      <th>carb<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6,7,8,9,10,11]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: right;">Estimate</th>
+<th style="text-align: right;">Std. Error</th>
+<th style="text-align: right;">t value</th>
+<th style="text-align: right;">Pr(&gt;|t|)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>(Intercept)</td>
+<td style="text-align: right;">37.285126</td>
+<td style="text-align: right;">1.877627</td>
+<td style="text-align: right;">19.857575</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td>wt</td>
+<td style="text-align: right;">-5.344472</td>
+<td style="text-align: right;">0.559101</td>
+<td style="text-align: right;">-9.559044</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<div id="htmlwidget-199b4ea8589d4e431845" style="width:432px;height:432px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-199b4ea8589d4e431845">{"x":{"data":[{"x":[2.62,2.875,2.32,3.215,3.44,3.46,3.57,3.19,3.15,3.44,3.44,4.07,3.73,3.78,5.25,5.424,5.345,2.2,1.615,1.835,2.465,3.52,3.435,3.84,3.845,1.935,2.14,1.513,3.17,2.77,3.57,2.78],"y":[21,21,22.8,21.4,18.7,18.1,14.3,24.4,22.8,19.2,17.8,16.4,17.3,15.2,10.4,10.4,14.7,32.4,30.4,33.9,21.5,15.5,15.2,13.3,19.2,27.3,26,30.4,15.8,19.7,15,21.4],"text":["wt: 2.620<br />mpg: 21.0","wt: 2.875<br />mpg: 21.0","wt: 2.320<br />mpg: 22.8","wt: 3.215<br />mpg: 21.4","wt: 3.440<br />mpg: 18.7","wt: 3.460<br />mpg: 18.1","wt: 3.570<br />mpg: 14.3","wt: 3.190<br />mpg: 24.4","wt: 3.150<br />mpg: 22.8","wt: 3.440<br />mpg: 19.2","wt: 3.440<br />mpg: 17.8","wt: 4.070<br />mpg: 16.4","wt: 3.730<br />mpg: 17.3","wt: 3.780<br />mpg: 15.2","wt: 5.250<br />mpg: 10.4","wt: 5.424<br />mpg: 10.4","wt: 5.345<br />mpg: 14.7","wt: 2.200<br />mpg: 32.4","wt: 1.615<br />mpg: 30.4","wt: 1.835<br />mpg: 33.9","wt: 2.465<br />mpg: 21.5","wt: 3.520<br />mpg: 15.5","wt: 3.435<br />mpg: 15.2","wt: 3.840<br />mpg: 13.3","wt: 3.845<br />mpg: 19.2","wt: 1.935<br />mpg: 27.3","wt: 2.140<br />mpg: 26.0","wt: 1.513<br />mpg: 30.4","wt: 3.170<br />mpg: 15.8","wt: 2.770<br />mpg: 19.7","wt: 3.570<br />mpg: 15.0","wt: 2.780<br />mpg: 21.4"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,0,0,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1.513,1.56250632911392,1.61201265822785,1.66151898734177,1.7110253164557,1.76053164556962,1.81003797468354,1.85954430379747,1.90905063291139,1.95855696202532,2.00806329113924,2.05756962025316,2.10707594936709,2.15658227848101,2.20608860759494,2.25559493670886,2.30510126582278,2.35460759493671,2.40411392405063,2.45362025316456,2.50312658227848,2.55263291139241,2.60213924050633,2.65164556962025,2.70115189873418,2.7506582278481,2.80016455696203,2.84967088607595,2.89917721518987,2.9486835443038,2.99818987341772,3.04769620253165,3.09720253164557,3.14670886075949,3.19621518987342,3.24572151898734,3.29522784810127,3.34473417721519,3.39424050632911,3.44374683544304,3.49325316455696,3.54275949367089,3.59226582278481,3.64177215189873,3.69127848101266,3.74078481012658,3.79029113924051,3.83979746835443,3.88930379746835,3.93881012658228,3.9883164556962,4.03782278481013,4.08732911392405,4.13683544303798,4.1863417721519,4.23584810126582,4.28535443037975,4.33486075949367,4.3843670886076,4.43387341772152,4.48337974683544,4.53288607594937,4.58239240506329,4.63189873417722,4.68140506329114,4.73091139240506,4.78041772151899,4.82992405063291,4.87943037974684,4.92893670886076,4.97844303797468,5.02794936708861,5.07745569620253,5.12696202531646,5.17646835443038,5.2259746835443,5.27548101265823,5.32498734177215,5.37449367088608,5.424],"y":[29.1989406778126,28.9343555091934,28.6697703405742,28.4051851719549,28.1406000033357,27.8760148347165,27.6114296660973,27.3468444974781,27.0822593288588,26.8176741602396,26.5530889916204,26.2885038230012,26.023918654382,25.7593334857627,25.4947483171435,25.2301631485243,24.9655779799051,24.7009928112859,24.4364076426666,24.1718224740474,23.9072373054282,23.642652136809,23.3780669681898,23.1134817995705,22.8488966309513,22.5843114623321,22.3197262937129,22.0551411250937,21.7905559564744,21.5259707878552,21.261385619236,20.9968004506168,20.7322152819976,20.4676301133783,20.2030449447591,19.9384597761399,19.6738746075207,19.4092894389015,19.1447042702822,18.880119101663,18.6155339330438,18.3509487644246,18.0863635958054,17.8217784271861,17.5571932585669,17.2926080899477,17.0280229213285,16.7634377527093,16.49885258409,16.2342674154708,15.9696822468516,15.7050970782324,15.4405119096132,15.1759267409939,14.9113415723747,14.6467564037555,14.3821712351363,14.1175860665171,13.8530008978978,13.5884157292786,13.3238305606594,13.0592453920402,12.794660223421,12.5300750548017,12.2654898861825,12.0009047175633,11.7363195489441,11.4717343803249,11.2071492117056,10.9425640430864,10.6779788744672,10.413393705848,10.1488085372288,9.88422336860955,9.61963819999033,9.35505303137111,9.09046786275189,8.82588269413267,8.56129752551345,8.29671235689423],"text":["wt: 1.513000<br />mpg: 29.198941","wt: 1.562506<br />mpg: 28.934356","wt: 1.612013<br />mpg: 28.669770","wt: 1.661519<br />mpg: 28.405185","wt: 1.711025<br />mpg: 28.140600","wt: 1.760532<br />mpg: 27.876015","wt: 1.810038<br />mpg: 27.611430","wt: 1.859544<br />mpg: 27.346844","wt: 1.909051<br />mpg: 27.082259","wt: 1.958557<br />mpg: 26.817674","wt: 2.008063<br />mpg: 26.553089","wt: 2.057570<br />mpg: 26.288504","wt: 2.107076<br />mpg: 26.023919","wt: 2.156582<br />mpg: 25.759333","wt: 2.206089<br />mpg: 25.494748","wt: 2.255595<br />mpg: 25.230163","wt: 2.305101<br />mpg: 24.965578","wt: 2.354608<br />mpg: 24.700993","wt: 2.404114<br />mpg: 24.436408","wt: 2.453620<br />mpg: 24.171822","wt: 2.503127<br />mpg: 23.907237","wt: 2.552633<br />mpg: 23.642652","wt: 2.602139<br />mpg: 23.378067","wt: 2.651646<br />mpg: 23.113482","wt: 2.701152<br />mpg: 22.848897","wt: 2.750658<br />mpg: 22.584311","wt: 2.800165<br />mpg: 22.319726","wt: 2.849671<br />mpg: 22.055141","wt: 2.899177<br />mpg: 21.790556","wt: 2.948684<br />mpg: 21.525971","wt: 2.998190<br />mpg: 21.261386","wt: 3.047696<br />mpg: 20.996800","wt: 3.097203<br />mpg: 20.732215","wt: 3.146709<br />mpg: 20.467630","wt: 3.196215<br />mpg: 20.203045","wt: 3.245722<br />mpg: 19.938460","wt: 3.295228<br />mpg: 19.673875","wt: 3.344734<br />mpg: 19.409289","wt: 3.394241<br />mpg: 19.144704","wt: 3.443747<br />mpg: 18.880119","wt: 3.493253<br />mpg: 18.615534","wt: 3.542759<br />mpg: 18.350949","wt: 3.592266<br />mpg: 18.086364","wt: 3.641772<br />mpg: 17.821778","wt: 3.691278<br />mpg: 17.557193","wt: 3.740785<br />mpg: 17.292608","wt: 3.790291<br />mpg: 17.028023","wt: 3.839797<br />mpg: 16.763438","wt: 3.889304<br />mpg: 16.498853","wt: 3.938810<br />mpg: 16.234267","wt: 3.988316<br />mpg: 15.969682","wt: 4.037823<br />mpg: 15.705097","wt: 4.087329<br />mpg: 15.440512","wt: 4.136835<br />mpg: 15.175927","wt: 4.186342<br />mpg: 14.911342","wt: 4.235848<br />mpg: 14.646756","wt: 4.285354<br />mpg: 14.382171","wt: 4.334861<br />mpg: 14.117586","wt: 4.384367<br />mpg: 13.853001","wt: 4.433873<br />mpg: 13.588416","wt: 4.483380<br />mpg: 13.323831","wt: 4.532886<br />mpg: 13.059245","wt: 4.582392<br />mpg: 12.794660","wt: 4.631899<br />mpg: 12.530075","wt: 4.681405<br />mpg: 12.265490","wt: 4.730911<br />mpg: 12.000905","wt: 4.780418<br />mpg: 11.736320","wt: 4.829924<br />mpg: 11.471734","wt: 4.879430<br />mpg: 11.207149","wt: 4.928937<br />mpg: 10.942564","wt: 4.978443<br />mpg: 10.677979","wt: 5.027949<br />mpg: 10.413394","wt: 5.077456<br />mpg: 10.148809","wt: 5.126962<br />mpg:  9.884223","wt: 5.176468<br />mpg:  9.619638","wt: 5.225975<br />mpg:  9.355053","wt: 5.275481<br />mpg:  9.090468","wt: 5.324987<br />mpg:  8.825883","wt: 5.374494<br />mpg:  8.561298","wt: 5.424000<br />mpg:  8.296712"],"type":"scatter","mode":"lines","name":"fitted values","line":{"width":3.77952755905512,"color":"rgba(51,102,255,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1.513,1.56250632911392,1.61201265822785,1.66151898734177,1.7110253164557,1.76053164556962,1.81003797468354,1.85954430379747,1.90905063291139,1.95855696202532,2.00806329113924,2.05756962025316,2.10707594936709,2.15658227848101,2.20608860759494,2.25559493670886,2.30510126582278,2.35460759493671,2.40411392405063,2.45362025316456,2.50312658227848,2.55263291139241,2.60213924050633,2.65164556962025,2.70115189873418,2.7506582278481,2.80016455696203,2.84967088607595,2.89917721518987,2.9486835443038,2.99818987341772,3.04769620253165,3.09720253164557,3.14670886075949,3.19621518987342,3.24572151898734,3.29522784810127,3.34473417721519,3.39424050632911,3.44374683544304,3.49325316455696,3.54275949367089,3.59226582278481,3.64177215189873,3.69127848101266,3.74078481012658,3.79029113924051,3.83979746835443,3.88930379746835,3.93881012658228,3.9883164556962,4.03782278481013,4.08732911392405,4.13683544303798,4.1863417721519,4.23584810126582,4.28535443037975,4.33486075949367,4.3843670886076,4.43387341772152,4.48337974683544,4.53288607594937,4.58239240506329,4.63189873417722,4.68140506329114,4.73091139240506,4.78041772151899,4.82992405063291,4.87943037974684,4.92893670886076,4.97844303797468,5.02794936708861,5.07745569620253,5.12696202531646,5.17646835443038,5.2259746835443,5.27548101265823,5.32498734177215,5.37449367088608,5.424,5.424,5.424,5.37449367088608,5.32498734177215,5.27548101265823,5.2259746835443,5.17646835443038,5.12696202531646,5.07745569620253,5.02794936708861,4.97844303797468,4.92893670886076,4.87943037974684,4.82992405063291,4.78041772151899,4.73091139240506,4.68140506329114,4.63189873417722,4.58239240506329,4.53288607594937,4.48337974683544,4.43387341772152,4.3843670886076,4.33486075949367,4.28535443037975,4.23584810126582,4.1863417721519,4.13683544303798,4.08732911392405,4.03782278481013,3.9883164556962,3.93881012658228,3.88930379746835,3.83979746835443,3.79029113924051,3.74078481012658,3.69127848101266,3.64177215189873,3.59226582278481,3.54275949367089,3.49325316455696,3.44374683544304,3.39424050632911,3.34473417721519,3.29522784810127,3.24572151898734,3.19621518987342,3.14670886075949,3.09720253164557,3.04769620253165,2.99818987341772,2.9486835443038,2.89917721518987,2.84967088607595,2.80016455696203,2.7506582278481,2.70115189873418,2.65164556962025,2.60213924050633,2.55263291139241,2.50312658227848,2.45362025316456,2.40411392405063,2.35460759493671,2.30510126582278,2.25559493670886,2.20608860759494,2.15658227848101,2.10707594936709,2.05756962025316,2.00806329113924,1.95855696202532,1.90905063291139,1.85954430379747,1.81003797468354,1.76053164556962,1.7110253164557,1.66151898734177,1.61201265822785,1.56250632911392,1.513,1.513],"y":[26.9637596243046,26.748211630978,26.532293643118,26.3159798039527,26.0992420315869,25.8820498075489,25.6643699464367,25.4461663458981,25.2273997165231,25.0080272917409,24.7880025185342,24.5672747307859,24.3457888084175,24.1234848272503,23.9002977068049,23.6761568661453,23.4509859014399,23.2247023032092,22.9972172362447,22.7684354108148,22.5382550797684,22.3065682020549,22.073260818275,21.8382136871272,21.6013032316477,21.3624028393291,21.1213845488153,20.8781211364057,20.6324885872813,20.3843688997083,20.1336531278785,19.8802445251398,19.624061610802,19.3650409583153,19.1031394977534,18.8383361460623,18.5706326249216,18.3000533934652,18.0266447019082,17.7504728499618,17.4716217986802,17.190190327058,16.9062889412588,16.6200367360143,16.3315583798572,16.0409813560006,15.748433546582,15.4540412060478,15.157927333949,14.8602104304317,14.5610035995316,14.2604139550846,13.9585422800956,13.6554828910183,13.3513236620105,13.0461461695019,12.740025923372,12.4330326570007,12.1252306540028,11.8166790943701,11.5074324069286,11.1975406184823,10.8870496928064,10.5760018548558,10.2644358972571,9.95238746743981,9.6398893347169,9.32697163731397,9.01366210982825,8.69998629192387,8.38596771927446,8.07162809788066,7.75698746294225,7.44206432347029,7.1268757937988,6.81143771310854,6.49576475401476,6.17987052120298,5.86376764102542,5.5474678428992,5.5474678428992,11.0459568708893,11.2588274100015,11.4718948670624,11.685170971489,11.8986683496337,12.1124006061819,12.3263824137488,12.5406296115153,12.7551593138153,12.96999002966,13.185141794249,13.400636313583,13.6164971233358,13.8327497631713,14.0494219676868,14.266543875108,14.4841482547477,14.7022707540356,14.9209501655981,15.1402287143902,15.3601523641871,15.5807711417929,15.8021394760335,16.0243165469005,16.2473666380091,16.4713594827389,16.6963705909696,16.9224815391307,17.1497802013801,17.3783608941716,17.6083244005099,17.8397778342311,18.0728342993708,18.307612296075,18.5442348238948,18.7828281372767,19.023520118358,19.266438250352,19.5117072017912,19.7594460674074,20.0097653533643,20.2627638386563,20.5185254843377,20.7771165901197,21.0385834062175,21.3029503917649,21.5702192684414,21.8403689531932,22.1133563760938,22.3891181105935,22.6675726760022,22.9486233256676,23.2321611137817,23.5180680386105,23.8062200853351,24.096490030255,24.3887499120139,24.6828731181045,24.9787360715631,25.276219531088,25.5752095372801,25.8755980490886,26.1772833193625,26.4801700583702,26.7841694309033,27.0891989274822,27.3951821442752,27.7020485003464,28.0097329152165,28.3181754647066,28.6273210287383,28.9371189411946,29.2475226490581,29.5584893857579,29.8699798618842,30.1819579750846,30.4943905399572,30.8072470380303,31.1204993874088,31.4341217313206,26.9637596243046],"text":["wt: 1.513000<br />mpg: 29.198941","wt: 1.562506<br />mpg: 28.934356","wt: 1.612013<br />mpg: 28.669770","wt: 1.661519<br />mpg: 28.405185","wt: 1.711025<br />mpg: 28.140600","wt: 1.760532<br />mpg: 27.876015","wt: 1.810038<br />mpg: 27.611430","wt: 1.859544<br />mpg: 27.346844","wt: 1.909051<br />mpg: 27.082259","wt: 1.958557<br />mpg: 26.817674","wt: 2.008063<br />mpg: 26.553089","wt: 2.057570<br />mpg: 26.288504","wt: 2.107076<br />mpg: 26.023919","wt: 2.156582<br />mpg: 25.759333","wt: 2.206089<br />mpg: 25.494748","wt: 2.255595<br />mpg: 25.230163","wt: 2.305101<br />mpg: 24.965578","wt: 2.354608<br />mpg: 24.700993","wt: 2.404114<br />mpg: 24.436408","wt: 2.453620<br />mpg: 24.171822","wt: 2.503127<br />mpg: 23.907237","wt: 2.552633<br />mpg: 23.642652","wt: 2.602139<br />mpg: 23.378067","wt: 2.651646<br />mpg: 23.113482","wt: 2.701152<br />mpg: 22.848897","wt: 2.750658<br />mpg: 22.584311","wt: 2.800165<br />mpg: 22.319726","wt: 2.849671<br />mpg: 22.055141","wt: 2.899177<br />mpg: 21.790556","wt: 2.948684<br />mpg: 21.525971","wt: 2.998190<br />mpg: 21.261386","wt: 3.047696<br />mpg: 20.996800","wt: 3.097203<br />mpg: 20.732215","wt: 3.146709<br />mpg: 20.467630","wt: 3.196215<br />mpg: 20.203045","wt: 3.245722<br />mpg: 19.938460","wt: 3.295228<br />mpg: 19.673875","wt: 3.344734<br />mpg: 19.409289","wt: 3.394241<br />mpg: 19.144704","wt: 3.443747<br />mpg: 18.880119","wt: 3.493253<br />mpg: 18.615534","wt: 3.542759<br />mpg: 18.350949","wt: 3.592266<br />mpg: 18.086364","wt: 3.641772<br />mpg: 17.821778","wt: 3.691278<br />mpg: 17.557193","wt: 3.740785<br />mpg: 17.292608","wt: 3.790291<br />mpg: 17.028023","wt: 3.839797<br />mpg: 16.763438","wt: 3.889304<br />mpg: 16.498853","wt: 3.938810<br />mpg: 16.234267","wt: 3.988316<br />mpg: 15.969682","wt: 4.037823<br />mpg: 15.705097","wt: 4.087329<br />mpg: 15.440512","wt: 4.136835<br />mpg: 15.175927","wt: 4.186342<br />mpg: 14.911342","wt: 4.235848<br />mpg: 14.646756","wt: 4.285354<br />mpg: 14.382171","wt: 4.334861<br />mpg: 14.117586","wt: 4.384367<br />mpg: 13.853001","wt: 4.433873<br />mpg: 13.588416","wt: 4.483380<br />mpg: 13.323831","wt: 4.532886<br />mpg: 13.059245","wt: 4.582392<br />mpg: 12.794660","wt: 4.631899<br />mpg: 12.530075","wt: 4.681405<br />mpg: 12.265490","wt: 4.730911<br />mpg: 12.000905","wt: 4.780418<br />mpg: 11.736320","wt: 4.829924<br />mpg: 11.471734","wt: 4.879430<br />mpg: 11.207149","wt: 4.928937<br />mpg: 10.942564","wt: 4.978443<br />mpg: 10.677979","wt: 5.027949<br />mpg: 10.413394","wt: 5.077456<br />mpg: 10.148809","wt: 5.126962<br />mpg:  9.884223","wt: 5.176468<br />mpg:  9.619638","wt: 5.225975<br />mpg:  9.355053","wt: 5.275481<br />mpg:  9.090468","wt: 5.324987<br />mpg:  8.825883","wt: 5.374494<br />mpg:  8.561298","wt: 5.424000<br />mpg:  8.296712","wt: 5.424000<br />mpg:  8.296712","wt: 5.424000<br />mpg:  8.296712","wt: 5.374494<br />mpg:  8.561298","wt: 5.324987<br />mpg:  8.825883","wt: 5.275481<br />mpg:  9.090468","wt: 5.225975<br />mpg:  9.355053","wt: 5.176468<br />mpg:  9.619638","wt: 5.126962<br />mpg:  9.884223","wt: 5.077456<br />mpg: 10.148809","wt: 5.027949<br />mpg: 10.413394","wt: 4.978443<br />mpg: 10.677979","wt: 4.928937<br />mpg: 10.942564","wt: 4.879430<br />mpg: 11.207149","wt: 4.829924<br />mpg: 11.471734","wt: 4.780418<br />mpg: 11.736320","wt: 4.730911<br />mpg: 12.000905","wt: 4.681405<br />mpg: 12.265490","wt: 4.631899<br />mpg: 12.530075","wt: 4.582392<br />mpg: 12.794660","wt: 4.532886<br />mpg: 13.059245","wt: 4.483380<br />mpg: 13.323831","wt: 4.433873<br />mpg: 13.588416","wt: 4.384367<br />mpg: 13.853001","wt: 4.334861<br />mpg: 14.117586","wt: 4.285354<br />mpg: 14.382171","wt: 4.235848<br />mpg: 14.646756","wt: 4.186342<br />mpg: 14.911342","wt: 4.136835<br />mpg: 15.175927","wt: 4.087329<br />mpg: 15.440512","wt: 4.037823<br />mpg: 15.705097","wt: 3.988316<br />mpg: 15.969682","wt: 3.938810<br />mpg: 16.234267","wt: 3.889304<br />mpg: 16.498853","wt: 3.839797<br />mpg: 16.763438","wt: 3.790291<br />mpg: 17.028023","wt: 3.740785<br />mpg: 17.292608","wt: 3.691278<br />mpg: 17.557193","wt: 3.641772<br />mpg: 17.821778","wt: 3.592266<br />mpg: 18.086364","wt: 3.542759<br />mpg: 18.350949","wt: 3.493253<br />mpg: 18.615534","wt: 3.443747<br />mpg: 18.880119","wt: 3.394241<br />mpg: 19.144704","wt: 3.344734<br />mpg: 19.409289","wt: 3.295228<br />mpg: 19.673875","wt: 3.245722<br />mpg: 19.938460","wt: 3.196215<br />mpg: 20.203045","wt: 3.146709<br />mpg: 20.467630","wt: 3.097203<br />mpg: 20.732215","wt: 3.047696<br />mpg: 20.996800","wt: 2.998190<br />mpg: 21.261386","wt: 2.948684<br />mpg: 21.525971","wt: 2.899177<br />mpg: 21.790556","wt: 2.849671<br />mpg: 22.055141","wt: 2.800165<br />mpg: 22.319726","wt: 2.750658<br />mpg: 22.584311","wt: 2.701152<br />mpg: 22.848897","wt: 2.651646<br />mpg: 23.113482","wt: 2.602139<br />mpg: 23.378067","wt: 2.552633<br />mpg: 23.642652","wt: 2.503127<br />mpg: 23.907237","wt: 2.453620<br />mpg: 24.171822","wt: 2.404114<br />mpg: 24.436408","wt: 2.354608<br />mpg: 24.700993","wt: 2.305101<br />mpg: 24.965578","wt: 2.255595<br />mpg: 25.230163","wt: 2.206089<br />mpg: 25.494748","wt: 2.156582<br />mpg: 25.759333","wt: 2.107076<br />mpg: 26.023919","wt: 2.057570<br />mpg: 26.288504","wt: 2.008063<br />mpg: 26.553089","wt: 1.958557<br />mpg: 26.817674","wt: 1.909051<br />mpg: 27.082259","wt: 1.859544<br />mpg: 27.346844","wt: 1.810038<br />mpg: 27.611430","wt: 1.760532<br />mpg: 27.876015","wt: 1.711025<br />mpg: 28.140600","wt: 1.661519<br />mpg: 28.405185","wt: 1.612013<br />mpg: 28.669770","wt: 1.562506<br />mpg: 28.934356","wt: 1.513000<br />mpg: 29.198941","wt: 1.513000<br />mpg: 29.198941"],"type":"scatter","mode":"lines","line":{"width":3.77952755905512,"color":"transparent","dash":"solid"},"fill":"toself","fillcolor":"rgba(153,153,153,0.4)","hoveron":"points","hoverinfo":"x+y","showlegend":false,"xaxis":"x","yaxis":"y","frame":null}],"layout":{"margin":{"t":23.3059360730594,"r":7.30593607305936,"b":37.2602739726027,"l":37.2602739726027},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[1.31745,5.61955],"tickmode":"array","ticktext":["2","3","4","5"],"tickvals":[2,3,4,5],"categoryorder":"array","categoryarray":["2","3","4","5"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":"Weight (1000lbs)","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[4.12984123504415,35.317626607855],"tickmode":"array","ticktext":["10","20","30"],"tickvals":[10,20,30],"categoryorder":"array","categoryarray":["10","20","30"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":"Miles per Gallon","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(51,51,51,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"cloud":false},"source":"A","attrs":{"2bac7832611b":{"x":{},"y":{},"type":"scatter"},"2bacfc06143":{"x":{},"y":{}}},"cur_data":"2bac7832611b","visdat":{"2bac7832611b":["function (y) ","x"],"2bacfc06143":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":[]}</script>
+</div>
+<p>Het lijkt erop dat met elke <strong>1000</strong> pond er een <strong>afname</strong> is in brandstof gebruik met 5.3444716 mijl per gallon</p>
+<p>Het einde</p>
+<hr />
+<p>Als we zo programmeren kunnen we ook:</p>
+<ol type="1">
+<li><strong>Tangle</strong>: De broncode uit het document halen.<br />
+</li>
+<li><strong>Weave</strong> : Deze code pakken en de resultaten rechtstreeks laten zien.</li>
+</ol>
+<p>Dat is wat we gaan doen.</p>
+<hr />
+<h2 id="reproduceerbaar-onderzoek">Reproduceerbaar onderzoek</h2>
+<p>Reproduceerbaar onderzoek is een mogelijk product van dynamische documenten, echter, goed resultaat is niet gegarandeerd!<br />
+Goede uitvoering van reproduceerbaar onderzoek houdt in ieder geval in:</p>
+<ol type="1">
+<li>Het hele project in een directory plaatsen die wordt ondersteund door de ‘version control’.<br />
+</li>
+<li>Code en data vrijlaten.<br />
+</li>
+<li>Alles documenteren en de code als documentatie gebruiken!<br />
+</li>
+<li>Figuren, tabellen en de statistiek zijn het resultaat van scripts en <code>codes die in de tekst staan</code>.<br />
+</li>
+<li>Schrijf in de codes de paden die worden gebruikt.<br />
+</li>
+<li>Stel ‘seed’ in zodat een volgende persoon dezelfde resultaten krijgt.<br />
+</li>
+<li>Laat ook informatie zien waarmee de code file wordt uitgevoerd. Je kunt bijvoorbeeld de <code>devtools::session_info()</code> gebruiken.</li>
+</ol>
+<p>Om meer over reproduceerbaarheid en datamanagement te lezen, kun je Vince Buffalo’s Boek erop naslaan<span class="citation" data-cites="Buffalo2015">[@Buffalo2015]</span>.</p>
+<hr />
+<h1 id="markdown">Markdown</h1>
+<p>Om RMarkdown helemaal te begrijpen moeten we het eerst hebben over <a href="https://daringfireball.net/projects/markdown/">Markdown</a>, wat een systeem is om een simpele, leesbare tekst te maken die eenvoudig kan worden omgezet naar HTML. Markdown is essentieel voor twee dingen:</p>
+<ol type="1">
+<li>Een kale tekst die de syntax vormt<br />
+</li>
+<li>Een software gereedschap dat in Perl is geschreven.
+<ul>
+<li>Zet de kale tekst om in HTML.</li>
+</ul></li>
+</ol>
+<blockquote>
+<p><strong>Belangrijkste doel van Markdown:</strong><br />
+Maakt de syntax van het orginele (pre-HTML) document zo leesbaar als mogelijk.</p>
+</blockquote>
+<p>Zou je deze code liever in HTML lezen?</p>
+<pre class="html"><code>
+&lt;body&gt;
+  &lt;section&gt;
+    &lt;h1&gt;Paklijst voor bergklimmen&lt;/h1&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Bergschoenen&lt;/li&gt;
+      &lt;li&gt;Klimgordel&lt;/li&gt;
+      &lt;li&gt;Rugzak&lt;/li&gt;
+      &lt;li&gt;Touw&lt;/li&gt;
+      &lt;li&gt;Zelfzekering&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/section&gt;
+&lt;/body&gt;</code></pre>
+<p>Of deze code in Markdown?</p>
+<pre class="markdown"><code>
+# Paklijst voor bergklimmen
+
+* Bergschoenen
+* Klimgordel
+* Rugzak  
+* Touw
+* Zelfzekering</code></pre>
+<p>Een beetje een normaal mens vindt de Markdown code zeker makkelijker om te lezen!</p>
+<p>We zullen meer over de syntax van Markdown praten nadat we RMarkdown hebben ge?ntroduceerd maar laten we ons allereerst beseffen hoeveel makkelijker ons leven is/zal zijn omdat Markdown bestaat! Dank je <a href="https://en.wikipedia.org/wiki/John_Gruber">John Gruber</a> en <a href="https://en.wikipedia.org/wiki/Aaron_Swartz">Aaron Swartz</a> (RIP) voor het ontwikkelen van Markdown in 2004!</p>
+<hr />
+<h1 id="rmarkdown">RMarkdown</h1>
+<p><a href="http://rmarkdown.rstudio.com/">RMarkdown</a> is een variant van Markdown dat het makkelijker maakt om met RStudio dynamische documenten, presentaties en rapporten te maken. Het omvat ‘R code chunks’ (ik laat hier even het Engels staan) om met <strong>knitr</strong> te gebruiken waarmee makkelijker reproduceerbare (web-based) rapporten gemaakt kunnen worden die automatisch aangepast worden wanneer de onderliggende code is veranderd.</p>
+<ul>
+<li>RMarkdown laat jou <strong>Markdown</strong> combineren met plaatjes, linken, tabellen, LaTeX en de code zelf.</li>
+<li>RStudio zorgt ervoor dat het maken van documenten met RMarkdown makkelijk wordt<br />
+</li>
+<li>RStudio is (net als R) vrij te gebruiken en draait op elk systeem.</li>
+</ul>
+<p><strong>RMarkdown geeft verschillende typen files waaronder:</strong></p>
+<ul>
+<li><a href="http://rmarkdown.rstudio.com/html_document_format.html">HTML</a><br />
+</li>
+<li><a href="http://rmarkdown.rstudio.com/pdf_document_format.html">PDF</a><br />
+</li>
+<li>Markdown<br />
+</li>
+<li><a href="http://rmarkdown.rstudio.com/word_document_format.html">Microsoft Word</a><br />
+</li>
+<li>Presentaties:
+<ul>
+<li>Opvallende HTML5 presentaties:
+<ul>
+<li><a href="http://rmarkdown.rstudio.com/ioslides_presentation_format.html">ioslides</a></li>
+<li><a href="http://rmarkdown.rstudio.com/slidy_presentation_format.html">Slidy</a><br />
+</li>
+<li><a href="http://slidify.org/index.html">Slidify</a></li>
+</ul></li>
+<li>PDF presentaties:
+<ul>
+<li><a href="http://rmarkdown.rstudio.com/beamer_presentation_format.html">Beamer</a><br />
+</li>
+</ul></li>
+<li>Handouts:
+<ul>
+<li><a href="http://rmarkdown.rstudio.com/tufte_handout_format.html">Tufte Handouts</a></li>
+</ul></li>
+</ul></li>
+<li><a href="http://rmarkdown.rstudio.com/package_vignette_format.html">HTML R Package Vignettes</a><br />
+</li>
+<li><a href="http://rmarkdown.rstudio.com/rmarkdown_websites.html">Even Entire Websites!</a></li>
+</ul>
+<p><img src="Images/Rmd_output.png" /></p>
+<p>Terwijl er heel veel verschillende documenten kunnen worden geleverd met RMarkdown, leggen we vandaag de nadruk in de eerste plaats op HTML output files omdat die voor mijn onderzoek misschien het meest bruikbaar en flexibel zijn.</p>
+<h2 id="waarom-r-markdown">Waarom R Markdown?</h2>
+<p>Een aantrekkelijk gereedschap voor reproduceerbare en dynamische rapporten!</p>
+<ul>
+<li>Terwijl het was gemaakt voor R, accepteert het veel programmeertalen. Om het eenvoudig te houden, werken we vandaag alleen met R.<br />
+</li>
+<li>Een code kan op een aantal manieren worden uitgevoerd:
+<ol type="1">
+<li><strong>Inline Code:</strong> Een korte code die in de geschreven tekst van het document wordt uitgevoerd.</li>
+<li><strong>Code Chunks:</strong> Delen van het document omvatten verschillende zinnen voor programmeer of analyse code. Dat kan een plot of een tabel zijn, maar ook berekeningen van de samenvattende statistiek, pakketten laden, etc.<br />
+</li>
+</ol></li>
+<li>Het is makkelijk om:
+<ul>
+<li>Plaatjes op te nemen.<br />
+</li>
+<li>De Markdown syntax te leren.<br />
+</li>
+<li>LaTeX vergelijkingen op te nemen.<br />
+</li>
+<li>Interactieve tabellen op te nemen.</li>
+<li>Gebruik de versie via <strong>Git</strong>.
+<ul>
+<li>Dan is het makkelijker om te delen en samen te werken in analyses, projecten en publicaties!</li>
+</ul></li>
+<li>Externe linken toe te voegen - Rmarkdown begrijpt zelfs enige html codes!<br />
+</li>
+<li>Om mooie documenten te maken.</li>
+</ul></li>
+<li>Je hoeft je geen zorgen te maken over pagina breuken of het plaatsen van de figuren.<br />
+</li>
+<li>Consolideer jouw code en plaats het in een file:
+<ul>
+<li>Powerpoint, PDFs, html documenten en word files</li>
+</ul></li>
+</ul>
+<h2 id="eenvoudige-werkwijze">Eenvoudige werkwijze</h2>
+<p>In het kort, om een rapport te maken:</p>
+<ol type="1">
+<li><strong>Open</strong> een <code>.Rmd</code> file.
+<ul>
+<li>Maak een YAML kop (meer hierover zo dadelijk!)</li>
+</ul></li>
+<li><strong>Schrijf</strong> de inhoud met RMarkdown syntax.<br />
+</li>
+<li><strong>Neem mee</strong> de R code in code chunks of met een inline code.<br />
+</li>
+<li><strong>Draai</strong> de document output.</li>
+</ol>
+<figure>
+<img src="Images/rmd_workflow_cheatsheet.png" alt="Werkwijze om een rapport te maken" /><figcaption>Werkwijze om een rapport te maken</figcaption>
+</figure>
+<p><strong>Overzicht van de stappen die RMarkdown maakt om een ‘gerenderd’ document te krijgen:</strong></p>
+<ol type="1">
+<li>Maak een <code>.Rmd</code> rapport met ‘R code chunks’ en markdown verhalen (zoals hierboven in stappen beschreven).<br />
+</li>
+<li>Geef de <code>.Rmd</code>-file aan <code>knitr</code> om de ‘R code chunks’ uit te voeren en een nieuwe <code>.md</code> file te maken.
+<ul>
+<li><a href="http://yihui.name/knitr/" target="_blank">Knitr</a> is een pakket binnen R die jou in staat stelt de code binnen RMarkdown documenten uit te voeren zoals HTML, latex, pdf, word en andere document types.<br />
+</li>
+</ul></li>
+<li>Geef de <code>.md</code> file aan <strong>pandoc</strong>, die er een definitief document van maakt (b.v. html, Microsoft word, pdf, etc.).
+<ul>
+<li><a href="http://pandoc.org/" target="_blank">Pandoc</a> is een universeel gereedschap om documenten te converteren en zet het ene document type (in dit geval: <code>.Rmd</code>) om in een ander (in dit geval: HTML)</li>
+</ul></li>
+</ol>
+<figure>
+<img src="Images/Rmd_workflow.png" alt="Hoe een Rmd document wordt omgezet" /><figcaption>Hoe een Rmd document wordt omgezet</figcaption>
+</figure>
+<p>Hoewel dit mogelijk wat ingewikkeld lijkt, kunnen we op de “Knit” knop drukken boven aan de pagina die er zo uitziet:<br />
+<img src="Images/knit_button.png" /></p>
+of we kunnen de volgende code runnen:<br />
+
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<h2 id="maak-een-.rmd-file">Maak een <code>.Rmd</code> file</h2>
+<p>Het wordt tijd! Laten we met RMarkdown gaan werken!</p>
+<ol type="1">
+<li>In de menu bar, klik je op <strong>File -&gt; New File -&gt; RMarkdown</strong>
+<ul>
+<li>Of je klikt eenvoudig op het groene plus teken links boven in de hoek van RStudio.</li>
+</ul></li>
+</ol>
+<p><img src="Images/create_rmd.png" /></p>
+<ol start="2" type="1">
+<li>Het volgende zal omhoog komen.<br />
+</li>
+</ol>
+<ul>
+<li>Hierbinnen kies je het type output dat je wilt hebben. <strong>Opgelet:</strong> deze output kan later heel makkelijk worden aangepast!</li>
+</ul>
+<p><img src="Images/new_rmd_yaml.png" /></p>
+<ol start="3" type="1">
+<li>Klik <strong>OK</strong></li>
+</ol>
+<h2 id="yaml-koppen">YAML koppen</h2>
+<p>YAML staat voor “YAML Ain’t Markup Language” en is eigenlijk een soort geklusterde structuur voor de metadata van het document. Het staat tussen twee regels van drie streepjes <code>---</code> en wordt automatisch omgezet door RStudio. Een eenvoudig voorbeeld:</p>
+<pre><code>
+---
+title:  &quot;Analyse Rapport&quot;  
+Author:  &quot;Harrie Jonkman&quot;  
+date: &quot;1 Maart 2017&quot;  
+output:  html_document
+---</code></pre>
+<p>Het voorbeeld boven zal een HTML document maken. Echter, de volgende opties zijn ook beschikbaar.</p>
+<ul>
+<li><code>html_document</code><br />
+</li>
+<li><code>pdf_document</code><br />
+</li>
+<li><code>word_document</code><br />
+</li>
+<li><code>beamer_presentation</code> (pdf powerpoint)<br />
+</li>
+<li><code>ioslides_presentation</code> (HTML powerpoint)<br />
+</li>
+<li>en nog meer …</li>
+</ul>
+<p>Vandaag leggen we de nadruk op HTML files. Echter voel je vrij als je hier wat mee wilt spelen door bv. word en pdf documenten te maken. Presentatie documenten kennen een wat andere syntax (bv. om aan te geven wanneer de ene dia eindigt en de andere begint) en dan is er nog wat markdown syntax specifiek voor presentaties maar die gaat voorbij het doel van deze workshop.</p>
+<p>In deze workshops bouwen we verder voort op de details van YAML koppen.</p>
+<h2 id="markdown-basis">Markdown Basis</h2>
+<p>Kijk hiernaar <a href="http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf">RMarkdown Reference Guide</a></p>
+<p>Haal hier ook informatie vandaan <a href="http://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf">RMarkdown Cheatsheet</a>:</p>
+<figure>
+<img src="Images/markdown_basics.png" alt="Markdown Basis van RStudio’s RMarkdown Cheatsheet" /><figcaption>Markdown Basis van RStudio’s RMarkdown Cheatsheet</figcaption>
+</figure>
+<p><strong>Handige tips:</strong></p>
+<ul>
+<li>Eindig elke regel met twee spaties om een nieuwe paragraaf te beginnen.<br />
+</li>
+<li>Woorden binnen een code moeten aan beide kanten zo’n kommateken kennen: `<br />
+</li>
+<li>Om iets tot superscript te maken moet je een <code>^</code> aan beide zijden plaatsen. Super<sup>script</sup> werd gevormd door <code>Super^script^</code> te typen.<br />
+</li>
+<li>Vergelijkingen kunnen in een inline code worden geplaatst met <code>$</code> en als blok gecentreerd binnen het document door <code>$$</code>. Bijvoorbeeld <span class="math inline">\(E = mc^2\)</span> staat tussen de regels terwijl het volgende geblokt wordt opgenomen: <span class="math display">\[E = mc^2\]</span>
+<ul>
+<li><strong>Opgelet:</strong> Om met <code>$</code> en <code>$$</code> een superscript <code>^</code> te maken, is het nodig om voor elk aLFAnumeriEK dat superscript te gebruiken.<br />
+</li>
+<li>Ander wiskundig materiaal:
+<ul>
+<li>Vierkantswortel: <code>$\sqrt{b}$</code> zal <span class="math inline">\(\sqrt{b}\)</span> maken</li>
+<li>Breuken: <code>$\frac{1}{2}$</code> = <span class="math inline">\(\frac{1}{2}\)</span>
+<ul>
+<li><ul>
+<li>Vergelijkingen met breuken: <code>$f(x)=\frac{P(x)}{Q(x)}$</code> = <span class="math inline">\(f(x)=\frac{P(x)}{Q(x)}\)</span><br />
+</li>
+</ul></li>
+</ul></li>
+<li>Binomiale Coefficienten: <code>$\binom{k}{n}$</code> = <span class="math inline">\(\binom{k}{n}\)</span><br />
+</li>
+<li>Integralen: <code>$$\int_{a}^{b} x^2 dx$$</code> = <span class="math display">\[\int_{a}^{b} x^2 dx\]</span></li>
+</ul></li>
+<li><a href="https://www.sharelatex.com/learn/Main_Page">ShareLaTeX</a> is een prachtige bron voor LaTeX-codes.</li>
+</ul></li>
+</ul>
+<p><strong>Nog wat wiskundig materiaal:</strong></p>
+<table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 36%" />
+<col style="width: 41%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Beschrijving</th>
+<th>Code</th>
+<th style="text-align: center;">Voorbeelden</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">Griekse letters</td>
+<td><code>$\alpha$</code> <code>$\beta$</code> <code>$\gamma$</code> <code>$\rho$</code> <code>$\sigma$</code> <code>$\delta$</code> <code>$\epsilon$</code> <code>$mu$</code></td>
+<td style="text-align: center;"><span class="math inline">\(\alpha\)</span> <span class="math inline">\(\beta\)</span> <span class="math inline">\(\gamma\)</span> <span class="math inline">\(\rho\)</span> <span class="math inline">\(\sigma\)</span> <span class="math inline">\(\delta\)</span> <span class="math inline">\(\epsilon\)</span> <span class="math inline">\(\mu\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">Binaire handelingen</td>
+<td><code>$\times$</code> <code>$\otimes$</code> <code>$\oplus$</code> <code>$\cup$</code> <code>$\cap$</code></td>
+<td style="text-align: center;"><span class="math inline">\(\times\)</span> <span class="math inline">\(\otimes\)</span> <span class="math inline">\(\oplus\)</span> <span class="math inline">\(\cup\)</span> <span class="math inline">\(\cap\)</span> <span class="math inline">\(\times\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">Relationele handelingen</td>
+<td><code>$&lt; &gt;$</code> <code>$\subset$</code> <code>$\supset$</code> <code>$\subseteq$</code> <code>$\supseteq$</code></td>
+<td style="text-align: center;"><span class="math inline">\(&lt; &gt;\)</span> <span class="math inline">\(\subset\)</span> <span class="math inline">\(\supset\)</span> <span class="math inline">\(\subseteq\)</span> <span class="math inline">\(\supseteq\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">Verder</td>
+<td><code>$\int$</code> <code>$\oint$</code> <code>$\sum$</code> <code>$\prod$</code></td>
+<td style="text-align: center;"><span class="math inline">\(\int\)</span> <span class="math inline">\(\oint\)</span> <span class="math inline">\(\sum\)</span> <span class="math inline">\(\prod\)</span></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<blockquote>
+<p><strong>Uitdaging:</strong> Probeer de volgende output te maken:</p>
+</blockquote>
+<ol type="1">
+<li><p>Vandaag voel ik mij <strong>vet</strong> omdat ik <em>RMarkdown</em> leer.</p></li>
+<li><p><em>honing</em> is <strong>heel</strong> <em>zoet</em>.</p></li>
+<li><p>YAS!!!<sup>!!!</sup></p></li>
+<li><p>R<sup>2</sup> waarden zijn <strong>informatief</strong>!</p></li>
+<li><p><span class="math inline">\(R^{2}\)</span> beschrijft de <em>variantie</em> verklaard door het model.</p></li>
+<li><p><del>Ik kende geen RMarkdown</del> <code>Vandaag heb ik RMarkdown geleerd</code></p></li>
+<li><p><a href="www.rstudio.com">RStudio link</a></p></li>
+<li>Output van het volgende:<br />
+</li>
+</ol>
+<pre><code>
+# RMarkdown   
+## R   
+### Knitr   
+#### Pandoc  
+##### HTML  </code></pre>
+<ol start="9" type="1">
+<li><p><span class="math inline">\(\sqrt{b^2 - 4ac}\)</span></p></li>
+<li><p><span class="math display">\[\sqrt{b^2 - 4ac}\]</span></p></li>
+<li><p><span class="math inline">\(X_{i,j}\)</span></p></li>
+</ol>
+<blockquote>
+<ol start="12" type="1">
+<li>Vandaag maak ik een dynamisch document!</li>
+</ol>
+</blockquote>
+<ol start="13" type="1">
+<li>Het volgende lijstje:</li>
+</ol>
+<p><strong>Chocolade Chips Kook Recept</strong></p>
+<ol type="1">
+<li>boter</li>
+<li>suiker
+<ul>
+<li>Een mengsel van bruine en witte suiker maakt het lekkerder
+<ul>
+<li>mix dat met boter voordat je de <em>eieren</em> eraan toevoegt</li>
+</ul></li>
+</ul></li>
+<li>eieren</li>
+<li>vanille<br />
+</li>
+<li>Mix wat droge ingredienten:
+<ul>
+<li>meel, zout, bak soda<br />
+</li>
+</ul></li>
+<li>chocolade chips</li>
+</ol>
+<hr />
+<p><strong>Fijn feitje!</strong> De inhoudsopgave van deze website is gemaakt met koppen met 1-3 pond symbolen! (Daarover dadelijk meer)</p>
+<h2 id="een-code-in-het-document">Een Code in het document</h2>
+<p>Er zijn twee manieren om een code in een RMarkdown document op te nemen.</p>
+<ol type="1">
+<li><p><strong>Code in het document:</strong> Korte code als een onderdeel van het geschreven document.</p></li>
+<li><p><strong>Code Chunks:</strong> Delen van het document die verschillende programmeer of analyse codes omvatten. Daarmee kan een figuur of tabel worden gemaakt, statistieken worden berekend, pakketten worden geladen, etc.</p></li>
+</ol>
+<h3 id="r-code-in-het-document">R Code in het document</h3>
+<p>Een R code kan in het document wordt gemaakt door een komma hoog achterwaarts (`) en de letter r gevolgd door nog zo’n komma.</p>
+<ul>
+<li>Bijvoorbeeld: 2<sup>11</sup> is 2048.</li>
+</ul>
+<p>Stel dat je een p-waarde rapporteert en je wilt niet terug om de statistische test steeds weer uit te voeren. De p-waarde was eerder <code>0.0045</code>.<br />
+Dit is echt handig als de resultaten op papier moeten worden gezet. Bijvoorbeeld, je hebt een aantal statistieken uitgevoerd voor jouw wetenschappelijke vragen is dit een manier waarop <strong>R</strong> die waarde in a variabele naam bewaart. Bijvoorbeeld: Wijkt het brandstofverbruik van de automaat significant af de auto met handtransmissie significant af binnen de <code>mtcars</code> data set?</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+mpg_auto &lt;- mtcars[mtcars$am == 0,]$mpg # automatic transmission mileage
+mpg_manual &lt;- mtcars[mtcars$am == 1,]$mpg # manual transmission mileage
+transmission_ttest &lt;- t.test(mpg_auto, mpg_manual)</code></pre>
+</div>
+<p>Om de p-waarde vast te stellen kunnen we <code>transmission_ttest$p.value</code> als R code in het document gebruiken.</p>
+<p>De p-waarde is dan 0.0013736.</p>
+<h3 id="r-code-chunks">R Code Chunks</h3>
+<p>R code chunks (nogmaals ik gebruik maar de Engelse benaming hier, sorry)kunnen worden gebruikt om de R output in het document te krijgen of om de code als illustratie zichtbaar te maken.</p>
+<p><strong>De anatomie van een code chunk:</strong></p>
+<p>Om een R code chunk te plaatsen, kun je met de hand typen door <code>```{r}</code> gevolgd door <code>```</code> op een volgende regel. Je kunt ook de <code>Insert a new code chunk</code> knop gebruiken of de ‘shortcut key’. Dat geeft dan de volgende code chunk:</p>
+<figure>
+<img src="Images/insert_code_chunk.png" alt="Een code chunk invoeren" /><figcaption>Een code chunk invoeren</figcaption>
+</figure>
+<pre><code>
+```{r}
+n &lt;- 10
+seq(n)
+```</code></pre>
+<p>Geef de code chunk een betekenisvolle naam die samenhangt met wat het doet. Hieronder heb ik code chunk <code>10-random-numbers</code> genoemd:</p>
+<pre><code>
+```{r 10-random-numbers}
+n &lt;- 10
+seq(n)
+```</code></pre>
+<p>De code chunk input en output zien er dan als volgt uit:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+ [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+</div>
+<hr />
+<h1 id="knitr">Knitr</h1>
+<p><strong>Knitr</strong> is een R-pakket dat werkt met</p>
+<ol type="1">
+<li><strong>Identificeren van de code</strong> zowel van de chunks als in de tekst zelf</li>
+<li><strong>Evalueren van</strong> de hele code en geeft de resultaten terug</li>
+<li><strong>Teruggeven van</strong> de geformuleerde resultaten en combineert met de orginele file.</li>
+</ol>
+<p><strong>Knitr</strong> draait de code zoals die in de R console zou draaien.</p>
+<p><strong>Knitr</strong> werkt vooral met code chunks.</p>
+<p>Een code chunk ziet er als volgt uit:</p>
+<pre><code>
+&lt;div class=&quot;layout-chunk&quot; data-layout=&quot;l-body&quot;&gt;
+
+
+&lt;/div&gt;</code></pre>
+<p><strong>Goede praktijken met betrekking tot code chunks:</strong></p>
+<ol type="1">
+<li>Benoem/label jouw code chunks!<br />
+</li>
+<li>In plaats van de chunk opties te specificeren in iedere chunk, kun je de algemene chunk opties aan het begin van het document vastzetten. Hierover meer in een minuut!</li>
+</ol>
+<h2 id="chunk-labels">Chunk Labels</h2>
+<p>Chunk labels krijgen <strong>unieke IDs</strong> in een document en zijn goed voor:</p>
+<ul>
+<li>Om externe files te genereren zoals plaatjes en ‘cached’ documenten.<br />
+</li>
+<li>Chunk labels zijn vaak output als fouten omhoog komen(vaker voor codes in het document).<br />
+</li>
+<li><strong>Navigeren door lange <code>.Rmd</code> documenten.</strong></li>
+</ul>
+<figure>
+<img src="Images/label_navigation.png" alt="Een methode om door lange .Rmd files te navigeren" /><figcaption>Een methode om door lange <code>.Rmd</code> files te navigeren</figcaption>
+</figure>
+<p>Als je de code chunk een naam geef, gebruik dan <code>-</code> of <code>_</code> tussen woorden voor code chunks labels in plaats van ruimtes. Dat helpt jou en andere gebruikers bij het navigeren in het document.</p>
+<p>Chunk labels moeten uniek zijn in het document - anders zal er een fout optreden!</p>
+<h2 id="chunk-opties">Chunk Opties</h2>
+<p>Druk tab als tussen de haakjes code chunk opties omhoog komen.</p>
+<figure>
+<img src="Images/chunk_options.png" alt="Enkele Knitr Chunk Opties" /><figcaption>Enkele Knitr Chunk Opties</figcaption>
+</figure>
+<ul>
+<li><code>results = &quot;asis&quot;</code> staat voor “as is” en geeft de output van een niet geformateerde versie.</li>
+<li><code>collapse</code> is een andere chunk optie die handig kan zijn, zeker als een code chunk veel korte R uitdrukking heeft met wat output.</li>
+</ul>
+<p>Er zijn teveel chunk opties om hier te behandelen. Kijk na deze workshop nog eens wat rond voor deze opties.</p>
+<p>Een mooie website om dat op te doen is <a href="http://yihui.name/knitr/options/#chunk_options">Knitr Chunk Options</a>.</p>
+<blockquote>
+<p><strong>Uitdaging</strong><br />
+Draai de code chunk hieronder en speel wat met de volgende knitr code chunk opties:</p>
+</blockquote>
+<blockquote>
+<ul>
+<li><code>eval = TRUE/FALSE</code><br />
+</li>
+<li><code>echo = TRUE/FALSE</code><br />
+</li>
+<li><code>collapse = TRUE/FALSE</code><br />
+</li>
+<li><code>results = &quot;asis&quot;,&quot;markup</code> en <code>&quot;hide</code></li>
+</ul>
+</blockquote>
+<blockquote>
+<p>Sla je resultaten op in markdown.<br />
+<strong>Opgelet:</strong> Wees er zeker van dat je jouw chunks een naam geeft!</p>
+</blockquote>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+1+1
+2*5
+seq(1, 21, by = 3)
+head(mtcars)</code></pre>
+</div>
+<p><strong>Enkele voorbeelden voortbouwend op de chunk hierboven</strong></p>
+<p>Resultaten van <code>results=&quot;markup&quot;, collapse = TRUE}</code>:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+[1] 2
+[1] 10
+[1]  1  4  7 10 13 16 19
+                   mpg cyl disp  hp drat    wt  qsec vs am gear carb
+Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
+</div>
+Resultaten van <code>results=&quot;asis&quot;, collapse = TRUE}</code>:
+<div class="layout-chunk" data-layout="l-body">
+<p>[1] 2 [1] 10 [1] 1 4 7 10 13 16 19 mpg cyl disp hp drat wt qsec vs am gear carb Mazda RX4 21.0 6 160 110 3.90 2.620 16.46 0 1 4 4 Mazda RX4 Wag 21.0 6 160 110 3.90 2.875 17.02 0 1 4 4 Datsun 710 22.8 4 108 93 3.85 2.320 18.61 1 1 4 1 Hornet 4 Drive 21.4 6 258 110 3.08 3.215 19.44 1 0 3 1 Hornet Sportabout 18.7 8 360 175 3.15 3.440 17.02 0 0 3 2 Valiant 18.1 6 225 105 2.76 3.460 20.22 1 0 3 1</p>
+</div>
+<h2 id="globale-opties">Globale opties</h2>
+<p>Het kan zijn dat je dezelfde chunk settings wilt handhaven voor het gehele document. Het kan daarom handig zijn om de opties in een keer te typen in plaats van het iedere keer weer voor een chunk te moeten doen. Om dat te doen kun je de globale chunk opties bovenaan het document vaststellen.</p>
+<pre><code>
+knitr::opts_chunk$set(echo = FALSE, 
+                      eval = TRUE, 
+                      message = FALSE,
+                      warning = FALSE, 
+                      fig.path = &quot;Figures/&quot;,
+                      fig.width = 12, 
+                      fig.height = 8)</code></pre>
+<p>Als je bijvoorbeeld met iemand samenwerkt die de code niet wil zien, kun je schrijven <code>eval = TRUE</code> en <code>echo = FALSE</code> gebruiken zodat de code wel gedraaid wordt maar niet getoond. In aanvulling wil je misschien <code>message = FALSE</code> en <code>warning = FALSE</code> gebruiken zodat jouw samenwerkingspartner geen enkele boodschap of waarschuwing van R ziet.</p>
+<p>Als je figuren wilt opslaan en bewaren in een subdirectory binnen het project, gebruik dan <code>fig.path = &quot;Figures/&quot;</code>. Hier verwijst de <code>&quot;Figures/&quot;</code> naar een folder <em>Figures</em> binnen de huidige directory waar de figuur die gemaakt wordt in het document wordt opgeslagen.<br />
+<strong>Opgelet:</strong> de figuren worden niet standaard opgeslagen.</p>
+<p>Globale chunk opties zullen voor de rest van het documenten worden vastgezet. Als je wilt dat een bepaalde chunk afwijkt van de globale opties, maak dat aan het begin van die bepaalde chunk duidelijk.</p>
+<h2 id="figuren">Figuren</h2>
+<p><strong>Knitr</strong> maakt vrij eenvoudig figuren. Als een analyse code binnen een chunk een bepaald figuur moet produceren, dan zal hij dat in het document afdrukken.</p>
+<p>Enkele knitr chunk opties gerelateerd aan figuren:</p>
+<ul>
+<li><code>fig.width</code> en <code>fig.height</code>
+<ul>
+<li><em>Standaard:</em> <code>fig.width = 7</code>, <code>fig.height = 7</code><br />
+</li>
+</ul></li>
+<li><code>fig.align</code>: Hoe het figuur uit te lijnen
+<ul>
+<li><em>Opties omvatten:</em> <code>&quot;left&quot;</code>, <code>&quot;right&quot;</code> en <code>&quot;center&quot;</code><br />
+</li>
+</ul></li>
+<li><code>fig.path</code>: Een file pad naar de directory waar knitr de grafische output moet opslaan die er met de chunk wordt gemaakt.
+<ul>
+<li><em>Standaard:</em> <code>'figure/'</code><br />
+</li>
+</ul></li>
+<li>Er is zelfs een <code>fig.retina</code>(alleen voor HTML output) voor hogere figuur resoluties met retina afdrukken.</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>Een enkelvoudig figuur maken:</p>
+<p>Met <code>fig.align = &quot;center&quot;</code></p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="reproducable-research_files/figure-html5/single-fig-center-1.png" width="384" style="display: block; margin: auto;" /></p>
+</div>
+<p>Met <code>fig.align = &quot;right&quot;</code></p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="reproducable-research_files/figure-html5/single-fig-right-1.png" width="384" style="display: block; margin: auto 0 auto auto;" /></p>
+</div>
+<p>Met <code>fig.align = &quot;left&quot;</code></p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="reproducable-research_files/figure-html5/single-fig-left-1.png" width="384" style="display: block; margin: auto auto auto 0;" /></p>
+</div>
+<p>Met <code>fig.width = 2, fig.height = 2</code></p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="reproducable-research_files/figure-html5/single-fig-size2-1.png" width="192" style="display: block; margin: auto;" /></p>
+</div>
+<p>Met <code>fig.width = 10, fig.height = 10</code></p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="reproducable-research_files/figure-html5/single-fig-size10-1.png" width="960" style="display: block; margin: auto;" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="reproducable-research_files/figure-html5/many-figs-1.png" width="624" /></p>
+</div>
+<h2 id="tabellen">Tabellen</h2>
+<p>Tabellen kunnen in Markdown voor nogal wat hoofdpijn kosten. We gaan er hier verder niet op in. Als je meer wilt leren over Markdown-tabellen kijk naar <a href="http://rmarkdown.rstudio.com/authoring_pandoc_markdown.html#tables">documentation on tables</a> op de RMarkdown website.</p>
+<p>Er zijn enkele tabeltypen die handig kunnen zijn. Hier zullen we ons vorig voorbeeld gebruiken van de <code>mtcars</code> data</p>
+<p>In zijn <a href="http://kbroman.org/knitr_knutshell/pages/figs_tables.html">Knitr in a Knutshell</a> introduceert Dr. Karl Broman: <code>kable</code>, <code>pander</code>en <code>xtable</code> en vooral die eerste twee deden mij plezier:</p>
+<ul>
+<li><code>kable</code>: Binnen het <strong>knitr</strong> pakket - niet veel opties maar het ziet er goed uit.</li>
+<li><code>pander</code>: Binnen het <strong>pander</strong> pakket - heeft veel opties en handigheden. Makkelijk voor het vetmaken van waarden (bv. waarden onder een bepaalde waarde).</li>
+</ul>
+<p><code>kable</code> en <code>pander</code> tabellen zijn mooi en handig bij het maken van niet-interactieve tabellen:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+kable(head(mtcars, n = 4)) # kable table with 4 rows</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: right;">mpg</th>
+<th style="text-align: right;">cyl</th>
+<th style="text-align: right;">disp</th>
+<th style="text-align: right;">hp</th>
+<th style="text-align: right;">drat</th>
+<th style="text-align: right;">wt</th>
+<th style="text-align: right;">qsec</th>
+<th style="text-align: right;">vs</th>
+<th style="text-align: right;">am</th>
+<th style="text-align: right;">gear</th>
+<th style="text-align: right;">carb</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mazda RX4</td>
+<td style="text-align: right;">21.0</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">160</td>
+<td style="text-align: right;">110</td>
+<td style="text-align: right;">3.90</td>
+<td style="text-align: right;">2.620</td>
+<td style="text-align: right;">16.46</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td>Mazda RX4 Wag</td>
+<td style="text-align: right;">21.0</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">160</td>
+<td style="text-align: right;">110</td>
+<td style="text-align: right;">3.90</td>
+<td style="text-align: right;">2.875</td>
+<td style="text-align: right;">17.02</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td>Datsun 710</td>
+<td style="text-align: right;">22.8</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">108</td>
+<td style="text-align: right;">93</td>
+<td style="text-align: right;">3.85</td>
+<td style="text-align: right;">2.320</td>
+<td style="text-align: right;">18.61</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td>Hornet 4 Drive</td>
+<td style="text-align: right;">21.4</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">258</td>
+<td style="text-align: right;">110</td>
+<td style="text-align: right;">3.08</td>
+<td style="text-align: right;">3.215</td>
+<td style="text-align: right;">19.44</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>
+# Pander table
+# install.packages(&quot;pander&quot;) # install pander first
+library(pander)
+pander(head(mtcars, n = 4))</code></pre>
+<table style="width:100%;">
+<caption>Table continues below</caption>
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 8%" />
+<col style="width: 7%" />
+<col style="width: 8%" />
+<col style="width: 7%" />
+<col style="width: 8%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"> </th>
+<th style="text-align: center;">mpg</th>
+<th style="text-align: center;">cyl</th>
+<th style="text-align: center;">disp</th>
+<th style="text-align: center;">hp</th>
+<th style="text-align: center;">drat</th>
+<th style="text-align: center;">wt</th>
+<th style="text-align: center;">qsec</th>
+<th style="text-align: center;">vs</th>
+<th style="text-align: center;">am</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>Mazda RX4</strong></td>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">160</td>
+<td style="text-align: center;">110</td>
+<td style="text-align: center;">3.9</td>
+<td style="text-align: center;">2.62</td>
+<td style="text-align: center;">16.46</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Mazda RX4 Wag</strong></td>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">160</td>
+<td style="text-align: center;">110</td>
+<td style="text-align: center;">3.9</td>
+<td style="text-align: center;">2.875</td>
+<td style="text-align: center;">17.02</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Datsun 710</strong></td>
+<td style="text-align: center;">22.8</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">108</td>
+<td style="text-align: center;">93</td>
+<td style="text-align: center;">3.85</td>
+<td style="text-align: center;">2.32</td>
+<td style="text-align: center;">18.61</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Hornet 4 Drive</strong></td>
+<td style="text-align: center;">21.4</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">258</td>
+<td style="text-align: center;">110</td>
+<td style="text-align: center;">3.08</td>
+<td style="text-align: center;">3.215</td>
+<td style="text-align: center;">19.44</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+</tr>
+</tbody>
+</table>
+<table style="width:49%;">
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"> </th>
+<th style="text-align: center;">gear</th>
+<th style="text-align: center;">carb</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>Mazda RX4</strong></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Mazda RX4 Wag</strong></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Datsun 710</strong></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Hornet 4 Drive</strong></td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="html-widgets">HTML Widgets</h2>
+<p>Met de uitgave van de nieuwe RMarkdown v2 is het makkelijker dan ooit tevoren om <a href="http://www.htmlwidgets.org/showcase_datatables.html">HTML Widgets</a> te gebruiken. Volg de link om uit te zoeken in welke widgets jij ge?nteresseerd bent!</p>
+<p>Onlangs ontdekte ik bijvoorbeeld het <strong>DT</strong> pakket waarmee tabellen interactief kunnen worden gemaakt in de HTML output. Daarbij levert <a href="https://plot.ly/r/">Plotly for R</a> echt mooie interactieve grafieken op, welke gebaseerd zijn op <strong>Plotly</strong>.</p>
+<p>Cool, of niet?</p>
+<div class="layout-chunk" data-layout="l-body">
+<div id="htmlwidget-9af728e52e3c9bacc31b" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9af728e52e3c9bacc31b">{"x":{"filter":"none","data":[["Mazda RX4","Mazda RX4 Wag","Datsun 710","Hornet 4 Drive","Hornet Sportabout","Valiant","Duster 360","Merc 240D","Merc 230","Merc 280","Merc 280C","Merc 450SE","Merc 450SL","Merc 450SLC","Cadillac Fleetwood","Lincoln Continental","Chrysler Imperial","Fiat 128","Honda Civic","Toyota Corolla","Toyota Corona","Dodge Challenger","AMC Javelin","Camaro Z28","Pontiac Firebird","Fiat X1-9","Porsche 914-2","Lotus Europa","Ford Pantera L","Ferrari Dino","Maserati Bora","Volvo 142E"],[21,21,22.8,21.4,18.7,18.1,14.3,24.4,22.8,19.2,17.8,16.4,17.3,15.2,10.4,10.4,14.7,32.4,30.4,33.9,21.5,15.5,15.2,13.3,19.2,27.3,26,30.4,15.8,19.7,15,21.4],[6,6,4,6,8,6,8,4,4,6,6,8,8,8,8,8,8,4,4,4,4,8,8,8,8,4,4,4,8,6,8,4],[160,160,108,258,360,225,360,146.7,140.8,167.6,167.6,275.8,275.8,275.8,472,460,440,78.7,75.7,71.1,120.1,318,304,350,400,79,120.3,95.1,351,145,301,121],[110,110,93,110,175,105,245,62,95,123,123,180,180,180,205,215,230,66,52,65,97,150,150,245,175,66,91,113,264,175,335,109],[3.9,3.9,3.85,3.08,3.15,2.76,3.21,3.69,3.92,3.92,3.92,3.07,3.07,3.07,2.93,3,3.23,4.08,4.93,4.22,3.7,2.76,3.15,3.73,3.08,4.08,4.43,3.77,4.22,3.62,3.54,4.11],[2.62,2.875,2.32,3.215,3.44,3.46,3.57,3.19,3.15,3.44,3.44,4.07,3.73,3.78,5.25,5.424,5.345,2.2,1.615,1.835,2.465,3.52,3.435,3.84,3.845,1.935,2.14,1.513,3.17,2.77,3.57,2.78],[16.46,17.02,18.61,19.44,17.02,20.22,15.84,20,22.9,18.3,18.9,17.4,17.6,18,17.98,17.82,17.42,19.47,18.52,19.9,20.01,16.87,17.3,15.41,17.05,18.9,16.7,16.9,14.5,15.5,14.6,18.6],[0,0,1,1,0,1,0,1,1,1,1,0,0,0,0,0,0,1,1,1,1,0,0,0,0,1,0,1,0,0,0,1],[1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,1,1,1,1,1,1,1],[4,4,4,3,3,3,3,4,4,4,4,3,3,3,3,3,3,4,4,4,3,3,3,3,3,4,5,5,5,5,5,4],[4,4,1,1,2,1,4,2,2,4,4,3,3,3,4,4,4,1,2,1,1,2,2,4,2,1,2,2,4,6,8,2]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>mpg<\/th>\n      <th>cyl<\/th>\n      <th>disp<\/th>\n      <th>hp<\/th>\n      <th>drat<\/th>\n      <th>wt<\/th>\n      <th>qsec<\/th>\n      <th>vs<\/th>\n      <th>am<\/th>\n      <th>gear<\/th>\n      <th>carb<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6,7,8,9,10,11]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+</div>
+<h2 id="spelling-controleren">Spelling controleren</h2>
+<p>In de spelling kunnen natuurlijk altijd fouten zitten en daarom kan het nodig zijn dat we onze spelling in het document willen controleren. Er zijn twee manieren om de spelling te controleren:</p>
+<ol type="1">
+<li>Druk op de “ABC check mark” <img src="Images/spell_check.png" /> links van de vergrootglasknop in RStudio.</li>
+<li>Gebruik de <code>aspell()</code> functie van het <strong>utils</strong> pakket. Je kunt dan echter beter de code chunks overslaan. De <code>aspell()</code> functie kan een filter functie overnemen om bepaalde regels in de files over te slaan en kan worden gebruikt met de <code>knit_filter()</code> die ontworpen is om de code chunks in een file over te slaan.</li>
+</ol>
+<h2 id="knitr-themas">Knitr Thema’s</h2>
+<p>Het knitr-syntax-thema kan worden aangepast of helemaal naar de hand worden gezet. Als je de standaardthema’s niet wilt, gebruik dan het <code>knit_theme</code> om het te veranderen. Er zijn <strong>80 thema’s</strong> opgenomen binnen <code>knitr</code> en we kunnen de namen ervan zien door <code>knit_theme$get()</code>.</p>
+<p>Wat zijn de eerste 30 <code>knitr</code> thema’s?</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+ [1] &quot;acid&quot;          &quot;aiseered&quot;      &quot;andes&quot;         &quot;anotherdark&quot;  
+ [5] &quot;autumn&quot;        &quot;baycomb&quot;       &quot;bclear&quot;        &quot;biogoo&quot;       
+ [9] &quot;bipolar&quot;       &quot;blacknblue&quot;    &quot;bluegreen&quot;     &quot;breeze&quot;       
+[13] &quot;bright&quot;        &quot;camo&quot;          &quot;candy&quot;         &quot;clarity&quot;      
+[17] &quot;dante&quot;         &quot;darkblue&quot;      &quot;darkbone&quot;      &quot;darkness&quot;     
+[21] &quot;darkslategray&quot; &quot;darkspectrum&quot;  &quot;default&quot;       &quot;denim&quot;        
+[25] &quot;dusk&quot;          &quot;earendel&quot;      &quot;easter&quot;        &quot;edit-anjuta&quot;  
+[29] &quot;edit-eclipse&quot;  &quot;edit-emacs&quot;   </code></pre>
+</div>
+<p>Wij kunnen <code>knit_theme$set()</code> gebruiken om het thema vast te zetten. Om het thema op <em>fruit</em> vast te zetten, kunnen we de bijvoorbeeld de volgende code gebruiken:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>Hier is de link naar jouw favoriete thema <a href="http://animation.r-forge.r-project.org/knitr/">80 knitr highlight themes</a>.</p>
+<h2 id="andere-programmeer-talen">Andere programmeer talen</h2>
+<p>Terwijl knitr binnen een R omgeving moet draaien, ondersteunt het ook andere programmeertalen waaronder:</p>
+<ul>
+<li>Python<br />
+</li>
+<li>Ruby<br />
+</li>
+<li>Haskell<br />
+</li>
+<li>awk/gawk<br />
+</li>
+<li>sed<br />
+</li>
+<li>shell scripts<br />
+</li>
+<li>Perl<br />
+</li>
+<li>SAS<br />
+</li>
+<li>TikZ<br />
+</li>
+<li>Graphviz<br />
+</li>
+<li>C++<br />
+</li>
+<li>En andere talen…</li>
+</ul>
+<p>We moeten echter het corresponderende software pakket installeren om een taal te gebruiken.</p>
+<p>Gebruik de <code>engine</code> functie in Knitr. Deze functie laat de gebruiker de taal van een chunk specificeren.</p>
+<ul>
+<li><code>engine = &quot;bash&quot;</code> zal de boel in bash laden and stelt de gebruiker in staat de scripts zo binnen de code chunk te schrijven .</li>
+</ul>
+<hr />
+<h1 id="prsance">Pr?sance</h1>
+<p>Er zijn verschillende opties die we kunnen controleren binnen ons <code>.Rmd</code> document. Dit onderdeel helpt bij het introduceren en verkennen van sommige van deze opties waarmee je HTML documenten kunt aanpassen.</p>
+<h2 id="code-folding">Code Folding</h2>
+<p>Zoals het je misschien is opgevallen heeft elk van de code chunks in dit document een interactieve <img src="Images/hide.png" /> knop. Deze wordt gecontroleerd in de YAML kop and is nieuw in RMarkdown v2.</p>
+<p>Wanneer de knitr code chunk optie <code>echo = TRUE</code> is gespecificeerd (default = TRUE) zal de R code in het output document verschijnen. Echter, er zijn momenten waarin de gebruiker de code helemaal niet wil laten zien (<code>echo = FALSE</code>).</p>
+<p>-<code>code_folding:</code><br />
+- <code>code_folding: hide</code>: Kan de R code meenemen maar deze is standaard verborgen.<br />
+- <code>code_folding: show</code>: Laat de R code zien. De lezers kunnen dan op de <img src="Images/hide.png" /> knop drukken om de chunk te verstoppen als ze dat willen.</p>
+<pre><code>
+output: html_document
+    code_folding: show</code></pre>
+<h2 id="inhoudsopgave">Inhoudsopgave</h2>
+<p>Een inhoudsopgave kan aan het gerenderd document worden toegevoegd door de <code>toc</code> optie in de YAML kop te gebruiken.</p>
+<p>Opties hierbij:</p>
+<ul>
+<li><code>toc</code>: of de inhoudsopgave moeten worden meegenomen:
+<ul>
+<li><code>toc: true</code>: hier wordt de inhoudsopgave meegenomen<br />
+</li>
+<li><strong>Default:</strong><code>toc: false</code>: Hier wordt de inhoudsopgave niet meegenomen<br />
+</li>
+</ul></li>
+<li><code>toc_depth:</code>: Hoeveel niveau’s moeten in de inhoudsopgave worden worden meegenomen?
+<ul>
+<li><strong>Default:</strong> <code>doc_depth: 3</code> zal koppen tot en met <code>###</code> meenemen.<br />
+</li>
+</ul></li>
+<li><code>number_sections:</code> Voegt sectienummers toe aan de koppen. Bijvoorbeeld, dit document heeft <code>number_sections: true</code>
+<ul>
+<li><strong>Default:</strong> <code>number_sections: false</code><br />
+</li>
+<li>Opgelet: Met elk <code>#</code> zal er een decimaal punt worden toegevoegd aan alle koppen.<br />
+</li>
+</ul></li>
+<li><code>toc_float:</code>
+<ul>
+<li>2 andere mogelijke parameters binnen <code>toc_float:</code>
+<ul>
+<li><code>collapsed:</code> Controleert of de inhoudsopgave alleen aan het begin verschijnt. Het zal met de cursor erover verschijnen.
+<ul>
+<li><strong>Default:</strong> <code>collapsed: TRUE</code></li>
+</ul></li>
+<li><code>smooth_scroll:</code> Controleert of de pagina scrolls werken wanneer op de onderdelen van de inhoudsopgave wordt geklikt.
+<ul>
+<li><strong>Default:</strong> <code>smooth_scroll: true</code></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+<p>Bijvoorbeeld:</p>
+<pre><code>
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+---</code></pre>
+<blockquote>
+<p><strong>Uitdaging:</strong> Maak de YAML kop voor een HTML document die het volgende inhoudt:</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>Inhoudsopgave</li>
+<li>Laat de inhoudsopgave vloeien<br />
+</li>
+<li>Sectie koppen met twee hashtags (<code>##</code>)<br />
+</li>
+<li>Genummerde secties<br />
+</li>
+<li>Geen makkelijke scrolling</li>
+</ul>
+</blockquote>
+<h2 id="themas">Thema’s</h2>
+<p>RMarkdown heeft verschillende opties die de pr?sance van de HTML documenten controleren. Enkele mogelijkheden waaruit kan worden gekozen, hier met de Engelse termen:</p>
+<ul>
+<li><strong>theme</strong><br />
+</li>
+<li><strong>highlight</strong><br />
+</li>
+<li><strong>smart</strong></li>
+</ul>
+<p>De HTML output thema’s komen van <a href="http://bootswatch.com/">Bootswatch</a> library. Valide <strong>HTML themes</strong> omvatten de volgende:</p>
+<ul>
+<li><code>cerulean</code>, <code>cosmo</code>,<code>flatly</code>, <code>journal</code>, <code>readable</code>,<code>spacelab</code> en <code>united</code>.
+<ul>
+<li>Bijvoorbeeld, het thema van de pagina is <code>readable</code>.</li>
+</ul></li>
+<li>Zet het op nul voor geen thema (in dit geval kun je de css parameter gebruiken om jouw eigen stijl te gebruiken).</li>
+</ul>
+<p><strong>Highlight</strong> specificeert de wijze waarop de syntax stijl oplicht. Stijlen die mogelijk zijn omvatten de volgende:</p>
+<ul>
+<li><code>default</code>, <code>espresso</code>, <code>haddock</code>, <code>kate</code>, <code>monochrome</code>, <code>pygments</code>, <code>tango</code>, <code>textmate</code> en <code>zenburn</code>.<br />
+</li>
+<li>Ook hier, plaats nul om syntax oplichting te voorkomen.</li>
+</ul>
+<p><strong>Smart</strong> indiceert of de typografisch correcte output wordt weergegeven, zet rechte aanhalingstekens om in gekru, — rechte aanhalingstekens, – om in gekrulde aanhalingstekens en … in ellipsen. <strong>Smart</strong> is standaard ingesteld.</p>
+<p>Bijvoorbeeld:</p>
+<pre><code>
+---
+output:
+  html_document:
+    theme: slate
+    highlight: tango
+---</code></pre>
+<p>Als je wilt kun je ook jouw eigen stijl-thema produceren en gebruiken. Als je dat zou doen, zou de output sectie van jouw YAML kop er z’on beetje zo uitzien:</p>
+<pre><code>
+output:
+  html_document:
+    css: styles.css</code></pre>
+<p>Als je nog wat verder wilt gaan en jouw eigen thema wilt schrijven in aanvulling op het oplichten, zou de YAML kop er beetje zo uitzien:</p>
+<pre><code>
+---
+output:
+  html_document:
+    theme: null
+    highlight: null
+    css: styles.css
+---</code></pre>
+<p>Hier is een link naar <a href="http://rmarkdown.rstudio.com/html_document_format.html#appearance_and_style">Pr?sance en Stijl</a> in de HTML output.</p>
+<hr />
+<h1 id="verbergen">Verbergen</h1>
+<p><strong>Probleem:</strong> Sommige code chunks nemen <strong><em>veel</em></strong> tijd in beslag en hoeven niet vaak te worden ververst.</p>
+<p><strong>Oplossing:</strong> Verbergen (Caching)! Als een code chunk niet is aangepast sinds de laatste keer dat het document is gerenderd, zullen de oude resultaten worden gebruik inplaats van de chunk nogmaals te draaien.</p>
+<p><strong>Een hele simpele oplossing:</strong> Stop ‘knitting’ voortijdig -&gt; als de rest van het document niet hoeft te worden gedraaid, zet je eenvoudig een <code>knit_exit()</code> vast en de rest van het document wordt genegeerd. Daarvoor in de plaats komen de resultaten en de code chunk uit de vorige tekst terug.</p>
+<p><strong>sloom-laden</strong> wordt over gesproken als een object niet in het geheugen wordt geladen totdat het wordt gebruikt. Daarvoor in de plaats wordt er een “belofte” gemaakt, die makkelijk is voor de computer makkelijk is (om daar meer van te leren, tik <code>?promise</code>).</p>
+<p>Als het document wordt gerenderd, worden verborgen chunks overgeslagen en de output die eerder gecre?erd met de chunks die sloom laden, worden geladen van de <code>cache</code> folder. Echter als er een kleine verandering in de chunk wordt aangebracht (zelfs een witte ruimte telt!) zal <code>knitr</code> deze verandering opmerken en zal ze de chunk draaien als het document wordt gerenderd.</p>
+<p>De gebruiker kan ook het pad instellen voor waar de verborgen files zijn door <code>cache.path</code> te gebruiken.</p>
+<ul>
+<li><strong>Standaard:</strong> <code>cache.path = &quot;file_name_cache/&quot;</code>
+<ul>
+<li>Bijvoorbeeld: Probeer de github repo voor de vorige les waar de verborgen chunks in de <code>RMarkdown_Lesson_cache</code> directory staan.</li>
+</ul></li>
+</ul>
+<p>Enkele zaken met betrekking tot verbergen:</p>
+<ol type="1">
+<li>R wordt om de paar maanden ververst. <code>R.version.string</code><br />
+</li>
+<li>Aan externe files van knitr kunnen deze veranderingen voorbij gaan, het kan zijn dat ze ververst moeten worden en dat de resultaten opnieuw gedraaid moeten worden.<br />
+</li>
+<li>Soms kan een verborgen chunk vertrouwen op objecten van een ander verborgen chunk. Dit kan een serieus probleem zijn - dus <strong><font color="red">wees voorzichtig</font></strong>! We moeten de chunk afhankelijkheden dus dekken!</li>
+</ol>
+<h2 id="chunk-afhankelijkheden">Chunk afhankelijkheden</h2>
+<h3 id="met-de-hand">Met de hand</h3>
+<p>We kunnen met de hand specificeren of chunks van elkaar afhankelijk zijn.</p>
+<ul>
+<li><code>dependson</code> specificeert van welke chunk de huidige chunk afhankelijk is.
+<ul>
+<li>Voorbeelden hiervan:
+<ul>
+<li><code>depesndson = 1</code>: Chunk vertrouwt op de eerste Chunk<br />
+</li>
+<li><code>dependson = c(6,8)</code>: Chunk vertrouwt op de 6<sup>de</sup> en 8<sup>ste</sup> chunks<br />
+</li>
+<li><code>dependson = -1</code>: Chunk vertrouwt op de vorige chunk.</li>
+<li><code>dependson = c(-1, -2)</code>: Chunk vertrouwt op de twee vorige chunks.<br />
+</li>
+<li><strong>Opgelet:</strong> Als <code>dependson</code> een bepaalde waarde aanneemt, kan het niet afhankelijk zijn van een <em>latere</em> chunk - alleen van <em>vorige</em> chunks. Daarom is het makkelijk om chunks namen te geven.<br />
+</li>
+</ul></li>
+<li>Voorbeelden:
+<ul>
+<li><code>dependson = c(&quot;Chunk-1&quot;, &quot;Chunk-2&quot;, &quot;Chunk-3&quot;)</code><br />
+</li>
+<li><code>dependson = c(&quot;data-generation&quot;, &quot;data-transforamtion&quot;)</code><br />
+</li>
+</ul></li>
+</ul></li>
+<li>Als resultaat, elke keer als de verborgen chunks <code>&quot;Chunk-1&quot;</code>, <code>&quot;Chunk-2&quot;</code> en <code>&quot;Chunk-3&quot;</code> opnieuw worden opgebouwd, zal de huidige chunk zijn verborgenheid verliezen en zal het opnieuw worden gedraaid!</li>
+</ul>
+<h3 id="automatisch">Automatisch</h3>
+<p>Voeg in: <code>autodep</code> chunk optie en de functie <code>dep_auto()</code></p>
+<ul>
+<li><code>autodep</code> en <code>dep_auto()</code> staan er voor dat de objecten in de huidige chunk door vorige chunks zijn gemaakt. Dus de huidige chunk hangt af van de vorige chunk.</li>
+</ul>
+<p>Voor een meer conservatieve benadering voeg <code>dep_prev()</code> in.</p>
+<ul>
+<li><code>dep_prev</code> staat er voor dat een gevouwen chunk afhangt van al zijn vorige chunks. Dus als vorige chunks zijn ververst, zullen ook alle latere chunks worden ververst.</li>
+</ul>
+<p>Knitr indentificeert alleen veranderingen in de opgevouwen chunks, <strong>niet in de niet opgevouwen chunks!</strong> Gelukkig geeft knitr een waarschuwing wanneer het een afhankelijkheid ziet met een niet opgevouwen chunk.</p>
+<h3 id="cache-met-de-hand-laden">Cache met de hand laden</h3>
+<p>Stel dat je aan het eind van een document een <em>z</em> berekent, maar je wilt de <em>z</em> in een eerdere chunk gebruiken. Dit is <strong>onmogelijk omdat knitr het document op een liniarie manier samenvoegt en het geen objecten kan gebruiken die in de toekomst worden gemaakt.</strong></p>
+<p>Voeg in: <code>load_cache</code>, die de chunk label zoekt in de ‘cache’ database</p>
+<pre><code>
+load_cache(label, object, notfound = &quot;NOT AVAILABLE&quot;, 
+  path = opts_chunk$get(&quot;cache.path&quot;), lazy = TRUE)</code></pre>
+<p>Als jij dan een <em>z</em> in een ‘’inline R expressie’ gebruikt, geeft het <code>NOT AVAILABLE</code> terug en omdat je hebt gespecificeerd <code>notfound = &quot;NOT AVAILALBE&quot;</code> zal het naar het einde teruggaan en de waarde <em>z</em> verplaatsen.</p>
+<p>Zo handig!</p>
+<h2 id="zijeffecten">Zijeffecten</h2>
+<p>Een <strong>zijeffect</strong> refereert naar een statusverandering die optreedt buiten een functie die de teruggeven waarde niet representeert.</p>
+<ul>
+<li><code>par()</code> en <code>options()</code> zijn zijeffecten in de betekenis dat ze niet opgevouwen zijn.<br />
+</li>
+<li>Stel globale opties van de eerste chunk in en vouw deze chunk <strong>nooit</strong> op.</li>
+</ul>
+<p>We moeten voorzichtig zijn met de chunk opties om er zeker van te zijn dat de resultaten van de opgevouwen chunks worden ververst.</p>
+<p>We kunnen ook het sloom-laden afzetten met <code>cache.lazy = FALSE</code>.</p>
+<h1 id="bibliografie">Bibliografie</h1>
+<p>Het is ook mogelijk om een bibliografie file in de YAML kop mee te nemen. Bibliografie formats die door Pandoc gelezen kunnen worden zijn:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Format</th>
+<th>File extension</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>MODS</td>
+<td>.mods</td>
+</tr>
+<tr class="even">
+<td>BibLaTeX</td>
+<td>.bib</td>
+</tr>
+<tr class="odd">
+<td>BibTeX</td>
+<td>.bibtex</td>
+</tr>
+<tr class="even">
+<td>RIS</td>
+<td>.ris</td>
+</tr>
+<tr class="odd">
+<td>EndNote</td>
+<td>.enl</td>
+</tr>
+<tr class="even">
+<td>EndNote XML</td>
+<td>.xml</td>
+</tr>
+<tr class="odd">
+<td>ISI</td>
+<td>.wos</td>
+</tr>
+<tr class="even">
+<td>MEDLINE</td>
+<td>.medline</td>
+</tr>
+<tr class="odd">
+<td>Copac</td>
+<td>.copac</td>
+</tr>
+<tr class="even">
+<td>JSON citeproc</td>
+<td>.json</td>
+</tr>
+</tbody>
+</table>
+<p>Om een bibliografie in RMarkdown te maken, zijn er twee files nodig:</p>
+<ol type="1">
+<li>Een bibliografie file met <strong>informatie</strong> over elke referentie.<br />
+</li>
+<li>Een citaat stijl taal (CSL) om het <strong>format</strong> de referentie te bepalen.</li>
+</ol>
+<p>Een voorbeeld YAML kop met een bibliografie en een citaat stijl taal (CSL) file is:</p>
+<pre><code>
+output: html_document
+bibliography: bibliography.bib
+csl: nature.csl</code></pre>
+<p>Bekijk de erg behulpzame webpagina van het R Core team op <a href="http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html" target="_blank">bibliographies and citations</a>.</p>
+<p>Als je R pakketten wilt citeren, heeft <strong>knitr</strong> zelfs een functie die <code>write_bib()</code> heet en die <code>.bib</code> overzicht van R pakketten kan leveren. Het wordt zelfs in een file geschreven!</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<h2 id="plaatsen">Plaatsen</h2>
+<p>De bibliografie wordt automatisch aan het einde van het document geplaatst. Daarom moet je jouw <code>.Rmd</code> document met <code># Referenties</code> eindigen zodat de bibliografie naar de kop voor bibliografie komt.</p>
+<pre><code>
+laatste woorden...
+
+# Referenties</code></pre>
+<h2 id="stylen-van-citeren">Stylen van citeren</h2>
+<p><strong>Citation Sylte Language (CSL)</strong> is een op XML-gebaseerde taal die het format van citaten en bibliografie?n vaststelt. Referentie management programma’s zoals Zotero, Mendeley en Papers gebruiken allemaal CSL.</p>
+<p>Zoek jouw favcoriete tijdschrift en CSL in de <a href="https://www.zotero.org/styles" target="_blank">Zotero Style Repository</a>, waar nu meer dan 8,152 CSLs inzitten. Is er een stijl waar je naar zoekt en die er niet in zit?</p>
+<pre><code>
+output: html_document
+bibliography: bibliography.bib
+csl: nature.csl</code></pre>
+<p>In de github repo voor deze workshop heb ik de <code>nature.csl</code> en <code>the-isme-journal.csl</code> toegevoegd om mee te spelen. Download anders een stijl van de Zotero Style Repository!</p>
+<h2 id="citaten">Citaten</h2>
+<p>Citaten gaan tussen vierkante haakjes <code>[ ]</code> en worden afgescheiden door punt-komma’s’ <code>;</code>. Elk citaat moet een sleutel hebben, samen de <code>@ + de citaat identificatie</code> van de database vormen en die optioneel a prefix, a locator en a suffix hebben. Om te controleren wat de citaatsleutel is van een referentie, werp dan een blik op de <code>.bib</code> file. Hier in die file, kun je de sleutel voor elke referentie veranderen. Echter, wees er wel van bewust dat elke ID uniek is!</p>
+<p>Hier zijn wat voorbeelden met bijpassende code in het Engels:</p>
+<ul>
+<li>Microbes control Earth’s biogeochemical cycles <span class="citation" data-cites="Falkowski2008">[@Falkowski2008]</span>.
+<ul>
+<li>Code: <code>Microbes contorl Earth's biogeochemical cycles  [@Falkowski2008].</code><br />
+</li>
+</ul></li>
+<li>I love making beautiful plots with ggplot2 <span class="citation" data-cites="R-ggplot2">[@R-ggplot2]</span>
+<ul>
+<li>Code: <code>I love making beautiful plots with ggplot2 [@R-ggplot2]</code><br />
+</li>
+</ul></li>
+<li>Dr. Yuhui Xie’s book about Dynamic Documents <span class="citation" data-cites="Xie2015">[@Xie2015]</span> inspired me to host this workshop.
+<ul>
+<li>Code: <code>Dr. Yuhui Xie's book about Dynamic Documents [@Xie2015] inspired me to host this workshop.</code><br />
+</li>
+</ul></li>
+<li>A great article in <em>Science</em> regarding biogeography of microbes asks readers to imagine their Alice in Wonderland to shrink down to understand the microbial world <span class="citation" data-cites="Green2008">[@Green2008]</span>.
+<ul>
+<li>Code: <code>A great article in *Science* regarding biogeography of microbes asks readers to imagine they are Alice in Wonderland to and shrink down to understand the microbial world [@Green2008].</code></li>
+</ul></li>
+</ul>
+<p>Het is cool dat de enige refenties die aan het document worden toegevoegd degene zijn die jijzelf citeert!</p>
+<h1 id="publiceren-via-rpubs">Publiceren via RPubs</h1>
+<p>Als je een keer een mooi dynamisch document hebt gemaakt wil je dat mogelijk delen met anderen. Een mogelijkheid om het te delen met de wereld is om het te hosten op <a href="https://rpubs.com/" target="_blank">RPubs</a>. Met RStudio kan dit heel makkelijk! Doe het volgende:</p>
+<ol type="1">
+<li>Maak een aansprekend <code>.Rmd</code> document.<br />
+</li>
+<li>Klik op de <img src="Images/knit.png" /> knop om jouw gerenderd HTML document te puliceren.<br />
+</li>
+<li>In de rechter bovenhoek van het previewscherm klik je op de publiceer <img src="Images/publish.png" /> knop en volgt de aanwijzingen.
+<ul>
+<li><em>Opgelet:</em> Je moet een RPubs profiel hebben aangemaakt.<br />
+</li>
+</ul></li>
+<li>Als je het profiel hebt let dan op het volgende:
+<ul>
+<li>De titel van het document.<br />
+</li>
+<li>Een beschrijving van het document.<br />
+</li>
+<li>De URL waar de website wordt gehost.
+<ul>
+<li><em>Opgelet:</em> Het begin van de URL zal zijn: <strong>www.rpubs.com/your_username/name_of_your_choice</strong></li>
+</ul></li>
+</ul></li>
+</ol>
+<h2 id="rpubs-vernieuwen">RPubs vernieuwen</h2>
+<p>Als je veranderingen in het document wilt aanbrengen is het makkelijk om de webpagina te vernieuwen. Als je een keer jouw aangepaste documentg hebt gerenderd klik je op de <img src="Images/republish.png" /> knop rechtsboven in de hoek van de preview scherm. Het aangepaste document zal dezelfde URL hebben als het orginele document.</p>
+<h1 id="dank">Dank</h1>
+<p>Bedankt dat je aan deze tutorial hebt meegedaan.</p>
+<p>Als je updates van deze les wilt maken, stuur dan <a href="https://github.com/marschmi/RMarkdown_May11_2016" target="_blank">me</a> een ‘pull request’. Wat je ook kunt doen is een e-mail sturen naar:</p>
+<p><strong>Marian Schmidt</strong><br />
+<strong>E-mail:</strong> <em>marschmi at umich.edu</em><br />
+<strong>Twitter</strong> <code>@micro_marian</code></p>
+<p>Veel succes met de voortgang van dynamische documenten!</p>
+<h1 id="informatie-over-de-sessie">Informatie over de sessie</h1>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+- Session info -----------------------------------------------------
+ setting  value                       
+ version  R version 3.5.1 (2018-07-02)
+ os       Windows 10 x64              
+ system   x86_64, mingw32             
+ ui       RTerm                       
+ language (EN)                        
+ collate  Dutch_Netherlands.1252      
+ ctype    Dutch_Netherlands.1252      
+ tz       Europe/Berlin               
+ date     2019-03-04                  
+
+- Packages ---------------------------------------------------------
+ package     * version    date       lib
+ assertthat    0.2.0      2017-04-11 [1]
+ backports     1.1.3      2018-12-14 [1]
+ callr         3.1.1      2018-12-21 [1]
+ cli           1.0.1      2018-09-25 [1]
+ colorspace    1.4-0      2018-10-06 [1]
+ crayon        1.3.4      2017-09-16 [1]
+ crosstalk     1.0.0      2016-12-21 [1]
+ data.table    1.12.0     2019-01-13 [1]
+ desc          1.2.0      2018-05-01 [1]
+ devtools      2.0.1      2018-10-26 [1]
+ digest        0.6.18     2018-10-10 [1]
+ distill       0.6.0.9000 2019-03-04 [1]
+ dplyr       * 0.8.0.1    2019-02-15 [1]
+ DT          * 0.5        2018-11-05 [1]
+ evaluate      0.13       2019-02-12 [1]
+ fs            1.2.6      2018-08-23 [1]
+ ggplot2     * 3.1.0      2018-10-25 [1]
+ glue          1.3.0      2018-07-17 [1]
+ gtable        0.2.0      2016-02-26 [1]
+ highr         0.7        2018-06-09 [1]
+ htmltools     0.3.6      2017-04-28 [1]
+ htmlwidgets   1.3        2018-09-30 [1]
+ httpuv        1.4.5.1    2018-12-18 [1]
+ httr          1.4.0      2018-12-11 [1]
+ jsonlite      1.6        2018-12-07 [1]
+ knitr       * 1.21       2018-12-10 [1]
+ labeling      0.3        2014-08-23 [1]
+ later         0.8.0      2019-02-11 [1]
+ lazyeval      0.2.1      2017-10-29 [1]
+ magrittr      1.5        2014-11-22 [1]
+ memoise       1.1.0      2017-04-21 [1]
+ mime          0.6        2018-10-05 [1]
+ munsell       0.5.0      2018-06-12 [1]
+ pander      * 0.6.3      2018-11-06 [1]
+ pillar        1.3.1      2018-12-15 [1]
+ pkgbuild      1.0.2      2018-10-16 [1]
+ pkgconfig     2.0.2      2018-08-16 [1]
+ pkgload       1.0.2      2018-10-29 [1]
+ plotly      * 4.8.0      2018-07-20 [1]
+ plyr          1.8.4      2016-06-08 [1]
+ prettyunits   1.0.2      2015-07-13 [1]
+ processx      3.2.1      2018-12-05 [1]
+ promises      1.0.1      2018-04-13 [1]
+ ps            1.3.0      2018-12-21 [1]
+ purrr         0.3.0      2019-01-27 [1]
+ R6            2.4.0      2019-02-14 [1]
+ Rcpp          1.0.0      2018-11-07 [1]
+ remotes       2.0.2      2018-10-30 [1]
+ rlang         0.3.1      2019-01-08 [1]
+ rmarkdown   * 1.11       2018-12-08 [1]
+ rprojroot     1.3-2      2018-01-03 [1]
+ scales        1.0.0      2018-08-09 [1]
+ sessioninfo   1.1.1      2018-11-05 [1]
+ shiny         1.2.0      2018-11-02 [1]
+ stringi       1.3.1      2019-02-13 [1]
+ stringr       1.4.0      2019-02-10 [1]
+ testthat      2.0.1      2018-10-13 [1]
+ tibble        2.0.1      2019-01-12 [1]
+ tidyr         0.8.2      2018-10-28 [1]
+ tidyselect    0.2.5      2018-10-11 [1]
+ usethis       1.4.0      2018-08-14 [1]
+ viridisLite   0.3.0      2018-02-01 [1]
+ withr         2.1.2      2018-03-15 [1]
+ xfun          0.5        2019-02-20 [1]
+ xtable        1.8-3      2018-08-29 [1]
+ yaml          2.2.0      2018-07-25 [1]
+ source                          
+ CRAN (R 3.5.1)                  
+ CRAN (R 3.5.2)                  
+ CRAN (R 3.5.2)                  
+ CRAN (R 3.5.2)                  
+ R-Forge (R 3.5.1)               
+ CRAN (R 3.5.1)                  
+ CRAN (R 3.5.1)                  
+ CRAN (R 3.5.2)                  
+ CRAN (R 3.5.1)                  
+ CRAN (R 3.5.2)                  
+ CRAN (R 3.5.2)                  
+ Github (rstudio/distill@6aaffa3)
+ CRAN (R 3.5.2)                  
+ CRAN (R 3.5.2)                  
+ CRAN (R 3.5.2)                  
+ CRAN (R 3.5.1)                  
+ CRAN (R 3.5.2)                  
+ CRAN (R 3.5.1)                  
+ CRAN (R 3.5.1)                  
+ CRAN (R 3.5.1)                  
+ CRAN (R 3.5.1)                  
+ CRAN (R 3.5.2)                  
+ CRAN (R 3.5.2)                  
+ CRAN (R 3.5.2)                  
+ CRAN (R 3.5.2)                  
+ CRAN (R 3.5.2)                  
+ CRAN (R 3.5.0)                  
+ CRAN (R 3.5.2)                  
+ CRAN (R 3.5.1)                  
+ CRAN (R 3.5.1)                  
+ CRAN (R 3.5.1)                  
+ CRAN (R 3.5.1)                  
+ CRAN (R 3.5.1)                  
+ CRAN (R 3.5.2)                  
+ CRAN (R 3.5.2)                  
+ CRAN (R 3.5.1)                  
+ CRAN (R 3.5.2)                  
+ CRAN (R 3.5.1)                  
+ CRAN (R 3.5.1)                  
+ CRAN (R 3.5.1)                  
+ CRAN (R 3.5.1)                  
+ CRAN (R 3.5.2)                  
+ CRAN (R 3.5.1)                  
+ CRAN (R 3.5.2)                  
+ CRAN (R 3.5.2)                  
+ CRAN (R 3.5.1)                  
+ CRAN (R 3.5.2)                  
+ CRAN (R 3.5.1)                  
+ CRAN (R 3.5.2)                  
+ CRAN (R 3.5.2)                  
+ CRAN (R 3.5.1)                  
+ CRAN (R 3.5.1)                  
+ CRAN (R 3.5.1)                  
+ CRAN (R 3.5.1)                  
+ CRAN (R 3.5.2)                  
+ CRAN (R 3.5.2)                  
+ CRAN (R 3.5.2)                  
+ CRAN (R 3.5.2)                  
+ CRAN (R 3.5.2)                  
+ CRAN (R 3.5.2)                  
+ CRAN (R 3.5.1)                  
+ CRAN (R 3.5.1)                  
+ CRAN (R 3.5.1)                  
+ CRAN (R 3.5.2)                  
+ CRAN (R 3.5.2)                  
+ CRAN (R 3.5.1)                  
+
+[1] C:/Users/HarrieJonkman/Documents/R/win-library/3.5
+[2] C:/Program Files/R/R-3.5.1/library</code></pre>
+</div>
+<h1 id="referentie">Referentie</h1>
+<!--radix_placeholder_article_footer-->
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom"></div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+---
+title: "Data exploratie"
+description:
+ Een introductie op data exploratie aan de hand van een boek van Chester Ismay en Albert Y. Kim.
+  
+author:
+  - name: Chester Ismay en Albert Y. Kim, bewerkt door Harrie Jonkman
+    url: https://Harriejonkman.nl
+date: 10-15-2017
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+De tekst vind je hier: http://www.harriejonkman.nl/wp-content/uploads/2018/01/MDtotaal.pdf

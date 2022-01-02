@@ -1,0 +1,601 @@
+---
+title: "Visualisatie"
+description: |
+  Hoe kun je goed werken aan datavisualisatie met ggplot2 binnen R/RStudio
+author:
+  - name: Zev Ross, bewerkt door Harrie Jonkman
+    url: https://Harriejonkman.nl
+date: 2-11-2017
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Inleiding
+
+ggplot is een R-pakket om data te onderzoeken en vooral om mooie en duidelijke figuren te maken. Deze figuren zien er grafisch fantastisch uit en kunnen op verschillende manieren worden aangepast. Er zijn verschillende tutorials en boeken beschikbaar die je uitleggen hoe het werkt. Hier volgen we de uitleg van Zev Ross.
+
+
+# Snelle eerste blik 
+
+Bekijk de dataset eerst goed. In dit geval gaat het om een data uit Chicago over luchtvervuiling over een aantal jaren. Het jaartal zit erin, het aantal doden per dag, de temperatuur, dan twee uitkomstmaten, het tijdstip en de seizoenen. Het zijn deze data die we zichtbaar gaan maken met het pakket ggplot van R.
+
+```{r }
+# Set up
+library(ggplot2)
+setwd ("H:/GGPlot")
+nmmaps<-read.csv("chicago-nmmaps.csv", as.is=T)
+nmmaps$date<-as.Date(nmmaps$date)
+nmmaps<-nmmaps[nmmaps$date>as.Date("1996-12-31"),]
+nmmaps$year<substring(nmmaps$date,1,4)
+head(nmmaps)
+
+```
+
+
+# Het default-figuur in ggplot2
+
+Het standaardfiguur is de volgende waarbij je aangeeft hoe de dataset in elkaar zit, naar welke variabelen je kijkt en wat je wilt zien. Let goed op, je ziet dat ggplot met duidelijke lagen werkt waar steeds passende commando's bij horen.
+
+
+```{r}
+g<-ggplot(nmmaps, aes(date, temp))+geom_point(color="firebrick")
+g
+
+```
+
+
+# Werken met de titel 
+
+Je kunt er ook een titel aan toevoegen.
+
+```{r}
+g<-g+ggtitle('Temperature')
+g
+
+```
+
+
+# Vet en meer ruimte
+
+De titel kun je ook vet maken en meer ruimte geven.
+
+```{r}
+g+theme(plot.title = element_text(size=20, face="bold", vjust=2))
+```
+
+ 
+# Bij een lange titel
+
+De titel kun je ook meer ruimte geven via commando (lineheight).
+
+```{r}
+g<-g+ggtitle("This is a longer\ntitle than expected")
+g+theme(plot.title = element_text(size=20, face="bold", vjust=1, lineheight=0.6))
+```
+
+
+# Op de assen werken 
+
+Je kunt ook tekst aan de x en y as toevoegen o.a. door (labs() of bijvoorbeel xlab())
+
+```{r}
+g<-g+labs(x="Date", y=expression(paste("Temperature ( ", degree ~ F, " )")), title="Temperature")
+g
+```
+
+ 
+# Verwijderen van gegevens
+
+Je kunt ook gegevens op de y-as weghalen door labels (theme(), axis.ticks.y)
+
+```{r}
+g + theme(axis.ticks.y = element_blank(),axis.text.y = element_blank())
+```
+
+
+# Gegevens verder aanpassen 
+
+Je kunt de gegevens op de assen aanpassen, bv. op de x en roteren (axis.text.x)
+
+```{r}
+g + theme(axis.text.x=element_text(angle=50, size=20, vjust=0.5))
+```
+
+
+#  Een kleurtje geven
+
+De tekst op x en y-as kun je ook nog een kleurtje geven door(theme(), axis.title.x)
+
+```{r}
+g + theme(
+      axis.title.x = element_text(color="forestgreen", vjust=-0.35),
+      axis.title.y = element_text(color="cadetblue" , vjust=0.35)   
+          )
+```
+
+          
+# Beperken
+
+Je kunt de gegevens die je wilt laten zien, ook weer in bereik beperken  (ylim).
+
+```{r}
+g + ylim(c(0,60))
+```
+
+
+# Gestandardiseerd
+
+Als de assen hetzelfde moeten zijn, kan ook (coord_equal())
+
+```{r}
+ggplot(nmmaps, aes(temp, temp+rnorm(nrow(nmmaps), sd=20)))+geom_point()+
+  xlim(c(0,150))+ylim(c(0,150))+
+  coord_equal()
+```
+
+  
+# Labels veranderen
+
+Je kunt ook de labels aanpassen (label=function(x){}) en de gegevens over de 
+maanden toevoegen.
+
+```{r}
+ggplot(nmmaps, aes(date, temp))+
+  geom_point(color="grey")+
+  labs(x="Month", y="Temp")+
+  scale_y_continuous(label=function(x){return(paste("My value is", x, "degrees"))})
+```
+
+
+## Legenda 
+
+De legenda kan worden aangepast nu.
+
+```{r}
+g<-ggplot(nmmaps, aes(date, temp, color=factor(season)))+geom_point()
+g
+```
+
+
+# Titel legenda
+
+Je kunt de titel van de legenda 'uitzetten' (legend.title)
+
+```{r}
+g+theme(legend.title=element_blank())
+```
+
+
+# Aanpassen stijl van de titel
+
+Ook de stijl van de legenda titel kun je aanpassen (legend.title)
+
+```{r}
+g+theme(legend.title = element_text(colour="chocolate", size=16, face="bold"))
+```
+
+
+# Titel naam veranderen
+
+Je kunt ook de titelzelf veranderen (name)
+
+```{r}
+g+theme(legend.title = element_text(colour="chocolate", size=16, face="bold"))+
+  scale_color_discrete(name="This color is\ncalled chocolate!?")
+```
+
+  
+# Achtergrondkleur aanpassen 
+
+Je kunt ook de achtergrondkleur van de legenda aanpassen (legend.key)
+
+```{r}
+g+theme(legend.key=element_rect(fill='pink'))
+```
+
+
+# Of het symbool
+
+Of alleen het symbool in de legenda(guides(), guide_legend)
+
+```{r}
+g+guides(colour = guide_legend(override.aes = list(size=4)))
+```
+
+
+# De temperatuur ipv punt
+Je kunt ook de temperatuur ipv een punt afdrukken (show_guide)
+
+```{r}
+g+geom_text(data=nmmaps, aes(date, temp, label=round(temp)), size=4)
+```
+
+
+# Andere mogelijke aanpassingen
+
+Er zijn nog meer aanpassingen van de legenda mogelijk via (guides(), override.aes)
+
+```{r}
+g+geom_text(data=nmmaps, aes(date, temp, label=round(temp), size=4), show_guide=FALSE)
+
+
+ggplot(nmmaps, aes(x=date, y=o3))+geom_line(aes(color="Important line"))+
+   geom_point(aes(color="Point values"))+
+  scale_colour_manual(name='', values=c('Important line'='grey', 'Point values'='red'))
+  
+ggplot(nmmaps, aes(x=date, y=o3))+geom_line(aes(color="Important line"))+
+   geom_point(aes(color="Point values"))+
+  scale_colour_manual(name='', values=c('Important line'='grey', 'Point values'='red'), guide='legend') +
+  guides(colour = guide_legend(override.aes = list(linetype=c(1,0)
+                                                      , shape=c(NA, 16))))
+  
+```
+
+
+# Aanpassen van de achtergrondkleur
+ 
+De achtergrond is aan te passen (panel.background)
+
+```{r}
+ggplot(nmmaps, aes(date, temp))+geom_point(color="firebrick")+
+  theme(panel.background = element_rect(fill = 'grey75'))
+```
+
+
+# Ook de grid lijnen zijn aan te passen (panel.grid.major)
+
+```{r}
+ggplot(nmmaps, aes(date, temp))+geom_point(color="firebrick")+
+  theme(panel.background = element_rect(fill = 'grey75'),
+  panel.grid.major = element_line(colour = "orange", size=2),
+  panel.grid.minor = element_line(colour = "blue"))
+```
+
+
+# Berperkte kleuraanpassingen
+
+Niet in het panel maar verder wel kleur aanpassen (plot.background)
+
+```{r}
+ggplot(nmmaps, aes(date, temp))+geom_point(color="firebrick")+
+  theme(plot.background = element_rect(fill = 'grey'))
+```
+
+
+# Werken met margins 
+
+De plot margin aanpassen(plot.margin)
+
+# the default
+
+```{r}
+ggplot(nmmaps, aes(date, temp))+
+  geom_point(color="darkorange3")+
+  labs(x="Month", y="Temp")+
+  theme(plot.background=element_rect(fill="darkseagreen"))
+
+library(grid)
+ggplot(nmmaps, aes(date, temp))+
+  geom_point(color="darkorange3")+
+  labs(x="Month", y="Temp")+
+  theme(plot.background=element_rect(fill="darkseagreen"),
+        plot.margin = unit(c(1, 6, 1, 6), "cm")) #top, right, bottom, left
+```
+
+
+# Werken met thema's
+
+Je kunt ook met thema's werken, mooi en consistent, bijvoorbeeld hier eentje uit 
+het blad 'The Economist'. 
+
+# Use a new theme (theme_XX())
+
+```{r}
+library(ggthemes)
+ggplot(nmmaps, aes(date, temp, color=factor(season)))+
+  geom_point()+ggtitle("This plot looks a lot different from the default")+
+  theme_economist()+scale_colour_economist()
+```
+
+  
+# Elementen
+
+Je kunt ook de omvang van de elementen aanpassen via text elements 
+(theme_set(), base_size)
+
+```{r}
+theme_set(theme_gray(base_size = 30))
+ggplot(nmmaps, aes(x=date, y=o3))+geom_point(color="red")
+
+```
+
+
+# Je kunt ook een thema-stijl zelf ontwikkelen
+
+```{r}
+theme_gray
+
+function (base_size = 12, base_family = "") 
+{
+  theme(
+    line = element_line(colour = "black", size = 0.5, linetype = 1, lineend = "butt"), 
+    rect = element_rect(fill = "white", colour = "black", size = 0.5, linetype = 1), 
+    text = element_text(family = base_family, face = "plain", colour = "black", size = base_size, hjust = 0.5, vjust = 0.5, angle = 0, lineheight = 0.9), 
+    
+    axis.text = element_text(size = rel(0.8), colour = "grey50"), 
+    strip.text = element_text(size = rel(0.8)), 
+    axis.line = element_blank(), 
+    axis.text.x = element_text(vjust = 1), 
+    axis.text.y = element_text(hjust = 1), 
+    axis.ticks = element_line(colour = "grey50"), 
+    axis.title.x = element_text(), 
+    axis.title.y = element_text(angle = 90), 
+    axis.ticks.length = unit(0.15, "cm"), 
+    axis.ticks.margin = unit(0.1, "cm"), 
+    
+    legend.background = element_rect(colour = NA), 
+    legend.margin = unit(0.2, "cm"), 
+    legend.key = element_rect(fill = "grey95", colour = "white"), 
+    legend.key.size = unit(1.2, "lines"), 
+    legend.key.height = NULL, 
+    legend.key.width = NULL, 
+    legend.text = element_text(size = rel(0.8)), 
+    legend.text.align = NULL, 
+    legend.title = element_text(size = rel(0.8), face = "bold", hjust = 0), 
+    legend.title.align = NULL, 
+    legend.position = "right", 
+    legend.direction = NULL, 
+    legend.justification = "center", 
+    legend.box = NULL, 
+
+    panel.background = element_rect(fill = "grey90", colour = NA), 
+    panel.border = element_blank(), 
+    panel.grid.major = element_line(colour = "white"), 
+    panel.grid.minor = element_line(colour = "grey95", size = 0.25), 
+    panel.margin = unit(0.25, "lines"), 
+    panel.margin.x = NULL, 
+    panel.margin.y = NULL, 
+
+    strip.background = element_rect(fill = "grey80", colour = NA), 
+    strip.text.x = element_text(), 
+    strip.text.y = element_text(angle = -90), 
+    
+    plot.background = element_rect(colour = "white"), 
+    plot.title = element_text(size = rel(1.2)), 
+    plot.margin = unit(c(1, 1, 0.5, 0.5), "lines"), complete = TRUE)
+}
+
+```
+
+
+# Werken met kleur 
+
+Bij categoriale variabelen kun je de kleur zelf aanpassen (scale_color_manual)
+
+```{r}
+ggplot(nmmaps, aes(date, temp, color=factor(season)))+
+  geom_point() + 
+  scale_color_manual(values=c("dodgerblue4", "darkolivegreen4",
+                              "darkorchid3", "goldenrod1"))
+```
+
+
+# Palet
+
+Je kunt voor categoriale variabelen ook een ''inbouw-palette' gebruiken (gebaseerd 
+op colorbrewer2.org) (scale_color_brewer):
+
+```{r}
+ggplot(nmmaps, aes(date, temp, color=factor(season)))+
+  geom_point() + 
+  scale_color_brewer(palette="Set1")
+ 
+ library(ggthemes)
+ggplot(nmmaps, aes(date, temp, color=factor(season)))+
+  geom_point() + 
+  scale_colour_tableau()
+
+```
+
+
+# Kleur keus bij continue variabelen
+
+Bij continue variabelen kun je ook een kleurkeus gebruiken met een schaal
+ (scale_color_gradient(), scale_color_gradient2())
+
+```{r}
+ggplot(nmmaps, aes(date, temp, color=o3))+geom_point()
+
+```
+
+
+# Eenzelfde resultaat
+
+```{r}
+ggplot(nmmaps, aes(date, temp, color=o3))+geom_point()+scale_color_gradient()
+
+ggplot(nmmaps, aes(date, temp, color=o3))+geom_point()+
+  scale_color_gradient(low="darkkhaki", high="darkgreen")
+  
+mid<-mean(nmmaps$o3)
+ggplot(nmmaps, aes(date, temp, color=o3))+geom_point()+
+scale_color_gradient2(midpoint=mid,
+                      low="blue", mid="white", high="red" )
+
+```
+
+                      
+# Werken met annotatie
+
+De annotatie-tekst kun je overal in het figuur kwijt top-rechts, top-links etc. 
+(annotation_custom() and textGrob())
+
+```{r}
+library(grid)
+
+my_grob = grobTree(textGrob("This text stays in place!", x=0.1,  y=0.95, hjust=0,
+  gp=gpar(col="blue", fontsize=15, fontface="italic")))
+
+ggplot(nmmaps, aes(temp, o3))+geom_point(color="firebrick")+
+  annotation_custom(my_grob)
+
+library(grid)
+
+my_grob = grobTree(textGrob("This text stays in place!", x=0.1,  y=0.95, hjust=0,
+  gp=gpar(col="blue", fontsize=12, fontface="italic")))
+
+ggplot(nmmaps, aes(temp, o3))+geom_point(color="firebrick")+facet_wrap(~season, scales="free")+
+  annotation_custom(my_grob)
+
+```
+
+  
+# Werken met coordinaten
+
+De figuur omgedraaid (coord_flip())
+
+```{r}
+ggplot(nmmaps, aes(x=season, y=o3))+geom_boxplot(fill="chartreuse4")+coord_flip()
+
+```
+
+
+# Werken met verschillende typen plots 
+
+Alternatieven voor de box plot (geom_jitter() and geom_violin())
+Box plots kunnen goed zijn, maar ook vervelen. Hier wat alternatieven, eerst - 
+een box plot en dan de rest:
+
+```{r}
+g<-ggplot(nmmaps, aes(x=season, y=o3))
+g+geom_boxplot(fill="darkseagreen4")
+
+g+geom_point()
+
+g+geom_jitter(alpha=0.5, aes(color=season),position = position_jitter(width = .2))
+
+g+geom_violin(alpha=0.5, color="gray")
+
+g+geom_violin(alpha=0.5, color="gray")+geom_jitter(alpha=0.5, aes(color=season),
+      position = position_jitter(width = 0.1))+coord_flip()
+
+```
+
+
+# Een lint creeren
+
+Eerst een lint maken (geom_ribbon()) 
+
+```{r}
+nmmaps$o3run<-as.numeric(filter(nmmaps$o3, rep(1/30,30), sides=2))
+ggplot(nmmaps, aes(date, o3run))+geom_line(color="lightpink4", lwd=1)
+
+```
+
+# Een filter
+
+Dan een filter eroverheen.
+
+```{r}
+ggplot(nmmaps, aes(date, o3run))+geom_ribbon(aes(ymin=0, ymax=o3run), fill="lightpink3", color="lightpink3")+
+  geom_line(color="lightpink4", lwd=1)
+  
+nmmaps$mino3<-nmmaps$o3run-sd(nmmaps$o3run, na.rm=T)
+nmmaps$maxo3<-nmmaps$o3run+sd(nmmaps$o3run, na.rm=T)
+
+ggplot(nmmaps, aes(date, o3run))+geom_ribbon(aes(ymin=mino3, ymax=maxo3), fill="steelblue2", color="steelblue2")+
+  geom_line(color="steelblue4", lwd=1)
+  
+
+```
+
+# Even wat anders
+
+Hier een correlation plot (geom_tile())
+Opgepast, de namen zijn gesorteerd zodat de ordening in de uiteindelijk plot
+goed is.
+
+```{r}
+thecor<-round(cor(nmmaps[,sort(c("death", "temp", "dewpoint", "pm10", "o3"))], method="pearson", use="pairwise.complete.obs"),2)
+thecor[lower.tri(thecor)]<-NA
+thecor
+
+library(reshape2)
+
+thecor<-melt(thecor)
+thecor$Var1<-as.character(thecor$Var1)
+thecor$Var2<-as.character(thecor$Var2)
+thecor<-na.omit(thecor)
+head(thecor)
+
+ggplot(thecor, aes(Var2, Var1))+
+ geom_tile(data=thecor, aes(fill=value), color="white")+
+ scale_fill_gradient2(low="blue", high="red", mid="white", 
+  midpoint=0, limit=c(-1,1),name="Correlation\n(Pearson)")+
+ theme(axis.text.x = element_text(angle=45, vjust=1, size=11, hjust=1))+
+ coord_equal()
+
+```
+
+
+# Werken met vegen ('smooths') 
+
+Hier de standaard (stat_smooth())
+
+```{r}
+ggplot(nmmaps, aes(date, temp))+geom_point(color="firebrick")+
+  stat_smooth()
+
+```
+
+
+# Formule aanpassen
+
+Je kunt ook de formule aanpassen(stat_smooth(formula=))
+
+```{r}
+
+ggplot(nmmaps, aes(date, temp))+
+  geom_point(color="grey")+
+  stat_smooth(method="gam", formula=y~s(x,k=10), col="darkolivegreen2", se=FALSE, size=1)+
+  stat_smooth(method="gam", formula=y~s(x,k=30), col="red", se=FALSE, size=1)+
+  stat_smooth(method="gam", formula=y~s(x,k=500), col="dodgerblue4", se=FALSE, size=1)
+ 
+```
+ 
+
+# Liniaire lijn
+
+Je kunt ook een liniaire lijn trekken (stat_smooth(method="lm"))
+
+
+```{r}
+ggplot(nmmaps, aes(temp, death))+geom_point(color="firebrick")+
+  stat_smooth(method="lm", se=FALSE)
+
+lmTemp<-lm(death~temp, data=nmmaps)
+ggplot(nmmaps, aes(temp, death))+geom_point(col="firebrick")+
+  geom_abline(intercept=lmTemp$coef[1], slope=lmTemp$coef[2])  
+
+```
+
+
+# Referenties
+1. Zev Ross. *Beautiful plotting in R: a ggplopt2 cheatsheet* [Zev Ross](www.zevross.com)
+
+2. Harvard University. *Introduction to R Graphics wiht ggplot2* [Harvard](www.tutorials.iq.harvard.edu)
+
+3. Dawn Koffman. *Introduction to ggplot2* Office of Population Research, Princeton University. [Princeton](www.opr.princeton.edu)
+
+4. RStudio. *Data visualisation with ggplot2. Cheatsheet*. [RStudio](www.RStudio.com)
+
+5. Wickham, H. (2010). *ggplot2: Elegant graphics for data analysis(Use R!)*. Houston: Rice University.
+
+6. Chang, W. (2013).*RGraphics Cookbook. a practical recipes for visualizing data* Sebastopol: O'Reilly Media.
+
+

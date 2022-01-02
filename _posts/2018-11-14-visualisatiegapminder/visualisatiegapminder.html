@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+  <!--radix_placeholder_meta_tags-->
+  <title>Visualisatie met inzet van Gapminder</title>
+  
+  <meta property="description" itemprop="description" content="Een voorbeeld van datavisualisatie: Trends op het gebied van de wereldgezondheid&#10;en de economie"/>
+  
+  
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2018-08-14"/>
+  <meta property="article:created" itemprop="dateCreated" content="2018-08-14"/>
+  <meta name="article:author" content="Rafael A. Irizarry, bewerkt H. Jonkman"/>
+  
+  <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+  <meta property="og:title" content="Visualisatie met inzet van Gapminder"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:description" content="Een voorbeeld van datavisualisatie: Trends op het gebied van de wereldgezondheid&#10;en de economie"/>
+  <meta property="og:locale" content="en_US"/>
+  
+  <!--  https://dev.twitter.com/cards/types/summary -->
+  <meta property="twitter:card" content="summary"/>
+  <meta property="twitter:title" content="Visualisatie met inzet van Gapminder"/>
+  <meta property="twitter:description" content="Een voorbeeld van datavisualisatie: Trends op het gebied van de wereldgezondheid&#10;en de economie"/>
+  
+  <!--/radix_placeholder_meta_tags-->
+  <!--radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-rmarkdown-metadata">
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Visualisatie met inzet van Gapminder"]},{"type":"character","attributes":{},"value":["Een voorbeeld van datavisualisatie: Trends op het gebied van de wereldgezondheid\nen de economie \n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Rafael A. Irizarry, bewerkt H. Jonkman"]},{"type":"character","attributes":{},"value":["https://Harriejonkman.nl"]}]}]},{"type":"character","attributes":{},"value":["8-14-2018"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
+  </script>
+  <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["visualisatiegapminder_files/bowser-1.9.3/bowser.min.js","visualisatiegapminder_files/distill-2.2.21/template.v2.js","visualisatiegapminder_files/figure-html5/unnamed-chunk-10-1.png","visualisatiegapminder_files/figure-html5/unnamed-chunk-11-1.png","visualisatiegapminder_files/figure-html5/unnamed-chunk-12-1.png","visualisatiegapminder_files/figure-html5/unnamed-chunk-13-1.png","visualisatiegapminder_files/figure-html5/unnamed-chunk-14-1.png","visualisatiegapminder_files/figure-html5/unnamed-chunk-15-1.png","visualisatiegapminder_files/figure-html5/unnamed-chunk-17-1.png","visualisatiegapminder_files/figure-html5/unnamed-chunk-18-1.png","visualisatiegapminder_files/figure-html5/unnamed-chunk-19-1.png","visualisatiegapminder_files/figure-html5/unnamed-chunk-20-1.png","visualisatiegapminder_files/figure-html5/unnamed-chunk-22-1.png","visualisatiegapminder_files/figure-html5/unnamed-chunk-23-1.png","visualisatiegapminder_files/figure-html5/unnamed-chunk-25-1.png","visualisatiegapminder_files/figure-html5/unnamed-chunk-26-1.png","visualisatiegapminder_files/figure-html5/unnamed-chunk-27-1.png","visualisatiegapminder_files/figure-html5/unnamed-chunk-29-1.png","visualisatiegapminder_files/figure-html5/unnamed-chunk-3-1.png","visualisatiegapminder_files/figure-html5/unnamed-chunk-30-1.png","visualisatiegapminder_files/figure-html5/unnamed-chunk-32-1.png","visualisatiegapminder_files/figure-html5/unnamed-chunk-34-1.png","visualisatiegapminder_files/figure-html5/unnamed-chunk-35-1.png","visualisatiegapminder_files/figure-html5/unnamed-chunk-36-1.png","visualisatiegapminder_files/figure-html5/unnamed-chunk-37-1.png","visualisatiegapminder_files/figure-html5/unnamed-chunk-39-1.png","visualisatiegapminder_files/figure-html5/unnamed-chunk-4-1.png","visualisatiegapminder_files/figure-html5/unnamed-chunk-41-1.png","visualisatiegapminder_files/figure-html5/unnamed-chunk-42-1.png","visualisatiegapminder_files/figure-html5/unnamed-chunk-45-1.png","visualisatiegapminder_files/figure-html5/unnamed-chunk-46-1.png","visualisatiegapminder_files/figure-html5/unnamed-chunk-47-1.png","visualisatiegapminder_files/figure-html5/unnamed-chunk-5-1.png","visualisatiegapminder_files/figure-html5/unnamed-chunk-50-1.png","visualisatiegapminder_files/figure-html5/unnamed-chunk-51-1.png","visualisatiegapminder_files/figure-html5/unnamed-chunk-6-1.png","visualisatiegapminder_files/figure-html5/unnamed-chunk-7-1.png","visualisatiegapminder_files/figure-html5/unnamed-chunk-8-1.png","visualisatiegapminder_files/jquery-1.11.3/jquery.min.js","visualisatiegapminder_files/webcomponents-2.0.0/webcomponents.js"]}
+  </script>
+  <!--radix_placeholder_navigation_in_header-->
+  <!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+  
+  <style type="text/css">
+  
+  body {
+    background-color: white;
+  }
+  
+  .pandoc-table {
+    width: 100%;
+  }
+  
+  .pandoc-table>caption {
+    margin-bottom: 10px;
+  }
+  
+  .pandoc-table th:not([align]) {
+    text-align: left;
+  }
+  
+  .pagedtable-footer {
+    font-size: 15px;
+  }
+  
+  .html-widget {
+    margin-bottom: 2.0em;
+  }
+  
+  .l-screen-inset {
+    padding-right: 16px;
+  }
+  
+  .l-screen .caption {
+    margin-left: 10px;
+  }
+  
+  .shaded {
+    background: rgb(247, 247, 247);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .shaded .html-widget {
+    margin-bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .shaded .shaded-content {
+    background: white;
+  }
+  
+  .text-output {
+    margin-top: 0;
+    line-height: 1.5em;
+  }
+  
+  .hidden {
+    display: none !important;
+  }
+  
+  d-article {
+    padding-bottom: 30px;
+  }
+  
+  d-appendix {
+    padding-top: 30px;
+  }
+  
+  d-article>p>img {
+    width: 100%;
+  }
+  
+  d-article iframe {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 2.0em;
+    width: 100%;
+  }
+  
+  figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+  
+  /* CSS for table of contents */
+  
+  .d-toc {
+    color: rgba(0,0,0,0.8);
+    font-size: 0.8em;
+    line-height: 1em;
+  }
+  
+  .d-toc-header {
+    font-size: 0.6rem;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 1.3em;
+  }
+  
+  .d-toc a {
+    border-bottom: none;
+  }
+  
+  .d-toc ul {
+    padding-left: 0;
+  }
+  
+  .d-toc li>ul {
+    padding-top: 0.8em;
+    padding-left: 16px;
+    margin-bottom: 0.6em;
+  }
+  
+  .d-toc ul,
+  .d-toc li {
+    list-style-type: none;
+  }
+  
+  .d-toc li {
+    margin-bottom: 0.9em;
+  }
+  
+  .d-toc-separator {
+    margin-top: 20px;
+    margin-bottom: 2em;
+  }
+  
+  .d-article-with-toc {
+    border-top: none;
+    padding-top: 0;
+  }
+  
+  
+  
+  /* Tweak code blocks (note that this CSS is repeated above in an injection
+     into the d-code shadow dom) */
+  
+  d-code {
+    overflow-x: auto !important;
+  }
+  
+  pre.d-code code.d-code {
+    padding-left: 10px;
+    font-size: 12px;
+    border-left: 2px solid rgba(0,0,0,0.1);
+  }
+  
+  pre.text-output {
+  
+    font-size: 12px;
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+  
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+  
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+  
+  @media(min-width: 768px) {
+  
+  d-code {
+    overflow-x: visible !important;
+  }
+  
+  pre.d-code code.d-code  {
+      padding-left: 18px;
+      font-size: 14px;
+  }
+  pre.text-output {
+    font-size: 14px;
+  }
+  }
+  
+  /* Figure */
+  
+  .figure {
+    position: relative;
+    margin-bottom: 2.5em;
+    margin-top: 1.5em;
+  }
+  
+  .figure img {
+    width: 100%;
+  }
+  
+  .figure .caption {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    line-height: 1.5em;
+  }
+  
+  .figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+  
+  .figure .caption a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+  
+  .figure .caption b,
+  .figure .caption strong, {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1.0);
+  }
+  
+  
+  
+  /* Tweak 1000px media break to show more text */
+  
+  @media(min-width: 1000px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 16px;
+    }
+  
+    .grid {
+      grid-column-gap: 16px;
+    }
+  
+    d-article {
+      font-size: 1.06rem;
+      line-height: 1.7em;
+    }
+    figure .caption, .figure .caption, figure figcaption {
+      font-size: 13px;
+    }
+  }
+  
+  @media(min-width: 1180px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 32px;
+    }
+  
+    .grid {
+      grid-column-gap: 32px;
+    }
+  }
+  
+  
+  /* Get the citation styles for the appendix (not auto-injected on render since
+     we do our own rendering of the citation appendix) */
+  
+  d-appendix .citation-appendix,
+  .d-appendix .citation-appendix {
+    font-size: 11px;
+    line-height: 15px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 18px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.02);
+    padding: 10px 18px;
+    border-radius: 3px;
+    color: rgba(150, 150, 150, 1);
+    overflow: hidden;
+    margin-top: -12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  
+  
+  /* Social footer */
+  
+  .social_footer {
+    margin-top: 30px;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.67);
+  }
+  
+  .disqus-comments {
+    margin-right: 30px;
+  }
+  
+  .disqus-comment-count {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+  
+  #disqus_thread {
+    margin-top: 30px;
+  }
+  
+  .article-sharing a {
+    border-bottom: none;
+    margin-right: 8px;
+  }
+  
+  .article-sharing a:hover {
+    border-bottom: none;
+  }
+  
+  .sidebar-section.subscribe {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+  
+  .subscribe p {
+    margin-bottom: 0.5em;
+  }
+  
+  
+  .article-footer .subscribe {
+    font-size: 15px;
+    margin-top: 45px;
+  }
+  
+  
+  /* Improve display for browsers without grid (IE/Edge <= 15) */
+  
+  .downlevel {
+    line-height: 1.6em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+  }
+  
+  .downlevel .d-title {
+    padding-top: 6rem;
+    padding-bottom: 1.5rem;
+  }
+  
+  .downlevel .d-title h1 {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.1em;
+    margin: 0 0 0.5rem;
+  }
+  
+  .downlevel .d-title p {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.55em;
+    margin-top: 0;
+  }
+  
+  .downlevel .d-byline {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    font-size: 0.8rem;
+    line-height: 1.8em;
+  }
+  
+  .downlevel .section-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .downlevel .d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+  
+  
+  .downlevel .d-appendix {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.5);
+    padding-top: 40px;
+    padding-bottom: 48px;
+  }
+  
+  .downlevel .footnotes ol {
+    padding-left: 13px;
+  }
+  
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  
+  @media(min-width: 768px) {
+    .downlevel .base-grid,
+    .downlevel .distill-header,
+    .downlevel .d-title,
+    .downlevel .d-abstract,
+    .downlevel .d-article,
+    .downlevel .d-appendix,
+    .downlevel .distill-appendix,
+    .downlevel .d-byline,
+    .downlevel .d-footnote-list,
+    .downlevel .d-citation-list,
+    .downlevel .distill-footer,
+    .downlevel .appendix-bottom,
+    .downlevel .posts-container {
+    padding-left: 150px;
+    padding-right: 150px;
+    max-width: 900px;
+  }
+  }
+  
+  .downlevel pre code {
+    display: block;
+    border-left: 2px solid rgba(0, 0, 0, .1);
+    padding: 0 0 0 20px;
+    font-size: 14px;
+  }
+  
+  .downlevel code, .downlevel pre {
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+  
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+  
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+  
+  </style>
+  
+  <script type="application/javascript">
+  
+  function is_downlevel_browser() {
+    if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                   window.navigator.userAgent)) {
+      return true;
+    } else {
+      return window.load_distill_framework === undefined;
+    }
+  }
+  
+  // show body when load is complete
+  function on_load_complete() {
+  
+    // set body to visible
+    document.body.style.visibility = 'visible';
+  
+    // force redraw for leaflet widgets
+    if (window.HTMLWidgets) {
+      var maps = window.HTMLWidgets.findAll(".leaflet");
+      $.each(maps, function(i, el) {
+        var map = this.getMap();
+        map.invalidateSize();
+        map.eachLayer(function(layer) {
+          if (layer instanceof L.TileLayer)
+            layer.redraw();
+        });
+      });
+    }
+  
+    // trigger 'shown' so htmlwidgets resize
+    $('d-article').trigger('shown');
+  }
+  
+  function init_distill() {
+  
+    init_common();
+  
+    // create front matter
+    var front_matter = $('<d-front-matter></d-front-matter>');
+    $('#distill-front-matter').wrap(front_matter);
+  
+    // create d-title
+    $('.d-title').changeElementType('d-title');
+  
+    // create d-byline
+    var byline = $('<d-byline></d-byline>');
+    $('.d-byline').replaceWith(byline);
+  
+    // create d-article
+    var article = $('<d-article></d-article>');
+    $('.d-article').wrap(article).children().unwrap();
+  
+    // move posts container into article
+    $('.posts-container').appendTo($('d-article'));
+  
+    // create d-appendix
+    $('.d-appendix').changeElementType('d-appendix');
+  
+    // create d-bibliography
+    var bibliography = $('<d-bibliography></d-bibliography>');
+    $('#distill-bibliography').wrap(bibliography);
+  
+    // flag indicating that we have appendix items
+    var appendix = $('.appendix-bottom').children('h3').length > 0;
+  
+    // replace citations with <d-cite>
+    $('.citation').each(function(i, val) {
+      appendix = true;
+      var cites = $(this).attr('data-cites').split(" ");
+      var dt_cite = $('<d-cite></d-cite>');
+      dt_cite.attr('key', cites.join());
+      $(this).replaceWith(dt_cite);
+    });
+    // remove refs
+    $('#refs').remove();
+  
+    // replace footnotes with <d-footnote>
+    $('.footnote-ref').each(function(i, val) {
+      appendix = true;
+      var href = $(this).attr('href');
+      var id = href.replace('#', '');
+      var fn = $('#' + id);
+      var fn_p = $('#' + id + '>p');
+      fn_p.find('.footnote-back').remove();
+      var text = fn_p.html();
+      var dtfn = $('<d-footnote></d-footnote>');
+      dtfn.html(text);
+      $(this).replaceWith(dtfn);
+    });
+    // remove footnotes
+    $('.footnotes').remove();
+  
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      var id = $(this).attr('id');
+      $('.d-toc a[href="#' + id + '"]').parent().remove();
+      appendix = true;
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+    });
+  
+    // show d-appendix if we have appendix content
+    $("d-appendix").css('display', appendix ? 'grid' : 'none');
+  
+    // replace code blocks with d-code
+    $('pre>code').each(function(i, val) {
+      var code = $(this);
+      var pre = code.parent();
+      var clz = "";
+      var language = pre.attr('class');
+      if (language) {
+        // map unknown languages to "clike" (without this they just dissapear)
+        if ($.inArray(language, ["bash", "clike", "css", "go", "html",
+                                 "javascript", "js", "julia", "lua", "markdown",
+                                 "markup", "mathml", "python", "svg", "xml"]) == -1)
+          language = "clike";
+        language = ' language="' + language + '"';
+        var dt_code = $('<d-code block' + language + clz + '></d-code>');
+        dt_code.text(code.text());
+        pre.replaceWith(dt_code);
+      } else {
+        code.addClass('text-output').unwrap().changeElementType('pre');
+      }
+    });
+  
+    // localize layout chunks to just output
+    $('.layout-chunk').each(function(i, val) {
+  
+      // capture layout
+      var layout = $(this).attr('data-layout');
+  
+      // apply layout to markdown level block elements
+      var elements = $(this).children().not('d-code, pre.text-output, script');
+      elements.each(function(i, el) {
+        var layout_div = $('<div class="' + layout + '"></div>');
+        if (layout_div.hasClass('shaded')) {
+          var shaded_content = $('<div class="shaded-content"></div>');
+          $(this).wrap(shaded_content);
+          $(this).parent().wrap(layout_div);
+        } else {
+          $(this).wrap(layout_div);
+        }
+      });
+  
+  
+      // unwrap the layout-chunk div
+      $(this).children().unwrap();
+    });
+  
+    // load distill framework
+    load_distill_framework();
+  
+    // wait for window.distillRunlevel == 4 to do post processing
+    function distill_post_process() {
+  
+      if (!window.distillRunlevel || window.distillRunlevel < 4)
+        return;
+  
+      // hide author/affiliations entirely if we have no authors
+      var front_matter = JSON.parse($("#distill-front-matter").html());
+      var have_authors = front_matter.authors && front_matter.authors.length > 0;
+      if (!have_authors)
+        $('d-byline').addClass('hidden');
+  
+      // table of contents
+      if (have_authors) // adjust border if we are in authors
+        $('.d-toc').parent().addClass('d-article-with-toc');
+  
+      // strip links that point to #
+      $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+  
+      // hide elements of author/affiliations grid that have no value
+      function hide_byline_column(caption) {
+        $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+      }
+  
+      // affiliations
+      var have_affiliations = false;
+      for (var i = 0; i<front_matter.authors.length; ++i) {
+        var author = front_matter.authors[i];
+        if (author.affiliation !== "&nbsp;") {
+          have_affiliations = true;
+          break;
+        }
+      }
+      if (!have_affiliations)
+        $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+  
+      // published date
+      if (!front_matter.publishedDate)
+        hide_byline_column("Published");
+  
+      // document object identifier
+      var doi = $('d-byline').find('h3:contains("DOI")');
+      var doi_p = doi.next().empty();
+      if (!front_matter.doi) {
+        // if we have a citation and valid citationText then link to that
+        if ($('#citation').length > 0 && front_matter.citationText) {
+          doi.html('Citation');
+          $('<a href="#citation"></a>')
+            .text(front_matter.citationText)
+            .appendTo(doi_p);
+        } else {
+          hide_byline_column("DOI");
+        }
+      } else {
+        $('<a></a>')
+           .attr('href', "https://doi.org/" + front_matter.doi)
+           .html(front_matter.doi)
+           .appendTo(doi_p);
+      }
+  
+       // change plural form of authors/affiliations
+      if (front_matter.authors.length === 1) {
+        var grid = $('.authors-affiliations');
+        grid.children('h3:contains("Authors")').text('Author');
+        grid.children('h3:contains("Affiliations")').text('Affiliation');
+      }
+  
+      // inject pre code styles (can't do this with a global stylesheet b/c a shadow root is used)
+      $('d-code').each(function(i, val) {
+        var style = document.createElement('style');
+        style.innerHTML = 'pre code { padding-left: 10px; font-size: 12px; border-left: 2px solid rgba(0,0,0,0.1); } ' +
+                          '@media(min-width: 768px) { pre code { padding-left: 18px; font-size: 14px; } }';
+        if (this.shadowRoot)
+          this.shadowRoot.appendChild(style);
+      });
+  
+      // move appendix-bottom entries to the bottom
+      $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+      $('.appendix-bottom').remove();
+  
+      // clear polling timer
+      clearInterval(tid);
+  
+      // show body now that everything is ready
+      on_load_complete();
+    }
+  
+    var tid = setInterval(distill_post_process, 50);
+    distill_post_process();
+  
+  }
+  
+  function init_downlevel() {
+  
+    init_common();
+  
+     // insert hr after d-title
+    $('.d-title').after($('<hr class="section-separator"/>'));
+  
+    // check if we have authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+  
+    // manage byline/border
+    if (!have_authors)
+      $('.d-byline').remove();
+    $('.d-byline').after($('<hr class="section-separator"/>'));
+    $('.d-byline a').remove();
+  
+    // remove toc
+    $('.d-toc-header').remove();
+    $('.d-toc').remove();
+    $('.d-toc-separator').remove();
+  
+    // move appendix elements
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+    });
+  
+  
+    // inject headers into references and footnotes
+    var refs_header = $('<h3></h3>');
+    refs_header.text('References');
+    $('#refs').prepend(refs_header);
+  
+    var footnotes_header = $('<h3></h3');
+    footnotes_header.text('Footnotes');
+    $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+  
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+  
+    // remove appendix if it's empty
+    if ($('.d-appendix').children().length === 0)
+      $('.d-appendix').remove();
+  
+    // prepend separator above appendix
+    $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+  
+    // trim code
+    $('pre>code').each(function(i, val) {
+      $(this).html($.trim($(this).html()));
+    });
+  
+    // move posts-container right before article
+    $('.posts-container').insertBefore($('.d-article'));
+  
+    $('body').addClass('downlevel');
+  
+    on_load_complete();
+  }
+  
+  
+  function init_common() {
+  
+    // jquery plugin to change element types
+    (function($) {
+      $.fn.changeElementType = function(newType) {
+        var attrs = {};
+  
+        $.each(this[0].attributes, function(idx, attr) {
+          attrs[attr.nodeName] = attr.nodeValue;
+        });
+  
+        this.replaceWith(function() {
+          return $("<" + newType + "/>", attrs).append($(this).contents());
+        });
+      };
+    })(jQuery);
+  
+    // prevent underline for linked images
+    $('a > img').parent().css({'border-bottom' : 'none'});
+  
+    // mark non-body figures created by knitr chunks as 100% width
+    $('.layout-chunk').each(function(i, val) {
+      var figures = $(this).find('img, .html-widget');
+      if ($(this).attr('data-layout') !== "l-body") {
+        figures.css('width', '100%');
+      } else {
+        figures.css('max-width', '100%');
+        figures.filter("[width]").each(function(i, val) {
+          var fig = $(this);
+          fig.css('width', fig.attr('width') + 'px');
+        });
+  
+      }
+    });
+  
+    // auto-append index.html to post-preview links in file: protocol
+    // and in rstudio ide preview
+    $('.post-preview').each(function(i, val) {
+      if (window.location.protocol === "file:")
+        $(this).attr('href', $(this).attr('href') + "index.html");
+    });
+  
+    // get rid of index.html references in header
+    if (window.location.protocol !== "file:") {
+      $('.distill-site-header a[href]').each(function(i,val) {
+        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+      });
+    }
+  
+    // add class to pandoc style tables
+    $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+    $('.kable-table').children('table').addClass('pandoc-table');
+  
+    // add figcaption style to table captions
+    $('caption').parent('table').addClass("figcaption");
+  
+    // initialize posts list
+    if (window.init_posts_list)
+      window.init_posts_list();
+  
+    // implmement disqus comment link
+    $('.disqus-comment-count').click(function() {
+      window.headroom_prevent_pin = true;
+      $('#disqus_thread').toggleClass('hidden');
+      if (!$('#disqus_thread').hasClass('hidden')) {
+        var offset = $(this).offset();
+        $(window).resize();
+        $('html, body').animate({
+          scrollTop: offset.top - 35
+        });
+      }
+    });
+  }
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    if (is_downlevel_browser())
+      init_downlevel();
+    else
+      window.addEventListener('WebComponentsReady', init_distill);
+  });
+  
+  </script>
+  
+  <!--/radix_placeholder_distill-->
+  <script src="visualisatiegapminder_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="visualisatiegapminder_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="visualisatiegapminder_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="visualisatiegapminder_files/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+  <!--/radix_placeholder_site_in_header-->
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"Visualisatie met inzet van Gapminder","description":"Een voorbeeld van datavisualisatie: Trends op het gebied van de wereldgezondheid\nen de economie","authors":[{"author":"Rafael A. Irizarry, bewerkt H. Jonkman","authorURL":"https://Harriejonkman.nl","affiliation":"&nbsp;","affiliationURL":"#"}],"publishedDate":"2018-08-14T00:00:00.000+02:00","citationText":"Jonkman, 2018"}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>Visualisatie met inzet van Gapminder</h1>
+<p>Een voorbeeld van datavisualisatie: Trends op het gebied van de wereldgezondheid en de economie</p>
+</div>
+
+<div class="d-byline">
+  Rafael A. Irizarry, bewerkt H. Jonkman <a href="https://Harriejonkman.nl" class="uri">https://Harriejonkman.nl</a> 
+  
+<br/>8-14-2018
+</div>
+
+<div class="d-article">
+<h2 id="een-praktijkvoorbeeld-trends-op-het-gebied-van-de-wereldgezondheid-en-de-economie">Een praktijkvoorbeeld: Trends op het gebied van de wereldgezondheid en de economie</h2>
+<p>In dit deel laten we zien hoe relatief eenvoudig de <code>ggplot</code> -code inzichtelijke en esthetisch aangename plots kan maken die ons helpen trends in de wereldgezondheid en economie beter te begrijpen. Later breiden we de code iets uit om de plots te perfectioneren en beschrijven we enkele algemene principes als leidraad voor datavisualisatie.</p>
+<h2 id="voorbeeld-1-levensverwachting-en-vruchtbaarheidcijfers">Voorbeeld 1: Levensverwachting en vruchtbaarheidcijfers</h2>
+<p><a href="https://en.wikipedia.org/wiki/Hans_Rosling">Hans Rosling</a> was medeoprichter van de <a href="http://www.gapminder.org/">Gapminder Foundation</a>, een organisatie die het publiek wil stimuleren om gegevens te gebruiken om veelvoorkomende mythes over de zogenaamde ontwikkelingswereld te verdrijven. De organisatie gebruikt gegevens om aan te tonen hoe de daadwerkelijke tendensen in gezondheid en economie de verhalen tegenspreken die van de media komen en sensationeel berichten over catastrofes, tragedies en andere ongelukkige gebeurtenissen, zoals die op de website van de Gapminder Foundation staan.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>Journalisten en lobbyisten vertellen dramatische verhalen. Dat moeten ze want dat is hun taak. Ze vertellen verhalen over bijzondere gebeurtenissen en ongewone mensen. De stapels dramatische verhalen die een al te dramatisch wereldbeeld vormen en zorgen voor sterke negatieve stressgevoelens: “De wereld wordt erger”, “Wij vs. zij! , ,,Andere mensen zijn vreemd”, “De bevolking blijft maar groeien” en “Het maakt niemand wat uit”!</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>Hans Rosling bracht actuele data-gebaseerde trends op een eigen dramatische manier over aan de hand van effectieve datavisualisatie. Dit hoofdstuk is gebaseerd op twee gesprekken die deze benadering van onderwijs illustreren: <a href="https://www.ted.com/talks/hans_rosling_reveals_new_insights_on_poverty?language=en">Nieuwe inzichten in armoede</a> en <a href="https://www.ted.com/talks/hans_rosling_shows_the_best_stats_you_ve_ever_seen">De beste Statistiek die je gezien hebt</a>.</p>
+<p>In deze paragraaf willen we aan de hand van gegevens een antwoord geven op de volgende twee vragen:</p>
+<ol type="1">
+<li><p>Is het een eerlijke typering van de wereld van vandaag om te zeggen dat ze verdeeld is in westerse rijke naties en de ontwikkelingslanden in Afrika, Azi? en Latijns-Amerika?</p></li>
+<li><p>Is de inkomensongelijkheid tussen landen de afgelopen 40 jaar toegenomen?</p></li>
+</ol>
+<p>Om deze vraag te beantwoorden zullen we gebruik maken van de <code>gapminder</code> dataset in <code>dslabs</code>. Deze dataset is gemaakt met behulp van een aantal spreadsheets die beschikbaar zijn bij de Stichting [Gapminder] (<a href="http://www.gapminder.org/" class="uri">http://www.gapminder.org/</a>). U kunt op deze manier toegang krijgen tot de tafel:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+library(dslabs)
+data(gapminder)
+head(gapminder)</code></pre>
+<pre><code>
+              country year infant_mortality life_expectancy fertility
+1             Albania 1960           115.40           62.87      6.19
+2             Algeria 1960           148.20           47.50      7.65
+3              Angola 1960           208.00           35.98      7.32
+4 Antigua and Barbuda 1960               NA           62.97      4.43
+5           Argentina 1960            59.87           65.39      3.11
+6             Armenia 1960               NA           66.86      4.55
+  population          gdp continent          region
+1    1636054           NA    Europe Southern Europe
+2   11124892  13828152297    Africa Northern Africa
+3    5270844           NA    Africa   Middle Africa
+4      54681           NA  Americas       Caribbean
+5   20619075 108322326649  Americas   South America
+6    1867396           NA      Asia    Western Asia</code></pre>
+</div>
+<h4 id="de-quiz-van-hans-rosling">De quiz van Hans Rosling</h4>
+<p>Zoals gedaan in de <em>New Insights on Poverty</em> video, beginnen we met het testen van onze kennis over verschillen in kindersterfte tussen verschillende landen.</p>
+<p>Voor elk van de zes onderstaande paren landenparen, willen we weten welk land volgens u de hoogste kindersterfte in 2015 had? Welke paren lijken volgens jou het meest op elkaar?</p>
+<ol type="1">
+<li>Sri Lanka of Turkije</li>
+<li>Polen of Zuid-Korea</li>
+<li>Maleisi? of Rusland</li>
+<li>Pakistan of Vietnam</li>
+<li>Thailand of Zuid-Afrika</li>
+</ol>
+<p>Wanneer deze vragen zonder gegevens worden beantwoord, worden de niet-Europese landen doorgaans gekozen als landen met hogere sterftecijfers: Sri Lanka boven Turkije, Zuid-Korea boven Polen en Maleisi? boven Rusland. Ook in landen die als ontwikkelingslanden worden beschouwd, Pakistan, Vietnam, Thailand en Zuid-Afrika, is het sterftecijfer even hoog.</p>
+<p>Om deze vragen __ met data__ te beantwoorden kunnen we het R-pakket <code>dplyr</code> gebruiken. Voor de eerste vergelijking zien we bijvoorbeeld dat</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+    country infant_mortality
+1 Sri Lanka              8.4
+2    Turkey             11.6</code></pre>
+</div>
+<p>Turkije heeft een hogere score.</p>
+<p>We kunnen deze code op alle vergelijkingen plakken en dan zien we het volgende:</p>
+<div class="layout-chunk" data-layout="l-body">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">country</th>
+<th style="text-align: right;">infant_mortality</th>
+<th style="text-align: left;">country1</th>
+<th style="text-align: right;">infant_mortality1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Sri Lanka</td>
+<td style="text-align: right;">8.4</td>
+<td style="text-align: left;">Turkey</td>
+<td style="text-align: right;">11.6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Poland</td>
+<td style="text-align: right;">4.5</td>
+<td style="text-align: left;">South Korea</td>
+<td style="text-align: right;">2.9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Malaysia</td>
+<td style="text-align: right;">6.0</td>
+<td style="text-align: left;">Russia</td>
+<td style="text-align: right;">8.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pakistan</td>
+<td style="text-align: right;">65.8</td>
+<td style="text-align: left;">Vietnam</td>
+<td style="text-align: right;">17.3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Thailand</td>
+<td style="text-align: right;">10.5</td>
+<td style="text-align: left;">South Africa</td>
+<td style="text-align: right;">33.6</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>We zien dat de Europese landen hogere cijfers hebben: Polen heeft een hoger percentage dan Zuid-Korea en Rusland een hoger percentage dan Maleisi?. We zien ook dat Pakistan een veel hoger percentage heeft dan Vietnam en Zuid-Afrika een veel hoger percentage dan Thailand. Het blijkt dat de meeste mensen het slechter doen dan wanneer ze zouden raden. We lijken wel onwetend zijn en we zijn verkeerd ge?nformeerd.</p>
+<h3 id="levensverwachting-en-vruchtbaarheidscijfers">Levensverwachting en vruchtbaarheidscijfers</h3>
+<p>De reden hiervoor is het idee dat de wereld in twee groepen te verdelen is: de Westerse wereld (West-Europa en Noord-Amerika), met z’n lange levensduur en kleine gezinnen, tegenover de ontwikkelingslanden (Afrika, Azi? en Latijns-Amerika), gekenmerkt door een korte levensduur en grote gezinnen. Maar rechtvaardigen de gegevens deze dichotomie van twee groepen wel?</p>
+<p>De nodige gegevens om deze vraag te beantwoorden zitten ook in onze <code>gapminder</code> tabel. Met behulp van onze nieuw aangeleerde vaardigheden om data te visualiseren, zullen we in staat zijn om deze vraag te beantwoorden.</p>
+<p>De eerste plot die we maken om te zien wat de gegevens zeggen over dit wereldbeeld is een spreidingplot van levensverwachting versus vruchtbaarheidscijfers (gemiddeld aantal kinderen per vrouw). We kijken eerst naar gegevens van zo’n vijftig jaar geleden, toen dit standpunt misschien nog te rechtvaardigen was.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="visualisatiegapminder_files/figure-html5/unnamed-chunk-3-1.png" width="624" /></p>
+</div>
+<p>De meeste punten vallen in twee verschillende categorie?n uiteen:</p>
+<ol type="1">
+<li>Levensverwachting rond 70 jaar en 3 of minder kinderen per gezin</li>
+<li>Levensverwachting lager dan 65 jaar en met meer dan 5 kinderen per gezin.</li>
+</ol>
+<p>Om te bevestigen dat de landen inderdaad afkomstig zijn uit de regio’s die wij verwachten, kunnen wij kleur gebruiken om het continent te vertegenwoordigen.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="visualisatiegapminder_files/figure-html5/unnamed-chunk-4-1.png" width="624" /></p>
+</div>
+<p>Dus de visie in 1962, “het westen versus de ontwikkelingslanden”, was gebaseerd op een of andere realiteit. Maar is dat 50 jaar later nog steeds het geval?</p>
+<h3 id="facetteren">Facetteren</h3>
+<p>We konden de gegevens voor 2012 gemakkelijk in kaart brengen op dezelfde manier als voor 1962. Maar om de gegevens te vergelijken, kunnen we de inzichten het beste naast elkaar zetten. In <code>ggplot</code> kunnen we dit doen met’ <em>faceting variabelen</em>’: we stratificeren de gegevens met een of andere variabele en maken dezelfde plot voor elke groep.</p>
+<p>Om te facetteren (ik weet niet of het een Nederlands woord is, maar goed) voegen we een laag toe met de functie <code>facet_grid</code>, die automatisch de groepen scheidt. Met deze functie kunt u maximaal twee variabelen facetteren met behulp van kolommen om de ene variabele weer te geven en rijen om de andere weer te geven. De functie verwacht de rij- en kolomvariabelen die door een <code>~</code> van elkaar zijn gescheiden. Hier is een voorbeeld van een verstrooiingsplot met een <code>facet_grid</code> als laatste laag toegevoegd:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="visualisatiegapminder_files/figure-html5/unnamed-chunk-5-1.png" width="624" /></p>
+</div>
+<p>We zien een plot voor elk continent/jaarpaar. Maar dit is slechts een voorbeeld en is al meer dan wat we willen, want dat is gewoon om 1962 en 2012 te vergelijken. In dit geval is er maar ??n variabele en gebruiken we <code>.</code> om de facet te laten weten dat we geen van de variabelen gebruiken:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="visualisatiegapminder_files/figure-html5/unnamed-chunk-6-1.png" width="624" /></p>
+</div>
+<p>Deze plot laat duidelijk zien dat de meerderheid van de landen zich heeft ontwikkeld van <em>ontwikkelingslandcluster</em> naar het <em>ontwikkeldlandcluster</em>. In 2012 heeft het oude perspectief geen zin meer. Dit wordt vooral duidelijk bij een vergelijking van Europa en Azi?, want vooral binnen dat laatste continent zijn er verschillende landen waarbinnen grote verbeteringen hebben doorgevoerd.</p>
+<h4 id="facet_wrap"><code>facet_wrap</code></h4>
+<p>Om te onderzoeken hoe deze transformatie door de jaren heen is gegaan, kunnen we het perceel voor meerdere jaren maken. We kunnen bijvoorbeeld 1970, 1980, 1990, 2000 toevoegen. Als we dit doen, willen we niet dat alle percelen op dezelfde rij staan, het standaard gedrag van <code>facet_grid</code>, omdat ze te dun worden om de gegevens weer te geven. In plaats daarvan zullen we meerdere rijen en kolommen gebruiken. Dat kan met de functie <code>facet_wrap</code> , waarmee automatisch een reeks percelen onstaat met ded juiste afmetingen:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="visualisatiegapminder_files/figure-html5/unnamed-chunk-7-1.png" width="624" /></p>
+</div>
+<p>Dit plot toont duidelijk aan hoe de meeste Aziatische landen zich veel sneller hebben verbeterd dan de Europese.</p>
+<h3 id="vaste-schalen-voor-betere-vergelijkingen">Vaste schalen voor betere vergelijkingen</h3>
+<p>Merk op dat de standaard keuze van het bereik van de assen een belangrijke is. Wanneer geen <code>facet' wordt gebruikt, wordt het bereik bepaald door de gegevens die in de grafiek worden getoond. Bij gebruik van</code>facet’ wordt dit bereik bepaald door de gegevens die op alle percelen worden weergegeven en wordt het dus voor alle percelen vastgehouden. Dit maakt vergelijkingen tussen percelen veel gemakkelijker. In bovenstaand perceel zien we bijvoorbeeld dat de levensverwachting in de meeste landen is gestegen en de vruchtbaarheid is afgenomen. We zien dit omdat de puntenwolk beweegt. Dit is niet het geval als we de schalen aanpassen:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="visualisatiegapminder_files/figure-html5/unnamed-chunk-8-1.png" width="624" /></p>
+</div>
+<p>In de plot hierboven moeten we speciale aandacht besteden aan het bereik om op te merken dat de rechter plot aan de rechter kant een grotere levensverwachting vertoont.</p>
+<h3 id="animatie">Animatie</h3>
+<p>Met het <code>gganimate</code> pakket kunt u eenvoudig facetten omzetten in een animatie:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<h3 id="tijdreeksfiguren">Tijdreeksfiguren</h3>
+<p>Bovenstaande visualisaties laten duidelijk zien dat data het oude beeld van het westen tegenover ontwikkelingslanden niet meer ondersteunen. Als we deze figuren eenmaal hebben gezien, rijzen er nieuwe vragen. Welke landen verbeteren bijvoorbeeld meer en welke minder? Was de verbetering de afgelopen 50 jaar constant of was er in bepaalde perioden sprake van een versnelling? Om deze vraag beter te kunnen beantwoorden, gaan we dieper in op de <em>tijdreeksfiguren</em>.</p>
+<p>In tijdreeksfiguren staat tijd op de x-as en een uitkomst of meting die van belang is op de y-as. Hier is bijvoorbeeld een trendfiguur voor de vruchtbaarheidscijfers van Nederland:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="visualisatiegapminder_files/figure-html5/unnamed-chunk-10-1.png" width="624" /></p>
+</div>
+<p>We zien dat de trend helemaal niet lineair is. In plaats daarvan zien we een scherpe daling tijdens de jaren ’60 en ’70 naar onder de 2. Dan komt de trend terug op 2 en stabiliseert zich tijdens de jaren ’90.</p>
+<p>Wanneer de punten regelmatig en dicht op elkaar liggen, zoals hier, maken we krommen door de punten als lijnen met elkaar te verbinden om aan te geven dat deze gegevens uit ??n land afkomstig zijn. Hiervoor gebruiken we de functie <code>geom_line</code> in plaats van <code>geom_point</code>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="visualisatiegapminder_files/figure-html5/unnamed-chunk-11-1.png" width="624" /></p>
+</div>
+<p>Dit is met name nuttig wanneer we naar twee landen kijken. Als we de gegevens zo onderverdelen in twee landen, ??n uit Europa en ??n uit Azi?, dan kopieer je de gegevens naar de bovenstaande code:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="visualisatiegapminder_files/figure-html5/unnamed-chunk-12-1.png" width="624" /></p>
+</div>
+<p>Merk op dat dit <strong>niet</strong> de figuur is die we willen. In plaats van een lijn voor elk land, worden de punten voor beide landen samengevoegd. Dit wordt eigenlijk verwacht omdat we <code>ggplot</code> niets hebben verteld over het willen hebben van twee aparte lijnen. Om <code>ggplot</code> te laten weten dat we twee afzonderlijke curven willen hebben, wijzen we elk punt toe aan een ‘groep’, ??n voor elk land:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="visualisatiegapminder_files/figure-html5/unnamed-chunk-13-1.png" width="624" /></p>
+</div>
+<p>Maar welke lijn gaat over welk land? We kunnen kleuren toewijzen om dat onderscheid te maken. Een nuttig neveneffect van het gebruik van het ‘kleur’-argument om verschillende kleuren toe te wijzen aan de verschillende landen, is dat de gegevens automatisch worden gegroepeerd:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="visualisatiegapminder_files/figure-html5/unnamed-chunk-14-1.png" width="624" /></p>
+</div>
+<p>Uit het perceel blijkt duidelijk dat het vruchtbaarheidscijfer van Zuid-Korea in de jaren ’60 en ’70 drastisch is gedaald en in 1990 even hoog was als in Duitsland.</p>
+<h4 id="de-voorkeur-van-labels-boven-legendas">De voorkeur van labels boven legenda’s</h4>
+<p>Voor trendplots raden we aan om de lijnen te labelen in plaats van legenda’s te gebruiken omdat de kijker snel kan zien welke lijn welk land is. Deze suggestie is eigenlijk van toepassing op de meeste figuren: labeling heeft meestal de voorkeur boven legenda’s.</p>
+<p>Aan de hand van de gegevens over de levensverwachting laten we zien hoe we dit kunnen doen. We defini?ren een datatabel met de labellocaties en gebruiken dan een tweede mapping alleen voor deze labels:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="visualisatiegapminder_files/figure-html5/unnamed-chunk-15-1.png" width="624" /></p>
+</div>
+<p>De figuur toont duidelijk aan hoe een verbetering van levensverwachting de dalingen in vruchtbaarheidscijfers volgde. Terwijl de Duitsers in 1960 meer dan 15 jaar meer Zuid-Koreanen woonden, is de kloof in 2010 volledig gedicht. Het is een voorbeeld van de verbetering die veel niet-westerse landen in de afgelopen veertig jaar hebben bereikt.</p>
+<h3 id="voorbeeld-2-inkomensverdeling">Voorbeeld 2: Inkomensverdeling</h3>
+<p>Een andere veelgehoorde opmerking is dat de verdeling van de welvaart over de wereld de laatste decennia is verslechterd. Wanneer het algemene publiek wordt gevraagd of arme landen armer zijn geworden en rijke landen rijker, antwoordt de meerderheid ja. Door gebruik te maken van stratificatie, histogrammen, vloeiende verdeling en boxplots zullen we in staat zijn om te begrijpen of dit inderdaad het geval is. We leren dan ook hoe transformaties soms kunnen helpen om meer informatieve samenvattingen en figuren aan te bieden.</p>
+<h3 id="transformaties">Transformaties</h3>
+<p>De `gapminder’-gegevenstabel bevat een kolom met het bruto binnenlands product (BBP) van de landen. Het BBP meet de marktwaarde van de goederen en diensten die een land in een jaar produceert. Het BBP per persoon wordt vaak gebruikt als een ruwe samenvatting van hoe rijk een land is. Hier delen we deze hoeveelheid door 365 om de meer interpreteerbare maat <em>dollars per dag</em> te krijgen. Wanneer we de huidige US-dollar als eenheid gebruiken, wordt een persoon die met een inkomen van minder dan $ 2 per dag overleeft, gedefinieerd als een persoon die in <em>absloute armoede</em> leeft. Deze variabele voegen we toe aan de datatabel:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>Merk op dat de BBP-waarden zijn gecorrigeerd voor inflatie en staan voor de huidige US-dollar. Dus deze waarden zijn bedoeld om over de jaren heen vergelijkbaar te zijn. Merk ook op dat het hier om landsgemiddelden gaat en dat er binnen elk land veel variatie is. Alle hieronder beschreven grafieken en inzichten hebben betrekking op landsgemiddelden en staan dus niet individuele personen.</p>
+<h4 id="verdeling-van-het-landinkomen">Verdeling van het landinkomen</h4>
+<p>Hier is een histogram van de inkomens per dag uit 1970:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="visualisatiegapminder_files/figure-html5/unnamed-chunk-17-1.png" width="624" /></p>
+</div>
+<p>We gebruiken het <code>color = &quot;black&quot;</code> om een grens te trekken en de bins (‘bakjes’) duidelijk van elkaar te onderscheiden.</p>
+<p>In dit diagram zien we dat voor de meeste landen gemiddelden zijn onder $10 per dag. Het grootste deel van de x-as is echter gewijd aan de 35 landen met gemiddelden boven $10. De grafiek is dus niet erg informatief over landen met waarden onder $10 per dag.</p>
+<p>Het is misschien informatiever om snel te kunnen zien hoeveel landen een gemiddeld daginkomen hebben van ongeveer $1 (extreem arm), $2 (zeer arm), $4 (arm), $8 (midden), $16 (welgesteld), $32 (rijk), $64 (zeer rijk) per dag. Deze veranderingen zijn vermenigvuldigend en logtransformaties.</p>
+Hier is de verdeling als we een log2 transformatie toepassen:
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="visualisatiegapminder_files/figure-html5/unnamed-chunk-18-1.png" width="624" /></p>
+</div>
+<p>In zekere zin geeft dit een <em>close up</em> van de landen met een gemiddeld tot lager inkomen.</p>
+<h4 id="welke-basis">Welke basis?</h4>
+<p>In het bovenstaande geval hebben we basis 2 gebruikt in de log-transformaties. Andere veelvoorkomende keuzes zijn basis <span class="math inline">\(e\)</span> (de natuurlijke log) en basis 10.</p>
+<p>Over het algemeen raden wij het gebruik van het natuurlijke logboek voor het verkennen en visualiseren van gegevens aan.Dit is omdat <span class="math inline">\(2^2, 2^3, 2^4, \dots\)</span> or <span class="math inline">\(10^1, 10^2, \dots\)</span> makkelijk zijn te berekenen in ons hoofd. Hetzelfde geldt niet voor <span class="math inline">\(\mathrm{e}^2, \mathrm{e}^3, \dots\)</span>.</p>
+<p>In het voorbeeld dollars per dag gebruikten we basis 2 in plaats van basis 10 omdat het resulterende bereik gemakkelijker te interpreteren is. Het bereik van de waarden die worden uitgezet is 0.3269426, 48.8852142.</p>
+<p>In basis 10 verandert dit in een bereik dat zeer weinig gehele getallen omvat: slechts 0 en 1. Met basis twee omvat ons assortiment -2, -1, 0, 1, 2, 3, 4 en 5. Het is gemakkelijker om <span class="math inline">\(2^x\)</span> en <span class="math inline">\(10^x\)</span> te berekenen wanneer <span class="math inline">\(x\)</span> een geheel getal is en tussen -10 en 10 ligt. Dus geven we de voorkeur aan meer kleine gehele getallen in de schaal. Een ander gevolg van een beperkt bereik is dat het kiezen van de ‘bin’-breedte een grotere uitdaging is. Met log base 2 weten we dat een ‘bin’-breedte van 1 zal vertalen naar een bin met bereik van <span class="math inline">\(x\)</span> tot <span class="math inline">\(2x\)</span>.</p>
+<p>Als voorbeeld waarbij basis 10 zinvoller is, overweeg dan de populatiegrootte. Een logbasis 10 is zinvoller omdat het bereik hiervoor ongeveer 1000 tot 10 miljard is. Hier is het histogram van de getransformeerde waarden:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="visualisatiegapminder_files/figure-html5/unnamed-chunk-19-1.png" width="624" /></p>
+</div>
+<p>Hier zien we al snel dat de bevolking van een land varieert tussen de tienduizend en tien miljard.</p>
+<h4 id="transform-the-values-or-the-scale">Transform the values or the scale?</h4>
+<p>Er zijn twee manieren waarop we log-transformaties in grafieken kunnen gebruiken. We kunnen de waarden loggen voordat we ze plotten of gebruik maken van logschalen in de assen. Beide benaderingen zijn nuttig en hebben verschillende sterke punten. Als we de gegevens loggen, kunnen we gemakkelijker tussenliggende waarden interpreteren in de schaal. Bijvoorbeeld als we zien</p>
+<blockquote>
+<blockquote>
+<p>—-1—-x—-2——–3—-</p>
+</blockquote>
+</blockquote>
+<p>voor log getransformeerde gegevens weten we dat de waarde van <span class="math inline">\(x\)</span> is ongeveer 1,5. Als de weegschalen gelogd zijn</p>
+<blockquote>
+<blockquote>
+<p>—-1—-x—-10——100—</p>
+</blockquote>
+</blockquote>
+<p>om <code>x</code> te bepalen, moeten we <span class="math inline">\(10^{1.5}\)</span> berekenen. Dat is niet gemakkelijk te doen in onze hoofden. Het voordeel van het tonen van gelogde schalen is echter dat de originele waarden worden weergegeven in de plot, die gemakkelijker te interpreteren zijn. Bijvoorbeeld, we zouden “32 dollar per dag” zien in plaats van “5 log basis 2 dollar per dag”.</p>
+<p>Zoals we eerder leerden, als we de as willen schalen met logs kunnen we de functie ‘schaal_x_ccontinue’ gebruiken. Dus in plaats van eerst de waarden te loggen, passen we deze laag toe:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="visualisatiegapminder_files/figure-html5/unnamed-chunk-20-1.png" width="624" /></p>
+</div>
+<p>Merk op dat de log base 10 transformatie zijn eigen functie heeft: <code>scale_x_log10()</code>, maar momenteel base 2 niet. Hoewel we dit zelf gemakkelijk konden defini?ren.</p>
+<p>Merk op dat er andere transformatie beschikbaar zijn via het <code>trans</code> argument. Zoals we later leren, is bijvoorbeeld de vierkantsworteltransformatie (<code>sqrt</code>) nuttig bij het tellen. De logistieke transformatie (<code>logit</code>) is nuttig bij het plotten van proporties tussen 0 en 1. De <code>omgekeerde</code> transformatie is nuttig als we willen dat kleinere waarden rechts of bovenop staan.</p>
+<h3 id="modus">Modus</h3>
+<p>In de statistieken wordt deze hobbel ook wel <em>modus</em> genoemd. De modus van een verdeling is de waarde met de hoogste frequentie. De modus van de normale verdeling is het gemiddelde. Wanneer een distributie, zoals de bovenstaande, niet eentonig afneemt van de modus, noemen we de locaties waar het op en neer gaat weer lokale modi en zeggen dat de distributie meerdere modi heeft.</p>
+<p>Het histogram hierboven suggereert dat de inkomensverdeling van het land in 1970 twee modi kent: ??n met ongeveer 2 dollar per dag (1 in de log 2 schaal) en ??n met ongeveer 32 dollar per dag (5 in de log 2 schaal). Deze <em>bimodaliteit</em> is consistent met een dichotome wereld die bestaat uit landen met een gemiddeld inkomen van minder dan $8 (3 in de log 2 schaal) per dag en landen daarboven.</p>
+<h3 id="stratificeren-en-boxplot">Stratificeren en boxplot</h3>
+<p>Het histogram liet zien dat de inkomensverdelingswaarden een tweedeling vertonen. Het histogram laat echter niet zien of de twee groepen landen <em>west</em> tegenover de <em>ontwikkelings</em> wereld zijn.</p>
+<p>Om de verdeling naar geografische regio te zien, stratificeren we eerst de gegevens naar regio’s en onderzoeken we vervolgens de verdeling voor elke regio.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+[1] 22</code></pre>
+</div>
+<p>Vanwege het aantal regio’s zijn histogrammen of gladde dichtheden voor elk niet nuttig. In plaats daarvan kunnen we boxplots naast elkaar stapelen:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="visualisatiegapminder_files/figure-html5/unnamed-chunk-22-1.png" width="624" /></p>
+</div>
+<p>Merk op dat we de regionamen niet kunnen lezen omdat het standaard ggplot-gedrag is om de labels horizontaal te schrijven en hier lopen we dan de ruimte uit. We kunnen dit eenvoudig repareren door de etiketten te draaien. In de sheetuitleg vinden we dat we de namen kunnen roteren door het <code>thema</code> te veranderen via <code>element_text</code>. Het <code>just=1</code> zorgt ervoor dat deze zich naast de as bevindt.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="visualisatiegapminder_files/figure-html5/unnamed-chunk-23-1.png" width="624" /></p>
+</div>
+<p>We zien nu dat er inderdaad een tweedeling is tussen het westen en de rest.</p>
+<h4 id="orden-niet-alfabetisch">Orden niet alfabetisch</h4>
+<p>Er zijn nog een paar aanpassingen die we kunnen maken om in de grafiek deze realiteit beter bloot te leggen. Ten eerste helpt het om de regio’s in de boxplots te ordenen van arm naar rijk in plaats van alfabetisch. Dit kan worden gedaan met behulp van de <code>reorder</code> functie. Deze functie laat ons de orde van de niveaus van een factorvariabele op basis van een samenvatting veranderen die op een numerieke vector wordt berekend. Een karaktervector wordt in een factor gedwongen:</p>
+<p>Hieronder staat een voorbeeld. Merk op hoe de volgorde van de niveaus verandert:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+[1] &quot;Asia&quot; &quot;West&quot;</code></pre>
+<pre><code>
+[1] &quot;West&quot; &quot;Asia&quot;</code></pre>
+</div>
+<p>Ten tweede kunnen we kleur gebruiken om de verschillende continenten te onderscheiden, een visuele kleurschakering die helpt om specifieke regio’s te vinden. Hier is de code:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="visualisatiegapminder_files/figure-html5/unnamed-chunk-25-1.png" width="624" /></p>
+</div>
+<p>Dit figuur toont twee duidelijke groepen, met de rijke groep bestaande uit Noord-Amerika, Noord- en West-Europa, Nieuw-Zeeland en Australi?. Net als met het histogram, als we de plot herschikken met behulp van een logschaal zijn we in staat om verschillen binnen de deconcentratiewereld beter te zien.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="visualisatiegapminder_files/figure-html5/unnamed-chunk-26-1.png" width="624" /></p>
+</div>
+<h4 id="de-data-tonen">De data tonen</h4>
+<p>In veel gevallen tonen we de gegevens niet omdat het rommel aan het figuur toevoegt en het bericht vertroebelt. In bovenstaand voorbeeld hebben we niet zoveel punten. Dan kunnen deze laag toevoegen met behulp van geom_point() en door punten toe te voegen kunnen we eigenlijk alle gegevens zien</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="visualisatiegapminder_files/figure-html5/unnamed-chunk-27-1.png" width="624" /></p>
+</div>
+<h3 id="verdelingen-vergelijken">Verdelingen vergelijken</h3>
+<p>De bovenstaande verkennende gegevensanalyse heeft twee kenmerken van de gemiddelde inkomensverdeling in 1970 aan het licht gebracht. Aan de hand van een histogram vonden we een bimodale verdeling met de modi voor arme en rijke landen. Door in het onderzoek stratificatie per regio toe te passen zagen we met boxplots dat de rijke landen meestal in Europa, Noord-Amerika, Australi? en Nieuw-Zeelandm lagen. Met deze regio’s defini?ren we een vector:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>Nu willen we ons richten op het vergelijken van de verschillen in verdelingen in de tijd.</p>
+<p>We bevestigen eerst de bimodaliteit die we in 1970 waarnamen en dat deze wordt verklaard door de westelijk tegenover de ontwikkelingswereld- dichotomie. Dit doen we door histogrammen te maken voor de groepen die we hebben ge?dentificeerd. Merk op dat we de twee groepen maken met <code>ifelse</code> binnen een <code>mutaat</code> en dat we <code>facet_grid</code> gebruiken om een histogram te maken voor elke groep:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="visualisatiegapminder_files/figure-html5/unnamed-chunk-29-1.png" width="624" /></p>
+</div>
+<p>Nu kunnen we kijken of de scheiding vandaag de dag slechter is dan veertig jaar geleden. Dit doen we door zowel per regio als per jaar te facetteren:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="visualisatiegapminder_files/figure-html5/unnamed-chunk-30-1.png" width="624" /></p>
+</div>
+<p>Voordat we de bevindingen van deze plot interpreteren, stellen we vast dat er meer landen vertegenwoordigd zijn in de histogrammen van 2010 dan in 1970: het aantal tellingen is groter. Een van de redenen hiervoor is dat verschillende landen na 1970 zijn opgericht. De Sovjet-Unie is in de jaren negentig is veranderd in verschillende landen, waaronder Rusland en Oekra?ne. Een andere reden is dat in 2010 voor meer landen gegevens beschikbaar zijn.</p>
+<p>We hebben de figuren opnieuw gemaakt met behulp van alleen landen met gegevens die beschikbaar zijn voor beide jaren. In het hoofdstuk over datawisselingen leren we <code>tidyverse</code> tools waarmee we hiervoor effici?nte codes kunnen schrijven, maar hier een eenvoudige code met behulp van de <code>kruispunt</code> functie:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>These 108 account for 86 % of the world population, so this subset should be representative.</p>
+Laten we de plot opnieuw maken, maar alleen voor deze subset door simpelweg <code>land % in% country_list</code> aan de filterfunctie toe te voegen:
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="visualisatiegapminder_files/figure-html5/unnamed-chunk-32-1.png" width="624" /></p>
+</div>
+<p>We zien nu dat terwijl de rijke landen procentueel wat rijker zijn geworden, de arme landen meer lijken te zijn verbeterd. We zien vooral dat het aandeel van <em>ontwikkelingslanden</em> waar mensen meer dan $16 per dag verdienen aanzienlijk toeneemt.</p>
+<p>Om te zien welke specifieke regio’s het meest verbeterden, kunnen we de boxplots die we hierboven hebben gemaakt met nu 2010 toegevoegd, opnieuw maken</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>en dan met behulp van facet om de twee jaar te vergelijken:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="visualisatiegapminder_files/figure-html5/unnamed-chunk-34-1.png" width="624" /></p>
+</div>
+<p>Hier pauzeren we om nog een krachtige ggplot2-functie te introduceren. Omdat we elke regio voor en na willen vergelijken, zou het handig zijn om de 1970 boxplot naast de 2010 boxplot voor elke regio te hebben. Over het algemeen zijn vergelijkingen gemakkelijker wanneer gegevens naast elkaar worden uitgezet.</p>
+<p>Dus in plaats van facetteren houden we de gegevens van elk jaar bij elkaar, maar vragen we ggplot om ze afhankelijk van het jaar te kleuren (of te vullen). Ggplot scheidt ze automatisch en plaatst de twee boxplots naast elkaar. Omdat jaar een getal is, maken we er een factor van omdat ggplot automatisch een kleur toewijst aan elke categorie van een factor:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="visualisatiegapminder_files/figure-html5/unnamed-chunk-35-1.png" width="624" /></p>
+</div>
+<p>Tot slot wijzen we erop dat als wat we het meest ge?nteresseerd zijn in het vergelijken van voor en na waarden, kan het zinvoller zijn om de verhoudingen, of verschil in de log schaal plot te zetten. We zijn nog steeds niet klaar om te leren om dit te leren coderen, maar hier hoe het figuur eruit zou zien:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="visualisatiegapminder_files/figure-html5/unnamed-chunk-36-1.png" width="624" /></p>
+</div>
+<h3 id="subtiele-verdelingplots">Subtiele verdelingplots</h3>
+<p>Met behulp van dataverkenning hebben we ontdekt dat de inkomenskloof tussen rijke en arme landen de afgelopen veertig jaar aanzienlijk is gedicht. We gebruikten een reeks histogrammen en boxplots om dit te laten zien. Hier suggereren we een beknopte manier om deze boodschap over te brengen met slechts een plot. We zullen hiervoor subtiele verdelingplots gebruiken.</p>
+<p>Laten we beginnen met op te merken dat verdelingplots voor inkomensverdeling in 1970 en 2010 de boodschap afgeven dat de kloof aan het dichten is:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="visualisatiegapminder_files/figure-html5/unnamed-chunk-37-1.png" width="624" /></p>
+</div>
+<p>In de 1970 plot zien we twee heldere modi, arme en rijke landen. In 2010 lijkt het erop dat sommige arme landen naar rechts zijn verschoven, dat aangeeft dat de kloof is gedicht.</p>
+<p>De volgende boodschap die we moeten uitdragen is dat de reden voor deze verandering in de verdeling is dat arme landen rijker werden in plaats van dat sommige rijke landen armer werden. Om dit te doen hoeven we alleen een kleur toe te wijzen aan de groepen die we hebben ge?dentificeerd tijdens de dataverkenning.</p>
+<p>Voordat we dit echter kunnen doen, moeten we leren hoe we deze vlotte dichtheden zo kunnen maken dat de informatie over het aantal landen in elke groep behouden blijft. Om te begrijpen waarom we dit nodig hebben, let dan op de discrepantie in de grootte van elke groep:</p>
+<div class="layout-chunk" data-layout="l-body">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">group</th>
+<th style="text-align: right;">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Developing</td>
+<td style="text-align: right;">87</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">West</td>
+<td style="text-align: right;">21</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>maar als twee verdelingen overlappen, is de standaardinstelling dat het gebied dat door elke distributie wordt weergegeven tot 1 wordt opgeteld, ongeacht de grootte van elke groep:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="visualisatiegapminder_files/figure-html5/unnamed-chunk-39-1.png" width="624" /></p>
+</div>
+<p>waardoor het lijkt alsof er in elke groep evenveel landen zitten. Om dit te veranderen, zullen we moeten leren om berekende variabelen met de <code>geom_density</code> functie te benaderen.</p>
+<h3 id="toegang-tot-computervariabelen">Toegang tot computervariabelen</h3>
+<p>Om de oppervlakten van deze verdelingen evenredig te laten zijn met de grootte van de groepen, kunnen we de y-aswaarden eenvoudig vermenigvuldigen met de grootte van de groep. Vanuit de <code>geom_density</code> help-file zien we dat de functie, die een variabele genaamd <code>count</code> berekenen, precies dit doet. We willen dat deze variabele op de y-as komt te staan.</p>
+<p>In ggplot krijgen we toegang tot deze variabelen door ze te omringen met de naam <code>..</code>. Daarom zullen we de volgende mapping gebruiken:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>Nu kunnen we de gewenste plot maken door simpelweg de mapping in het vorige codebrok te veranderen:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="visualisatiegapminder_files/figure-html5/unnamed-chunk-41-1.png" width="624" /></p>
+</div>
+<p>Als we willen dat de verdelingen wordt subtieler worden, gebruiken we het ‘bw’-argument. We probeerden er een paar en kozen voor 0,75:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="visualisatiegapminder_files/figure-html5/unnamed-chunk-42-1.png" width="624" /></p>
+</div>
+<p>Dee plot laat nu heel duidelijk zien wat er aan de hand is. De verdeling in de ontwikkelingslanden is aan het veranderen. Een derde modus lijkt te bestaan en bestaat uit de landen die de kloof het meest hebben gedicht.</p>
+<h3 id="case_when">case_when</h3>
+<p>We kunnen dit cijfer zelfs iets informatiever maken. Uit de verkennende gegevensanalyse merkten we dat veel van de landen die het meest verbeterden, afkomstig waren uit Azi?. We kunnen de plot gemakkelijk wijzigen door belangrijke regio’s afzonderlijk weer te geven.</p>
+<p>We introduceren de <code>case_when</code> functie die handig is voor het defini?ren van groepen. Het heeft momenteel geen data-argument (dit kan veranderen), dus we moeten de onderdelen van onze gegevenstabel benaderen met behulp van de stip plaatsbewerker:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>We maken van deze ‘groep’-variabele een factor om de volgorde van de niveaus te bepalen:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>We kiezen deze specifieke volgorde vanwege een reden die later duidelijk wordt.</p>
+<p>Nu kunnen we eenvoudig de verdeling voor elk in kaart brengen. We gebruiken <code>kleur' en</code>grootte’ om de toppen duidelijk te laten zien:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="visualisatiegapminder_files/figure-html5/unnamed-chunk-45-1.png" width="624" /></p>
+</div>
+<p>De plot is rommelig en wat moeilijk te lezen. Soms krijg je een duidelijker beeld door de dichtheden op elkaar te stapelen:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="visualisatiegapminder_files/figure-html5/unnamed-chunk-46-1.png" width="624" /></p>
+</div>
+<p>Hier zien we duidelijk dat de verdelingen voor Oost-Azi?, Latijns-Amerika e.a. duidelijk naar rechts verschuiven. Terwijl Afrika bezuiden de Sahara blijft stagneren.</p>
+<p>Merk op dat we de niveaus van de groep zo ordenen dat de West verdeling eerst wordt uitgezet, dan Sub-Sahara Afrika. Als we eerst de twee uitersten in kaart brengen, zien we de resterende bimodaliteit beter.</p>
+<h4 id="gewogen-verdelingen">Gewogen verdelingen</h4>
+<p>Tot slot merken we op dat deze uitkeringen in alle landen hetzelfde wegen. Dus als het grootste deel van de bevolking zich verbetert, maar in een heel groot land woont, zoals China, zullen we dit misschien niet op prijs stellen. We kunnen de vloeiende verdelingen eigenlijk wegen met behulp van het <code>gewicht</code> in kaart brengen argument. Het plot ziet er dan als volgt uit:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="visualisatiegapminder_files/figure-html5/unnamed-chunk-47-1.png" width="624" /></p>
+</div>
+<p>Deze specifieke figuur laat heel duidelijk zien hoe de inkomenskloof wordt gedicht, waarbij de meeste armen in Afrika bezuiden de Sahara blijven.</p>
+<h2 id="ecologische-denkfout">Ecologische denkfout</h2>
+<p>In deze sectie hebben we regio’s van de wereld met elkaar vergeleken. We hebben gezien dat sommige regio’s het gemiddeld beter doen dan andere. Hier richten we ons op het beschrijven van het belang van verschillen binnen de groepen.</p>
+<p>Hier richten we ons op de relatie tussen de overlevingskans van kinderen in een land en het gemiddelde inkomen. We beginnen met het vergelijken van deze hoeveelheden tussen regio’s. We defini?ren nog een paar regio’s:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>Vervolgens berekenen we deze hoeveelheden per regio.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+# A tibble: 7 x 3
+  group              income infant_survival_rate
+  &lt;chr&gt;               &lt;dbl&gt;                &lt;dbl&gt;
+1 Sub-Saharan Africa   1.76                0.936
+2 Southern Asia        2.07                0.952
+3 Pacific Islands      2.70                0.956
+4 Northern Africa      4.94                0.970
+5 Latin America       13.2                 0.983
+6 East Asia           13.4                 0.985
+7 The West            77.1                 0.995</code></pre>
+</div>
+<p>Dit laat een dramatisch verschil zien. Terwijl in het westen minder dan 0,5 procent van de kinderen sterft, is dat in Afrika bezuiden de Sahara meer dan 6 procent! De relatie tussen deze twee variabelen is bijna perfect lineair</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="visualisatiegapminder_files/figure-html5/unnamed-chunk-50-1.png" width="624" /></p>
+</div>
+<p>In deze plot introduceren we het gebruik van het <code>limit</code> argument dat laat het bereik van de assen veranderen. We maken het bereik groter dan de gegevensbehoeften omdat we dit plot later zullen vergelijken met een plot met meer variabiliteit; we willen dat de bereiken hetzelfde zijn. We introduceren ook het `breaks’ argument, waarmee we de locatie van de aslabels kunnen instellen. Eindelijk introduceren we een nieuwe transformatie, de logistieke transformatie.</p>
+<h4 id="logistische-transformatie">Logistische transformatie</h4>
+<p>De logistische of logistieke transformatie voor een deel of een koers van <span class="math inline">\(p\)</span> wordt gedefinieerd als</p>
+<p><span class="math display">\[f(p) = \log \left( \frac{p}{1-p} \right)\]</span></p>
+<p>Wanneer <span class="math inline">\(p\)</span> een proportie of waarschijnlijkheid is, wordt de hoeveelheid die wordt gelogd, <span class="math inline">\(p/(1-p)\)</span> de <em>odds</em> genoemd. In het geval <span class="math inline">\(p\)</span> is het aandeel van een kind dat overleefde. De kansen vertellen ons hoeveel meer kinderen worden uitgedreven om te overleven dan om te sterven. De logtransformatie maakt dit symmetrisch. Als de snelheden gelijk zijn, dan is de log odds 0. Bij toe- of afname verandert het in positieve en negatieve stappen.</p>
+<p>Deze schaal is handig als we verschillen in de buurt van 0 of 1 willen markeren. Voor overlevingskansen is dit van belang omdat een overlevingsgraad van 90% onaanvaardbaar is, terwijl een overlevingsgraad van 99% relatief goed is. We zouden veel liever een overlevingskans hebben die dichter bij 99,9 procent ligt. We willen dat onze schaal dit verschil benadrukt en de logit doet dit. Merk op dat 99.9/0.1 ongeveer 10 keer groter is dan 99/1, wat ongeveer 10 keer groter is dan 90/10. En door gebruik te maken van de log worden deze wissels steeds groter.</p>
+<h3 id="toon-de-gegevens">Toon de gegevens</h3>
+<p>Nu, terug naar onze plot. Kan nu geconcludeerd worden dat op basis van het bovenstaande een land met een laag inkomen een lage overlevingskans zal hebben? Kunnen we concluderen dat alle overlevingskansen in Afrika bezuiden de Sahara lager zijn dan in Zuid-Azi?, dat op zijn beurt lager is dan op de eilanden in de Stille Oceaan, enzovoort?</p>
+<p>De conclusie gebaseerd op een plot dat weer wordt gebaseerd op gemiddelden wordt <em>ecologische denkfout</em> genoemd. De bijna perfecte relatie tussen overlevingskansen en inkomen zien we alleen bij de gemiddelden op regionaal niveau. Als we alle gegevens eenmaal hebben getoond, krijgen we een wat ingewikkelder verhaal:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="visualisatiegapminder_files/figure-html5/unnamed-chunk-51-1.png" width="624" /></p>
+</div>
+<p>We zien we een grote mate van variabiliteit. We zien dat landen uit dezelfde regio’s heel verschillend kunnen zijn en dat landen met hetzelfde inkomen verschillende overlevingskansen kunnen hebben. Terwijl Afrika bezuiden de Sahara bijvoorbeeld gemiddeld de slechtste gezondheids- en economische resultaten had, is er binnen die groep sprake van grote variabiliteit. Merk bijvoorbeeld op dat Mauritius en Botswana het beter doen dan Angola en Sierra Leone en Mauritius zelfs vergelijkbaar is met Westerse landen.</p>
+<!--radix_placeholder_article_footer-->
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom"></div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+</body>
+
+</html>
