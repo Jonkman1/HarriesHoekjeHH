@@ -1,0 +1,10 @@
+name: "HH"
+title: "Harrie's Hoekje"
+description: |
+  My Blog
+output_dir: "_site"
+navbar:
+  right:
+    - text: "Achtergrond"
+      href: about.html
+output: distill::distill_article

@@ -1,0 +1,3970 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { color: #20794d; } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007ba5; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #007ba5; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #007ba5; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #20794d; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+</style>
+
+  <!--radix_placeholder_meta_tags-->
+<title>Harrie's Hoekje: Tidymodels opnieuw</title>
+
+<meta property="description" itemprop="description" content="Blog van Rebecca Barter onder de titel &#39;Tidymodels: tidy machine learning in R&#39;"/>
+
+
+<!--  https://schema.org/Article -->
+<meta property="article:published" itemprop="datePublished" content="2021-04-22"/>
+<meta property="article:created" itemprop="dateCreated" content="2021-04-22"/>
+<meta name="article:author" content="Rebecca Barter, bewerking Harrie Jonkman"/>
+
+<!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+<meta property="og:title" content="Harrie&#39;s Hoekje: Tidymodels opnieuw"/>
+<meta property="og:type" content="article"/>
+<meta property="og:description" content="Blog van Rebecca Barter onder de titel &#39;Tidymodels: tidy machine learning in R&#39;"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:site_name" content="Harrie&#39;s Hoekje"/>
+
+<!--  https://dev.twitter.com/cards/types/summary -->
+<meta property="twitter:card" content="summary"/>
+<meta property="twitter:title" content="Harrie&#39;s Hoekje: Tidymodels opnieuw"/>
+<meta property="twitter:description" content="Blog van Rebecca Barter onder de titel &#39;Tidymodels: tidy machine learning in R&#39;"/>
+
+<!--/radix_placeholder_meta_tags-->
+  <!--radix_placeholder_rmarkdown_metadata-->
+
+<script type="text/json" id="radix-rmarkdown-metadata">
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Tidymodels opnieuw"]},{"type":"character","attributes":{},"value":["Blog van Rebecca Barter onder de titel 'Tidymodels: tidy machine learning in R'"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Rebecca Barter, bewerking Harrie Jonkman"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":[]}},"value":[]}]}]},{"type":"character","attributes":{},"value":["04-22-2021"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
+</script>
+<!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["tidymodels-opnieuw_files/anchor-4.2.2/anchor.min.js","tidymodels-opnieuw_files/bowser-1.9.3/bowser.min.js","tidymodels-opnieuw_files/distill-2.2.21/template.v2.js","tidymodels-opnieuw_files/figure-html5/unnamed-chunk-25-1.png","tidymodels-opnieuw_files/figure-html5/unnamed-chunk-5-1.png","tidymodels-opnieuw_files/jquery-1.11.3/jquery.min.js","tidymodels-opnieuw_files/popper-2.6.0/popper.min.js","tidymodels-opnieuw_files/tippy-6.2.7/tippy-bundle.umd.min.js","tidymodels-opnieuw_files/tippy-6.2.7/tippy-light-border.css","tidymodels-opnieuw_files/tippy-6.2.7/tippy.css","tidymodels-opnieuw_files/tippy-6.2.7/tippy.umd.min.js","tidymodels-opnieuw_files/webcomponents-2.0.0/webcomponents.js"]}
+  </script>
+  <!--radix_placeholder_navigation_in_header-->
+<meta name="distill:offset" content="../.."/>
+
+<script type="application/javascript">
+
+  window.headroom_prevent_pin = false;
+
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+
+    // initialize headroom for banner
+    var header = $('header').get(0);
+    var headerHeight = header.offsetHeight;
+    var headroom = new Headroom(header, {
+      tolerance: 5,
+      onPin : function() {
+        if (window.headroom_prevent_pin) {
+          window.headroom_prevent_pin = false;
+          headroom.unpin();
+        }
+      }
+    });
+    headroom.init();
+    if(window.location.hash)
+      headroom.unpin();
+    $(header).addClass('headroom--transition');
+
+    // offset scroll location for banner on hash change
+    // (see: https://github.com/WickyNilliams/headroom.js/issues/38)
+    window.addEventListener("hashchange", function(event) {
+      window.scrollTo(0, window.pageYOffset - (headerHeight + 25));
+    });
+
+    // responsive menu
+    $('.distill-site-header').each(function(i, val) {
+      var topnav = $(this);
+      var toggle = topnav.find('.nav-toggle');
+      toggle.on('click', function() {
+        topnav.toggleClass('responsive');
+      });
+    });
+
+    // nav dropdowns
+    $('.nav-dropbtn').click(function(e) {
+      $(this).next('.nav-dropdown-content').toggleClass('nav-dropdown-active');
+      $(this).parent().siblings('.nav-dropdown')
+         .children('.nav-dropdown-content').removeClass('nav-dropdown-active');
+    });
+    $("body").click(function(e){
+      $('.nav-dropdown-content').removeClass('nav-dropdown-active');
+    });
+    $(".nav-dropdown").click(function(e){
+      e.stopPropagation();
+    });
+  });
+</script>
+
+<style type="text/css">
+
+/* Theme (user-documented overrideables for nav appearance) */
+
+.distill-site-nav {
+  color: rgba(255, 255, 255, 0.8);
+  background-color: #0F2E3D;
+  font-size: 15px;
+  font-weight: 300;
+}
+
+.distill-site-nav a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.distill-site-nav a:hover {
+  color: white;
+}
+
+@media print {
+  .distill-site-nav {
+    display: none;
+  }
+}
+
+.distill-site-header {
+
+}
+
+.distill-site-footer {
+
+}
+
+
+/* Site Header */
+
+.distill-site-header {
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 3;
+}
+
+.distill-site-header .nav-left {
+  display: inline-block;
+  margin-left: 8px;
+}
+
+@media screen and (max-width: 768px) {
+  .distill-site-header .nav-left {
+    margin-left: 0;
+  }
+}
+
+
+.distill-site-header .nav-right {
+  float: right;
+  margin-right: 8px;
+}
+
+.distill-site-header a,
+.distill-site-header .title {
+  display: inline-block;
+  text-align: center;
+  padding: 14px 10px 14px 10px;
+}
+
+.distill-site-header .title {
+  font-size: 18px;
+  min-width: 150px;
+}
+
+.distill-site-header .logo {
+  padding: 0;
+}
+
+.distill-site-header .logo img {
+  display: none;
+  max-height: 20px;
+  width: auto;
+  margin-bottom: -4px;
+}
+
+.distill-site-header .nav-image img {
+  max-height: 18px;
+  width: auto;
+  display: inline-block;
+  margin-bottom: -3px;
+}
+
+
+
+@media screen and (min-width: 1000px) {
+  .distill-site-header .logo img {
+    display: inline-block;
+  }
+  .distill-site-header .nav-left {
+    margin-left: 20px;
+  }
+  .distill-site-header .nav-right {
+    margin-right: 20px;
+  }
+  .distill-site-header .title {
+    padding-left: 12px;
+  }
+}
+
+
+.distill-site-header .nav-toggle {
+  display: none;
+}
+
+.nav-dropdown {
+  display: inline-block;
+  position: relative;
+}
+
+.nav-dropdown .nav-dropbtn {
+  border: none;
+  outline: none;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 16px 10px;
+  background-color: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+  margin-top: 1px;
+  z-index: 2;
+}
+
+.nav-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 200px;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 4px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+  z-index: 1;
+  margin-top: 2px;
+  white-space: nowrap;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.nav-dropdown-content hr {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.nav-dropdown-active {
+  display: block;
+}
+
+.nav-dropdown-content a, .nav-dropdown-content .nav-dropdown-header {
+  color: black;
+  padding: 6px 24px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.nav-dropdown-content .nav-dropdown-header {
+  display: block;
+  padding: 5px 24px;
+  padding-bottom: 0;
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #999999;
+  white-space: nowrap;
+}
+
+.nav-dropdown:hover .nav-dropbtn {
+  color: white;
+}
+
+.nav-dropdown-content a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.nav-right .nav-dropdown-content {
+  margin-left: -45%;
+  right: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .distill-site-header a, .distill-site-header .nav-dropdown  {display: none;}
+  .distill-site-header a.nav-toggle {
+    float: right;
+    display: block;
+  }
+  .distill-site-header .title {
+    margin-left: 0;
+  }
+  .distill-site-header .nav-right {
+    margin-right: 0;
+  }
+  .distill-site-header {
+    overflow: hidden;
+  }
+  .nav-right .nav-dropdown-content {
+    margin-left: 0;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .distill-site-header.responsive {position: relative; min-height: 500px; }
+  .distill-site-header.responsive a.nav-toggle {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .distill-site-header.responsive a,
+  .distill-site-header.responsive .nav-dropdown {
+    display: block;
+    text-align: left;
+  }
+  .distill-site-header.responsive .nav-left,
+  .distill-site-header.responsive .nav-right {
+    width: 100%;
+  }
+  .distill-site-header.responsive .nav-dropdown {float: none;}
+  .distill-site-header.responsive .nav-dropdown-content {position: relative;}
+  .distill-site-header.responsive .nav-dropdown .nav-dropbtn {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+}
+
+/* Site Footer */
+
+.distill-site-footer {
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  z-index: 3;
+  margin-top: 30px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+/* Headroom */
+
+d-title {
+  padding-top: 6rem;
+}
+
+@media print {
+  d-title {
+    padding-top: 4rem;
+  }
+}
+
+.headroom {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.headroom--transition {
+  transition: all .4s ease-in-out;
+}
+
+.headroom--unpinned {
+  top: -100px;
+}
+
+.headroom--pinned {
+  top: 0;
+}
+
+/* adjust viewport for navbar height */
+/* helps vertically center bootstrap (non-distill) content */
+.min-vh-100 {
+  min-height: calc(100vh - 100px) !important;
+}
+
+</style>
+
+<script src="../../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="../../site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
+<link href="../../site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
+<script src="../../site_libs/headroom-0.9.4/headroom.min.js"></script>
+<script src="../../site_libs/autocomplete-0.37.1/autocomplete.min.js"></script>
+<script src="../../site_libs/fuse-6.4.1/fuse.min.js"></script>
+
+<script type="application/javascript">
+
+function getMeta(metaName) {
+  var metas = document.getElementsByTagName('meta');
+  for (let i = 0; i < metas.length; i++) {
+    if (metas[i].getAttribute('name') === metaName) {
+      return metas[i].getAttribute('content');
+    }
+  }
+  return '';
+}
+
+function offsetURL(url) {
+  var offset = getMeta('distill:offset');
+  return offset ? offset + '/' + url : url;
+}
+
+function createFuseIndex() {
+
+  // create fuse index
+  var options = {
+    keys: [
+      { name: 'title', weight: 20 },
+      { name: 'categories', weight: 15 },
+      { name: 'description', weight: 10 },
+      { name: 'contents', weight: 5 },
+    ],
+    ignoreLocation: true,
+    threshold: 0
+  };
+  var fuse = new window.Fuse([], options);
+
+  // fetch the main search.json
+  return fetch(offsetURL('search.json'))
+    .then(function(response) {
+      if (response.status == 200) {
+        return response.json().then(function(json) {
+          // index main articles
+          json.articles.forEach(function(article) {
+            fuse.add(article);
+          });
+          // download collections and index their articles
+          return Promise.all(json.collections.map(function(collection) {
+            return fetch(offsetURL(collection)).then(function(response) {
+              if (response.status === 200) {
+                return response.json().then(function(articles) {
+                  articles.forEach(function(article) {
+                    fuse.add(article);
+                  });
+                })
+              } else {
+                return Promise.reject(
+                  new Error('Unexpected status from search index request: ' +
+                            response.status)
+                );
+              }
+            });
+          })).then(function() {
+            return fuse;
+          });
+        });
+
+      } else {
+        return Promise.reject(
+          new Error('Unexpected status from search index request: ' +
+                      response.status)
+        );
+      }
+    });
+}
+
+window.document.addEventListener("DOMContentLoaded", function (event) {
+
+  // get search element (bail if we don't have one)
+  var searchEl = window.document.getElementById('distill-search');
+  if (!searchEl)
+    return;
+
+  createFuseIndex()
+    .then(function(fuse) {
+
+      // make search box visible
+      searchEl.classList.remove('hidden');
+
+      // initialize autocomplete
+      var options = {
+        autoselect: true,
+        hint: false,
+        minLength: 2,
+      };
+      window.autocomplete(searchEl, options, [{
+        source: function(query, callback) {
+          const searchOptions = {
+            isCaseSensitive: false,
+            shouldSort: true,
+            minMatchCharLength: 2,
+            limit: 10,
+          };
+          var results = fuse.search(query, searchOptions);
+          callback(results
+            .map(function(result) { return result.item; })
+          );
+        },
+        templates: {
+          suggestion: function(suggestion) {
+            var img = suggestion.preview && Object.keys(suggestion.preview).length > 0
+              ? `<img src="${offsetURL(suggestion.preview)}"</img>`
+              : '';
+            var html = `
+              <div class="search-item">
+                <h3>${suggestion.title}</h3>
+                <div class="search-item-description">
+                  ${suggestion.description || ''}
+                </div>
+                <div class="search-item-preview">
+                  ${img}
+                </div>
+              </div>
+            `;
+            return html;
+          }
+        }
+      }]).on('autocomplete:selected', function(event, suggestion) {
+        window.location.href = offsetURL(suggestion.path);
+      });
+      // remove inline display style on autocompleter (we want to
+      // manage responsive display via css)
+      $('.algolia-autocomplete').css("display", "");
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+
+});
+
+</script>
+
+<style type="text/css">
+
+.nav-search {
+  font-size: x-small;
+}
+
+/* Algolioa Autocomplete */
+
+.algolia-autocomplete {
+  display: inline-block;
+  margin-left: 10px;
+  vertical-align: sub;
+  background-color: white;
+  color: black;
+  padding: 6px;
+  padding-top: 8px;
+  padding-bottom: 0;
+  border-radius: 6px;
+  border: 1px #0F2E3D solid;
+  width: 180px;
+}
+
+
+@media screen and (max-width: 768px) {
+  .distill-site-nav .algolia-autocomplete {
+    display: none;
+    visibility: hidden;
+  }
+  .distill-site-nav.responsive .algolia-autocomplete {
+    display: inline-block;
+    visibility: visible;
+  }
+  .distill-site-nav.responsive .algolia-autocomplete .aa-dropdown-menu {
+    margin-left: 0;
+    width: 400px;
+    max-height: 400px;
+  }
+}
+
+.algolia-autocomplete .aa-input, .algolia-autocomplete .aa-hint {
+  width: 90%;
+  outline: none;
+  border: none;
+}
+
+.algolia-autocomplete .aa-hint {
+  color: #999;
+}
+.algolia-autocomplete .aa-dropdown-menu {
+  width: 550px;
+  max-height: 70vh;
+  overflow-x: visible;
+  overflow-y: scroll;
+  padding: 5px;
+  margin-top: 3px;
+  margin-left: -150px;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid #999;
+  border-top: none;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
+  cursor: pointer;
+  padding: 5px 4px;
+  border-bottom: 1px solid #eee;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion:last-of-type {
+  border-bottom: none;
+  margin-bottom: 2px;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item {
+  overflow: hidden;
+  font-size: 0.8em;
+  line-height: 1.4em;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item h3 {
+  font-size: 1rem;
+  margin-block-start: 0;
+  margin-block-end: 5px;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-description {
+  display: inline-block;
+  overflow: hidden;
+  height: 2.8em;
+  width: 80%;
+  margin-right: 4%;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview {
+  display: inline-block;
+  width: 15%;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview img {
+  height: 3em;
+  width: auto;
+  display: none;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview img[src] {
+  display: initial;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
+  background-color: #eee;
+}
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion em {
+  font-weight: bold;
+  font-style: normal;
+}
+
+</style>
+
+
+<!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+
+<style type="text/css">
+
+body {
+  background-color: white;
+}
+
+.pandoc-table {
+  width: 100%;
+}
+
+.pandoc-table>caption {
+  margin-bottom: 10px;
+}
+
+.pandoc-table th:not([align]) {
+  text-align: left;
+}
+
+.pagedtable-footer {
+  font-size: 15px;
+}
+
+d-byline .byline {
+  grid-template-columns: 2fr 2fr;
+}
+
+d-byline .byline h3 {
+  margin-block-start: 1.5em;
+}
+
+d-byline .byline .authors-affiliations h3 {
+  margin-block-start: 0.5em;
+}
+
+.authors-affiliations .orcid-id {
+  width: 16px;
+  height:16px;
+  margin-left: 4px;
+  margin-right: 4px;
+  vertical-align: middle;
+  padding-bottom: 2px;
+}
+
+d-title .dt-tags {
+  margin-top: 1em;
+  grid-column: text;
+}
+
+.dt-tags .dt-tag {
+  text-decoration: none;
+  display: inline-block;
+  color: rgba(0,0,0,0.6);
+  padding: 0em 0.4em;
+  margin-right: 0.5em;
+  margin-bottom: 0.4em;
+  font-size: 70%;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+d-article table.gt_table td,
+d-article table.gt_table th {
+  border-bottom: none;
+}
+
+.html-widget {
+  margin-bottom: 2.0em;
+}
+
+.l-screen-inset {
+  padding-right: 16px;
+}
+
+.l-screen .caption {
+  margin-left: 10px;
+}
+
+.shaded {
+  background: rgb(247, 247, 247);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.shaded .html-widget {
+  margin-bottom: 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.shaded .shaded-content {
+  background: white;
+}
+
+.text-output {
+  margin-top: 0;
+  line-height: 1.5em;
+}
+
+.hidden {
+  display: none !important;
+}
+
+d-article {
+  padding-top: 2.5rem;
+  padding-bottom: 30px;
+}
+
+d-appendix {
+  padding-top: 30px;
+}
+
+d-article>p>img {
+  width: 100%;
+}
+
+d-article h2 {
+  margin: 1rem 0 1.5rem 0;
+}
+
+d-article h3 {
+  margin-top: 1.5rem;
+}
+
+d-article iframe {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 2.0em;
+  width: 100%;
+}
+
+/* Tweak code blocks */
+
+d-article div.sourceCode code,
+d-article pre code {
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+}
+
+d-article pre,
+d-article div.sourceCode,
+d-article div.sourceCode pre {
+  overflow: auto;
+}
+
+d-article div.sourceCode {
+  background-color: white;
+}
+
+d-article div.sourceCode pre {
+  padding-left: 10px;
+  font-size: 12px;
+  border-left: 2px solid rgba(0,0,0,0.1);
+}
+
+d-article pre {
+  font-size: 12px;
+  color: black;
+  background: none;
+  margin-top: 0;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+d-article pre a {
+  border-bottom: none;
+}
+
+d-article pre a:hover {
+  border-bottom: none;
+  text-decoration: underline;
+}
+
+d-article details {
+  grid-column: text;
+  margin-bottom: 0.8em;
+}
+
+@media(min-width: 768px) {
+
+d-article pre,
+d-article div.sourceCode,
+d-article div.sourceCode pre {
+  overflow: visible !important;
+}
+
+d-article div.sourceCode pre {
+  padding-left: 18px;
+  font-size: 14px;
+}
+
+d-article pre {
+  font-size: 14px;
+}
+
+}
+
+figure img.external {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+  padding: 18px;
+  box-sizing: border-box;
+}
+
+/* CSS for d-contents */
+
+.d-contents {
+  grid-column: text;
+  color: rgba(0,0,0,0.8);
+  font-size: 0.9em;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+  padding-bottom: 0.5em;
+  margin-bottom: 1em;
+  padding-left: 0.25em;
+  justify-self: start;
+}
+
+@media(min-width: 1000px) {
+  .d-contents.d-contents-float {
+    height: 0;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    justify-self: center;
+    padding-right: 3em;
+    padding-left: 2em;
+  }
+}
+
+.d-contents nav h3 {
+  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+.d-contents li {
+  list-style-type: none
+}
+
+.d-contents nav > ul {
+  padding-left: 0;
+}
+
+.d-contents ul {
+  padding-left: 1em
+}
+
+.d-contents nav ul li {
+  margin-top: 0.6em;
+  margin-bottom: 0.2em;
+}
+
+.d-contents nav a {
+  font-size: 13px;
+  border-bottom: none;
+  text-decoration: none
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.d-contents nav a:hover {
+  text-decoration: underline solid rgba(0, 0, 0, 0.6)
+}
+
+.d-contents nav > ul > li > a {
+  font-weight: 600;
+}
+
+.d-contents nav > ul > li > ul {
+  font-weight: inherit;
+}
+
+.d-contents nav > ul > li > ul > li {
+  margin-top: 0.2em;
+}
+
+
+.d-contents nav ul {
+  margin-top: 0;
+  margin-bottom: 0.25em;
+}
+
+.d-article-with-toc h2:nth-child(2) {
+  margin-top: 0;
+}
+
+
+/* Figure */
+
+.figure {
+  position: relative;
+  margin-bottom: 2.5em;
+  margin-top: 1.5em;
+}
+
+.figure img {
+  width: 100%;
+}
+
+.figure .caption {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 12px;
+  line-height: 1.5em;
+}
+
+.figure img.external {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+  padding: 18px;
+  box-sizing: border-box;
+}
+
+.figure .caption a {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.figure .caption b,
+.figure .caption strong, {
+  font-weight: 600;
+  color: rgba(0, 0, 0, 1.0);
+}
+
+/* Citations */
+
+d-article .citation {
+  color: inherit;
+  cursor: inherit;
+}
+
+div.hanging-indent{
+  margin-left: 1em; text-indent: -1em;
+}
+
+/* Citation hover box */
+
+.tippy-box[data-theme~=light-border] {
+  background-color: rgba(250, 250, 250, 0.95);
+}
+
+.tippy-content > p {
+  margin-bottom: 0;
+  padding: 2px;
+}
+
+
+/* Tweak 1000px media break to show more text */
+
+@media(min-width: 1000px) {
+  .base-grid,
+  distill-header,
+  d-title,
+  d-abstract,
+  d-article,
+  d-appendix,
+  distill-appendix,
+  d-byline,
+  d-footnote-list,
+  d-citation-list,
+  distill-footer {
+    grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+    grid-column-gap: 16px;
+  }
+
+  .grid {
+    grid-column-gap: 16px;
+  }
+
+  d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+  }
+  figure .caption, .figure .caption, figure figcaption {
+    font-size: 13px;
+  }
+}
+
+@media(min-width: 1180px) {
+  .base-grid,
+  distill-header,
+  d-title,
+  d-abstract,
+  d-article,
+  d-appendix,
+  distill-appendix,
+  d-byline,
+  d-footnote-list,
+  d-citation-list,
+  distill-footer {
+    grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+    grid-column-gap: 32px;
+  }
+
+  .grid {
+    grid-column-gap: 32px;
+  }
+}
+
+
+/* Get the citation styles for the appendix (not auto-injected on render since
+   we do our own rendering of the citation appendix) */
+
+d-appendix .citation-appendix,
+.d-appendix .citation-appendix {
+  font-size: 11px;
+  line-height: 15px;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  padding-left: 18px;
+  border: 1px solid rgba(0,0,0,0.1);
+  background: rgba(0, 0, 0, 0.02);
+  padding: 10px 18px;
+  border-radius: 3px;
+  color: rgba(150, 150, 150, 1);
+  overflow: hidden;
+  margin-top: -12px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Include appendix styles here so they can be overridden */
+
+d-appendix {
+  contain: layout style;
+  font-size: 0.8em;
+  line-height: 1.7em;
+  margin-top: 60px;
+  margin-bottom: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  color: rgba(0,0,0,0.5);
+  padding-top: 60px;
+  padding-bottom: 48px;
+}
+
+d-appendix h3 {
+  grid-column: page-start / text-start;
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 1em;
+  margin-bottom: 0;
+  color: rgba(0,0,0,0.65);
+}
+
+d-appendix h3 + * {
+  margin-top: 1em;
+}
+
+d-appendix ol {
+  padding: 0 0 0 15px;
+}
+
+@media (min-width: 768px) {
+  d-appendix ol {
+    padding: 0 0 0 30px;
+    margin-left: -30px;
+  }
+}
+
+d-appendix li {
+  margin-bottom: 1em;
+}
+
+d-appendix a {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+d-appendix > * {
+  grid-column: text;
+}
+
+d-appendix > d-footnote-list,
+d-appendix > d-citation-list,
+d-appendix > distill-appendix {
+  grid-column: screen;
+}
+
+/* Include footnote styles here so they can be overridden */
+
+d-footnote-list {
+  contain: layout style;
+}
+
+d-footnote-list > * {
+  grid-column: text;
+}
+
+d-footnote-list a.footnote-backlink {
+  color: rgba(0,0,0,0.3);
+  padding-left: 0.5em;
+}
+
+
+
+/* Anchor.js */
+
+.anchorjs-link {
+  /*transition: all .25s linear; */
+  text-decoration: none;
+  border-bottom: none;
+}
+*:hover > .anchorjs-link {
+  margin-left: -1.125em !important;
+  text-decoration: none;
+  border-bottom: none;
+}
+
+/* Social footer */
+
+.social_footer {
+  margin-top: 30px;
+  margin-bottom: 0;
+  color: rgba(0,0,0,0.67);
+}
+
+.disqus-comments {
+  margin-right: 30px;
+}
+
+.disqus-comment-count {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+#disqus_thread {
+  margin-top: 30px;
+}
+
+.article-sharing a {
+  border-bottom: none;
+  margin-right: 8px;
+}
+
+.article-sharing a:hover {
+  border-bottom: none;
+}
+
+.sidebar-section.subscribe {
+  font-size: 12px;
+  line-height: 1.6em;
+}
+
+.subscribe p {
+  margin-bottom: 0.5em;
+}
+
+
+.article-footer .subscribe {
+  font-size: 15px;
+  margin-top: 45px;
+}
+
+
+.sidebar-section.custom {
+  font-size: 12px;
+  line-height: 1.6em;
+}
+
+.custom p {
+  margin-bottom: 0.5em;
+}
+
+/* Styles for listing layout (hide title) */
+.layout-listing d-title, .layout-listing .d-title {
+  display: none;
+}
+
+/* Styles for posts lists (not auto-injected) */
+
+
+.posts-with-sidebar {
+  padding-left: 45px;
+  padding-right: 45px;
+}
+
+.posts-list .description h2,
+.posts-list .description p {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+.posts-list .description h2 {
+  font-weight: 700;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.posts-list h2.post-tag {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 12px;
+}
+.posts-list {
+  margin-top: 60px;
+  margin-bottom: 24px;
+}
+
+.posts-list .post-preview {
+  text-decoration: none;
+  overflow: hidden;
+  display: block;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 24px 0;
+}
+
+.post-preview-last {
+  border-bottom: none !important;
+}
+
+.posts-list .posts-list-caption {
+  grid-column: screen;
+  font-weight: 400;
+}
+
+.posts-list .post-preview h2 {
+  margin: 0 0 6px 0;
+  line-height: 1.2em;
+  font-style: normal;
+  font-size: 24px;
+}
+
+.posts-list .post-preview p {
+  margin: 0 0 12px 0;
+  line-height: 1.4em;
+  font-size: 16px;
+}
+
+.posts-list .post-preview .thumbnail {
+  box-sizing: border-box;
+  margin-bottom: 24px;
+  position: relative;
+  max-width: 500px;
+}
+.posts-list .post-preview img {
+  width: 100%;
+  display: block;
+}
+
+.posts-list .metadata {
+  font-size: 12px;
+  line-height: 1.4em;
+  margin-bottom: 18px;
+}
+
+.posts-list .metadata > * {
+  display: inline-block;
+}
+
+.posts-list .metadata .publishedDate {
+  margin-right: 2em;
+}
+
+.posts-list .metadata .dt-authors {
+  display: block;
+  margin-top: 0.3em;
+  margin-right: 2em;
+}
+
+.posts-list .dt-tags {
+  display: block;
+  line-height: 1em;
+}
+
+.posts-list .dt-tags .dt-tag {
+  display: inline-block;
+  color: rgba(0,0,0,0.6);
+  padding: 0.3em 0.4em;
+  margin-right: 0.2em;
+  margin-bottom: 0.4em;
+  font-size: 60%;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.posts-list img {
+  opacity: 1;
+}
+
+.posts-list img[data-src] {
+  opacity: 0;
+}
+
+.posts-more {
+  clear: both;
+}
+
+
+.posts-sidebar {
+  font-size: 16px;
+}
+
+.posts-sidebar h3 {
+  font-size: 16px;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.sidebar-section {
+  margin-bottom: 30px;
+}
+
+.categories ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.categories li {
+  color: rgba(0, 0, 0, 0.8);
+  margin-bottom: 0;
+}
+
+.categories li>a {
+  border-bottom: none;
+}
+
+.categories li>a:hover {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.categories .active {
+  font-weight: 600;
+}
+
+.categories .category-count {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+
+@media(min-width: 768px) {
+  .posts-list .post-preview h2 {
+    font-size: 26px;
+  }
+  .posts-list .post-preview .thumbnail {
+    float: right;
+    width: 30%;
+    margin-bottom: 0;
+  }
+  .posts-list .post-preview .description {
+    float: left;
+    width: 45%;
+  }
+  .posts-list .post-preview .metadata {
+    float: left;
+    width: 20%;
+    margin-top: 8px;
+  }
+  .posts-list .post-preview p {
+    margin: 0 0 12px 0;
+    line-height: 1.5em;
+    font-size: 16px;
+  }
+  .posts-with-sidebar .posts-list {
+    float: left;
+    width: 75%;
+  }
+  .posts-with-sidebar .posts-sidebar {
+    float: right;
+    width: 20%;
+    margin-top: 60px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+}
+
+
+/* Improve display for browsers without grid (IE/Edge <= 15) */
+
+.downlevel {
+  line-height: 1.6em;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+}
+
+.downlevel .d-title {
+  padding-top: 6rem;
+  padding-bottom: 1.5rem;
+}
+
+.downlevel .d-title h1 {
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 1.1em;
+  margin: 0 0 0.5rem;
+}
+
+.downlevel .d-title p {
+  font-weight: 300;
+  font-size: 1.2rem;
+  line-height: 1.55em;
+  margin-top: 0;
+}
+
+.downlevel .d-byline {
+  padding-top: 0.8em;
+  padding-bottom: 0.8em;
+  font-size: 0.8rem;
+  line-height: 1.8em;
+}
+
+.downlevel .section-separator {
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.downlevel .d-article {
+  font-size: 1.06rem;
+  line-height: 1.7em;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+
+
+.downlevel .d-appendix {
+  padding-left: 0;
+  padding-right: 0;
+  max-width: none;
+  font-size: 0.8em;
+  line-height: 1.7em;
+  margin-bottom: 0;
+  color: rgba(0,0,0,0.5);
+  padding-top: 40px;
+  padding-bottom: 48px;
+}
+
+.downlevel .footnotes ol {
+  padding-left: 13px;
+}
+
+.downlevel .base-grid,
+.downlevel .distill-header,
+.downlevel .d-title,
+.downlevel .d-abstract,
+.downlevel .d-article,
+.downlevel .d-appendix,
+.downlevel .distill-appendix,
+.downlevel .d-byline,
+.downlevel .d-footnote-list,
+.downlevel .d-citation-list,
+.downlevel .distill-footer,
+.downlevel .appendix-bottom,
+.downlevel .posts-container {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+@media(min-width: 768px) {
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+  padding-left: 150px;
+  padding-right: 150px;
+  max-width: 900px;
+}
+}
+
+.downlevel pre code {
+  display: block;
+  border-left: 2px solid rgba(0, 0, 0, .1);
+  padding: 0 0 0 20px;
+  font-size: 14px;
+}
+
+.downlevel code, .downlevel pre {
+  color: black;
+  background: none;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+.downlevel .posts-list .post-preview {
+  color: inherit;
+}
+
+
+
+</style>
+
+<script type="application/javascript">
+
+function is_downlevel_browser() {
+  if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                 window.navigator.userAgent)) {
+    return true;
+  } else {
+    return window.load_distill_framework === undefined;
+  }
+}
+
+// show body when load is complete
+function on_load_complete() {
+
+  // add anchors
+  if (window.anchors) {
+    window.anchors.options.placement = 'left';
+    window.anchors.add('d-article > h2, d-article > h3, d-article > h4, d-article > h5');
+  }
+
+
+  // set body to visible
+  document.body.style.visibility = 'visible';
+
+  // force redraw for leaflet widgets
+  if (window.HTMLWidgets) {
+    var maps = window.HTMLWidgets.findAll(".leaflet");
+    $.each(maps, function(i, el) {
+      var map = this.getMap();
+      map.invalidateSize();
+      map.eachLayer(function(layer) {
+        if (layer instanceof L.TileLayer)
+          layer.redraw();
+      });
+    });
+  }
+
+  // trigger 'shown' so htmlwidgets resize
+  $('d-article').trigger('shown');
+}
+
+function init_distill() {
+
+  init_common();
+
+  // create front matter
+  var front_matter = $('<d-front-matter></d-front-matter>');
+  $('#distill-front-matter').wrap(front_matter);
+
+  // create d-title
+  $('.d-title').changeElementType('d-title');
+
+  // create d-byline
+  var byline = $('<d-byline></d-byline>');
+  $('.d-byline').replaceWith(byline);
+
+  // create d-article
+  var article = $('<d-article></d-article>');
+  $('.d-article').wrap(article).children().unwrap();
+
+  // move posts container into article
+  $('.posts-container').appendTo($('d-article'));
+
+  // create d-appendix
+  $('.d-appendix').changeElementType('d-appendix');
+
+  // flag indicating that we have appendix items
+  var appendix = $('.appendix-bottom').children('h3').length > 0;
+
+  // replace footnotes with <d-footnote>
+  $('.footnote-ref').each(function(i, val) {
+    appendix = true;
+    var href = $(this).attr('href');
+    var id = href.replace('#', '');
+    var fn = $('#' + id);
+    var fn_p = $('#' + id + '>p');
+    fn_p.find('.footnote-back').remove();
+    var text = fn_p.html();
+    var dtfn = $('<d-footnote></d-footnote>');
+    dtfn.html(text);
+    $(this).replaceWith(dtfn);
+  });
+  // remove footnotes
+  $('.footnotes').remove();
+
+  // move refs into #references-listing
+  $('#references-listing').replaceWith($('#refs'));
+
+  $('h1.appendix, h2.appendix').each(function(i, val) {
+    $(this).changeElementType('h3');
+  });
+  $('h3.appendix').each(function(i, val) {
+    var id = $(this).attr('id');
+    $('.d-contents a[href="#' + id + '"]').parent().remove();
+    appendix = true;
+    $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+  });
+
+  // show d-appendix if we have appendix content
+  $("d-appendix").css('display', appendix ? 'grid' : 'none');
+
+  // localize layout chunks to just output
+  $('.layout-chunk').each(function(i, val) {
+
+    // capture layout
+    var layout = $(this).attr('data-layout');
+
+    // apply layout to markdown level block elements
+    var elements = $(this).children().not('details, div.sourceCode, pre, script');
+    elements.each(function(i, el) {
+      var layout_div = $('<div class="' + layout + '"></div>');
+      if (layout_div.hasClass('shaded')) {
+        var shaded_content = $('<div class="shaded-content"></div>');
+        $(this).wrap(shaded_content);
+        $(this).parent().wrap(layout_div);
+      } else {
+        $(this).wrap(layout_div);
+      }
+    });
+
+
+    // unwrap the layout-chunk div
+    $(this).children().unwrap();
+  });
+
+  // remove code block used to force  highlighting css
+  $('.distill-force-highlighting-css').parent().remove();
+
+  // remove empty line numbers inserted by pandoc when using a
+  // custom syntax highlighting theme
+  $('code.sourceCode a:empty').remove();
+
+  // load distill framework
+  load_distill_framework();
+
+  // wait for window.distillRunlevel == 4 to do post processing
+  function distill_post_process() {
+
+    if (!window.distillRunlevel || window.distillRunlevel < 4)
+      return;
+
+    // hide author/affiliations entirely if we have no authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+    if (!have_authors)
+      $('d-byline').addClass('hidden');
+
+    // article with toc class
+    $('.d-contents').parent().addClass('d-article-with-toc');
+
+    // strip links that point to #
+    $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+
+    // add orcid ids
+    $('.authors-affiliations').find('.author').each(function(i, el) {
+      var orcid_id = front_matter.authors[i].orcidID;
+      if (orcid_id) {
+        var a = $('<a></a>');
+        a.attr('href', 'https://orcid.org/' + orcid_id);
+        var img = $('<img></img>');
+        img.addClass('orcid-id');
+        img.attr('alt', 'ORCID ID');
+        img.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==');
+        a.append(img);
+        $(this).append(a);
+      }
+    });
+
+    // hide elements of author/affiliations grid that have no value
+    function hide_byline_column(caption) {
+      $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+    }
+
+    // affiliations
+    var have_affiliations = false;
+    for (var i = 0; i<front_matter.authors.length; ++i) {
+      var author = front_matter.authors[i];
+      if (author.affiliation !== "&nbsp;") {
+        have_affiliations = true;
+        break;
+      }
+    }
+    if (!have_affiliations)
+      $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+
+    // published date
+    if (!front_matter.publishedDate)
+      hide_byline_column("Published");
+
+    // document object identifier
+    var doi = $('d-byline').find('h3:contains("DOI")');
+    var doi_p = doi.next().empty();
+    if (!front_matter.doi) {
+      // if we have a citation and valid citationText then link to that
+      if ($('#citation').length > 0 && front_matter.citationText) {
+        doi.html('Citation');
+        $('<a href="#citation"></a>')
+          .text(front_matter.citationText)
+          .appendTo(doi_p);
+      } else {
+        hide_byline_column("DOI");
+      }
+    } else {
+      $('<a></a>')
+         .attr('href', "https://doi.org/" + front_matter.doi)
+         .html(front_matter.doi)
+         .appendTo(doi_p);
+    }
+
+     // change plural form of authors/affiliations
+    if (front_matter.authors.length === 1) {
+      var grid = $('.authors-affiliations');
+      grid.children('h3:contains("Authors")').text('Author');
+      grid.children('h3:contains("Affiliations")').text('Affiliation');
+    }
+
+    // remove d-appendix and d-footnote-list local styles
+    $('d-appendix > style:first-child').remove();
+    $('d-footnote-list > style:first-child').remove();
+
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+
+    // hoverable references
+    $('span.citation[data-cites]').each(function() {
+      var refs = $(this).attr('data-cites').split(" ");
+      var refHtml = refs.map(function(ref) {
+        return "<p>" + $('#ref-' + ref).html() + "</p>";
+      }).join("\n");
+      window.tippy(this, {
+        allowHTML: true,
+        content: refHtml,
+        maxWidth: 500,
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'light-border',
+        placement: 'bottom-start'
+      });
+    });
+
+    // clear polling timer
+    clearInterval(tid);
+
+    // show body now that everything is ready
+    on_load_complete();
+  }
+
+  var tid = setInterval(distill_post_process, 50);
+  distill_post_process();
+
+}
+
+function init_downlevel() {
+
+  init_common();
+
+   // insert hr after d-title
+  $('.d-title').after($('<hr class="section-separator"/>'));
+
+  // check if we have authors
+  var front_matter = JSON.parse($("#distill-front-matter").html());
+  var have_authors = front_matter.authors && front_matter.authors.length > 0;
+
+  // manage byline/border
+  if (!have_authors)
+    $('.d-byline').remove();
+  $('.d-byline').after($('<hr class="section-separator"/>'));
+  $('.d-byline a').remove();
+
+  // remove toc
+  $('.d-contents').remove();
+
+  // move appendix elements
+  $('h1.appendix, h2.appendix').each(function(i, val) {
+    $(this).changeElementType('h3');
+  });
+  $('h3.appendix').each(function(i, val) {
+    $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+  });
+
+
+  // inject headers into references and footnotes
+  var refs_header = $('<h3></h3>');
+  refs_header.text('References');
+  $('#refs').prepend(refs_header);
+
+  var footnotes_header = $('<h3></h3');
+  footnotes_header.text('Footnotes');
+  $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+
+  // move appendix-bottom entries to the bottom
+  $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+  $('.appendix-bottom').remove();
+
+  // remove appendix if it's empty
+  if ($('.d-appendix').children().length === 0)
+    $('.d-appendix').remove();
+
+  // prepend separator above appendix
+  $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+
+  // trim code
+  $('pre>code').each(function(i, val) {
+    $(this).html($.trim($(this).html()));
+  });
+
+  // move posts-container right before article
+  $('.posts-container').insertBefore($('.d-article'));
+
+  $('body').addClass('downlevel');
+
+  on_load_complete();
+}
+
+
+function init_common() {
+
+  // jquery plugin to change element types
+  (function($) {
+    $.fn.changeElementType = function(newType) {
+      var attrs = {};
+
+      $.each(this[0].attributes, function(idx, attr) {
+        attrs[attr.nodeName] = attr.nodeValue;
+      });
+
+      this.replaceWith(function() {
+        return $("<" + newType + "/>", attrs).append($(this).contents());
+      });
+    };
+  })(jQuery);
+
+  // prevent underline for linked images
+  $('a > img').parent().css({'border-bottom' : 'none'});
+
+  // mark non-body figures created by knitr chunks as 100% width
+  $('.layout-chunk').each(function(i, val) {
+    var figures = $(this).find('img, .html-widget');
+    if ($(this).attr('data-layout') !== "l-body") {
+      figures.css('width', '100%');
+    } else {
+      figures.css('max-width', '100%');
+      figures.filter("[width]").each(function(i, val) {
+        var fig = $(this);
+        fig.css('width', fig.attr('width') + 'px');
+      });
+
+    }
+  });
+
+  // auto-append index.html to post-preview links in file: protocol
+  // and in rstudio ide preview
+  $('.post-preview').each(function(i, val) {
+    if (window.location.protocol === "file:")
+      $(this).attr('href', $(this).attr('href') + "index.html");
+  });
+
+  // get rid of index.html references in header
+  if (window.location.protocol !== "file:") {
+    $('.distill-site-header a[href]').each(function(i,val) {
+      $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+    });
+  }
+
+  // add class to pandoc style tables
+  $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+  $('.kable-table').children('table').addClass('pandoc-table');
+
+  // add figcaption style to table captions
+  $('caption').parent('table').addClass("figcaption");
+
+  // initialize posts list
+  if (window.init_posts_list)
+    window.init_posts_list();
+
+  // implmement disqus comment link
+  $('.disqus-comment-count').click(function() {
+    window.headroom_prevent_pin = true;
+    $('#disqus_thread').toggleClass('hidden');
+    if (!$('#disqus_thread').hasClass('hidden')) {
+      var offset = $(this).offset();
+      $(window).resize();
+      $('html, body').animate({
+        scrollTop: offset.top - 35
+      });
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  if (is_downlevel_browser())
+    init_downlevel();
+  else
+    window.addEventListener('WebComponentsReady', init_distill);
+});
+
+</script>
+
+<!--/radix_placeholder_distill-->
+  <script src="../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+  <script src="../../site_libs/popper-2.6.0/popper.min.js"></script>
+  <link href="../../site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="../../site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="../../site_libs/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="../../site_libs/anchor-4.2.2/anchor.min.js"></script>
+  <script src="../../site_libs/bowser-1.9.3/bowser.min.js"></script>
+  <script src="../../site_libs/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="../../site_libs/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+<!--/radix_placeholder_site_in_header-->
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"Tidymodels opnieuw","description":"Blog van Rebecca Barter onder de titel 'Tidymodels: tidy machine learning in R'","authors":[{"author":"Rebecca Barter, bewerking Harrie Jonkman","authorURL":{},"affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-04-22T00:00:00.000+02:00","citationText":"Jonkman, 2021"}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<header class="header header--fixed" role="banner">
+<nav class="distill-site-nav distill-site-header">
+<div class="nav-left">
+<a href="../../index.html" class="title">Harrie's Hoekje</a>
+<input id="distill-search" class="nav-search hidden" type="text" placeholder="Search..."/>
+</div>
+<div class="nav-right">
+<a href="../../about.html">Achtergrond</a>
+<a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
+</div>
+</nav>
+</header>
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>Tidymodels opnieuw</h1>
+<!--radix_placeholder_categories-->
+<!--/radix_placeholder_categories-->
+<p><p>Blog van Rebecca Barter onder de titel ‘Tidymodels: tidy machine learning in R’</p></p>
+</div>
+
+<div class="d-byline">
+  Rebecca Barter, bewerking Harrie Jonkman true 
+  
+<br/>04-22-2021
+</div>
+
+<div class="d-article">
+<h1 id="tidymodels-een-nette-en-consistente-manier-om-met-machine-learning-in-r-te-werken">Tidymodels: een nette en consistente manier om met machine learning in R te werken</h1>
+<p><code>Tidyverse</code> is misschien wel een van de grootste successen van R de laatste jaren. Het is een basispakket (een suite van pakketten) waarmee je heel veel statistiscche bewerkingen goed en betrekkelijk eenvoudig kunt uitvoeren. De laatste jaren is <code>tidymodels</code> ontwikkeld dat voor het modelleren van data het basispakket moet worden en het ontwikkelt zich vergelijkbaar de gereedschapskist van <code>tidyverse</code> maar dan op het gebied van machine learning.</p>
+<p>Waarom <code>tidymodels</code>? Nou, het blijkt dat R een consistentieprobleem heeft. Omdat alles rondom machine learning door verschillende mensen is gemaakt, allemaal met verschillende principes, heeft alles een net iets andere interface gekregenen. Om de boel in lijn te houden is onderhand een frustrerende bezigheid. Enkele jaren geleden ontwikkelde Max Kuhn (nu bij RStudio in dienst) het <code>caret</code> R-pakket, dat is zo’n uniforme interface voor een groot aantal machine learning-modellen die er in R zijn. Het programma <code>caret</code> bestaat nog steeds, was in veel opzichten geweldig en is nog steeds goed te gebruiken. Maar in andere opzichten is het beperkt. Zo kan het vrij traag zijn, zelfs bij gebuik van data in bescheiden omvang.</p>
+<p><code>caret</code> was een geweldig uitgangspunt, dus RStudio heeft Max Kuhn ingehuurd om te werken aan een <code>tidy</code> versie van <code>caret</code>. Hij en veel anderen ontwikkelden de afgelopen jaren <code>tidymodels</code>.<code>tidymodels</code> is al een paar jaar in ontwikkeling en delen ervan waren al eerder uitgebracht. Die volledige versie is in het voorjaar van 2020 gepresenteerd en Barter schreef vlak daarvoor deze tutoriol. Ondertussen is het voldoende ontwikkeld als je het wil leren! Terwijl <code>caret</code> niet verder ontwikkeld wordt (je kunt <code>caret</code> blijven gebruiken en je bestaande <code>caret</code>-code werkt nog steeds, het pakket wordt alleen niet onderhouden), zal <code>tidymodels</code> het uiteindelijk overbodig maken.</p>
+<p>Deze tutorial van Barter is gebaseerd op Alison Hill’s dia’s van <code>Introduction to Machine Learning with the Tidyverse</code>, die alle dia’s bevat voor de cursus die ze met Garrett Grolemund voor RStudio heeft voorbereid::conf(2020), en Edgar Ruiz’s <code>Gentle introduction to tidymodels</code> op de website van RStudio. In deze tutorial gaat zij ervan uit dat de gebruiker bepaalde basiskennis heeft, voornamelijk omgaan met <code>dplyr</code> (b.v. piping <code>%&gt;%</code> en een functie zoals <code>mutate()</code>).</p>
+<h2 id="wat-is-tidymodels">Wat is <code>tidymodels</code>?</h2>
+<p>Net als <code>tidyverse</code>, dat uit verschillende pakketten bestaat zoals <code>ggplot2</code> en <code>dplyr</code>, zitten er ook in <code>tidymodels</code> enkele kernpakketten, zoals</p>
+<ul>
+<li><p><code>rsample</code>: voor het uit elkaar halen van een datasample (b.v. train/test of cross-validatie);</p></li>
+<li><p><code>recipes</code>: voor pre-procesfuncties;</p></li>
+<li><p><code>parsnip</code>: voor het specificeren van het model;</p></li>
+<li><p><code>yardstick</code>: voor het evalueren van van het model;</p></li>
+<li><p><code>tune</code>: voor het afstemmen van parameters;</p></li>
+<li><p><code>workflow</code>: om alles samen te brengen.</p></li>
+</ul>
+<p>Net zoals je de hele suite aan pakketten van <code>tidyverse</code> kunt binnenhalen door <code>library(tidyverse)</code> in te tikken. <code>tidymodels</code> bestaat dus uit verschillende pakketten en soms zal ik hieronder individuele pakketten noemen.</p>
+<h2 id="eerst-maar-eens-de-boel-klaarzetten">Eerst maar eens de boel klaarzetten</h2>
+<p>Als je deze pakketten nog niet hebt geïnstalleerd, moet je dat wel eerst doen (slechts één keer) door <code>install.packages("tidymodels")</code> te gebruiken. Vervolgens laad je bepaalde bibliotheken: <code>tidymodels</code> en <code>tidyverse</code>.</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>Rows: 768
+Columns: 9
+$ pregnant &lt;dbl&gt; 6, 1, 8, 1, 0, 5, 3, 10, 2, 8, 4, 10, 10, 1, 5, 7, …
+$ glucose  &lt;dbl&gt; 148, 85, 183, 89, 137, 116, 78, 115, 197, 125, 110,…
+$ pressure &lt;dbl&gt; 72, 66, 64, 66, 40, 74, 50, 0, 70, 96, 92, 74, 80, …
+$ triceps  &lt;dbl&gt; 35, 29, 0, 23, 35, 0, 32, 0, 45, 0, 0, 0, 0, 23, 19…
+$ insulin  &lt;dbl&gt; 0, 0, 0, 94, 168, 0, 88, 0, 543, 0, 0, 0, 0, 846, 1…
+$ mass     &lt;dbl&gt; 33.6, 26.6, 23.3, 28.1, 43.1, 25.6, 31.0, 35.3, 30.…
+$ pedigree &lt;dbl&gt; 0.627, 0.351, 0.672, 0.167, 2.288, 0.201, 0.248, 0.…
+$ age      &lt;dbl&gt; 50, 31, 32, 21, 33, 30, 26, 29, 53, 54, 30, 34, 57,…
+$ diabetes &lt;fct&gt; pos, neg, pos, neg, pos, neg, pos, neg, pos, pos, n…</code></pre>
+</div>
+<p>We zullen gebruik maken van de Pima Indian Women’s diabetes-dataset dat informatie bevat over de diabetes status van 768 Pima Indian vrouwen(<code>diabetes</code>). In de dataset zitten daarnaast enkele predictoren zoals het aantal zwangerschappen (<code>pregnant</code>), concentratie glucose (<code>glucose</code>), diastolische bloeddruk (<code>pressure</code>), triceps huidplooidikte (<code>triceps</code>), 2 uur serum insuline (<code>insuline</code>), BMI (<code>mass</code>), diabetes stamboom functie (<code>pedigree</code>) en hun leeftijd (<code>age</code>). Voor het geval je het je afvraagt, de Pima Indianen zijn een groep indianen die leven in een gebied dat bestaat uit wat nu centraal en zuidelijk Arizona is. De korte naam “Pima” zou afkomstig zijn van een zinsnede die “ik weet het niet” betekent, die ze herhaaldelijk gebruikten in hun eerste ontmoetingen met Spaanse kolonisten. Wikipedia bedankt!</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>    pregnant glucose pressure triceps insulin mass pedigree age
+1          6     148       72      35       0 33.6    0.627  50
+2          1      85       66      29       0 26.6    0.351  31
+3          8     183       64       0       0 23.3    0.672  32
+4          1      89       66      23      94 28.1    0.167  21
+5          0     137       40      35     168 43.1    2.288  33
+6          5     116       74       0       0 25.6    0.201  30
+7          3      78       50      32      88 31.0    0.248  26
+8         10     115        0       0       0 35.3    0.134  29
+9          2     197       70      45     543 30.5    0.158  53
+10         8     125       96       0       0  0.0    0.232  54
+11         4     110       92       0       0 37.6    0.191  30
+12        10     168       74       0       0 38.0    0.537  34
+13        10     139       80       0       0 27.1    1.441  57
+14         1     189       60      23     846 30.1    0.398  59
+15         5     166       72      19     175 25.8    0.587  51
+16         7     100        0       0       0 30.0    0.484  32
+17         0     118       84      47     230 45.8    0.551  31
+18         7     107       74       0       0 29.6    0.254  31
+19         1     103       30      38      83 43.3    0.183  33
+20         1     115       70      30      96 34.6    0.529  32
+21         3     126       88      41     235 39.3    0.704  27
+22         8      99       84       0       0 35.4    0.388  50
+23         7     196       90       0       0 39.8    0.451  41
+24         9     119       80      35       0 29.0    0.263  29
+25        11     143       94      33     146 36.6    0.254  51
+26        10     125       70      26     115 31.1    0.205  41
+27         7     147       76       0       0 39.4    0.257  43
+28         1      97       66      15     140 23.2    0.487  22
+29        13     145       82      19     110 22.2    0.245  57
+30         5     117       92       0       0 34.1    0.337  38
+31         5     109       75      26       0 36.0    0.546  60
+32         3     158       76      36     245 31.6    0.851  28
+33         3      88       58      11      54 24.8    0.267  22
+34         6      92       92       0       0 19.9    0.188  28
+35        10     122       78      31       0 27.6    0.512  45
+36         4     103       60      33     192 24.0    0.966  33
+37        11     138       76       0       0 33.2    0.420  35
+38         9     102       76      37       0 32.9    0.665  46
+39         2      90       68      42       0 38.2    0.503  27
+40         4     111       72      47     207 37.1    1.390  56
+41         3     180       64      25      70 34.0    0.271  26
+42         7     133       84       0       0 40.2    0.696  37
+43         7     106       92      18       0 22.7    0.235  48
+44         9     171      110      24     240 45.4    0.721  54
+45         7     159       64       0       0 27.4    0.294  40
+46         0     180       66      39       0 42.0    1.893  25
+47         1     146       56       0       0 29.7    0.564  29
+48         2      71       70      27       0 28.0    0.586  22
+49         7     103       66      32       0 39.1    0.344  31
+50         7     105        0       0       0  0.0    0.305  24
+51         1     103       80      11      82 19.4    0.491  22
+52         1     101       50      15      36 24.2    0.526  26
+53         5      88       66      21      23 24.4    0.342  30
+54         8     176       90      34     300 33.7    0.467  58
+55         7     150       66      42     342 34.7    0.718  42
+56         1      73       50      10       0 23.0    0.248  21
+57         7     187       68      39     304 37.7    0.254  41
+58         0     100       88      60     110 46.8    0.962  31
+59         0     146       82       0       0 40.5    1.781  44
+60         0     105       64      41     142 41.5    0.173  22
+61         2      84        0       0       0  0.0    0.304  21
+62         8     133       72       0       0 32.9    0.270  39
+63         5      44       62       0       0 25.0    0.587  36
+64         2     141       58      34     128 25.4    0.699  24
+65         7     114       66       0       0 32.8    0.258  42
+66         5      99       74      27       0 29.0    0.203  32
+67         0     109       88      30       0 32.5    0.855  38
+68         2     109       92       0       0 42.7    0.845  54
+69         1      95       66      13      38 19.6    0.334  25
+70         4     146       85      27     100 28.9    0.189  27
+71         2     100       66      20      90 32.9    0.867  28
+72         5     139       64      35     140 28.6    0.411  26
+73        13     126       90       0       0 43.4    0.583  42
+74         4     129       86      20     270 35.1    0.231  23
+75         1      79       75      30       0 32.0    0.396  22
+76         1       0       48      20       0 24.7    0.140  22
+77         7      62       78       0       0 32.6    0.391  41
+78         5      95       72      33       0 37.7    0.370  27
+79         0     131        0       0       0 43.2    0.270  26
+80         2     112       66      22       0 25.0    0.307  24
+81         3     113       44      13       0 22.4    0.140  22
+82         2      74        0       0       0  0.0    0.102  22
+83         7      83       78      26      71 29.3    0.767  36
+84         0     101       65      28       0 24.6    0.237  22
+85         5     137      108       0       0 48.8    0.227  37
+86         2     110       74      29     125 32.4    0.698  27
+87        13     106       72      54       0 36.6    0.178  45
+88         2     100       68      25      71 38.5    0.324  26
+89        15     136       70      32     110 37.1    0.153  43
+90         1     107       68      19       0 26.5    0.165  24
+91         1      80       55       0       0 19.1    0.258  21
+92         4     123       80      15     176 32.0    0.443  34
+93         7      81       78      40      48 46.7    0.261  42
+94         4     134       72       0       0 23.8    0.277  60
+95         2     142       82      18      64 24.7    0.761  21
+96         6     144       72      27     228 33.9    0.255  40
+97         2      92       62      28       0 31.6    0.130  24
+98         1      71       48      18      76 20.4    0.323  22
+99         6      93       50      30      64 28.7    0.356  23
+100        1     122       90      51     220 49.7    0.325  31
+101        1     163       72       0       0 39.0    1.222  33
+102        1     151       60       0       0 26.1    0.179  22
+103        0     125       96       0       0 22.5    0.262  21
+104        1      81       72      18      40 26.6    0.283  24
+105        2      85       65       0       0 39.6    0.930  27
+106        1     126       56      29     152 28.7    0.801  21
+107        1      96      122       0       0 22.4    0.207  27
+108        4     144       58      28     140 29.5    0.287  37
+109        3      83       58      31      18 34.3    0.336  25
+110        0      95       85      25      36 37.4    0.247  24
+111        3     171       72      33     135 33.3    0.199  24
+112        8     155       62      26     495 34.0    0.543  46
+113        1      89       76      34      37 31.2    0.192  23
+114        4      76       62       0       0 34.0    0.391  25
+115        7     160       54      32     175 30.5    0.588  39
+116        4     146       92       0       0 31.2    0.539  61
+117        5     124       74       0       0 34.0    0.220  38
+118        5      78       48       0       0 33.7    0.654  25
+119        4      97       60      23       0 28.2    0.443  22
+120        4      99       76      15      51 23.2    0.223  21
+121        0     162       76      56     100 53.2    0.759  25
+122        6     111       64      39       0 34.2    0.260  24
+123        2     107       74      30     100 33.6    0.404  23
+124        5     132       80       0       0 26.8    0.186  69
+125        0     113       76       0       0 33.3    0.278  23
+126        1      88       30      42      99 55.0    0.496  26
+127        3     120       70      30     135 42.9    0.452  30
+128        1     118       58      36      94 33.3    0.261  23
+129        1     117       88      24     145 34.5    0.403  40
+130        0     105       84       0       0 27.9    0.741  62
+131        4     173       70      14     168 29.7    0.361  33
+132        9     122       56       0       0 33.3    1.114  33
+133        3     170       64      37     225 34.5    0.356  30
+134        8      84       74      31       0 38.3    0.457  39
+135        2      96       68      13      49 21.1    0.647  26
+136        2     125       60      20     140 33.8    0.088  31
+137        0     100       70      26      50 30.8    0.597  21
+138        0      93       60      25      92 28.7    0.532  22
+139        0     129       80       0       0 31.2    0.703  29
+140        5     105       72      29     325 36.9    0.159  28
+141        3     128       78       0       0 21.1    0.268  55
+142        5     106       82      30       0 39.5    0.286  38
+143        2     108       52      26      63 32.5    0.318  22
+144       10     108       66       0       0 32.4    0.272  42
+145        4     154       62      31     284 32.8    0.237  23
+146        0     102       75      23       0  0.0    0.572  21
+147        9      57       80      37       0 32.8    0.096  41
+148        2     106       64      35     119 30.5    1.400  34
+149        5     147       78       0       0 33.7    0.218  65
+150        2      90       70      17       0 27.3    0.085  22
+151        1     136       74      50     204 37.4    0.399  24
+152        4     114       65       0       0 21.9    0.432  37
+153        9     156       86      28     155 34.3    1.189  42
+154        1     153       82      42     485 40.6    0.687  23
+155        8     188       78       0       0 47.9    0.137  43
+156        7     152       88      44       0 50.0    0.337  36
+157        2      99       52      15      94 24.6    0.637  21
+158        1     109       56      21     135 25.2    0.833  23
+159        2      88       74      19      53 29.0    0.229  22
+160       17     163       72      41     114 40.9    0.817  47
+161        4     151       90      38       0 29.7    0.294  36
+162        7     102       74      40     105 37.2    0.204  45
+163        0     114       80      34     285 44.2    0.167  27
+164        2     100       64      23       0 29.7    0.368  21
+165        0     131       88       0       0 31.6    0.743  32
+166        6     104       74      18     156 29.9    0.722  41
+167        3     148       66      25       0 32.5    0.256  22
+168        4     120       68       0       0 29.6    0.709  34
+169        4     110       66       0       0 31.9    0.471  29
+170        3     111       90      12      78 28.4    0.495  29
+171        6     102       82       0       0 30.8    0.180  36
+172        6     134       70      23     130 35.4    0.542  29
+173        2      87        0      23       0 28.9    0.773  25
+174        1      79       60      42      48 43.5    0.678  23
+175        2      75       64      24      55 29.7    0.370  33
+176        8     179       72      42     130 32.7    0.719  36
+177        6      85       78       0       0 31.2    0.382  42
+178        0     129      110      46     130 67.1    0.319  26
+179        5     143       78       0       0 45.0    0.190  47
+180        5     130       82       0       0 39.1    0.956  37
+181        6      87       80       0       0 23.2    0.084  32
+182        0     119       64      18      92 34.9    0.725  23
+183        1       0       74      20      23 27.7    0.299  21
+184        5      73       60       0       0 26.8    0.268  27
+185        4     141       74       0       0 27.6    0.244  40
+186        7     194       68      28       0 35.9    0.745  41
+187        8     181       68      36     495 30.1    0.615  60
+188        1     128       98      41      58 32.0    1.321  33
+189        8     109       76      39     114 27.9    0.640  31
+190        5     139       80      35     160 31.6    0.361  25
+191        3     111       62       0       0 22.6    0.142  21
+192        9     123       70      44      94 33.1    0.374  40
+193        7     159       66       0       0 30.4    0.383  36
+194       11     135        0       0       0 52.3    0.578  40
+195        8      85       55      20       0 24.4    0.136  42
+196        5     158       84      41     210 39.4    0.395  29
+197        1     105       58       0       0 24.3    0.187  21
+198        3     107       62      13      48 22.9    0.678  23
+199        4     109       64      44      99 34.8    0.905  26
+200        4     148       60      27     318 30.9    0.150  29
+201        0     113       80      16       0 31.0    0.874  21
+202        1     138       82       0       0 40.1    0.236  28
+203        0     108       68      20       0 27.3    0.787  32
+204        2      99       70      16      44 20.4    0.235  27
+205        6     103       72      32     190 37.7    0.324  55
+206        5     111       72      28       0 23.9    0.407  27
+207        8     196       76      29     280 37.5    0.605  57
+208        5     162      104       0       0 37.7    0.151  52
+209        1      96       64      27      87 33.2    0.289  21
+210        7     184       84      33       0 35.5    0.355  41
+211        2      81       60      22       0 27.7    0.290  25
+212        0     147       85      54       0 42.8    0.375  24
+213        7     179       95      31       0 34.2    0.164  60
+214        0     140       65      26     130 42.6    0.431  24
+215        9     112       82      32     175 34.2    0.260  36
+216       12     151       70      40     271 41.8    0.742  38
+217        5     109       62      41     129 35.8    0.514  25
+218        6     125       68      30     120 30.0    0.464  32
+219        5      85       74      22       0 29.0    1.224  32
+220        5     112       66       0       0 37.8    0.261  41
+221        0     177       60      29     478 34.6    1.072  21
+222        2     158       90       0       0 31.6    0.805  66
+223        7     119        0       0       0 25.2    0.209  37
+224        7     142       60      33     190 28.8    0.687  61
+225        1     100       66      15      56 23.6    0.666  26
+226        1      87       78      27      32 34.6    0.101  22
+227        0     101       76       0       0 35.7    0.198  26
+228        3     162       52      38       0 37.2    0.652  24
+229        4     197       70      39     744 36.7    2.329  31
+230        0     117       80      31      53 45.2    0.089  24
+231        4     142       86       0       0 44.0    0.645  22
+232        6     134       80      37     370 46.2    0.238  46
+233        1      79       80      25      37 25.4    0.583  22
+234        4     122       68       0       0 35.0    0.394  29
+235        3      74       68      28      45 29.7    0.293  23
+236        4     171       72       0       0 43.6    0.479  26
+237        7     181       84      21     192 35.9    0.586  51
+238        0     179       90      27       0 44.1    0.686  23
+239        9     164       84      21       0 30.8    0.831  32
+240        0     104       76       0       0 18.4    0.582  27
+241        1      91       64      24       0 29.2    0.192  21
+242        4      91       70      32      88 33.1    0.446  22
+243        3     139       54       0       0 25.6    0.402  22
+244        6     119       50      22     176 27.1    1.318  33
+245        2     146       76      35     194 38.2    0.329  29
+246        9     184       85      15       0 30.0    1.213  49
+247       10     122       68       0       0 31.2    0.258  41
+248        0     165       90      33     680 52.3    0.427  23
+249        9     124       70      33     402 35.4    0.282  34
+250        1     111       86      19       0 30.1    0.143  23
+251        9     106       52       0       0 31.2    0.380  42
+252        2     129       84       0       0 28.0    0.284  27
+253        2      90       80      14      55 24.4    0.249  24
+254        0      86       68      32       0 35.8    0.238  25
+255       12      92       62       7     258 27.6    0.926  44
+256        1     113       64      35       0 33.6    0.543  21
+257        3     111       56      39       0 30.1    0.557  30
+258        2     114       68      22       0 28.7    0.092  25
+259        1     193       50      16     375 25.9    0.655  24
+260       11     155       76      28     150 33.3    1.353  51
+261        3     191       68      15     130 30.9    0.299  34
+262        3     141        0       0       0 30.0    0.761  27
+263        4      95       70      32       0 32.1    0.612  24
+264        3     142       80      15       0 32.4    0.200  63
+265        4     123       62       0       0 32.0    0.226  35
+266        5      96       74      18      67 33.6    0.997  43
+267        0     138        0       0       0 36.3    0.933  25
+268        2     128       64      42       0 40.0    1.101  24
+269        0     102       52       0       0 25.1    0.078  21
+270        2     146        0       0       0 27.5    0.240  28
+271       10     101       86      37       0 45.6    1.136  38
+272        2     108       62      32      56 25.2    0.128  21
+273        3     122       78       0       0 23.0    0.254  40
+274        1      71       78      50      45 33.2    0.422  21
+275       13     106       70       0       0 34.2    0.251  52
+276        2     100       70      52      57 40.5    0.677  25
+277        7     106       60      24       0 26.5    0.296  29
+278        0     104       64      23     116 27.8    0.454  23
+279        5     114       74       0       0 24.9    0.744  57
+280        2     108       62      10     278 25.3    0.881  22
+281        0     146       70       0       0 37.9    0.334  28
+282       10     129       76      28     122 35.9    0.280  39
+283        7     133       88      15     155 32.4    0.262  37
+284        7     161       86       0       0 30.4    0.165  47
+285        2     108       80       0       0 27.0    0.259  52
+286        7     136       74      26     135 26.0    0.647  51
+287        5     155       84      44     545 38.7    0.619  34
+288        1     119       86      39     220 45.6    0.808  29
+289        4      96       56      17      49 20.8    0.340  26
+290        5     108       72      43      75 36.1    0.263  33
+291        0      78       88      29      40 36.9    0.434  21
+292        0     107       62      30      74 36.6    0.757  25
+293        2     128       78      37     182 43.3    1.224  31
+294        1     128       48      45     194 40.5    0.613  24
+295        0     161       50       0       0 21.9    0.254  65
+296        6     151       62      31     120 35.5    0.692  28
+297        2     146       70      38     360 28.0    0.337  29
+298        0     126       84      29     215 30.7    0.520  24
+299       14     100       78      25     184 36.6    0.412  46
+300        8     112       72       0       0 23.6    0.840  58
+301        0     167        0       0       0 32.3    0.839  30
+302        2     144       58      33     135 31.6    0.422  25
+303        5      77       82      41      42 35.8    0.156  35
+304        5     115       98       0       0 52.9    0.209  28
+305        3     150       76       0       0 21.0    0.207  37
+306        2     120       76      37     105 39.7    0.215  29
+307       10     161       68      23     132 25.5    0.326  47
+308        0     137       68      14     148 24.8    0.143  21
+309        0     128       68      19     180 30.5    1.391  25
+310        2     124       68      28     205 32.9    0.875  30
+311        6      80       66      30       0 26.2    0.313  41
+312        0     106       70      37     148 39.4    0.605  22
+313        2     155       74      17      96 26.6    0.433  27
+314        3     113       50      10      85 29.5    0.626  25
+315        7     109       80      31       0 35.9    1.127  43
+316        2     112       68      22      94 34.1    0.315  26
+317        3      99       80      11      64 19.3    0.284  30
+318        3     182       74       0       0 30.5    0.345  29
+319        3     115       66      39     140 38.1    0.150  28
+320        6     194       78       0       0 23.5    0.129  59
+321        4     129       60      12     231 27.5    0.527  31
+322        3     112       74      30       0 31.6    0.197  25
+323        0     124       70      20       0 27.4    0.254  36
+324       13     152       90      33      29 26.8    0.731  43
+325        2     112       75      32       0 35.7    0.148  21
+326        1     157       72      21     168 25.6    0.123  24
+327        1     122       64      32     156 35.1    0.692  30
+328       10     179       70       0       0 35.1    0.200  37
+329        2     102       86      36     120 45.5    0.127  23
+330        6     105       70      32      68 30.8    0.122  37
+331        8     118       72      19       0 23.1    1.476  46
+332        2      87       58      16      52 32.7    0.166  25
+333        1     180        0       0       0 43.3    0.282  41
+334       12     106       80       0       0 23.6    0.137  44
+335        1      95       60      18      58 23.9    0.260  22
+336        0     165       76      43     255 47.9    0.259  26
+337        0     117        0       0       0 33.8    0.932  44
+338        5     115       76       0       0 31.2    0.343  44
+339        9     152       78      34     171 34.2    0.893  33
+340        7     178       84       0       0 39.9    0.331  41
+341        1     130       70      13     105 25.9    0.472  22
+342        1      95       74      21      73 25.9    0.673  36
+343        1       0       68      35       0 32.0    0.389  22
+344        5     122       86       0       0 34.7    0.290  33
+345        8      95       72       0       0 36.8    0.485  57
+346        8     126       88      36     108 38.5    0.349  49
+347        1     139       46      19      83 28.7    0.654  22
+348        3     116        0       0       0 23.5    0.187  23
+349        3      99       62      19      74 21.8    0.279  26
+350        5       0       80      32       0 41.0    0.346  37
+351        4      92       80       0       0 42.2    0.237  29
+352        4     137       84       0       0 31.2    0.252  30
+353        3      61       82      28       0 34.4    0.243  46
+354        1      90       62      12      43 27.2    0.580  24
+355        3      90       78       0       0 42.7    0.559  21
+356        9     165       88       0       0 30.4    0.302  49
+357        1     125       50      40     167 33.3    0.962  28
+358       13     129        0      30       0 39.9    0.569  44
+359       12      88       74      40      54 35.3    0.378  48
+360        1     196       76      36     249 36.5    0.875  29
+361        5     189       64      33     325 31.2    0.583  29
+362        5     158       70       0       0 29.8    0.207  63
+363        5     103      108      37       0 39.2    0.305  65
+364        4     146       78       0       0 38.5    0.520  67
+365        4     147       74      25     293 34.9    0.385  30
+366        5      99       54      28      83 34.0    0.499  30
+367        6     124       72       0       0 27.6    0.368  29
+368        0     101       64      17       0 21.0    0.252  21
+369        3      81       86      16      66 27.5    0.306  22
+370        1     133      102      28     140 32.8    0.234  45
+371        3     173       82      48     465 38.4    2.137  25
+372        0     118       64      23      89  0.0    1.731  21
+373        0      84       64      22      66 35.8    0.545  21
+374        2     105       58      40      94 34.9    0.225  25
+375        2     122       52      43     158 36.2    0.816  28
+376       12     140       82      43     325 39.2    0.528  58
+377        0      98       82      15      84 25.2    0.299  22
+378        1      87       60      37      75 37.2    0.509  22
+379        4     156       75       0       0 48.3    0.238  32
+380        0      93      100      39      72 43.4    1.021  35
+381        1     107       72      30      82 30.8    0.821  24
+382        0     105       68      22       0 20.0    0.236  22
+383        1     109       60       8     182 25.4    0.947  21
+384        1      90       62      18      59 25.1    1.268  25
+385        1     125       70      24     110 24.3    0.221  25
+386        1     119       54      13      50 22.3    0.205  24
+387        5     116       74      29       0 32.3    0.660  35
+388        8     105      100      36       0 43.3    0.239  45
+389        5     144       82      26     285 32.0    0.452  58
+390        3     100       68      23      81 31.6    0.949  28
+391        1     100       66      29     196 32.0    0.444  42
+392        5     166       76       0       0 45.7    0.340  27
+393        1     131       64      14     415 23.7    0.389  21
+394        4     116       72      12      87 22.1    0.463  37
+395        4     158       78       0       0 32.9    0.803  31
+396        2     127       58      24     275 27.7    1.600  25
+397        3      96       56      34     115 24.7    0.944  39
+398        0     131       66      40       0 34.3    0.196  22
+399        3      82       70       0       0 21.1    0.389  25
+400        3     193       70      31       0 34.9    0.241  25
+401        4      95       64       0       0 32.0    0.161  31
+402        6     137       61       0       0 24.2    0.151  55
+403        5     136       84      41      88 35.0    0.286  35
+404        9      72       78      25       0 31.6    0.280  38
+405        5     168       64       0       0 32.9    0.135  41
+406        2     123       48      32     165 42.1    0.520  26
+407        4     115       72       0       0 28.9    0.376  46
+408        0     101       62       0       0 21.9    0.336  25
+409        8     197       74       0       0 25.9    1.191  39
+410        1     172       68      49     579 42.4    0.702  28
+411        6     102       90      39       0 35.7    0.674  28
+412        1     112       72      30     176 34.4    0.528  25
+413        1     143       84      23     310 42.4    1.076  22
+414        1     143       74      22      61 26.2    0.256  21
+415        0     138       60      35     167 34.6    0.534  21
+416        3     173       84      33     474 35.7    0.258  22
+417        1      97       68      21       0 27.2    1.095  22
+418        4     144       82      32       0 38.5    0.554  37
+419        1      83       68       0       0 18.2    0.624  27
+420        3     129       64      29     115 26.4    0.219  28
+421        1     119       88      41     170 45.3    0.507  26
+422        2      94       68      18      76 26.0    0.561  21
+423        0     102       64      46      78 40.6    0.496  21
+424        2     115       64      22       0 30.8    0.421  21
+425        8     151       78      32     210 42.9    0.516  36
+426        4     184       78      39     277 37.0    0.264  31
+427        0      94        0       0       0  0.0    0.256  25
+428        1     181       64      30     180 34.1    0.328  38
+429        0     135       94      46     145 40.6    0.284  26
+430        1      95       82      25     180 35.0    0.233  43
+431        2      99        0       0       0 22.2    0.108  23
+432        3      89       74      16      85 30.4    0.551  38
+433        1      80       74      11      60 30.0    0.527  22
+434        2     139       75       0       0 25.6    0.167  29
+435        1      90       68       8       0 24.5    1.138  36
+436        0     141        0       0       0 42.4    0.205  29
+437       12     140       85      33       0 37.4    0.244  41
+438        5     147       75       0       0 29.9    0.434  28
+439        1      97       70      15       0 18.2    0.147  21
+440        6     107       88       0       0 36.8    0.727  31
+441        0     189      104      25       0 34.3    0.435  41
+442        2      83       66      23      50 32.2    0.497  22
+443        4     117       64      27     120 33.2    0.230  24
+444        8     108       70       0       0 30.5    0.955  33
+445        4     117       62      12       0 29.7    0.380  30
+446        0     180       78      63      14 59.4    2.420  25
+447        1     100       72      12      70 25.3    0.658  28
+448        0      95       80      45      92 36.5    0.330  26
+449        0     104       64      37      64 33.6    0.510  22
+450        0     120       74      18      63 30.5    0.285  26
+451        1      82       64      13      95 21.2    0.415  23
+452        2     134       70       0       0 28.9    0.542  23
+453        0      91       68      32     210 39.9    0.381  25
+454        2     119        0       0       0 19.6    0.832  72
+455        2     100       54      28     105 37.8    0.498  24
+456       14     175       62      30       0 33.6    0.212  38
+457        1     135       54       0       0 26.7    0.687  62
+458        5      86       68      28      71 30.2    0.364  24
+459       10     148       84      48     237 37.6    1.001  51
+460        9     134       74      33      60 25.9    0.460  81
+461        9     120       72      22      56 20.8    0.733  48
+462        1      71       62       0       0 21.8    0.416  26
+463        8      74       70      40      49 35.3    0.705  39
+464        5      88       78      30       0 27.6    0.258  37
+465       10     115       98       0       0 24.0    1.022  34
+466        0     124       56      13     105 21.8    0.452  21
+467        0      74       52      10      36 27.8    0.269  22
+468        0      97       64      36     100 36.8    0.600  25
+469        8     120        0       0       0 30.0    0.183  38
+470        6     154       78      41     140 46.1    0.571  27
+471        1     144       82      40       0 41.3    0.607  28
+472        0     137       70      38       0 33.2    0.170  22
+473        0     119       66      27       0 38.8    0.259  22
+474        7     136       90       0       0 29.9    0.210  50
+475        4     114       64       0       0 28.9    0.126  24
+476        0     137       84      27       0 27.3    0.231  59
+477        2     105       80      45     191 33.7    0.711  29
+478        7     114       76      17     110 23.8    0.466  31
+479        8     126       74      38      75 25.9    0.162  39
+480        4     132       86      31       0 28.0    0.419  63
+481        3     158       70      30     328 35.5    0.344  35
+482        0     123       88      37       0 35.2    0.197  29
+483        4      85       58      22      49 27.8    0.306  28
+484        0      84       82      31     125 38.2    0.233  23
+485        0     145        0       0       0 44.2    0.630  31
+486        0     135       68      42     250 42.3    0.365  24
+487        1     139       62      41     480 40.7    0.536  21
+488        0     173       78      32     265 46.5    1.159  58
+489        4      99       72      17       0 25.6    0.294  28
+490        8     194       80       0       0 26.1    0.551  67
+491        2      83       65      28      66 36.8    0.629  24
+492        2      89       90      30       0 33.5    0.292  42
+493        4      99       68      38       0 32.8    0.145  33
+494        4     125       70      18     122 28.9    1.144  45
+495        3      80        0       0       0  0.0    0.174  22
+496        6     166       74       0       0 26.6    0.304  66
+497        5     110       68       0       0 26.0    0.292  30
+498        2      81       72      15      76 30.1    0.547  25
+499        7     195       70      33     145 25.1    0.163  55
+500        6     154       74      32     193 29.3    0.839  39
+501        2     117       90      19      71 25.2    0.313  21
+502        3      84       72      32       0 37.2    0.267  28
+503        6       0       68      41       0 39.0    0.727  41
+504        7      94       64      25      79 33.3    0.738  41
+505        3      96       78      39       0 37.3    0.238  40
+506       10      75       82       0       0 33.3    0.263  38
+507        0     180       90      26      90 36.5    0.314  35
+508        1     130       60      23     170 28.6    0.692  21
+509        2      84       50      23      76 30.4    0.968  21
+510        8     120       78       0       0 25.0    0.409  64
+511       12      84       72      31       0 29.7    0.297  46
+512        0     139       62      17     210 22.1    0.207  21
+513        9      91       68       0       0 24.2    0.200  58
+514        2      91       62       0       0 27.3    0.525  22
+515        3      99       54      19      86 25.6    0.154  24
+516        3     163       70      18     105 31.6    0.268  28
+517        9     145       88      34     165 30.3    0.771  53
+518        7     125       86       0       0 37.6    0.304  51
+519       13      76       60       0       0 32.8    0.180  41
+520        6     129       90       7     326 19.6    0.582  60
+521        2      68       70      32      66 25.0    0.187  25
+522        3     124       80      33     130 33.2    0.305  26
+523        6     114        0       0       0  0.0    0.189  26
+524        9     130       70       0       0 34.2    0.652  45
+525        3     125       58       0       0 31.6    0.151  24
+526        3      87       60      18       0 21.8    0.444  21
+527        1      97       64      19      82 18.2    0.299  21
+528        3     116       74      15     105 26.3    0.107  24
+529        0     117       66      31     188 30.8    0.493  22
+530        0     111       65       0       0 24.6    0.660  31
+531        2     122       60      18     106 29.8    0.717  22
+532        0     107       76       0       0 45.3    0.686  24
+533        1      86       66      52      65 41.3    0.917  29
+534        6      91        0       0       0 29.8    0.501  31
+535        1      77       56      30      56 33.3    1.251  24
+536        4     132        0       0       0 32.9    0.302  23
+537        0     105       90       0       0 29.6    0.197  46
+538        0      57       60       0       0 21.7    0.735  67
+539        0     127       80      37     210 36.3    0.804  23
+540        3     129       92      49     155 36.4    0.968  32
+541        8     100       74      40     215 39.4    0.661  43
+542        3     128       72      25     190 32.4    0.549  27
+543       10      90       85      32       0 34.9    0.825  56
+544        4      84       90      23      56 39.5    0.159  25
+545        1      88       78      29      76 32.0    0.365  29
+546        8     186       90      35     225 34.5    0.423  37
+547        5     187       76      27     207 43.6    1.034  53
+548        4     131       68      21     166 33.1    0.160  28
+549        1     164       82      43      67 32.8    0.341  50
+550        4     189      110      31       0 28.5    0.680  37
+551        1     116       70      28       0 27.4    0.204  21
+552        3      84       68      30     106 31.9    0.591  25
+553        6     114       88       0       0 27.8    0.247  66
+554        1      88       62      24      44 29.9    0.422  23
+555        1      84       64      23     115 36.9    0.471  28
+556        7     124       70      33     215 25.5    0.161  37
+557        1      97       70      40       0 38.1    0.218  30
+558        8     110       76       0       0 27.8    0.237  58
+559       11     103       68      40       0 46.2    0.126  42
+560       11      85       74       0       0 30.1    0.300  35
+561        6     125       76       0       0 33.8    0.121  54
+562        0     198       66      32     274 41.3    0.502  28
+563        1      87       68      34      77 37.6    0.401  24
+564        6      99       60      19      54 26.9    0.497  32
+565        0      91       80       0       0 32.4    0.601  27
+566        2      95       54      14      88 26.1    0.748  22
+567        1      99       72      30      18 38.6    0.412  21
+568        6      92       62      32     126 32.0    0.085  46
+569        4     154       72      29     126 31.3    0.338  37
+570        0     121       66      30     165 34.3    0.203  33
+571        3      78       70       0       0 32.5    0.270  39
+572        2     130       96       0       0 22.6    0.268  21
+573        3     111       58      31      44 29.5    0.430  22
+574        2      98       60      17     120 34.7    0.198  22
+575        1     143       86      30     330 30.1    0.892  23
+576        1     119       44      47      63 35.5    0.280  25
+577        6     108       44      20     130 24.0    0.813  35
+578        2     118       80       0       0 42.9    0.693  21
+579       10     133       68       0       0 27.0    0.245  36
+580        2     197       70      99       0 34.7    0.575  62
+581        0     151       90      46       0 42.1    0.371  21
+582        6     109       60      27       0 25.0    0.206  27
+583       12     121       78      17       0 26.5    0.259  62
+584        8     100       76       0       0 38.7    0.190  42
+585        8     124       76      24     600 28.7    0.687  52
+586        1      93       56      11       0 22.5    0.417  22
+587        8     143       66       0       0 34.9    0.129  41
+588        6     103       66       0       0 24.3    0.249  29
+589        3     176       86      27     156 33.3    1.154  52
+590        0      73        0       0       0 21.1    0.342  25
+591       11     111       84      40       0 46.8    0.925  45
+592        2     112       78      50     140 39.4    0.175  24
+593        3     132       80       0       0 34.4    0.402  44
+594        2      82       52      22     115 28.5    1.699  25
+595        6     123       72      45     230 33.6    0.733  34
+596        0     188       82      14     185 32.0    0.682  22
+597        0      67       76       0       0 45.3    0.194  46
+598        1      89       24      19      25 27.8    0.559  21
+599        1     173       74       0       0 36.8    0.088  38
+600        1     109       38      18     120 23.1    0.407  26
+601        1     108       88      19       0 27.1    0.400  24
+602        6      96        0       0       0 23.7    0.190  28
+603        1     124       74      36       0 27.8    0.100  30
+604        7     150       78      29     126 35.2    0.692  54
+605        4     183        0       0       0 28.4    0.212  36
+606        1     124       60      32       0 35.8    0.514  21
+607        1     181       78      42     293 40.0    1.258  22
+608        1      92       62      25      41 19.5    0.482  25
+609        0     152       82      39     272 41.5    0.270  27
+610        1     111       62      13     182 24.0    0.138  23
+611        3     106       54      21     158 30.9    0.292  24
+612        3     174       58      22     194 32.9    0.593  36
+613        7     168       88      42     321 38.2    0.787  40
+614        6     105       80      28       0 32.5    0.878  26
+615       11     138       74      26     144 36.1    0.557  50
+616        3     106       72       0       0 25.8    0.207  27
+617        6     117       96       0       0 28.7    0.157  30
+618        2      68       62      13      15 20.1    0.257  23
+619        9     112       82      24       0 28.2    1.282  50
+620        0     119        0       0       0 32.4    0.141  24
+621        2     112       86      42     160 38.4    0.246  28
+622        2      92       76      20       0 24.2    1.698  28
+623        6     183       94       0       0 40.8    1.461  45
+624        0      94       70      27     115 43.5    0.347  21
+625        2     108       64       0       0 30.8    0.158  21
+626        4      90       88      47      54 37.7    0.362  29
+627        0     125       68       0       0 24.7    0.206  21
+628        0     132       78       0       0 32.4    0.393  21
+629        5     128       80       0       0 34.6    0.144  45
+630        4      94       65      22       0 24.7    0.148  21
+631        7     114       64       0       0 27.4    0.732  34
+632        0     102       78      40      90 34.5    0.238  24
+633        2     111       60       0       0 26.2    0.343  23
+634        1     128       82      17     183 27.5    0.115  22
+635       10      92       62       0       0 25.9    0.167  31
+636       13     104       72       0       0 31.2    0.465  38
+637        5     104       74       0       0 28.8    0.153  48
+638        2      94       76      18      66 31.6    0.649  23
+639        7      97       76      32      91 40.9    0.871  32
+640        1     100       74      12      46 19.5    0.149  28
+641        0     102       86      17     105 29.3    0.695  27
+642        4     128       70       0       0 34.3    0.303  24
+643        6     147       80       0       0 29.5    0.178  50
+644        4      90        0       0       0 28.0    0.610  31
+645        3     103       72      30     152 27.6    0.730  27
+646        2     157       74      35     440 39.4    0.134  30
+647        1     167       74      17     144 23.4    0.447  33
+648        0     179       50      36     159 37.8    0.455  22
+649       11     136       84      35     130 28.3    0.260  42
+650        0     107       60      25       0 26.4    0.133  23
+651        1      91       54      25     100 25.2    0.234  23
+652        1     117       60      23     106 33.8    0.466  27
+653        5     123       74      40      77 34.1    0.269  28
+654        2     120       54       0       0 26.8    0.455  27
+655        1     106       70      28     135 34.2    0.142  22
+656        2     155       52      27     540 38.7    0.240  25
+657        2     101       58      35      90 21.8    0.155  22
+658        1     120       80      48     200 38.9    1.162  41
+659       11     127      106       0       0 39.0    0.190  51
+660        3      80       82      31      70 34.2    1.292  27
+661       10     162       84       0       0 27.7    0.182  54
+662        1     199       76      43       0 42.9    1.394  22
+663        8     167      106      46     231 37.6    0.165  43
+664        9     145       80      46     130 37.9    0.637  40
+665        6     115       60      39       0 33.7    0.245  40
+666        1     112       80      45     132 34.8    0.217  24
+667        4     145       82      18       0 32.5    0.235  70
+668       10     111       70      27       0 27.5    0.141  40
+669        6      98       58      33     190 34.0    0.430  43
+670        9     154       78      30     100 30.9    0.164  45
+671        6     165       68      26     168 33.6    0.631  49
+672        1      99       58      10       0 25.4    0.551  21
+673       10      68      106      23      49 35.5    0.285  47
+674        3     123      100      35     240 57.3    0.880  22
+675        8      91       82       0       0 35.6    0.587  68
+676        6     195       70       0       0 30.9    0.328  31
+677        9     156       86       0       0 24.8    0.230  53
+678        0      93       60       0       0 35.3    0.263  25
+679        3     121       52       0       0 36.0    0.127  25
+680        2     101       58      17     265 24.2    0.614  23
+681        2      56       56      28      45 24.2    0.332  22
+682        0     162       76      36       0 49.6    0.364  26
+683        0      95       64      39     105 44.6    0.366  22
+684        4     125       80       0       0 32.3    0.536  27
+685        5     136       82       0       0  0.0    0.640  69
+686        2     129       74      26     205 33.2    0.591  25
+687        3     130       64       0       0 23.1    0.314  22
+688        1     107       50      19       0 28.3    0.181  29
+689        1     140       74      26     180 24.1    0.828  23
+690        1     144       82      46     180 46.1    0.335  46
+691        8     107       80       0       0 24.6    0.856  34
+692       13     158      114       0       0 42.3    0.257  44
+693        2     121       70      32      95 39.1    0.886  23
+694        7     129       68      49     125 38.5    0.439  43
+695        2      90       60       0       0 23.5    0.191  25
+696        7     142       90      24     480 30.4    0.128  43
+697        3     169       74      19     125 29.9    0.268  31
+698        0      99        0       0       0 25.0    0.253  22
+699        4     127       88      11     155 34.5    0.598  28
+700        4     118       70       0       0 44.5    0.904  26
+701        2     122       76      27     200 35.9    0.483  26
+702        6     125       78      31       0 27.6    0.565  49
+703        1     168       88      29       0 35.0    0.905  52
+704        2     129        0       0       0 38.5    0.304  41
+705        4     110       76      20     100 28.4    0.118  27
+706        6      80       80      36       0 39.8    0.177  28
+707       10     115        0       0       0  0.0    0.261  30
+708        2     127       46      21     335 34.4    0.176  22
+709        9     164       78       0       0 32.8    0.148  45
+710        2      93       64      32     160 38.0    0.674  23
+711        3     158       64      13     387 31.2    0.295  24
+712        5     126       78      27      22 29.6    0.439  40
+713       10     129       62      36       0 41.2    0.441  38
+714        0     134       58      20     291 26.4    0.352  21
+715        3     102       74       0       0 29.5    0.121  32
+716        7     187       50      33     392 33.9    0.826  34
+717        3     173       78      39     185 33.8    0.970  31
+718       10      94       72      18       0 23.1    0.595  56
+719        1     108       60      46     178 35.5    0.415  24
+720        5      97       76      27       0 35.6    0.378  52
+721        4      83       86      19       0 29.3    0.317  34
+722        1     114       66      36     200 38.1    0.289  21
+723        1     149       68      29     127 29.3    0.349  42
+724        5     117       86      30     105 39.1    0.251  42
+725        1     111       94       0       0 32.8    0.265  45
+726        4     112       78      40       0 39.4    0.236  38
+727        1     116       78      29     180 36.1    0.496  25
+728        0     141       84      26       0 32.4    0.433  22
+729        2     175       88       0       0 22.9    0.326  22
+730        2      92       52       0       0 30.1    0.141  22
+731        3     130       78      23      79 28.4    0.323  34
+732        8     120       86       0       0 28.4    0.259  22
+733        2     174       88      37     120 44.5    0.646  24
+734        2     106       56      27     165 29.0    0.426  22
+735        2     105       75       0       0 23.3    0.560  53
+736        4      95       60      32       0 35.4    0.284  28
+737        0     126       86      27     120 27.4    0.515  21
+738        8      65       72      23       0 32.0    0.600  42
+739        2      99       60      17     160 36.6    0.453  21
+740        1     102       74       0       0 39.5    0.293  42
+741       11     120       80      37     150 42.3    0.785  48
+742        3     102       44      20      94 30.8    0.400  26
+743        1     109       58      18     116 28.5    0.219  22
+744        9     140       94       0       0 32.7    0.734  45
+745       13     153       88      37     140 40.6    1.174  39
+746       12     100       84      33     105 30.0    0.488  46
+747        1     147       94      41       0 49.3    0.358  27
+748        1      81       74      41      57 46.3    1.096  32
+749        3     187       70      22     200 36.4    0.408  36
+750        6     162       62       0       0 24.3    0.178  50
+751        4     136       70       0       0 31.2    1.182  22
+752        1     121       78      39      74 39.0    0.261  28
+753        3     108       62      24       0 26.0    0.223  25
+754        0     181       88      44     510 43.3    0.222  26
+755        8     154       78      32       0 32.4    0.443  45
+756        1     128       88      39     110 36.5    1.057  37
+757        7     137       90      41       0 32.0    0.391  39
+758        0     123       72       0       0 36.3    0.258  52
+759        1     106       76       0       0 37.5    0.197  26
+760        6     190       92       0       0 35.5    0.278  66
+761        2      88       58      26      16 28.4    0.766  22
+762        9     170       74      31       0 44.0    0.403  43
+763        9      89       62       0       0 22.5    0.142  33
+764       10     101       76      48     180 32.9    0.171  63
+765        2     122       70      27       0 36.8    0.340  27
+766        5     121       72      23     112 26.2    0.245  30
+767        1     126       60       0       0 30.1    0.349  47
+768        1      93       70      31       0 30.4    0.315  23
+    diabetes
+1        pos
+2        neg
+3        pos
+4        neg
+5        pos
+6        neg
+7        pos
+8        neg
+9        pos
+10       pos
+11       neg
+12       pos
+13       neg
+14       pos
+15       pos
+16       pos
+17       pos
+18       pos
+19       neg
+20       pos
+21       neg
+22       neg
+23       pos
+24       pos
+25       pos
+26       pos
+27       pos
+28       neg
+29       neg
+30       neg
+31       neg
+32       pos
+33       neg
+34       neg
+35       neg
+36       neg
+37       neg
+38       pos
+39       pos
+40       pos
+41       neg
+42       neg
+43       neg
+44       pos
+45       neg
+46       pos
+47       neg
+48       neg
+49       pos
+50       neg
+51       neg
+52       neg
+53       neg
+54       pos
+55       neg
+56       neg
+57       pos
+58       neg
+59       neg
+60       neg
+61       neg
+62       pos
+63       neg
+64       neg
+65       pos
+66       neg
+67       pos
+68       neg
+69       neg
+70       neg
+71       pos
+72       neg
+73       pos
+74       neg
+75       neg
+76       neg
+77       neg
+78       neg
+79       pos
+80       neg
+81       neg
+82       neg
+83       neg
+84       neg
+85       pos
+86       neg
+87       neg
+88       neg
+89       pos
+90       neg
+91       neg
+92       neg
+93       neg
+94       pos
+95       neg
+96       neg
+97       neg
+98       neg
+99       neg
+100      pos
+101      pos
+102      neg
+103      neg
+104      neg
+105      neg
+106      neg
+107      neg
+108      neg
+109      neg
+110      pos
+111      pos
+112      pos
+113      neg
+114      neg
+115      pos
+116      pos
+117      pos
+118      neg
+119      neg
+120      neg
+121      pos
+122      neg
+123      neg
+124      neg
+125      pos
+126      pos
+127      neg
+128      neg
+129      pos
+130      pos
+131      pos
+132      pos
+133      pos
+134      neg
+135      neg
+136      neg
+137      neg
+138      neg
+139      neg
+140      neg
+141      neg
+142      neg
+143      neg
+144      pos
+145      neg
+146      neg
+147      neg
+148      neg
+149      neg
+150      neg
+151      neg
+152      neg
+153      pos
+154      neg
+155      pos
+156      pos
+157      neg
+158      neg
+159      neg
+160      pos
+161      neg
+162      neg
+163      neg
+164      neg
+165      pos
+166      pos
+167      neg
+168      neg
+169      neg
+170      neg
+171      pos
+172      pos
+173      neg
+174      neg
+175      neg
+176      pos
+177      neg
+178      pos
+179      neg
+180      pos
+181      neg
+182      neg
+183      neg
+184      neg
+185      neg
+186      pos
+187      pos
+188      pos
+189      pos
+190      pos
+191      neg
+192      neg
+193      pos
+194      pos
+195      neg
+196      pos
+197      neg
+198      pos
+199      pos
+200      pos
+201      neg
+202      neg
+203      neg
+204      neg
+205      neg
+206      neg
+207      pos
+208      pos
+209      neg
+210      pos
+211      neg
+212      neg
+213      neg
+214      pos
+215      pos
+216      pos
+217      pos
+218      neg
+219      pos
+220      pos
+221      pos
+222      pos
+223      neg
+224      neg
+225      neg
+226      neg
+227      neg
+228      pos
+229      neg
+230      neg
+231      pos
+232      pos
+233      neg
+234      neg
+235      neg
+236      pos
+237      pos
+238      pos
+239      pos
+240      neg
+241      neg
+242      neg
+243      pos
+244      pos
+245      neg
+246      pos
+247      neg
+248      neg
+249      neg
+250      neg
+251      neg
+252      neg
+253      neg
+254      neg
+255      pos
+256      pos
+257      neg
+258      neg
+259      neg
+260      pos
+261      neg
+262      pos
+263      neg
+264      neg
+265      pos
+266      neg
+267      pos
+268      neg
+269      neg
+270      pos
+271      pos
+272      neg
+273      neg
+274      neg
+275      neg
+276      neg
+277      pos
+278      neg
+279      neg
+280      neg
+281      pos
+282      neg
+283      neg
+284      pos
+285      pos
+286      neg
+287      neg
+288      pos
+289      neg
+290      neg
+291      neg
+292      pos
+293      pos
+294      pos
+295      neg
+296      neg
+297      pos
+298      neg
+299      pos
+300      neg
+301      pos
+302      pos
+303      neg
+304      pos
+305      neg
+306      neg
+307      pos
+308      neg
+309      pos
+310      pos
+311      neg
+312      neg
+313      pos
+314      neg
+315      pos
+316      neg
+317      neg
+318      pos
+319      neg
+320      pos
+321      neg
+322      pos
+323      pos
+324      pos
+325      neg
+326      neg
+327      pos
+328      neg
+329      pos
+330      neg
+331      neg
+332      neg
+333      pos
+334      neg
+335      neg
+336      neg
+337      neg
+338      pos
+339      pos
+340      pos
+341      neg
+342      neg
+343      neg
+344      neg
+345      neg
+346      neg
+347      neg
+348      neg
+349      neg
+350      pos
+351      neg
+352      neg
+353      neg
+354      neg
+355      neg
+356      pos
+357      pos
+358      pos
+359      neg
+360      pos
+361      pos
+362      neg
+363      neg
+364      pos
+365      neg
+366      neg
+367      pos
+368      neg
+369      neg
+370      pos
+371      pos
+372      neg
+373      neg
+374      neg
+375      neg
+376      pos
+377      neg
+378      neg
+379      pos
+380      neg
+381      neg
+382      neg
+383      neg
+384      neg
+385      neg
+386      neg
+387      pos
+388      pos
+389      pos
+390      neg
+391      neg
+392      pos
+393      neg
+394      neg
+395      pos
+396      neg
+397      neg
+398      pos
+399      neg
+400      pos
+401      pos
+402      neg
+403      pos
+404      neg
+405      pos
+406      neg
+407      pos
+408      neg
+409      pos
+410      pos
+411      neg
+412      neg
+413      neg
+414      neg
+415      pos
+416      pos
+417      neg
+418      pos
+419      neg
+420      pos
+421      neg
+422      neg
+423      neg
+424      neg
+425      pos
+426      pos
+427      neg
+428      pos
+429      neg
+430      pos
+431      neg
+432      neg
+433      neg
+434      neg
+435      neg
+436      pos
+437      neg
+438      neg
+439      neg
+440      neg
+441      pos
+442      neg
+443      neg
+444      pos
+445      pos
+446      pos
+447      neg
+448      neg
+449      pos
+450      neg
+451      neg
+452      pos
+453      neg
+454      neg
+455      neg
+456      pos
+457      neg
+458      neg
+459      pos
+460      neg
+461      neg
+462      neg
+463      neg
+464      neg
+465      neg
+466      neg
+467      neg
+468      neg
+469      pos
+470      neg
+471      neg
+472      neg
+473      neg
+474      neg
+475      neg
+476      neg
+477      pos
+478      neg
+479      neg
+480      neg
+481      pos
+482      neg
+483      neg
+484      neg
+485      pos
+486      pos
+487      neg
+488      neg
+489      neg
+490      neg
+491      neg
+492      neg
+493      neg
+494      pos
+495      neg
+496      neg
+497      neg
+498      neg
+499      pos
+500      neg
+501      neg
+502      neg
+503      pos
+504      neg
+505      neg
+506      neg
+507      pos
+508      neg
+509      neg
+510      neg
+511      pos
+512      neg
+513      neg
+514      neg
+515      neg
+516      pos
+517      pos
+518      neg
+519      neg
+520      neg
+521      neg
+522      neg
+523      neg
+524      pos
+525      neg
+526      neg
+527      neg
+528      neg
+529      neg
+530      neg
+531      neg
+532      neg
+533      neg
+534      neg
+535      neg
+536      pos
+537      neg
+538      neg
+539      neg
+540      pos
+541      pos
+542      pos
+543      pos
+544      neg
+545      neg
+546      pos
+547      pos
+548      neg
+549      neg
+550      neg
+551      neg
+552      neg
+553      neg
+554      neg
+555      neg
+556      neg
+557      neg
+558      neg
+559      neg
+560      neg
+561      pos
+562      pos
+563      neg
+564      neg
+565      neg
+566      neg
+567      neg
+568      neg
+569      neg
+570      pos
+571      neg
+572      neg
+573      neg
+574      neg
+575      neg
+576      neg
+577      neg
+578      pos
+579      neg
+580      pos
+581      pos
+582      neg
+583      neg
+584      neg
+585      pos
+586      neg
+587      pos
+588      neg
+589      pos
+590      neg
+591      pos
+592      neg
+593      pos
+594      neg
+595      neg
+596      pos
+597      neg
+598      neg
+599      pos
+600      neg
+601      neg
+602      neg
+603      neg
+604      pos
+605      pos
+606      neg
+607      pos
+608      neg
+609      neg
+610      neg
+611      neg
+612      pos
+613      pos
+614      neg
+615      pos
+616      neg
+617      neg
+618      neg
+619      pos
+620      pos
+621      neg
+622      neg
+623      neg
+624      neg
+625      neg
+626      neg
+627      neg
+628      neg
+629      neg
+630      neg
+631      pos
+632      neg
+633      neg
+634      neg
+635      neg
+636      pos
+637      neg
+638      neg
+639      pos
+640      neg
+641      neg
+642      neg
+643      pos
+644      neg
+645      neg
+646      neg
+647      pos
+648      pos
+649      pos
+650      neg
+651      neg
+652      neg
+653      neg
+654      neg
+655      neg
+656      pos
+657      neg
+658      neg
+659      neg
+660      pos
+661      neg
+662      pos
+663      pos
+664      pos
+665      pos
+666      neg
+667      pos
+668      pos
+669      neg
+670      neg
+671      neg
+672      neg
+673      neg
+674      neg
+675      neg
+676      pos
+677      pos
+678      neg
+679      pos
+680      neg
+681      neg
+682      pos
+683      neg
+684      pos
+685      neg
+686      neg
+687      neg
+688      neg
+689      neg
+690      pos
+691      neg
+692      pos
+693      neg
+694      pos
+695      neg
+696      pos
+697      pos
+698      neg
+699      neg
+700      neg
+701      neg
+702      pos
+703      pos
+704      neg
+705      neg
+706      neg
+707      pos
+708      neg
+709      pos
+710      pos
+711      neg
+712      neg
+713      pos
+714      neg
+715      neg
+716      pos
+717      pos
+718      neg
+719      neg
+720      pos
+721      neg
+722      neg
+723      pos
+724      neg
+725      neg
+726      neg
+727      neg
+728      neg
+729      neg
+730      neg
+731      pos
+732      pos
+733      pos
+734      neg
+735      neg
+736      neg
+737      neg
+738      neg
+739      neg
+740      pos
+741      pos
+742      neg
+743      neg
+744      pos
+745      neg
+746      neg
+747      pos
+748      neg
+749      pos
+750      pos
+751      pos
+752      neg
+753      neg
+754      pos
+755      pos
+756      pos
+757      neg
+758      pos
+759      neg
+760      pos
+761      neg
+762      pos
+763      neg
+764      neg
+765      neg
+766      neg
+767      pos
+768      neg</code></pre>
+</div>
+<p>Een snelle verkenning van de dataset toont aan dat er meer nullen in de gegevens zitten dan verwacht (vooral omdat een BMI of tricep huiddikte van 0 onmogelijk is), wat betekent dat ontbrekende waarden als nullen worden geregistreerd. Zie bijvoorbeeld het histogram van de tricep huidplooidikte, waar de nullen voor dikte opvallen.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="tidymodels-opnieuw_files/figure-html5/unnamed-chunk-5-1.png" width="624" /></p>
+</div>
+<p>Dit fenomeen is ook te zien in de glucose-, druk-, insuline- en massavariabelen. We zetten eerst de 0-scores in alle variabelen (behalve “zwanger”) over naar <code>NA</code> (missende waarde). Daarvoor gebruiken we de <code>mutate_at()</code>functie (die binnenkort wordt vervangen door <code>mutate()</code> met <code>across())</code> om aan te geven op welke variabelen we onze muterende functie willen toepassen. We gebruiken de <code>if_else()</code>functie om aan te geven waar we de waarde mee moeten vervangen als de voorwaarde waar of onwaar is.</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>Onze gegevens zijn klaar. Laten we beginnen met het maken van een aantal <code>tidymodels</code>!</p>
+<h2 id="haal-traintest-sets-uit-elkaar">Haal train/test sets uit elkaar</h2>
+<p>Laten we onze data verdelen in trainings- en testdata. De trainingsdata worden gebruikt om ons model te vinden en de parameters in te stellen (<code>tune</code>). De testdata gebruiken we alleen om de werking van het finale model vast te stellen. Dat splitten kunnen we doen door de <code>inital_split()</code> functie (van het <code>rsample</code> pakket). Dat creëert een speciaal “split” object.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>&lt;Analysis/Assess/Total&gt;
+&lt;576/192/768&gt;</code></pre>
+</div>
+<p><code>diabetes_split</code>, ons gesplitste object, vertelt ons hoeveel waarnemingen we hebben in de trainingsset, de testset en de gehele dataset: <code>&lt;train/test/totaal&gt;</code> (576/192/768).</p>
+<p>De trainings- en testsets kunnen uit het “split”-object worden gehaald met behulp van de <code>training()</code> en <code>testing()</code> functies. Hoewel we deze objecten niet echt zullen gebruiken in de <code>pipeline</code> (daarvoor zullen we het <code>diabetes_split</code>-object zelf gebruiken).</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>Op een gegeven moment zullen we de parameters hiervan wat willen <code>tuenen</code> (afstemmen). Dat doen we met cross-validatie. Zo ontstaat er met <code>vfold_cv()</code> een cross-validatie versie van de trainingsset waar we zo op terugkomen.</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<h2 id="defineeer-een-recipe">Defineeer een <code>recipe</code></h2>
+<p>Met het pakket <code>recipes</code> kun je de variabelen een rol geven, als uitkomst of voorspellende variabele (gebruik een “formule”) b.v.. Maar met <code>recipe</code> kun je ook andere voorbereidingsstappen zetten die je nodig acht (zoals standaardiseren, imputeren, PCA, etc). Een <code>recipe</code> voer je uit in delen (gelaagd op elkaar door pipes <code>%&gt;%</code> te gebruiken):</p>
+<ol type="1">
+<li><p><strong>Specificeer de formule</strong> (<code>recipe()</code>): specificeer eerst wat is de uitkomstvariabele en wat zijn de predictoren;</p></li>
+<li><p><strong>Specificeer pre-processing</strong> <code>steps (step_zzz()</code>): defineer voorbereidingsstappen, zoals imputatie, creëren van dummy variabelen, schalen en wat al niet meer</p></li>
+</ol>
+<p>Zo kunnen we bijvoorbeeld de volgende <code>recipe</code> maken.</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>Als je ooit eerder formules hebt gezien (bijvoorbeeld met behulp van de <code>lm()</code> functie in R), dan weet je misschien dat we onze formule veel efficiënter hadden kunnen schrijven met behulp van een shortcut, waarbij de <code>.</code> alle variabelen in de gegevens vertegenwoordigt: <code>outcome ~</code> .</p>
+<p>De volledige lijst van beschikbare voorbewerkingsstappen is hier te vinden. In de bovenstaande chunck hebben we de functies <code>all_numeric()</code> en <code>all_predictors()</code> gebruikt als argumenten van voorbereiding. Deze worden “rolselecties” genoemd en geven aan dat we de stap willen toepassen op “alle numerieke” variabelen of “alle predictoren”. De lijst van alle potentiële rolselectoren kan worden gevonden door <code>?selectis</code> in je console te typen.</p>
+<p>Merk op dat we het originele <code>diabetes_clean</code> data-object hebben gebruikt (we stellen <code>recipe(..., data = diabetes_clean)</code>), in plaats van het <code>diabetes_train</code>-object of het <code>diabetes_split</code>-object. Het blijkt dat we deze allemaal hadden kunnen gebruiken. Alle <code>recipes</code> die op dit punt uit het dataobject worden gehaald zijn de namen en rollen van de uitkomst en de voorspellende variabelen. We zullen deze <code>recipe</code> later toepassen op specifieke datasets. Dit betekent dat voor grote datasets een kleinere dataset gebruikt wordt om tijd en geheugen te besparen.</p>
+<p>Inderdaad, als we een samenvatting van <code>het diabetes_recipe</code> object printen, dan laat het ons gewoon zien hoeveel voorspellingsvariabelen we hebben gespecificeerd en welke stappen we hebben gespecificeerd (maar het implementeert ze eigenlijk nog niet!).</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>Data Recipe
+
+Inputs:
+
+      role #variables
+   outcome          1
+ predictor          8
+
+Operations:
+
+Centering and scaling for all_numeric()
+K-nearest neighbor imputation for all_predictors()</code></pre>
+</div>
+<p>Als je de voorbewerkte dataset zelf wilt extraheren, kunt je eerst <code>prep()</code> het recept voor een specifieke dataset en <code>juice()</code> het voorbewerkte recept om de voorbewerkte gegevens te extraheren. Het blijkt dat het extraheren van de voorbewerkte data eigenlijk niet nodig is voor de pipeline, omdat dit onder de motorkap gebeurt als het model geschikt is. Soms is het toch nuttig.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># A tibble: 576 x 9
+   pregnant glucose pressure triceps insulin   mass pedigree     age
+      &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;
+ 1   0.673   0.837   -0.0581  0.616   0.328   0.187    0.531  1.37  
+ 2  -0.824  -1.21    -0.537   0.0354 -0.770  -0.831   -0.359 -0.205 
+ 3   1.27    1.98    -0.697   0.229   1.33   -1.31     0.676 -0.122 
+ 4  -1.12    0.478   -2.61    0.616   0.0669  1.57     5.89  -0.0396
+ 5   0.374  -0.205    0.102  -0.700  -0.404  -0.977   -0.843 -0.287 
+ 6   1.87   -0.238    0.229   0.229   0.558   0.435   -1.06  -0.370 
+ 7  -0.525   2.43    -0.218   1.58    3.15   -0.264   -0.982  1.61  
+ 8   1.27    0.0877   1.86   -0.178   0.863   0.318   -0.743  1.70  
+ 9   0.0743 -0.401    1.54    0.674   0.139   0.769   -0.875 -0.287 
+10   1.87    0.544    0.581  -0.448   0.666  -0.758    3.16   1.94  
+# … with 566 more rows, and 1 more variable: diabetes &lt;fct&gt;</code></pre>
+</div>
+<h2 id="specificeer-het-model">Specificeer het model</h2>
+<p>Tot nu toe hebben we onze data verdeeld in training en test-sets en onze pre-proces stappen gespecificeerd door een <code>recipe</code> te gebruiken. Nu willen we ons model definiëren en daarvoor gebruiken we het <code>parsnip</code> pakket dat in <code>tidymodels</code> zit.</p>
+<p><code>Parsnip</code> biedt een uniforme interface voor de enorme verscheidenheid aan modellen die er in R bestaan. Dit betekent dat je slechts één manier hoeft te leren om een model te specificeren en dan kun je dit gebruiken voor allerlei verschillende modellen, vaak met enkele coderegel.</p>
+<p>Er zijn een paar primaire componenten in de modelspecificatie opgeslagen:</p>
+<ol type="1">
+<li><p>Het <strong>model type</strong>: wat voor soort model wil je gebruiken, zoals <code>rand_forest()</code> voor het <code>random forest</code>-model, <code>logistic_reg()</code> voor het logistisch regressie-model, <code>svm_poly()</code> voor een polynomiaal SVM-model, enz. De volledige lijst van modellen die beschikbaar zijn via <code>parsnip</code> kan [hier] (link naar website) vinden.</p></li>
+<li><p>De <strong>arguments</strong>: de model parameter waarden (de benaming is consistent over verschillende modellen), door het gebruik van <code>set_args()</code>.</p></li>
+<li><p>De <strong>engine</strong>: het onderliggende pakket waar het model van wegkomt (bv. “ranger” voor implementatie van Random Forest), door het gebuik van <code>set_engine()</code>.</p></li>
+<li><p>De <strong>mode</strong>: het type voorspelling - omdat verschillende pakketten zowel classificatie (binaire/categoriale voorspelling) en regressie (continue voorspelling) kunnen uitvoeren, door het gebruik van <code>set_mode()</code>.</p></li>
+</ol>
+<p>Als we bijvoorbeeld een <code>random forest</code> model willen gebruiken, zoals dat in het <code>ranger</code> pakket zit, met als doel classificatie en we willen de <code>try</code> parameter <code>tunen</code> (het afstemmen van het aantal willekeurig gekozen variabelen dat bij elke splitsing in aanmerking moet worden genomen), dan moeten we de volgende modelspecificatie definiëren:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>Als je later het variabele belang van jouw uiteindelijke model wilt kunnen onderzoeken, moet je het <code>engine</code> argument opnieuw instellen. De volgende code specificeert bijvoorbeeld een logistisch regressiemodel uit het <code>glm</code> pakket.</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>Deze code draait niet het model. Net als de <code>recipe</code>, is het veel meer een beschrijving van het model. Echter, wanneer je een parameter op <code>tune()</code> zet wordt het later gestemd in de stemfase van de pipeline (bv. om de waarde vast te stellen van de parameter die de beste performance geeft). Je kunt ook zelf een bepaalde waarde aan de parameter geven wanneer je het niet wilt afstemmen, bv door <code>set_args(mtry = 4)</code> te gebruiken. Een ander ding om op te merken is dat niets wat deze modelspecificatie betreft specifiek is voor de diabetes-dataset.</p>
+<h2 id="alles-in-een-workflow-samenbrengen">Alles in een workflow samenbrengen</h2>
+<p>We zijn klaar om het model en de <code>recipes</code> in een workflow te plaatsen. Een workflow zet je op door het gebruik van <code>workflow()</code> (van het <code>workflows</code> pakket) en dan kun je een <code>recipe</code> en een <code>model</code> toevoegen.</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>Merk op dat we de voorbewerkingsstappen nog niet in de <code>recipe</code> hebben geïmplementeerd noch dat we het <code>model</code> hebben gepast. We hebben alleen maar het raamwerk geschreven. Pas als we de parameters hebben afgestemd of in het model hebben gepast, worden het recept en het model daadwerkelijk geïmplementeerd.</p>
+<h2 id="afstemmen-van-de-parameters">Afstemmen van de parameters</h2>
+<p>Omdat er een parameter is ontwikkeld om af te stemmen <code>(mtry)</code>, moeten we dat daar voor gebruiken (bv. de waarde kiezen die de beste performance laat zien) voordat we het model passen. Als je geen parameters hebt om af te stemmen, kun je dit deel overslaan.</p>
+<p>Dat afstemmen doen we door een cross-validation object (<code>diabetes_cv</code>) te kiezen. Om dat te doen specificeren we de range van <code>mtry</code> waarden die we willen gebruiken en dan voegen we een stemmingslaag toe aan onze workflow door <code>tune_grid()</code> te gebruiken (van het <code>tune</code> pakket). We richten ons op twee maten: <code>accuracy</code> en <code>roc_auc</code> (van het <code>yardstick</code> pakket). Die vertellen ons welke maten we het beste kunnen gebruiken.</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>Je kunt verschillende parameters afstemmen door verschillende parameters aan de <code>expand.grid()</code> functie toe te voegen, bv. <code>expand.grid(mtry = c(3, 4, 5), trees = c(100, 500))</code>.</p>
+<p>Het is altijd goed om de resultaten van de cross-validatie goed te onderzoeken. <code>collect_metrics()</code> is echt een handige functie die in verschillende omstandigheden kan worden gebruikt om te vergelijken die zijn berekend in het object dat is gebruikt. In dit geval komen de maten van de cross-validatie performance over de verschillende waarden van de performance.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># A tibble: 6 x 7
+   mtry .metric  .estimator  mean     n std_err .config             
+  &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               
+1     3 accuracy binary     0.750    10  0.0225 Preprocessor1_Model1
+2     3 roc_auc  binary     0.829    10  0.0154 Preprocessor1_Model1
+3     4 accuracy binary     0.758    10  0.0226 Preprocessor1_Model2
+4     4 roc_auc  binary     0.828    10  0.0149 Preprocessor1_Model2
+5     5 accuracy binary     0.753    10  0.0232 Preprocessor1_Model3
+6     5 roc_auc  binary     0.826    10  0.0153 Preprocessor1_Model3</code></pre>
+</div>
+<p>Ten opzichte van <code>accuracy</code> en <code>AUC</code> laat <code>mtry = 4</code> de beste performance zien (hoogste gemiddelde waarden).</p>
+<h2 id="afronden-van-de-workflow">Afronden van de workflow</h2>
+<p>We willen een laag aan onze workflow toevoegen die overeenkomt met de afgestemde parameter, d.w.z. dat we <code>mtry</code> instellen als de waarde die de beste resultaten opleverde. Als je geen parameters hebt afgestemd, kun je deze stap overslaan.</p>
+<p>We kunnen de beste waarde voor de nauwkeurigheidsmetriek extraheren door de <code>select_best()</code>functie toe te passen op het afstemmingsobject.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># A tibble: 1 x 2
+   mtry .config             
+  &lt;dbl&gt; &lt;chr&gt;               
+1     4 Preprocessor1_Model2</code></pre>
+</div>
+<p>Dan kunnen we deze parameter aan de workflow toevoegen door de <code>finalize_workflow()</code> functie te gebruiken.</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<h2 id="evalueren-van-het-model-op-de-test-set">Evalueren van het model op de test set</h2>
+<p>Nu we ons <code>recipe</code> en ons <code>model</code> hebben gedefinieerd en de parameters van het model hebben ge<code>tune</code>d, zijn we klaar om daadwerkelijk het uiteindelijke model te draaien. Aangezien al deze informatie in het workflow-object zit, zullen we de <code>last_fit()</code> functie toepassen op onze workflow en ons train/test-splitsingsobject. Dit zal automatisch het door de workflow gespecificeerde model trainen met behulp van de trainingsgegevens en evaluaties produceren op basis van de testset.</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>Merk op dat het object dat wordt gecreëerd een data-frame-achtig object is; het is een <code>tibble</code> met listkolommen.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># Resampling results
+# Manual resampling 
+# A tibble: 1 x 6
+  splits      id        .metrics    .notes    .predictions   .workflow
+  &lt;list&gt;      &lt;chr&gt;     &lt;list&gt;      &lt;list&gt;    &lt;list&gt;         &lt;list&gt;   
+1 &lt;rsplit [5… train/te… &lt;tibble [2… &lt;tibble … &lt;tibble [192 … &lt;workflo…</code></pre>
+</div>
+<p>Dit is echt een aardige eigenschap van <code>tidymodels</code> (en ook waarom je zo goed kunt werken met <code>tidyverse</code>) omdat je al je nette handelingen op het modelobject kunt uitvoeren.</p>
+<p>Aangezien we het trainings/testobject al hebben geleverd op het moment dat we in de workflow werken, worden de maten geëvalueerd op de testset. Wanneer we nu de <code>collect_metrics()</code> functie gebruiken (herinner ons dat we deze hebben gebruikt bij het afstemmen van onze parameters), haalt deze de prestaties van het uiteindelijke model (aangezien <code>rf_fit</code> nu bestaat uit een enkel definitief model) toegepast op de <em>test</em> set.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># A tibble: 2 x 4
+  .metric  .estimator .estimate .config             
+  &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;               
+1 accuracy binary         0.745 Preprocessor1_Model1
+2 roc_auc  binary         0.831 Preprocessor1_Model1</code></pre>
+</div>
+<p>Overall is de performance heel goed, met een <code>accuracy</code> van 0.74 en een AUC van 0.82. Maar deze waarden zijn vaak lager dan in de trainingsset.</p>
+<p>Je kunt de test set voorspellingen zelf gebruiken met de <code>collect_predictions()</code> functie. Let op dat er 192 rijen in het voorspellingsobject zitten dat overeenkomt met de <em>test set</em> observaties (juist om jou te laten zien dat deze gebaseerd zijn op de testset meer dan op de trainingsset).</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># A tibble: 192 x 7
+   id        .pred_neg .pred_pos  .row .pred_class diabetes .config   
+   &lt;chr&gt;         &lt;dbl&gt;     &lt;dbl&gt; &lt;int&gt; &lt;fct&gt;       &lt;fct&gt;    &lt;chr&gt;     
+ 1 train/te…    1.00     0.00045     4 neg         neg      Preproces…
+ 2 train/te…    0.967    0.0330      7 neg         pos      Preproces…
+ 3 train/te…    0.0393   0.961      12 pos         pos      Preproces…
+ 4 train/te…    0.708    0.292      19 neg         neg      Preproces…
+ 5 train/te…    0.636    0.364      21 neg         neg      Preproces…
+ 6 train/te…    0.541    0.459      25 neg         pos      Preproces…
+ 7 train/te…    0.482    0.518      27 pos         pos      Preproces…
+ 8 train/te…    0.692    0.308      29 neg         neg      Preproces…
+ 9 train/te…    0.951    0.0493     34 neg         neg      Preproces…
+10 train/te…    0.369    0.631      35 pos         neg      Preproces…
+# … with 182 more rows</code></pre>
+</div>
+<p>Omndat dit een normaal data frame/tibble object is, kunnen we de samenvattingen genereren en een confusie matrix plotten.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>          Truth
+Prediction neg pos
+       neg 106  33
+       pos  16  37</code></pre>
+</div>
+<p>We kunnen ook de voorspelde kansverdelingen voor elke klasse in kaart brengen.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="tidymodels-opnieuw_files/figure-html5/unnamed-chunk-25-1.png" width="624" /></p>
+</div>
+<p>De voorspellingen kun je ook als volgt laten zien:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>[[1]]
+# A tibble: 192 x 6
+   .pred_neg .pred_pos  .row .pred_class diabetes .config             
+       &lt;dbl&gt;     &lt;dbl&gt; &lt;int&gt; &lt;fct&gt;       &lt;fct&gt;    &lt;chr&gt;               
+ 1    1.00     0.00045     4 neg         neg      Preprocessor1_Model1
+ 2    0.967    0.0330      7 neg         pos      Preprocessor1_Model1
+ 3    0.0393   0.961      12 pos         pos      Preprocessor1_Model1
+ 4    0.708    0.292      19 neg         neg      Preprocessor1_Model1
+ 5    0.636    0.364      21 neg         neg      Preprocessor1_Model1
+ 6    0.541    0.459      25 neg         pos      Preprocessor1_Model1
+ 7    0.482    0.518      27 pos         pos      Preprocessor1_Model1
+ 8    0.692    0.308      29 neg         neg      Preprocessor1_Model1
+ 9    0.951    0.0493     34 neg         neg      Preprocessor1_Model1
+10    0.369    0.631      35 pos         neg      Preprocessor1_Model1
+# … with 182 more rows</code></pre>
+</div>
+<h2 id="het-laatste-model">Het laatste model</h2>
+<p>In de vorige paragraaf is het model dat is getraind op de trainingsgegevens geëvalueerd aan de hand van de testgegevens. Maar als je eenmaal jouw definitieve model hebt bepaald, wil je het vaak trainen op je volledige dataset en het dan gebruiken om de respons voor <em>nieuwe</em> gegevens te voorspellen.</p>
+<p>Als je jouw model wilt gebruiken om de respons voor nieuwe waarnemingen te voorspellen, moet je de <code>fit()</code>functie op jouw workflow gebruiken en de dataset waarop je het uiteindelijke model wilt laten passen (bijvoorbeeld de volledige training + testdataset).</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>Het <code>final_model</code> object bevat een aantal zaken, waaronder het ranger-object dat getraind is met de parameters die via de workflow in <code>rf_workflow</code> zijn vastgelegd op basis van de gegevens in <code>diabetes_clean</code> (de gecombineerde trainings- en testgegevens).</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>══ Workflow [trained] ════════════════════════════════════════════════
+Preprocessor: Recipe
+Model: rand_forest()
+
+── Preprocessor ──────────────────────────────────────────────────────
+2 Recipe Steps
+
+• step_normalize()
+• step_knnimpute()
+
+── Model ─────────────────────────────────────────────────────────────
+Ranger result
+
+Call:
+ ranger::ranger(x = maybe_data_frame(x), y = y, mtry = min_cols(~4,      x), importance = ~&quot;impurity&quot;, num.threads = 1, verbose = FALSE,      seed = sample.int(10^5, 1), probability = TRUE) 
+
+Type:                             Probability estimation 
+Number of trees:                  500 
+Sample size:                      768 
+Number of independent variables:  8 
+Mtry:                             4 
+Target node size:                 10 
+Variable importance mode:         impurity 
+Splitrule:                        gini 
+OOB prediction error (Brier s.):  0.1576627 </code></pre>
+</div>
+<p>Als we de diabetes status van een nieuwe vrouw willen voorspellen, kunnen we de <code>predict()</code> functie gebruiken.</p>
+<p>Bijvoorbeeld, definieren we de data voor een nieuwe vrouw.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># A tibble: 1 x 8
+  pregnant glucose pressure triceps insulin  mass pedigree   age
+     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;
+1        2      95       70      31     102  28.2     0.67    47</code></pre>
+</div>
+<p>De voorspelde diabetes status van deze nieuwe vrouw is “negatief”.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># A tibble: 1 x 1
+  .pred_class
+  &lt;fct&gt;      
+1 neg        </code></pre>
+</div>
+<h2 id="variabele-belang">Variabele belang</h2>
+<p>Als je de belangrijkheid van een variabele uit je model wilt vaststellen, voor zover je dat kan zien, moet je het modelobject uit het <code>fit()</code> object halen (dat voor ons <code>final_model</code> heet). De functie die het model extraheert is <code>pull_workflow_fit()</code> en dan moet je het <code>fit</code>-object pakken dat de output bevat.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>Ranger result
+
+Call:
+ ranger::ranger(x = maybe_data_frame(x), y = y, mtry = min_cols(~4,      x), importance = ~&quot;impurity&quot;, num.threads = 1, verbose = FALSE,      seed = sample.int(10^5, 1), probability = TRUE) 
+
+Type:                             Probability estimation 
+Number of trees:                  500 
+Sample size:                      768 
+Number of independent variables:  8 
+Mtry:                             4 
+Target node size:                 10 
+Variable importance mode:         impurity 
+Splitrule:                        gini 
+OOB prediction error (Brier s.):  0.1576627 </code></pre>
+</div>
+<p>Vervolgens kun je het belang van de variabele uit het ranger-object zelf halen (<code>variable.importance</code> is een specifiek object in de ranger-output - dit zal moeten worden aangepast voor het specifieke objecttype van andere modellen).</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>pregnant  glucose pressure  triceps  insulin     mass pedigree 
+16.33289 80.62800 17.08757 21.43870 51.76331 42.41799 30.79204 
+     age 
+34.36002 </code></pre>
+</div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<!--radix_placeholder_article_footer-->
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom"></div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+</body>
+
+</html>
