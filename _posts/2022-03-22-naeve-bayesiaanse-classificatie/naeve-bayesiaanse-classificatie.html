@@ -1,0 +1,1727 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007ba5; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #007ba5; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #007ba5; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #5e5e5e; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+</style>
+
+
+  <!--radix_placeholder_meta_tags-->
+  <title>Naïve Bayesiaanse classificatie</title>
+
+  <meta property="description" itemprop="description" content="In deze blog wordt getoond hoe Naïeve Bayesiaanse classificatieanalyse werkt."/>
+
+
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2022-03-19"/>
+  <meta property="article:created" itemprop="dateCreated" content="2022-03-19"/>
+  <meta name="article:author" content="Johnson e.a. en Harrie Jonkman"/>
+
+  <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+  <meta property="og:title" content="Naïve Bayesiaanse classificatie"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:description" content="In deze blog wordt getoond hoe Naïeve Bayesiaanse classificatieanalyse werkt."/>
+  <meta property="og:locale" content="en_US"/>
+
+  <!--  https://dev.twitter.com/cards/types/summary -->
+  <meta property="twitter:card" content="summary"/>
+  <meta property="twitter:title" content="Naïve Bayesiaanse classificatie"/>
+  <meta property="twitter:description" content="In deze blog wordt getoond hoe Naïeve Bayesiaanse classificatieanalyse werkt."/>
+
+  <!--/radix_placeholder_meta_tags-->
+  <!--radix_placeholder_rmarkdown_metadata-->
+
+  <script type="text/json" id="radix-rmarkdown-metadata">
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Naïve Bayesiaanse classificatie"]},{"type":"character","attributes":{},"value":["In deze blog wordt getoond hoe Naïeve Bayesiaanse classificatieanalyse werkt.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Johnson e.a. en Harrie Jonkman"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":[]}},"value":[]}]}]},{"type":"character","attributes":{},"value":["2022-03-19"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
+  </script>
+  <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["naeve-bayesiaanse-classificatie_files/figure-html5/unnamed-chunk-10-1.png","naeve-bayesiaanse-classificatie_files/figure-html5/unnamed-chunk-3-1.png","naeve-bayesiaanse-classificatie_files/figure-html5/unnamed-chunk-5-1.png","naeve-bayesiaanse-classificatie_files/figure-html5/unnamed-chunk-7-1.png","naeve-bayesiaanse-classificatie_files/figure-html5/unnamed-chunk-9-1.png","naeve-bayesiaanse-classificatie_files/figure-html5/unnamed-chunk-9-2.png"]}
+  </script>
+  <!--radix_placeholder_navigation_in_header-->
+  <!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+
+  <style type="text/css">
+
+  body {
+    background-color: white;
+  }
+
+  .pandoc-table {
+    width: 100%;
+  }
+
+  .pandoc-table>caption {
+    margin-bottom: 10px;
+  }
+
+  .pandoc-table th:not([align]) {
+    text-align: left;
+  }
+
+  .pagedtable-footer {
+    font-size: 15px;
+  }
+
+  d-byline .byline {
+    grid-template-columns: 2fr 2fr;
+  }
+
+  d-byline .byline h3 {
+    margin-block-start: 1.5em;
+  }
+
+  d-byline .byline .authors-affiliations h3 {
+    margin-block-start: 0.5em;
+  }
+
+  .authors-affiliations .orcid-id {
+    width: 16px;
+    height:16px;
+    margin-left: 4px;
+    margin-right: 4px;
+    vertical-align: middle;
+    padding-bottom: 2px;
+  }
+
+  d-title .dt-tags {
+    margin-top: 1em;
+    grid-column: text;
+  }
+
+  .dt-tags .dt-tag {
+    text-decoration: none;
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0em 0.4em;
+    margin-right: 0.5em;
+    margin-bottom: 0.4em;
+    font-size: 70%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  d-article table.gt_table td,
+  d-article table.gt_table th {
+    border-bottom: none;
+  }
+
+  .html-widget {
+    margin-bottom: 2.0em;
+  }
+
+  .l-screen-inset {
+    padding-right: 16px;
+  }
+
+  .l-screen .caption {
+    margin-left: 10px;
+  }
+
+  .shaded {
+    background: rgb(247, 247, 247);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .html-widget {
+    margin-bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .shaded-content {
+    background: white;
+  }
+
+  .text-output {
+    margin-top: 0;
+    line-height: 1.5em;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  d-article {
+    padding-top: 2.5rem;
+    padding-bottom: 30px;
+  }
+
+  d-appendix {
+    padding-top: 30px;
+  }
+
+  d-article>p>img {
+    width: 100%;
+  }
+
+  d-article h2 {
+    margin: 1rem 0 1.5rem 0;
+  }
+
+  d-article h3 {
+    margin-top: 1.5rem;
+  }
+
+  d-article iframe {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 2.0em;
+    width: 100%;
+  }
+
+  /* Tweak code blocks */
+
+  d-article div.sourceCode code,
+  d-article pre code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: auto;
+  }
+
+  d-article div.sourceCode {
+    background-color: white;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 10px;
+    font-size: 12px;
+    border-left: 2px solid rgba(0,0,0,0.1);
+  }
+
+  d-article pre {
+    font-size: 12px;
+    color: black;
+    background: none;
+    margin-top: 0;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  d-article pre a {
+    border-bottom: none;
+  }
+
+  d-article pre a:hover {
+    border-bottom: none;
+    text-decoration: underline;
+  }
+
+  d-article details {
+    grid-column: text;
+    margin-bottom: 0.8em;
+  }
+
+  @media(min-width: 768px) {
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: visible !important;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 18px;
+    font-size: 14px;
+  }
+
+  d-article pre {
+    font-size: 14px;
+  }
+
+  }
+
+  figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  /* CSS for d-contents */
+
+  .d-contents {
+    grid-column: text;
+    color: rgba(0,0,0,0.8);
+    font-size: 0.9em;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+    padding-left: 0.25em;
+    justify-self: start;
+  }
+
+  @media(min-width: 1000px) {
+    .d-contents.d-contents-float {
+      height: 0;
+      grid-column-start: 1;
+      grid-column-end: 4;
+      justify-self: center;
+      padding-right: 3em;
+      padding-left: 2em;
+    }
+  }
+
+  .d-contents nav h3 {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+
+  .d-contents li {
+    list-style-type: none
+  }
+
+  .d-contents nav > ul {
+    padding-left: 0;
+  }
+
+  .d-contents ul {
+    padding-left: 1em
+  }
+
+  .d-contents nav ul li {
+    margin-top: 0.6em;
+    margin-bottom: 0.2em;
+  }
+
+  .d-contents nav a {
+    font-size: 13px;
+    border-bottom: none;
+    text-decoration: none
+    color: rgba(0, 0, 0, 0.8);
+  }
+
+  .d-contents nav a:hover {
+    text-decoration: underline solid rgba(0, 0, 0, 0.6)
+  }
+
+  .d-contents nav > ul > li > a {
+    font-weight: 600;
+  }
+
+  .d-contents nav > ul > li > ul {
+    font-weight: inherit;
+  }
+
+  .d-contents nav > ul > li > ul > li {
+    margin-top: 0.2em;
+  }
+
+
+  .d-contents nav ul {
+    margin-top: 0;
+    margin-bottom: 0.25em;
+  }
+
+  .d-article-with-toc h2:nth-child(2) {
+    margin-top: 0;
+  }
+
+
+  /* Figure */
+
+  .figure {
+    position: relative;
+    margin-bottom: 2.5em;
+    margin-top: 1.5em;
+  }
+
+  .figure img {
+    width: 100%;
+  }
+
+  .figure .caption {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    line-height: 1.5em;
+  }
+
+  .figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  .figure .caption a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .figure .caption b,
+  .figure .caption strong, {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1.0);
+  }
+
+  /* Citations */
+
+  d-article .citation {
+    color: inherit;
+    cursor: inherit;
+  }
+
+  div.hanging-indent{
+    margin-left: 1em; text-indent: -1em;
+  }
+
+  /* Citation hover box */
+
+  .tippy-box[data-theme~=light-border] {
+    background-color: rgba(250, 250, 250, 0.95);
+  }
+
+  .tippy-content > p {
+    margin-bottom: 0;
+    padding: 2px;
+  }
+
+
+  /* Tweak 1000px media break to show more text */
+
+  @media(min-width: 1000px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 16px;
+    }
+
+    .grid {
+      grid-column-gap: 16px;
+    }
+
+    d-article {
+      font-size: 1.06rem;
+      line-height: 1.7em;
+    }
+    figure .caption, .figure .caption, figure figcaption {
+      font-size: 13px;
+    }
+  }
+
+  @media(min-width: 1180px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 32px;
+    }
+
+    .grid {
+      grid-column-gap: 32px;
+    }
+  }
+
+
+  /* Get the citation styles for the appendix (not auto-injected on render since
+     we do our own rendering of the citation appendix) */
+
+  d-appendix .citation-appendix,
+  .d-appendix .citation-appendix {
+    font-size: 11px;
+    line-height: 15px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 18px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.02);
+    padding: 10px 18px;
+    border-radius: 3px;
+    color: rgba(150, 150, 150, 1);
+    overflow: hidden;
+    margin-top: -12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  /* Include appendix styles here so they can be overridden */
+
+  d-appendix {
+    contain: layout style;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-top: 60px;
+    margin-bottom: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    color: rgba(0,0,0,0.5);
+    padding-top: 60px;
+    padding-bottom: 48px;
+  }
+
+  d-appendix h3 {
+    grid-column: page-start / text-start;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 1em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.65);
+  }
+
+  d-appendix h3 + * {
+    margin-top: 1em;
+  }
+
+  d-appendix ol {
+    padding: 0 0 0 15px;
+  }
+
+  @media (min-width: 768px) {
+    d-appendix ol {
+      padding: 0 0 0 30px;
+      margin-left: -30px;
+    }
+  }
+
+  d-appendix li {
+    margin-bottom: 1em;
+  }
+
+  d-appendix a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  d-appendix > * {
+    grid-column: text;
+  }
+
+  d-appendix > d-footnote-list,
+  d-appendix > d-citation-list,
+  d-appendix > distill-appendix {
+    grid-column: screen;
+  }
+
+  /* Include footnote styles here so they can be overridden */
+
+  d-footnote-list {
+    contain: layout style;
+  }
+
+  d-footnote-list > * {
+    grid-column: text;
+  }
+
+  d-footnote-list a.footnote-backlink {
+    color: rgba(0,0,0,0.3);
+    padding-left: 0.5em;
+  }
+
+
+
+  /* Anchor.js */
+
+  .anchorjs-link {
+    /*transition: all .25s linear; */
+    text-decoration: none;
+    border-bottom: none;
+  }
+  *:hover > .anchorjs-link {
+    margin-left: -1.125em !important;
+    text-decoration: none;
+    border-bottom: none;
+  }
+
+  /* Social footer */
+
+  .social_footer {
+    margin-top: 30px;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.67);
+  }
+
+  .disqus-comments {
+    margin-right: 30px;
+  }
+
+  .disqus-comment-count {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+
+  #disqus_thread {
+    margin-top: 30px;
+  }
+
+  .article-sharing a {
+    border-bottom: none;
+    margin-right: 8px;
+  }
+
+  .article-sharing a:hover {
+    border-bottom: none;
+  }
+
+  .sidebar-section.subscribe {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .subscribe p {
+    margin-bottom: 0.5em;
+  }
+
+
+  .article-footer .subscribe {
+    font-size: 15px;
+    margin-top: 45px;
+  }
+
+
+  .sidebar-section.custom {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .custom p {
+    margin-bottom: 0.5em;
+  }
+
+  /* Styles for listing layout (hide title) */
+  .layout-listing d-title, .layout-listing .d-title {
+    display: none;
+  }
+
+  /* Styles for posts lists (not auto-injected) */
+
+
+  .posts-with-sidebar {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+
+  .posts-list .description h2,
+  .posts-list .description p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  .posts-list .description h2 {
+    font-weight: 700;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .posts-list h2.post-tag {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 12px;
+  }
+  .posts-list {
+    margin-top: 60px;
+    margin-bottom: 24px;
+  }
+
+  .posts-list .post-preview {
+    text-decoration: none;
+    overflow: hidden;
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 24px 0;
+  }
+
+  .post-preview-last {
+    border-bottom: none !important;
+  }
+
+  .posts-list .posts-list-caption {
+    grid-column: screen;
+    font-weight: 400;
+  }
+
+  .posts-list .post-preview h2 {
+    margin: 0 0 6px 0;
+    line-height: 1.2em;
+    font-style: normal;
+    font-size: 24px;
+  }
+
+  .posts-list .post-preview p {
+    margin: 0 0 12px 0;
+    line-height: 1.4em;
+    font-size: 16px;
+  }
+
+  .posts-list .post-preview .thumbnail {
+    box-sizing: border-box;
+    margin-bottom: 24px;
+    position: relative;
+    max-width: 500px;
+  }
+  .posts-list .post-preview img {
+    width: 100%;
+    display: block;
+  }
+
+  .posts-list .metadata {
+    font-size: 12px;
+    line-height: 1.4em;
+    margin-bottom: 18px;
+  }
+
+  .posts-list .metadata > * {
+    display: inline-block;
+  }
+
+  .posts-list .metadata .publishedDate {
+    margin-right: 2em;
+  }
+
+  .posts-list .metadata .dt-authors {
+    display: block;
+    margin-top: 0.3em;
+    margin-right: 2em;
+  }
+
+  .posts-list .dt-tags {
+    display: block;
+    line-height: 1em;
+  }
+
+  .posts-list .dt-tags .dt-tag {
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0.3em 0.4em;
+    margin-right: 0.2em;
+    margin-bottom: 0.4em;
+    font-size: 60%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .posts-list img {
+    opacity: 1;
+  }
+
+  .posts-list img[data-src] {
+    opacity: 0;
+  }
+
+  .posts-more {
+    clear: both;
+  }
+
+
+  .posts-sidebar {
+    font-size: 16px;
+  }
+
+  .posts-sidebar h3 {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .sidebar-section {
+    margin-bottom: 30px;
+  }
+
+  .categories ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .categories li {
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 0;
+  }
+
+  .categories li>a {
+    border-bottom: none;
+  }
+
+  .categories li>a:hover {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  }
+
+  .categories .active {
+    font-weight: 600;
+  }
+
+  .categories .category-count {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+
+  @media(min-width: 768px) {
+    .posts-list .post-preview h2 {
+      font-size: 26px;
+    }
+    .posts-list .post-preview .thumbnail {
+      float: right;
+      width: 30%;
+      margin-bottom: 0;
+    }
+    .posts-list .post-preview .description {
+      float: left;
+      width: 45%;
+    }
+    .posts-list .post-preview .metadata {
+      float: left;
+      width: 20%;
+      margin-top: 8px;
+    }
+    .posts-list .post-preview p {
+      margin: 0 0 12px 0;
+      line-height: 1.5em;
+      font-size: 16px;
+    }
+    .posts-with-sidebar .posts-list {
+      float: left;
+      width: 75%;
+    }
+    .posts-with-sidebar .posts-sidebar {
+      float: right;
+      width: 20%;
+      margin-top: 60px;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+  }
+
+
+  /* Improve display for browsers without grid (IE/Edge <= 15) */
+
+  .downlevel {
+    line-height: 1.6em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+  }
+
+  .downlevel .d-title {
+    padding-top: 6rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .downlevel .d-title h1 {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.1em;
+    margin: 0 0 0.5rem;
+  }
+
+  .downlevel .d-title p {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.55em;
+    margin-top: 0;
+  }
+
+  .downlevel .d-byline {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    font-size: 0.8rem;
+    line-height: 1.8em;
+  }
+
+  .downlevel .section-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .downlevel .d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+
+
+  .downlevel .d-appendix {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.5);
+    padding-top: 40px;
+    padding-bottom: 48px;
+  }
+
+  .downlevel .footnotes ol {
+    padding-left: 13px;
+  }
+
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @media(min-width: 768px) {
+    .downlevel .base-grid,
+    .downlevel .distill-header,
+    .downlevel .d-title,
+    .downlevel .d-abstract,
+    .downlevel .d-article,
+    .downlevel .d-appendix,
+    .downlevel .distill-appendix,
+    .downlevel .d-byline,
+    .downlevel .d-footnote-list,
+    .downlevel .d-citation-list,
+    .downlevel .distill-footer,
+    .downlevel .appendix-bottom,
+    .downlevel .posts-container {
+    padding-left: 150px;
+    padding-right: 150px;
+    max-width: 900px;
+  }
+  }
+
+  .downlevel pre code {
+    display: block;
+    border-left: 2px solid rgba(0, 0, 0, .1);
+    padding: 0 0 0 20px;
+    font-size: 14px;
+  }
+
+  .downlevel code, .downlevel pre {
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  .downlevel .posts-list .post-preview {
+    color: inherit;
+  }
+
+
+
+  </style>
+
+  <script type="application/javascript">
+
+  function is_downlevel_browser() {
+    if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                   window.navigator.userAgent)) {
+      return true;
+    } else {
+      return window.load_distill_framework === undefined;
+    }
+  }
+
+  // show body when load is complete
+  function on_load_complete() {
+
+    // add anchors
+    if (window.anchors) {
+      window.anchors.options.placement = 'left';
+      window.anchors.add('d-article > h2, d-article > h3, d-article > h4, d-article > h5');
+    }
+
+
+    // set body to visible
+    document.body.style.visibility = 'visible';
+
+    // force redraw for leaflet widgets
+    if (window.HTMLWidgets) {
+      var maps = window.HTMLWidgets.findAll(".leaflet");
+      $.each(maps, function(i, el) {
+        var map = this.getMap();
+        map.invalidateSize();
+        map.eachLayer(function(layer) {
+          if (layer instanceof L.TileLayer)
+            layer.redraw();
+        });
+      });
+    }
+
+    // trigger 'shown' so htmlwidgets resize
+    $('d-article').trigger('shown');
+  }
+
+  function init_distill() {
+
+    init_common();
+
+    // create front matter
+    var front_matter = $('<d-front-matter></d-front-matter>');
+    $('#distill-front-matter').wrap(front_matter);
+
+    // create d-title
+    $('.d-title').changeElementType('d-title');
+
+    // create d-byline
+    var byline = $('<d-byline></d-byline>');
+    $('.d-byline').replaceWith(byline);
+
+    // create d-article
+    var article = $('<d-article></d-article>');
+    $('.d-article').wrap(article).children().unwrap();
+
+    // move posts container into article
+    $('.posts-container').appendTo($('d-article'));
+
+    // create d-appendix
+    $('.d-appendix').changeElementType('d-appendix');
+
+    // flag indicating that we have appendix items
+    var appendix = $('.appendix-bottom').children('h3').length > 0;
+
+    // replace footnotes with <d-footnote>
+    $('.footnote-ref').each(function(i, val) {
+      appendix = true;
+      var href = $(this).attr('href');
+      var id = href.replace('#', '');
+      var fn = $('#' + id);
+      var fn_p = $('#' + id + '>p');
+      fn_p.find('.footnote-back').remove();
+      var text = fn_p.html();
+      var dtfn = $('<d-footnote></d-footnote>');
+      dtfn.html(text);
+      $(this).replaceWith(dtfn);
+    });
+    // remove footnotes
+    $('.footnotes').remove();
+
+    // move refs into #references-listing
+    $('#references-listing').replaceWith($('#refs'));
+
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      var id = $(this).attr('id');
+      $('.d-contents a[href="#' + id + '"]').parent().remove();
+      appendix = true;
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+    });
+
+    // show d-appendix if we have appendix content
+    $("d-appendix").css('display', appendix ? 'grid' : 'none');
+
+    // localize layout chunks to just output
+    $('.layout-chunk').each(function(i, val) {
+
+      // capture layout
+      var layout = $(this).attr('data-layout');
+
+      // apply layout to markdown level block elements
+      var elements = $(this).children().not('details, div.sourceCode, pre, script');
+      elements.each(function(i, el) {
+        var layout_div = $('<div class="' + layout + '"></div>');
+        if (layout_div.hasClass('shaded')) {
+          var shaded_content = $('<div class="shaded-content"></div>');
+          $(this).wrap(shaded_content);
+          $(this).parent().wrap(layout_div);
+        } else {
+          $(this).wrap(layout_div);
+        }
+      });
+
+
+      // unwrap the layout-chunk div
+      $(this).children().unwrap();
+    });
+
+    // remove code block used to force  highlighting css
+    $('.distill-force-highlighting-css').parent().remove();
+
+    // remove empty line numbers inserted by pandoc when using a
+    // custom syntax highlighting theme
+    $('code.sourceCode a:empty').remove();
+
+    // load distill framework
+    load_distill_framework();
+
+    // wait for window.distillRunlevel == 4 to do post processing
+    function distill_post_process() {
+
+      if (!window.distillRunlevel || window.distillRunlevel < 4)
+        return;
+
+      // hide author/affiliations entirely if we have no authors
+      var front_matter = JSON.parse($("#distill-front-matter").html());
+      var have_authors = front_matter.authors && front_matter.authors.length > 0;
+      if (!have_authors)
+        $('d-byline').addClass('hidden');
+
+      // article with toc class
+      $('.d-contents').parent().addClass('d-article-with-toc');
+
+      // strip links that point to #
+      $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+
+      // add orcid ids
+      $('.authors-affiliations').find('.author').each(function(i, el) {
+        var orcid_id = front_matter.authors[i].orcidID;
+        if (orcid_id) {
+          var a = $('<a></a>');
+          a.attr('href', 'https://orcid.org/' + orcid_id);
+          var img = $('<img></img>');
+          img.addClass('orcid-id');
+          img.attr('alt', 'ORCID ID');
+          img.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==');
+          a.append(img);
+          $(this).append(a);
+        }
+      });
+
+      // hide elements of author/affiliations grid that have no value
+      function hide_byline_column(caption) {
+        $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+      }
+
+      // affiliations
+      var have_affiliations = false;
+      for (var i = 0; i<front_matter.authors.length; ++i) {
+        var author = front_matter.authors[i];
+        if (author.affiliation !== "&nbsp;") {
+          have_affiliations = true;
+          break;
+        }
+      }
+      if (!have_affiliations)
+        $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+
+      // published date
+      if (!front_matter.publishedDate)
+        hide_byline_column("Published");
+
+      // document object identifier
+      var doi = $('d-byline').find('h3:contains("DOI")');
+      var doi_p = doi.next().empty();
+      if (!front_matter.doi) {
+        // if we have a citation and valid citationText then link to that
+        if ($('#citation').length > 0 && front_matter.citationText) {
+          doi.html('Citation');
+          $('<a href="#citation"></a>')
+            .text(front_matter.citationText)
+            .appendTo(doi_p);
+        } else {
+          hide_byline_column("DOI");
+        }
+      } else {
+        $('<a></a>')
+           .attr('href', "https://doi.org/" + front_matter.doi)
+           .html(front_matter.doi)
+           .appendTo(doi_p);
+      }
+
+       // change plural form of authors/affiliations
+      if (front_matter.authors.length === 1) {
+        var grid = $('.authors-affiliations');
+        grid.children('h3:contains("Authors")').text('Author');
+        grid.children('h3:contains("Affiliations")').text('Affiliation');
+      }
+
+      // remove d-appendix and d-footnote-list local styles
+      $('d-appendix > style:first-child').remove();
+      $('d-footnote-list > style:first-child').remove();
+
+      // move appendix-bottom entries to the bottom
+      $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+      $('.appendix-bottom').remove();
+
+      // hoverable references
+      $('span.citation[data-cites]').each(function() {
+        var refs = $(this).attr('data-cites').split(" ");
+        var refHtml = refs.map(function(ref) {
+          return "<p>" + $('#ref-' + ref).html() + "</p>";
+        }).join("\n");
+        window.tippy(this, {
+          allowHTML: true,
+          content: refHtml,
+          maxWidth: 500,
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        });
+      });
+
+      // clear polling timer
+      clearInterval(tid);
+
+      // show body now that everything is ready
+      on_load_complete();
+    }
+
+    var tid = setInterval(distill_post_process, 50);
+    distill_post_process();
+
+  }
+
+  function init_downlevel() {
+
+    init_common();
+
+     // insert hr after d-title
+    $('.d-title').after($('<hr class="section-separator"/>'));
+
+    // check if we have authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+
+    // manage byline/border
+    if (!have_authors)
+      $('.d-byline').remove();
+    $('.d-byline').after($('<hr class="section-separator"/>'));
+    $('.d-byline a').remove();
+
+    // remove toc
+    $('.d-contents').remove();
+
+    // move appendix elements
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+    });
+
+
+    // inject headers into references and footnotes
+    var refs_header = $('<h3></h3>');
+    refs_header.text('References');
+    $('#refs').prepend(refs_header);
+
+    var footnotes_header = $('<h3></h3');
+    footnotes_header.text('Footnotes');
+    $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+
+    // remove appendix if it's empty
+    if ($('.d-appendix').children().length === 0)
+      $('.d-appendix').remove();
+
+    // prepend separator above appendix
+    $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+
+    // trim code
+    $('pre>code').each(function(i, val) {
+      $(this).html($.trim($(this).html()));
+    });
+
+    // move posts-container right before article
+    $('.posts-container').insertBefore($('.d-article'));
+
+    $('body').addClass('downlevel');
+
+    on_load_complete();
+  }
+
+
+  function init_common() {
+
+    // jquery plugin to change element types
+    (function($) {
+      $.fn.changeElementType = function(newType) {
+        var attrs = {};
+
+        $.each(this[0].attributes, function(idx, attr) {
+          attrs[attr.nodeName] = attr.nodeValue;
+        });
+
+        this.replaceWith(function() {
+          return $("<" + newType + "/>", attrs).append($(this).contents());
+        });
+      };
+    })(jQuery);
+
+    // prevent underline for linked images
+    $('a > img').parent().css({'border-bottom' : 'none'});
+
+    // mark non-body figures created by knitr chunks as 100% width
+    $('.layout-chunk').each(function(i, val) {
+      var figures = $(this).find('img, .html-widget');
+      if ($(this).attr('data-layout') !== "l-body") {
+        figures.css('width', '100%');
+      } else {
+        figures.css('max-width', '100%');
+        figures.filter("[width]").each(function(i, val) {
+          var fig = $(this);
+          fig.css('width', fig.attr('width') + 'px');
+        });
+
+      }
+    });
+
+    // auto-append index.html to post-preview links in file: protocol
+    // and in rstudio ide preview
+    $('.post-preview').each(function(i, val) {
+      if (window.location.protocol === "file:")
+        $(this).attr('href', $(this).attr('href') + "index.html");
+    });
+
+    // get rid of index.html references in header
+    if (window.location.protocol !== "file:") {
+      $('.distill-site-header a[href]').each(function(i,val) {
+        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+      });
+    }
+
+    // add class to pandoc style tables
+    $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+    $('.kable-table').children('table').addClass('pandoc-table');
+
+    // add figcaption style to table captions
+    $('caption').parent('table').addClass("figcaption");
+
+    // initialize posts list
+    if (window.init_posts_list)
+      window.init_posts_list();
+
+    // implmement disqus comment link
+    $('.disqus-comment-count').click(function() {
+      window.headroom_prevent_pin = true;
+      $('#disqus_thread').toggleClass('hidden');
+      if (!$('#disqus_thread').hasClass('hidden')) {
+        var offset = $(this).offset();
+        $(window).resize();
+        $('html, body').animate({
+          scrollTop: offset.top - 35
+        });
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    if (is_downlevel_browser())
+      init_downlevel();
+    else
+      window.addEventListener('WebComponentsReady', init_distill);
+  });
+
+  </script>
+
+  <!--/radix_placeholder_distill-->
+  <script src="naeve-bayesiaanse-classificatie_files/header-attrs-2.11/header-attrs.js"></script>
+  <script src="naeve-bayesiaanse-classificatie_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+  <script src="naeve-bayesiaanse-classificatie_files/popper-2.6.0/popper.min.js"></script>
+  <link href="naeve-bayesiaanse-classificatie_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="naeve-bayesiaanse-classificatie_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="naeve-bayesiaanse-classificatie_files/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="naeve-bayesiaanse-classificatie_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="naeve-bayesiaanse-classificatie_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="naeve-bayesiaanse-classificatie_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="naeve-bayesiaanse-classificatie_files/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+  <!--/radix_placeholder_site_in_header-->
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"Naïve Bayesiaanse classificatie","description":"In deze blog wordt getoond hoe Naïeve Bayesiaanse classificatieanalyse werkt.","authors":[{"author":"Johnson e.a. en Harrie Jonkman","authorURL":{},"affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-03-19T00:00:00.000+01:00","citationText":"Jonkman, 2022"}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>Naïve Bayesiaanse classificatie</h1>
+<!--radix_placeholder_categories-->
+<!--/radix_placeholder_categories-->
+<p><p>In deze blog wordt getoond hoe Naïeve Bayesiaanse classificatieanalyse werkt.</p></p>
+</div>
+
+<div class="d-byline">
+  Johnson e.a. en Harrie Jonkman true 
+  
+<br/>2022-03-19
+</div>
+
+<div class="d-article">
+<h2 id="inleiding">Inleiding</h2>
+<p>Onlangs verscheen een prachtig boek van Alicia A. Johnson, Miles Q. Ot en Mine Dogucu onder de titel <em>Bayes Rules! An Introduction to Applied Bayesian Modeling</em> en het verscheen bij CRC Press (2022). Eerdere versies stonden kon je al via bookdown bekijken (<a href="https://www.bayesrulesbook.com/" class="uri">https://www.bayesrulesbook.com/</a>) en vanaf de eerste keer dat ik het zag, was ik hier heel enthousiast over. Het boek heb ik direct besteld en vorige week kon ik het ophalen.</p>
+<p>Het boek bestaat uit vier duidelijke delen. Het eerste deel gaat in op de fundamenten van het Bayesiaanse perspectief. Het leert je denken als een Bayesiaan en het gaat in op die belangrijke Bayesiaanse regel <span class="math inline">\(posterior=\frac{prior.likelihood}{normaliserende constante}\)</span>. Aan de hand van enkele voorbeelden gaan Johnson e.a. in op hoe het in de praktijk werkt. Daarna gaat het in op hoe kennis en data op elkaar inwerken en laat het enkele basisanalyses zien en hoe dat in deze vorm van statistiek werkt (normaal, binair en poisson). Het tweede deel is een meer technisch hoofdstuk en laat je ook onder de moterkap van deze techniek kijken. Het gaat ook in op de wetenschappelijke principes van de benadering, waar je hier op moet letten, hoe je hiermee hypothesen kunt testen (niet alleen tov van een nulhypothese, maar hoeveel beter de ene hypothese is ten opzichte van de andere hyposthese) en hoe je hiermee ook kunt voorspellen. De twee volgende delen (Deel drie en vier) zijn praktische delen. Deel drie gaat in op regressieanalyses voor continue variabelen en classificatieanalyses voor binaire variabelen. Het vierde deel ten slotte gaat in op geclusterde datasets en hoe je hierarchische Bayesiaanse regressie en classificatieanalyses uitvoert.</p>
+<p>Natuurlijk, er zijn onderhand al verschillende interessante boeken te krijgen die je laten zien hoe Bayesiaanse denken in de praktijk kan werken. De boeken van Gelman, McElreath, Spiegelhalter en Kruschke verschenen de afgelopen tien/vijftien jaar en leren je dit. Maar <em>Bayes Rules!</em> vind ik op dit moment als introductieboek mogelijk wel het beste.</p>
+<p>Nu het boek bij mij op het bureau ligt, kan ik er binnenkort een keer een korte recensie over schrijven. Voor nu heb ik uit elk deel een hoofdstuk genomen en het vertaald en bewerkt. Hieronder zie je een bewerking van het veertiende hoofdstuk van het derde deel (<em>Naïve Bayes Classification</em>).Hoofdstukken zo overzetten is voor mij niet alleen een goede manier om het mij eigen te maken, maar ook een manier om het boek anderen aan te raden. Dus lezen en gebruiken deze <em>Bayes Rules! An Introduction to Applied Bayesian Modeling</em></p>
+<h2 id="naïeve-bayesiaanse-classificatie">Naïeve Bayesiaanse classificatie</h2>
+<p>Op Antartica zijn er verschillende penguinsoorten te vinden waaronder de *Adelie**, <em>Chinstrap</em> en <em>Gentoo</em>-soorten.</p>
+<p><span class="math display">\[\
+Y = \begin{cases}
+A=Adelie \\
+C=Chinstrap \\
+G=Gentoo\\
+\end{cases}
+\]\]</span></p>
+<p>We zullen deze drie soorten classificeren op basis van het gewicht</p>
+<p><span class="math display">\[\
+X_1 = \begin{cases}
+1=bovenhetgemiddeldegewicht \\
+0=onderhetgemiddeldegewicht\\
+\end{cases}
+\]\]</span></p>
+<p>(<span class="math inline">\(x_1=1\)</span> als het boven het gemiddelde gewicht van 4200 g ligt en een <span class="math inline">\(X_1=0\)</span> als dat gemiddelde lager is dan 4300 gram).</p>
+<p>Verder is er <span class="math display">\[x_2=snavellengte (in mm)\]</span><br />
+<span class="math display">\[x_3=flipperlengte\]</span></p>
+<p>De penguins_bayes data, oorspronkelijk ter beschikking gesteld door Gorman, Williams, en Fraser (2014) en vervolgens verspreid door Horst, Hill, en Gorman (2020), bevat de bovenstaande soort- en kenmerkinformatie voor een steekproef van 344 Antarctische pinguïns:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>Onder deze 344 pinguïns zijn er 152 Adelies, 68 Chinstrap/Kinband pinguïns, en 124 Gentoos. We gaan er steeds van uit dat de proportionele verdeling van deze soorten in onze dataset de verdeling van de soorten in het wild weerspiegelt. Dat wil zeggen dat we bij elke nieuwe pinguïn aannemen dat het hoogst waarschijnlijk een Adélie is (44,2%) en het minst waarschijnlijk een Chinstrap(19,8%). Zo ziet de geschatte verdeling er dan uit:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>   species   n   percent
+    Adelie 152 0.4418605
+ Chinstrap  68 0.1976744
+    Gentoo 124 0.3604651</code></pre>
+</div>
+<p>Er zijn drie mogelijkheden of categorieën voor de <span class="math inline">\(Y\)</span>. Gelukkig zijn er allerlei hulpmiddel om te schatten over welke soort we het hebben. Logistische regressie werkt hier niet zo goed voor, naïeve Bayes classificatie wel. Ten opzichte van Bayesiaanse logistische regressie heeft naïeve Bayes classificatie een paar voordelen:</p>
+<ul>
+<li>het kan categorische respons variabelen classificeren, dus Y met twee of meer categorieën;<br />
+</li>
+<li>er is niet veel theorie nodig buiten de regel van Bayes;<br />
+</li>
+<li>en zij is rekenkundig efficiënt, d.w.z. dat er geen MCMC-simulatie voor nodig is.</li>
+</ul>
+<h2 id="classificeren-van-één-pinquin">Classificeren van één pinquin</h2>
+<p>Laten we met het Bayesiaans classificeren van één penguin beginnen. Stel dat we een penguin vinden die minder dan 4200 gram weegt, die een snavel heeft van 50 mm en een flipper van 195mm. We willen iets ontwikkelen dat ons helpt om vast te stellen met welk soort we hier te maken hebben.Laten we de drie soorten en hun gewicht eens afbeelden.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-3"></span>
+<img src="naeve-bayesiaanse-classificatie_files/figure-html5/unnamed-chunk-3-1.png" alt="Fig 1. Proporties van elk soort met bovengemiddeld gewicht" width="624" />
+<p class="caption">
+Figure 1: Fig 1. Proporties van elk soort met bovengemiddeld gewicht
+</p>
+</div>
+</div>
+<p>Chinstraps is relatief het lichtste soort. Maar we moeten tegelijkertijd in ons achterhoofd houden dat dit de minst voorkomende soort is. Dat wil zeggen dat we moeten denken als Bayesianen door de informatie uit onze gegevens over het te combineren met onze informatie vooraf (prior) over de proportionele verdeling van het soort om een posterior model te construeren voor de soort van onze pinguïn. De naïeve Bayes classificatie benadering van deze taak is niets meer dan een direct beroep op de beproefde Bayes’ Regel. In het algemeen, om de posterior waarschijnlijkheid te berekenen dat onze pinguïn van de soort</p>
+<p><span class="math display">\[f(y|x_1) = \frac{\text{prior}\cdot\text{likelihood}}{\text{normaliserende constante}}=\frac{f(y)L(y|X_1)}{f(x_1)}\]</span> waarvoor geldt de wet van de totale waarschijnlijkheid</p>
+<p><span class="math display">\[f(x_1)=\sum_{ally^&#39;}\]</span></p>
+<p>Een tabel waarin de bovengemiddelde gewichtsstatus per soort (<code>above_average_weight</code>) wordt uitgesplitst, verschaft de nodige informatie om deze Bayesiaanse berekening te voltooien:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>   species   0   1 Total
+    Adelie 126  25   151
+ Chinstrap  61   7    68
+    Gentoo   6 117   123
+     Total 193 149   342</code></pre>
+</div>
+<p>In feite kunnen we het posterior model van de soort van onze pinguïn rechtstreeks uit deze tabel berekenen. Bijvoorbeeld, merk op dat van de 193 pinguïns die onder het gemiddelde gewicht zitten, 126 Adelies zijn. Er is dus ongeveer 65% posterior kans dat deze pinguïn een Adelie is:</p>
+<p><span class="math display">\[f(y=A|x_1=0)=\frac{126}{93}\approx{0.6528}\]</span> Laten we dit resultaat bevestigen door de informatie uit onze tabel hierboven in de regel van Bayes in te voeren. Deze vervelende stap is niet om te ergeren, maar om te oefenen voor generalisaties die we zullen moeten maken in meer ingewikkelde omgevingen. Ten eerste, onze informatie over het soort geeft aan dat Adelies het meest voorkomen en Chinstraps het minst:</p>
+<p><span class="math display">\[f(y=A)=\frac{151}{342}, f(y=C)=\frac{68}{342}, f(y=G)=\frac{123}{342}\]</span></p>
+<p>Verder tonen de waarschijnlijkheden aan dat een lager dan gemiddeld gewicht het meest voorkomt bij Chinstrapspinguïns. Bijvoorbeeld, 89.71% van de Chinstrapspinguïns maar slechts 4.88% van de Gentoos hebben een lager dan gemiddeld gewicht:</p>
+<p><span class="math display">\[L=(y=A|x_1=0)=\frac{126}{151}\approx{0.8344} \\
+  L=(y=A|x_1=0)=\frac{61}{68}\approx{0.8971} \\
+  L=(y=A|x_1=0)=\frac{6}{123}\approx{0.0488}\]</span></p>
+<p>Door deze priors en waarschijnlijkheden te gebruiken, wordt de totale waarschijnlijkheid van een pinguïn met een lager dan gemiddeld gewicht voor alle soorten</p>
+<p><span class="math display">\[f(x_1=0)=\frac{151}{342}\times\frac{126}{151}+\frac{68}{342}\times\frac{61}{68}+\frac{123}{342}\times\frac{6}{123}=\frac{193}{342}\]</span> Tenslotte, door de regel van Bayes kunnen we bevestigen dat er een 65% posterior kans is dat deze pinguïn een Adelie is:</p>
+<p><span class="math display">\[f(y=A|x_1=0)=\frac{f(y=A)L(y=A|x_1=0)}{f(x_1=0)} \\
+              =\frac{151/342.(126/151)}{193/342}\approx{0.6528}\]</span></p>
+<p>Tegelijk zien we dat</p>
+<p><span class="math display">\[f(y=C|x_1=0)\approx{0.3161}\]</span> en <span class="math display">\[f(y=G|x_1=0)\approx{0.0311}\]</span> Alles bij elkaar is de posterior waarschijnlijkheid dat deze pinguïn een Adelie is meer dan dubbel zo groot als die van de andere twee soorten. Dus, onze naïeve Bayes classificatie, gebaseerd op onze voorinformatie en het onder-gemiddelde gewicht van de pinguïn alleen, is dat deze pinguïn een Adelie is. Hoewel een lager dan gemiddeld gewicht relatief minder voorkomt bij Adélie’s dan bij Kinbandpinguïns, werd de uiteindelijke classificatie over de rand geduwd door het feit dat Adélie’s veel algemener zijn.</p>
+<h3 id="één-kwantitatieve-voorspeller">Één kwantitatieve voorspeller</h3>
+<p>Laten we het gewicht van de pinguïn even buiten beschouwing en het soort indelen aan de hand van het feit dat hij een snavel van 50 mm heeft.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="naeve-bayesiaanse-classificatie_files/figure-html5/unnamed-chunk-5-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># A tibble: 3 x 3
+  species    mean    sd
+  &lt;fct&gt;     &lt;dbl&gt; &lt;dbl&gt;
+1 Adelie     38.8  2.66
+2 Chinstrap  48.8  3.34
+3 Gentoo     47.5  3.08</code></pre>
+</div>
+<p>Het uitzetten van de afgestemde normale modellen voor elke soort bevestigt dat deze naïeve Bayes-aanname niet perfect is - het is iets idealistischer dan de dichtheidsplots van de ruwe gegevens van het figuur hierboven. Maar het is goed genoeg om verder te gaan.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="naeve-bayesiaanse-classificatie_files/figure-html5/unnamed-chunk-7-1.png" width="624" /></p>
+</div>
+<p>Herinner u dat deze Normaliteitsveronderstelling het mechanisme verschaft dat we nodig hebben om de waarschijnlijkheid van het waarnemen van een 50 mm lange snavel bij elk van de drie soorten te evalueren, <span class="math inline">\(L(y|x_2=50)\)</span> Terugkomend op figuur 14.3, komen deze waarschijnlijkheden overeen met de hoogte van de normale densiteitskromme bij een snavellengte van 50 mm. Dus, een 50 mm lange bek is iets waarschijnlijker bij Kinband- dan bij Gentoo pinguïns, en hoogst onwaarschijnlijk bij Adelie pinguïns. Meer specifiek kunnen we de waarschijnlijkheden berekenen met dnorm()</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>[1] 2.119955e-05</code></pre>
+<pre><code>[1] 0.1119782</code></pre>
+<pre><code>[1] 0.09317395</code></pre>
+</div>
+<h3 id="twee-voorspellers">Twee voorspellers</h3>
+<p>We hebben nu twee naïeve Bayes classificaties gemaakt van de soort van onze pinguïn: de ene enkel gebaseerd op het feit dat onze pinguïn onder het gemiddelde gewicht zit en de andere enkel gebaseerd op zijn 50mm lange snavel (naast onze eerdere informatie). En deze classificaties zijn niet identiek: wij classificeerden de pinguïn als Adelie in de eerste analyse en Gentoo in de tweede. Deze discrepantie toont aan dat er ruimte is voor verbetering in onze naïeve Bayes classificatie methode. In het bijzonder, in plaats van enkel te vertrouwen op één enkele voorspeller, kunnen we meerdere voorspellers in ons classificatieproces opnemen.</p>
+<p>Beschouw de informatie dat onze pinguïn een snavellengte heeft van<br />
+<span class="math inline">\(X_2=50mm\)</span> en een flipperlengte van <span class="math inline">\(X_3=195mm\)</span>. Elk van deze metingen alleen kan leiden tot een verkeerde classificatie. Net zoals het moeilijk is om een onderscheid te maken tussen de Chinstrap- en de Gentoopinguïn op basis van hun snavellengte, is het moeilijk om een onderscheid te maken tussen de Chinstrap en de Adéliepinguïn op basis van hun flipperlengte alleen (zie hieronder).</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="naeve-bayesiaanse-classificatie_files/figure-html5/unnamed-chunk-9-1.png" width="624" /><img src="naeve-bayesiaanse-classificatie_files/figure-html5/unnamed-chunk-9-2.png" width="624" /></p>
+</div>
+<p>MAAR de soorten zijn redelijk te onderscheiden wanneer we de informatie over snavel- en vleugellengte combineren. Onze pinguïn met een 50 mm lange bek en 195 mm lange vleugels, voorgesteld op het snijpunt van de stippellijnen in de figuur hieronder, ligt nu precies tussen de Chinstrap waarnemingen:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="naeve-bayesiaanse-classificatie_files/figure-html5/unnamed-chunk-10-1.png" width="624" /></p>
+</div>
+<p>Laten we naïeve Bayes classificatie gebruiken om deze gegevens in evenwicht te brengen met onze voorafgaande informatie over het soort lidmaatschap. Om de posterior waarschijnlijkheid te berekenen dat de pinguïn van de soort <span class="math inline">\(Y=y\)</span> kunnen we de Bayes aanpassen aan onze twee voorspellers, <span class="math inline">\(X_2=x_2\)</span> en <span class="math inline">\(X_3=x_3\)</span>.</p>
+<p>Dit geeft weer een nieuwe wending: Hoe kunnen we de likelihood functie berekenen die twee variabelen omvat,<span class="math inline">\(L(y|x_2, x_3)\)</span>? Dit is waar weer een andere “naïeve” veronderstelling binnensluipt. Naïeve Bayes classificatie gaat ervan uit dat voorspellers <strong>voorwaardelijk onafhankelijk</strong> zijn, dus <span class="math display">\[L(y|x_2, x_3)=f(x_2, x_3|y)=f(x_2|y)f(x_3|y)\]</span> Met andere woorden, binnen elke soort nemen we aan dat de lengte van de snavel van een pinguïn geen verband houdt met de lengte van zijn flipper. Wiskundig en computationeel gezien, maakt deze veronderstelling het naïeve Bayes algoritme efficiënt en beheersbaar. Maar het kan het ook verkeerd maken. Kijk nog eens naar de figuur hiervoven. Binnen elke soort lijken de vleugellengte en de snavellengte positief gecorreleerd te zijn, niet onafhankelijk. Toch gaan we naïef om met de veronderstelling van onvolmaakte onafhankelijkheid, en dus met de mogelijkheid dat onze classificatienauwkeurigheid zou kunnen worden afgezwakt.</p>
+<p>Gecombineerd gaat het multivariabele naïeve Bayes-model ervan uit dat onze twee voorspellers Normaal en voorwaardelijk onafhankelijk zijn. We hebben dit normale model al afgestemd op de snalvellengte <span class="math inline">\(x_2\)</span>. Op dezelfde manier kunnen we de soortspecifieke normale modellen voor de lengte van de vleugels afstemmen op de overeenkomstige steekproefgemiddelden en standaardafwijkingen:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># A tibble: 3 x 3
+  species    mean    sd
+  &lt;fct&gt;     &lt;dbl&gt; &lt;dbl&gt;
+1 Adelie     190.  6.54
+2 Chinstrap  196.  7.13
+3 Gentoo     217.  6.48</code></pre>
+</div>
+<p>Zo kunnen wij voor elk van de drie soorten nagaan hoe groot de kans is dat een vleugelengte van 195 mm wordt waargenomen, <span class="math inline">\(L(y|x_3=195)=f(x_3=195|y)\)</span></p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>[1] 0.04554175</code></pre>
+<pre><code>[1] 0.05540502</code></pre>
+<pre><code>[1] 0.0001933746</code></pre>
+</div>
+<p>Voor elke soort hebben we nu de waarschijnlijkheid dat we een snavellengte waarnemen van <span class="math inline">\(x_2=50mm\)</span>, de waarschijnlijkheid van het waarnemen van een vleugellengte van <span class="math inline">\(x_3=195\)</span> en de voorafgaande waarschijnlijkheid (prior). Gecombineerd is de kans op het waarnemen van een 50 mm lange snavel en een 195 mm lange vleugel voor elk soort <span class="math inline">\(Y=y\)</span>, gewogen met de prior van elk van de soorten als volgt:</p>
+<p><span class="math display">\[f(y^{&#39;}=A)L(y^{&#39;}=A|x_2=50, x3=195)=\frac{151}{342}\times0.0000212\times0.04554  \\
+  f(y^{&#39;}=C)L(y^{&#39;}=C|x_2=50, x3=195)=\frac{68}{342}\times0.0112\times0.05541      \\
+  f(y^{&#39;}=G)L(y^{&#39;}=G|x_2=50, x3=195)=\frac{123}{342}\times0.09317\times0.0001934  \]</span> met een som van <span class="math display">\[\sum_{all y^{&#39;}}f(y^{&#39;})L(y^{&#39;}|x_2=50, x_3=195)\approx0.001241\]</span></p>
+<p>Als we dat in de Bayes’regel stoppen dan wordt de waarschijnlijkheid dat de penguin een Adeliesoort is:</p>
+<p><span class="math display">\[f(y=A|x_2=50,x_3=195)=\frac{\frac{151}{342}\times0.0000212\times0.04555}{0.001241}\approx0.0003\]</span> Zo kunnen we de kans op de andere twee soorten ook berekeken: <span class="math display">\[f(y=C|x_2=50,x_3=195)\approx0.9944 \\
+  f(y=G|x_2=50,x_3=195)\approx0.0052\]</span> Conclusie, onze penguin is <strong>vrijwel zeker</strong> een Chinstrap. Hoewel we niet tot deze conclusie zijn gekomen op basis van een fysiek kenmerk alleen, schetsen deze twee samen een vrij duidelijk beeld.</p>
+<h2 id="implementeren-en-evalueren-van-naive-bayesisaanse-classificatie">Implementeren en evalueren van naive Bayesisaanse classificatie</h2>
+<p>Dat was aardig, maar we hoeven niet al dit werk met de hand te doen. Om naïeve Bayes classificatie in R te implementeren, gebruiken we de <code>naïeveBayes()</code> functie in het <code>e1071</code> pakket (Meyer et al. 2021). Net zoals bij <code>stan_glm()</code>, voeden we <code>naiveBayes()</code> met de data en een formule die aangeeft welke variabelen in de analyse moeten worden gebruikt. Maar aangezien naive Bayes de prioriteitswaarschijnlijkheden rechtstreeks uit de gegevens berekent en de implementatie geen MCMC-simulatie vereist, hoeven we ons geen zorgen te maken over het verstrekken van informatie m.b.t. de priormodellen of Markovketens. Hieronder bouwen we twee naïeve Bayes classificatie-algoritmen, een die alleen <code>bill_length_mm</code> gebruikt en een die ook <code>flipper_length_mm</code> bevat:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>Laten we deze beide toepassen om onze_penguin te classificeren die we de hele tijd hebben bestudeerd:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>We beginnen met <code>naive_model_1</code>. De predict() functie geeft de posterior waarschijnlijkheden van elke soort terug, samen met een uiteindelijke classificatie. Deze classificatie volgt een eenvoudige regel: classificeer de pinguïn als de soort met de hoogste posterior waarschijnlijkheid. De resultaten van dit proces zijn gelijkaardig aan deze die we hierboven “met de hand” verkregen met een kleine afwijking door een afrondingsfout. In feite, gebaseerd op de snavellengte alleen, is onze beste gok dat deze pinguïn een Gentoo is:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>           Adelie Chinstrap    Gentoo
+[1,] 0.0001690279 0.3978306 0.6020004</code></pre>
+<pre><code>[1] Gentoo
+Levels: Adelie Chinstrap Gentoo</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>           Adelie Chinstrap      Gentoo
+[1,] 0.0003445688 0.9948681 0.004787365</code></pre>
+</div>
+<p>En net zoals we hierboven concludeerden, als we rekening houden met zowel de snavellengte als de lengte van de vleugels, is onze beste gok dat deze pinguïn een Chinstrap is.</p>
+<p>We kunnen op dezelfde manier onze naïeve Bayes modellen toepassen om een willekeurig aantal pinguïns te classificeren. Zoals met logistische regressie, zullen we twee gebruikelijke benaderingen volgen om de nauwkeurigheid van deze classificaties te evalueren:</p>
+<ul>
+<li><strong>confusion matrixen</strong> construeren die de <em>waargenomen soorten</em> van onze steekproef pinguïns vergelijken met hun naïeve Bayes <em>soortclassificaties</em>;<br />
+</li>
+<li>om een beter idee te krijgen van hoe goed onze naïeve Bayes modellen <em>nieuwe pinguïns</em> classificeren, berekenen we <strong>kruisgevalideerde schattingen</strong> van de nauwkeurigheid van de classificatie.</li>
+</ul>
+<p>Om met de eerste benadering te beginnen, classificeren we elk van de pinguïns met zowel <code>naive_model_1</code> als <code>naive_model_2</code> en slaan deze op in <code>penguins</code> als <code>class_1</code> en <code>class_2</code>:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>De classificatieresultaten worden hieronder getoond voor vier willekeurig gekozen pinguïns, afgezet tegen de werkelijke <code>species</code> van deze pinguïns. Voor de laatste twee pinguïns, geven de twee modellen <em>dezelfde</em> classificaties (Adelie) en deze classificaties zijn correct. Voor de eerste twee pinguïns, leiden de twee modellen tot <em>verschillende</em> classificaties. In beide gevallen is <code>naive_model_2</code> correct.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># A tibble: 4 x 5
+   bill flipper species   class_1 class_2  
+  &lt;dbl&gt;   &lt;int&gt; &lt;fct&gt;     &lt;fct&gt;   &lt;fct&gt;    
+1  47.5     199 Chinstrap Gentoo  Chinstrap
+2  40.9     214 Gentoo    Adelie  Gentoo   
+3  41.3     194 Adelie    Adelie  Adelie   
+4  38.5     190 Adelie    Adelie  Adelie   </code></pre>
+</div>
+<p>Het valt natuurlijk nog te bezien of <code>naive_model_2</code> beter presteert dan <code>naive_model_1</code> in het algemeen. Daartoe geven de onderstaande confusion matrixen een overzicht van de classificatienauwkeurigheid van de modellen over alle pinguïns in onze steekproef</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>   species       Adelie Chinstrap       Gentoo
+    Adelie 95.39% (145) 0.00% (0)  4.61%   (7)
+ Chinstrap  5.88%   (4) 8.82% (6) 85.29%  (58)
+    Gentoo  6.45%   (8) 4.84% (6) 88.71% (110)</code></pre>
+<pre><code>   species       Adelie   Chinstrap       Gentoo
+    Adelie 96.05% (146)  2.63%  (4)  1.32%   (2)
+ Chinstrap  7.35%   (5) 86.76% (59)  5.88%   (4)
+    Gentoo  0.81%   (1)  0.81%  (1) 98.39% (122)</code></pre>
+</div>
+<p>Laten we, met deze aanwijzingen in gedachten, de twee confusion matrixen onderzoeken. Een snelle blik leert dat <code>naive_model_2</code> het over de hele linie beter doet. Niet alleen zijn de classificatiepercentages voor elk van de Adelie, Chinstrap en Gentoo soorten hoger dan in <code>naive_model_1</code>, maar ook de totale nauwkeurigheid is hoger.</p>
+<p>Het <code>naive_model_2</code> classificeert 327 (146+59+122) van de 344 pinguïns correct (95%). Terwijl het <code>naive_model_1</code> slechts 261 pinguïns correct classificeert (76%). Waar <code>naive_model_2</code> de grootste verbetering vertoont t.o.v. <code>naive_model_1</code> is in de classificatie van de Chinstrappinguïns. In <code>naive_model_1</code> wordt slechts 9% van de Chinstrapspinguïns juist geklasseerd, met maar liefst 85% die verkeerd geklasseerd wordt als Gentoo. Met 87% is de classificatienauwkeurigheid voor Chinstraps veel hoger in <code>naive_model_2</code>.</p>
+<p>Tenslotte kunnen we, voor de nodige zorgvuldigheid, 10-voudige kruisvalidatie gebruiken om te evalueren en te vergelijken hoe goed onze naïeve Bayes classificatiemodellen nieuwe pinguïns classificeren, niet enkel deze uit onze steekproef. We doen dit met behulp van de <code>naive_classification_summary_cv()</code> functie in het <strong>bayesrules</strong> pakket:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>Het <code>cv_model_2$folds</code> object bevat de classificatienauwkeurigheid voor elk van de 10 vouwen (k=10) terwijl cv_model_2$cv het gemiddelde neemt van de resultaten over alle 10 vouwen:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>   species       Adelie   Chinstrap       Gentoo
+    Adelie 96.05% (146)  2.63%  (4)  1.32%   (2)
+ Chinstrap  7.35%   (5) 86.76% (59)  5.88%   (4)
+    Gentoo  0.81%   (1)  0.81%  (1) 98.39% (122)</code></pre>
+</div>
+<p>De nauwkeurigheidspercentages in deze kruisgevalideerde confusion matrixen zijn vergelijkbaar met die in de niet-kruisgevalideerde verwarringsmatrix hierboven. Dit impliceert dat ons naïef Bayes model bijna even goed lijkt te presteren op nieuwe pinguïns als op het originele pinguïn monster dat we gebruikten om dit model te bouwen.</p>
+<h2 id="naëve-bayes-vs-logistische-regressie">Naëve Bayes vs logistische regressie</h2>
+<p>Gezien de drie pinguïnsoorten, vereiste onze classificatie-analyse hierboven een naïeve Bayes classificatie - logistische regressie toepassen was zelfs geen optie. Echter, in scenario’s met een binaire categorische respons variabele <span class="math inline">\(Y\)</span> zijn zowel logistische regressie als naïeve Bayes haalbare classificatiebenaderingen. Zowel naïeve Bayes als logistische regressie hebben hun voor- en nadelen. Hoewel naïeve Bayes zeker rekenkundig efficiënt is, maakt het ook een aantal zeer starre en vaak ongeschikte veronderstellingen over datastructuren. Je hebt misschien ook opgemerkt dat we wat nuance verliezen met naïeve Bayes. In tegenstelling tot het logistische regressiemodel met</p>
+<p><span class="math display">\[log(\frac{\pi}{1-\pi})=\beta_0+\beta_1X_1+...\beta_kX_p,\]</span> naïeve Bayes mist regressiecoëfficiënten <span class="math inline">\(\beta_1\)</span>. Dus, hoewel naïeve Bayes informatie over voorspellers <span class="math inline">\(X\)</span> kan omzetten in classificaties van <span class="math inline">\(Y\)</span> maar doet dit zonder veel opheldering over de relaties tussen deze variabelen.</p>
+<p>Of naïeve Bayes of logistische regressie het juiste instrument is voor een binaire classificatie hangt af van de situatie. In het algemeen, als de starre naïeve Bayes-aannamen ongepast zijn of als u belang hecht aan de specifieke verbanden tussen <span class="math inline">\(Y\)</span> en <span class="math inline">\(X\)</span> (d.w.z. je wilt niet gewoon een reeks classificaties), dan moet je logistische regressie gebruiken. Anders is naïeve Bayes misschien precies wat je nodig hebt. Beter nog, kies niet! Probeer beide tools uit en leer ervan.</p>
+<h2 id="samengevat">Samengevat</h2>
+<p>Naive Bayes classificatie is een handig hulpmiddel voor het classificeren van categorische responsvariabelen<br />
+<span class="math inline">\(Y\)</span> met <em>twee of meer categorieën</em>. Stel (<span class="math inline">\(X_1, X_2, ...,X_p)\)</span> zijn een set van <span class="math inline">\(p\)</span> mogelijke voorspellers van <span class="math inline">\(Y\)</span>, naïef Bayes berekent de posterior waarschijnlijkheid van elke categorie via de Bayes regel:</p>
+<p><span class="math display">\[f(y|x_1, x_2,...,x_p)=\frac{f(y)L(y|x_1, x_2, ...,x_p)}{\sum_{ally^{&#39;}f(y^{&#39;}L(y^{&#39;}|x_1, x_2, ...,x_p)}}\]</span></p>
+<p>Daarbij worden enkele zeer naïeve veronderstellingen gemaakt over het gegevensmodel op basis waarvan wij de waarschijnlijkheid <span class="math inline">\(L(y|x_1,x_2, ...,x_p\)</span> bepalen. De voorspellers <span class="math inline">\(X_1\)</span> zijn voorwaardelijk onafhankelijk en de waarden van de kwantitatieve voorspellers <span class="math inline">\(X_i\)</span>X variëren normaal binnen elke categorie <span class="math inline">\(Y=y\)</span>. Deze vereenvoudigende veronderstellingen maken het naïeve Bayes-model rekenkundig efficiënt en eenvoudig toe te passen. Maar als deze vereenvoudigende veronderstellingen niet worden nageleefd (wat vaak voorkomt), kan het naïeve Bayes-model misleidende classificaties opleveren.</p>
+<h2 id="literatuur">Literatuur</h2>
+<p>Gorman, Kristen B., Tony D. Williams, and William R. Fraser. 2014. “Ecological Sexual Dimorphism and Environmental Variability Within a Community of Antarctic Penguins (Genus Pygoscelis).” <em>PLoS ONE 9(3) (e90081)</em>. <a href="https://doi.org/10.1371/journal.pone.0090081">hier</a>.</p>
+<p>Johnson, A.A., Ott, M.Q. &amp; Dogucu, M. (2022). *Bayes Rules! An introduction to applied Bayesian Modeling. CRC Press. <a href="https://www.bayesrulesbook.com/index.html">hier</a></p>
+<p>Horst, Allison, Alison Hill, and Kristen Gorman. 2020. <em>Palmerpenguins: Palmer Archipelago (Antarctica) Penguin Data</em>. <a href="https://cran.r-project.org/web/packages/palmerpenguins/index.html">hier</a>.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<!--radix_placeholder_article_footer-->
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom"></div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+</body>
+
+</html>
