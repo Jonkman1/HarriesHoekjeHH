@@ -87,38 +87,38 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-<title>Harrie's Hoekje: Wat kun je met Bayes?</title>
+<title>Harrie's Hoekje: Hierarchische logistische regressie met Bayes</title>
 
-<meta property="description" itemprop="description" content="In deze blog wordt getoond wat je met Bayes wetenschappelijk kunt: schatten, testen en voorspellen."/>
+<meta property="description" itemprop="description" content="Dit is een blog over hoe hiërarchische logistische regressie werkt met gebruik van Bayesiaanse technieken."/>
 
 
 <!--  https://schema.org/Article -->
-<meta property="article:published" itemprop="datePublished" content="2022-03-14"/>
-<meta property="article:created" itemprop="dateCreated" content="2022-03-14"/>
+<meta property="article:published" itemprop="datePublished" content="2022-03-22"/>
+<meta property="article:created" itemprop="dateCreated" content="2022-03-22"/>
 <meta name="article:author" content="Johnson e.a. en Harrie Jonkman"/>
 
 <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-<meta property="og:title" content="Harrie&#39;s Hoekje: Wat kun je met Bayes?"/>
+<meta property="og:title" content="Harrie&#39;s Hoekje: Hierarchische logistische regressie met Bayes"/>
 <meta property="og:type" content="article"/>
-<meta property="og:description" content="In deze blog wordt getoond wat je met Bayes wetenschappelijk kunt: schatten, testen en voorspellen."/>
+<meta property="og:description" content="Dit is een blog over hoe hiërarchische logistische regressie werkt met gebruik van Bayesiaanse technieken."/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:site_name" content="Harrie&#39;s Hoekje"/>
 
 <!--  https://dev.twitter.com/cards/types/summary -->
 <meta property="twitter:card" content="summary"/>
-<meta property="twitter:title" content="Harrie&#39;s Hoekje: Wat kun je met Bayes?"/>
-<meta property="twitter:description" content="In deze blog wordt getoond wat je met Bayes wetenschappelijk kunt: schatten, testen en voorspellen."/>
+<meta property="twitter:title" content="Harrie&#39;s Hoekje: Hierarchische logistische regressie met Bayes"/>
+<meta property="twitter:description" content="Dit is een blog over hoe hiërarchische logistische regressie werkt met gebruik van Bayesiaanse technieken."/>
 
 <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
 <script type="text/json" id="radix-rmarkdown-metadata">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Wat kun je met Bayes?"]},{"type":"character","attributes":{},"value":["In deze blog wordt getoond wat je met Bayes wetenschappelijk kunt: schatten, testen en voorspellen."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Johnson e.a. en Harrie Jonkman"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":[]}},"value":[]}]}]},{"type":"character","attributes":{},"value":["2022-03-14"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Hierarchische logistische regressie met Bayes"]},{"type":"character","attributes":{},"value":["Dit is een blog over hoe hiërarchische logistische regressie werkt met gebruik van Bayesiaanse technieken."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Johnson e.a. en Harrie Jonkman"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":[]}},"value":[]}]}]},{"type":"character","attributes":{},"value":["2022-03-22"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
 </script>
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["Screenshot.PNG","wat-kun-je-met-bayes_files/anchor-4.2.2/anchor.min.js","wat-kun-je-met-bayes_files/bowser-1.9.3/bowser.min.js","wat-kun-je-met-bayes_files/distill-2.2.21/template.v2.js","wat-kun-je-met-bayes_files/figure-html5/unnamed-chunk-13-1.png","wat-kun-je-met-bayes_files/figure-html5/unnamed-chunk-13-2.png","wat-kun-je-met-bayes_files/figure-html5/unnamed-chunk-13-3.png","wat-kun-je-met-bayes_files/figure-html5/unnamed-chunk-15-1.png","wat-kun-je-met-bayes_files/figure-html5/unnamed-chunk-15-2.png","wat-kun-je-met-bayes_files/figure-html5/unnamed-chunk-17-1.png","wat-kun-je-met-bayes_files/figure-html5/unnamed-chunk-22-1.png","wat-kun-je-met-bayes_files/figure-html5/unnamed-chunk-3-1.png","wat-kun-je-met-bayes_files/header-attrs-2.11/header-attrs.js","wat-kun-je-met-bayes_files/jquery-3.6.0/jquery-3.6.0.js","wat-kun-je-met-bayes_files/jquery-3.6.0/jquery-3.6.0.min.js","wat-kun-je-met-bayes_files/jquery-3.6.0/jquery-3.6.0.min.map","wat-kun-je-met-bayes_files/popper-2.6.0/popper.min.js","wat-kun-je-met-bayes_files/tippy-6.2.7/tippy-bundle.umd.min.js","wat-kun-je-met-bayes_files/tippy-6.2.7/tippy-light-border.css","wat-kun-je-met-bayes_files/tippy-6.2.7/tippy.css","wat-kun-je-met-bayes_files/tippy-6.2.7/tippy.umd.min.js","wat-kun-je-met-bayes_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["hierarchische-logistische-regressie-met-bayes_files/figure-html5/unnamed-chunk-10-1.png","hierarchische-logistische-regressie-met-bayes_files/figure-html5/unnamed-chunk-10-2.png","hierarchische-logistische-regressie-met-bayes_files/figure-html5/unnamed-chunk-10-3.png","hierarchische-logistische-regressie-met-bayes_files/figure-html5/unnamed-chunk-11-1.png","hierarchische-logistische-regressie-met-bayes_files/figure-html5/unnamed-chunk-13-1.png","hierarchische-logistische-regressie-met-bayes_files/figure-html5/unnamed-chunk-7-1.png","hierarchische-logistische-regressie-met-bayes_files/figure-html5/unnamed-chunk-8-1.png","Screenshot.PNG"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -2066,7 +2066,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Wat kun je met Bayes?","description":"In deze blog wordt getoond wat je met Bayes wetenschappelijk kunt: schatten, testen en voorspellen.","authors":[{"author":"Johnson e.a. en Harrie Jonkman","authorURL":{},"affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-03-14T00:00:00.000+01:00","citationText":"Jonkman, 2022"}
+{"title":"Hierarchische logistische regressie met Bayes","description":"Dit is een blog over hoe hiërarchische logistische regressie werkt met gebruik van Bayesiaanse technieken.","authors":[{"author":"Johnson e.a. en Harrie Jonkman","authorURL":{},"affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-03-22T00:00:00.000+01:00","citationText":"Jonkman, 2022"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2088,113 +2088,99 @@ document.addEventListener('DOMContentLoaded', function() {
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Wat kun je met Bayes?</h1>
+<h1>Hierarchische logistische regressie met Bayes</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>In deze blog wordt getoond wat je met Bayes wetenschappelijk kunt: schatten, testen en voorspellen.</p></p>
+<p><p>Dit is een blog over hoe hiërarchische logistische regressie werkt met gebruik van Bayesiaanse technieken.</p></p>
 </div>
 
 <div class="d-byline">
   Johnson e.a. en Harrie Jonkman true 
   
-<br/>2022-03-14
+<br/>2022-03-22
 </div>
 
 <div class="d-article">
-<figure>
-<img src="Screenshot.PNG" style="width:50.0%" alt="Bayes Rules" /><figcaption aria-hidden="true">Bayes Rules</figcaption>
-</figure>
 <h2 id="inleiding">Inleiding</h2>
-<p>Onlangs verscheen een prachtig boek van Alicia A. Johnson, Miles Q. Ot en Mine Dogucu onder de titel <em>Bayes Rules! An Introduction to Applied Bayesian Modeling</em> en het verscheen bij CRC Press (2022). Eerdere versies kon je al via bookdown bekijken (<a href="https://www.bayesrulesbook.com/" class="uri">https://www.bayesrulesbook.com/</a>) en vanaf de eerste keer dat ik het zag, was ik hier heel enthousiast over. Het boek heb ik direct besteld en vorige week kon ik het ophalen.</p>
-<p>Het boek bestaat uit vier duidelijke delen. Het eerste deel gaat in op de fundamenten van het Bayesiaanse perspectief. Het leert je denken als een Bayesiaan en het gaat in op die belangrijke Bayesiaanse regel <span class="math inline">\(posterior=\frac{prior.likelihood}{normaliserende constante}\)</span>. Aan de hand van enkele voorbeelden gaan Johnson e.a. in op hoe het in de praktijk werkt. Daarna gaat het in op hoe kennis en data op elkaar inwerken en laat het enkele basisanalyses zien en hoe dat in deze vorm van statistiek werkt (normaal, binair en poisson). Het tweede deel is een meer technisch hoofdstuk en laat je ook onder de moterkap van deze techniek kijken. Het gaat ook in op de wetenschappelijke principes van de benadering, waar je hier op moet letten, hoe je hiermee hypothesen kunt testen (niet alleen tov van een nulhypothese, maar hoeveel beter de ene hypothese is ten opzichte van de andere hyposthese) en hoe je hiermee ook kunt voorspellen. De twee volgende delen (Deel drie en vier) zijn praktische delen. Deel drie gaat in op regressieanalyses voor continue variabelen en classificatieanalyses voor binaire variabelen. Het vierde deel ten slotte gaat in op geclusterde datasets en hoe je hierarchische Bayesiaanse regressie en classificatieanalyses uitvoert.</p>
+<p>Onlangs verscheen een prachtig boek van Alicia A. Johnson, Miles Q. Ot en Mine Dogucu onder de titel <em>Bayes Rules! An Introduction to Applied Bayesian Modeling</em> en het verscheen bij CRC Press (2022). Eerdere versies stonden kon je al via bookdown bekijken (<a href="https://www.bayesrulesbook.com/" class="uri">https://www.bayesrulesbook.com/</a>) en vanaf de eerste keer dat ik het zag, was ik hier heel enthousiast over. Het boek heb ik direct besteld en vorige week kon ik het ophalen.</p>
+<p>Het boek bestaat uit vier duidelijke delen. Het eerste deel gaat in op de fundamenten van het Bayesiaanse perspectief. Het leert je denken als een Bayesiaan en het gaat in op die belangrijke Bayesiaanse regel <span class="math inline">\(posterior=\frac{prior.likelihood}{normaliserende constante}\)</span>. Aan de hand van enkele voorbeelden gaan Johnson e.a. in op hoe het in de praktijk werkt. Daarna gaat het in op hoe kennis en data op elkaar inwerken en het laat enkele basisanalyses zien en hoe dat in deze vorm van statistiek werkt (normaal, binair en poisson). Het tweede deel is een meer technisch hoofdstuk en laat je ook onder de moterkap van deze techniek kijken. Het gaat ook op de wetenschappelijke principes van de benadering, waar je hier op moet letten, hoe je hiermee hypothesen kunt testen (niet alleen tov van een nulhypothese, maar hoeveel beter de ene hypothese is ten opzichte van de andere hyposthese) en hoe je hiermee ook kunt voorspellen. De twee volgende delen (Deel drie en vier) zijn praktische delen. Deel drie gaat in op regressieanalyses voor continue variabelen en classificatieanalyses voor binaire variabelen. Het vierde deel ten slotte gaat in op geclusterde datasets en hoe je hierarchische Bayesiaanse regressie en classificatieanalyses uitvoert.</p>
 <p>Natuurlijk, er zijn onderhand al verschillende interessante boeken te krijgen die je laten zien hoe Bayesiaanse denken in de praktijk kan werken. De boeken van Gelman, McElreath, Spiegelhalter en Kruschke verschenen de afgelopen tien/vijftien jaar en leren je dit. Maar <em>Bayes Rules!</em> vind ik op dit moment als introductieboek mogelijk wel het beste.</p>
-<p>Nu het boek bij mij op het bureau ligt, kan ik er binnenkort een keer een korte recensie over schrijven. Voor nu heb ik uit elk deel een hoofdstuk genomen en het vertaald en bewerkt. Hieronder zie je een bewerking van het achtste hoofdstuk van het tweede deel (<em>Posterior Inference &amp; Prediction</em>).Hoofdstukken zo overzetten is voor mij niet alleen een goede manier om het mij eigen te maken, maar ook een manier om het boek anderen aan te raden. Dus lezen en gebruiken deze <em>Bayes Rules! An Introduction to Applied Bayesian Modeling</em></p>
-<h2 id="posterior-inferentie-en-voorspelling">Posterior inferentie en voorspelling</h2>
-<p>Stel je voor dat je in het Museum of Modern Art (MoMA) in New York City staat, gefascineerd door het kunstwerk voor je. Hoewel je begrijpt dat “moderne” kunst niet noodzakelijk “nieuwe” kunst betekent, komt er toch een vraag bij je op: <em>wat is de kans dat deze moderne kunstenaar Gen X is of zelfs jonger, d.w.z. geboren in 1965 of later</em>? Hier voeren we een Bayesiaanse analyse uit met als doel deze vraag te beantwoorden. Laat daartoe<br />
-<span class="math inline">\(\pi\)</span> het aandeel zijn van de kunstenaars vertegenwoordigd in de grote Amerikaanse musea voor moderne kunst die Gen X of jonger zijn. Het Beta(4,6) prior model voor <span class="math inline">\(\pi\)</span> dat onze eigen zeer vage aanname weerspiegelt dat grote moderne kunstmusea onevenredig veel kunstenaars tonen die geboren zijn voor 1965, d.w.z, <span class="math inline">\(\pi\)</span> valt hoogstwaarschijnlijk onder 0,5. Moderne kunst” dateert immers van de jaren 1880 en het kan een tijdje duren voor men zo’n hoge erkenning in de kunstwereld bereikt.</p>
-<p>Om meer te weten te komen over <span class="math inline">\(\pi\)</span>, zullen we <span class="math inline">\(n\)</span>=100 kunstenaars uit de collectie van het MoMA nemen. Deze <code>moma_sample</code> dataset in het <strong>bayesrules</strong> pakket is een subset van gegevens die door het MoMA zelf beschikbaar zijn gesteld (zie MuseumofModernArt 2020-“MoMA – Collection.” GitHub Repository).</p>
+<p>Nu het boek bij mij op het bureau ligt, kan ik er binnenkort een keer een korte recensie over schrijven. Voor nu heb ik uit elk deel een hoofdstuk genomen en het vertaald en bewerkt. Hieronder zie je een bewerking van een deel van het achttiende hoofdstuk van het vierde deel (<em>Non-Normal Hierarchical Regression &amp; Classification</em>).Hoofdstukken zo overzetten is voor mij niet alleen een goede manier om het mij eigen te maken, maar ook een manier om het boek anderen aan te raden. Dus lezen en gebruiken deze <em>Bayes Rules! An Introduction to Applied Bayesian Modeling</em></p>
+<h2 id="hierarchische-logistische-regressie">Hierarchische logistische regressie</h2>
+<p>Eerst maar een enkele pakketten laden:</p>
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
-<p>Onder deze groep artiesten zitten 14 Gen X of jongere artiesten (<span class="math inline">\(Y=14\)</span>).</p>
+<p>Bergbeklimmers proberen grote hoogten te beklimmen in de majestueuze Nepalese Himalaya. Dit doen ze vanwege de sensatie van ijle lucht, de uitdaging of het buitenleven. Succes is niet gegarandeerd; slecht weer, defecte uitrusting, verwondingen of gewoon pech zorgen ervoor dat niet alle klimmers hun bestemming bereiken. Dit roept enkele vragen op. Hoe groot is de kans dat een bergbeklimmer de top haalt? Welke factoren kunnen bijdragen aan een hoger succespercentage? Naast het vage gevoel dat een gemiddelde klimmer 50% kans op succes heeft, wegen we dit zwak informatief inzicht af tegen data van klimmers die in het <strong>bayesrules</strong> pakket zitten. Dit deel van de data is beschikbaar gesteld door ‘The Himalayan Database’ (2020) en verspreid via het <strong>#tidytuesday</strong> project (R for Data Science 2020b):</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre><code># A tibble: 2 x 2
-  genx      n
-  &lt;lgl&gt; &lt;int&gt;
-1 FALSE    86
-2 TRUE     14</code></pre>
+
 </div>
-<p><span class="math inline">\(Y|\pi\)</span> kun je het beste opvatten en dat betekent dat onze analyse het bèta-binomiale kader volgt. On aangepast posterior model van <span class="math inline">\(\p\)</span> in het licht van de waargenomen kunstgegevens ziet er als volgt uit:</p>
-<p><span class="math display">\[Y|\pi \sim Bin(100,\pi) \\
-  \pi\sim Beta(4,6)\]</span> wordt <span class="math display">\[\pi|Y=14) \sim Beta(18,92)\]</span></p>
-<p>met de corresponderende posterior pdf <span class="math display">\[f(\pi|y=14)=\frac{\Gamma(18+92)}{\Gamma(18)\Gamma(92)}\pi^{18-1}(1-\pi)^{92-1} for \pi \epsilon[0,1].\]</span></p>
-<p>De evolutie in ons begrip van <span class="math inline">\(\pi\)</span> is hieronder te zien. Terwijl we begonnen met een vaag begrip dat minder dan de helft van de tentoongestelde kunstenaars Gen X zijn, hebben de gegevens ons met enige zekerheid doen stellen dat dit cijfer waarschijnlijk onder 25% ligt.</p>
+<p>Deze dataset bevat de resultaten van 2076 klimmers vanaf 1978. Slechts 38,87% van hen slaagde erin de top te bereiken:</p>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="wat-kun-je-met-bayes_files/figure-html5/unnamed-chunk-3-1.png" width="624" /></p>
+<pre><code>[1] 2076</code></pre>
+<pre><code> success    n   percent
+   FALSE 1269 0.6112717
+    TRUE  807 0.3887283</code></pre>
 </div>
-<p>Nadat we succesvol de posterior hebben geconstrueerd, besefen we ons dat er nog veel werk voor ons ligt. We moeten deze posterior kunnen gebruiken om een rigoureuze posterior analyse uit te voeren. Er zijn drie algemene taken in posterior analyse: <strong>schatting, hypothesetest, en voorspelling</strong>. Bijvoorbeeld, wat is onze preciese schatting van <span class="math inline">\(\pi\)</span>? Ondersteunt ons model de bewering dat minder dan 20% van de museumkunstenaars Gen X of jonger zijn? Als we 20 extra museumkunstenaars zouden nemen, hoeveel voorspellen we dan dat Gen X of jonger zullen zijn? Laat je gevoel eens spreken, wat denk je:<br />
-a. Ongeveer 16% van de museum kunstenaars zijn Gen X of jonger.<br />
-b. Het is zeer waarschijnlijk dat ongeveer 16% van de museumkunstenaars Gen X of jonger is, maar dat cijfer zou ook tussen 9% en 26% kunnen liggen.</p>
-<p>Als je antwoordde met antwoord b, is je denkwijze Bayesiaans van geest.</p>
-<p>[Figuur: Ons Beta(18, 92) posterior model voor <span class="math inline">\(π\)</span> (links) naast een alternatief Beta(4, 16) posterior model (rechts). De gekleurde gebieden geven de overeenkomstige 95% posterior geloofwaardigheids intervallen weer voor ]</p>
-<p>De clou hier is dat posterieure schattingen zowel de <strong>centrale tendens als de variabiliteit</strong> in <span class="math inline">\(\pi\)</span>. Het <strong>posterior gemiddelde en de modus</strong> van <span class="math inline">\(\pi\)</span> geven een snel overzicht van enkel de centrale tendens. Deze kenmerken voor onze Beta(18, 92) posterior volgen uit de algemene Beta-eigenschappen komen overeen met onze bovenstaande observatie dat de Gen X vertegenwoordiging hoogstwaarschijnlijk rond 16% ligt:</p>
-<p><span class="math display">\[E(\pi|Y=14)=\frac{18}{18+92} \approx 0.164 \\
-Mode(\pi|Y=14)=\frac{18-1}{18+92-2} \approx 0.157\]</span></p>
-<h2 id="posterior-schatting">Posterior schatting</h2>
-<p>Laten we eens opnieuw kijken naar het Beta(18, 92) posterior model voor <span class="math inline">\(\pi\)</span>, het percentage moderne kunst museumkunstenaars dat Gen X of jonger is (zie figuur hierboven). In een Bayesiaanse analyse kunnen we dit hele posterior model zien als een schatting van <span class="math inline">\(\pi\)</span>. Immers, dit model van posterior plausibele waarden geeft een compleet beeld van de centrale tendens en onzekerheid in <span class="math inline">\(\pi\)</span>. Maar bij het specificeren en communiceren van ons posterior begrip is het ook nuttig om eenvoudige posterior samenvattingen te berekenen van <span class="math inline">\(\pi\)</span>.</p>
-<p>Beter is het nog, om <em>zowel</em> de centrale tendens als de variabiliteit in <span class="math inline">\(\pi\)</span> te kunnen rapporteren als een <em>reeks</em> van aannemelijke posterior aannemelijke <span class="math inline">\(\pi\)</span> waarden. Dit bereik wordt een posterior geloofwaardigheids interval (CI, Credible Interval) genoemd voor <span class="math inline">\(\pi\)</span>. We hebben bijvoorbeeld eerder opgemerkt dat het aandeel museumkunstenaars dat Gen X of jonger is, hoogstwaarschijnlijk tussen 10% en 24% ligt. Dit bereik vangt de meer plausibele waarden van <span class="math inline">\(\pi\)</span> terwijl de meer extreme en onwaarschijnlijke scenario’s worden geëlimineerd. In feite zijn 0,1 en 0,24 de 2,5e en 97,5e posterior percentielen (d.w.z. 0,025ste en 0,975ste posterior kwantielen). Dit zijn is het middelste deel, 95% CI van de posterior geloofwaardige <span class="math inline">\(\pi\)</span>waarden. We kunnen deze Beta(18,92) posterior quantiel berekeningen bevestigen met <code>qbeta()</code>:</p>
+<p>Omdat <code>member_id</code> in essentie een rij van klimmersid is en we maar één observatie per klimmer hebben, is dit geen groepsvariabele. Verder, hoewel het seizon (<code>seison</code>), rol bij de expeditie (<code>expedition_role</code>) en het gebruik van zuurstof (<code>oxygen_used)</code> categorische variabelen zijn meerdere malen geobserveerd, zijn dit potentiële <em>voorspellers</em> van van succes (<code>succes</code>), ook geen groepsvariabele. Dan blijft expeditie_id (<code>expedition_id</code>) over - dit <em>is</em> wel een groepsvariabele. De dataset beslaat 200 verschillende expedities:</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre><code>[1] 0.1009084 0.2379286</code></pre>
+<pre><code>[1] 200</code></pre>
 </div>
-<p>Het resulterende <strong>95% geloofwaardigheidsinterval</strong> voor <span class="math inline">\(\pi\)</span>, (0,1, 0,24), wordt weergegeven door het gekleurde gebied in de figuur hierboven (links). Terwijl het gebied onder de gehele posterior pdf 1 is, is het gebied van dit gekleurde gebied 0,95, dus de fractie van <span class="math inline">\(\pi\)</span>waarden die in dit gebied vallen. Dit onthult een intuïtieve interpretatie van de CI. Er is een 95% posterior waarschijnlijkheid dat ergens tussen 10% en 24% van de museumkunstenaars Gen X of jonger zijn:</p>
-<p><span class="math display">\[P(\pi\epsilon(0.1,0.24)|Y=14)=\int_{0.1}^{0.24}f(\pi|y=14)d\pi=0.95\]</span> Sta hier alstublieft even stil. Voelt deze interpretatie natuurlijk en intuïtief aan? Dus, een beetje anticlimactisch? Als dat zo is, zijn we blij dat je er zo over denkt - het betekent dat je denkt als een Bayesiaan.</p>
-<p>Bij de constructie van de CI hierboven hebben we een “middelste 95%” benadering gebruikt. Dit is niet onze enige optie. De eerste aanpassing die we kunnen doen is het <strong>geloofwaardige niveau van 95%</strong> (zie figuur hieronder). Bijvoorbeeld, een middelste 50% CI, van het 25ste tot het 75ste percentiel, zou onze aandacht vestigen op een kleiner bereik van enkele van de meer plausibele <span class="math inline">\(\pi\)</span> waarden. Er is een 50% posterior waarschijnlijkheid dat ergens ligt tussen 14% en 19% van de museumkunstenaars Gen X of jonger zijn:</p>
+<p>Elke expeditie bestaat uit meerdere klimmers. Zo vertrokken onze eerste drie expedities met respectievelijk 5, 6 en 12 klimmers:</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre><code>[1] 0.1388414 0.1862197</code></pre>
+<pre><code># A tibble: 3 x 2
+  expedition_id count
+  &lt;chr&gt;         &lt;int&gt;
+1 AMAD03107         5
+2 AMAD03327         6
+3 AMAD05338        12</code></pre>
 </div>
-<p>In de andere richting zou een bredere 99%-controlegrens van 0,5 tot 99,5 percentiel lopen. In dat geval wordt alleen de extreme 1% uitgeslopten. Als zodanig zou een 99% CI ons een vollediger beeld geven van <em>plausibele</em> en in sommige gevallen zeer <em>onwaarschijnlijke</em> <span class="math inline">\(\pi\)</span>waarden:</p>
+<p>Het zou <em>fout</em> zijn om deze groepsstructuur te negeren en er anders van uit te gaan dat de individuele klimmers onafhankelijke resultaten boeken. Aangezien elke expeditie als een <em>team</em> werkt, hangt het succes of falen van de ene klimmer in díe expeditie gedeeltelijk af van het succes of falen van anderen in de groep. Bovendien vertrekken alle leden van een expeditie met dezelfde bestemming, met dezelfde leiders en onder dezelfde weersomstandigheden, en zijn dus onderhevig aan dezelfde externe succesfactoren. Het is dus niet alleen juist om rekening te houden met de groepering van de gegevens, maar het kan ook duidelijk maken in welke mate deze factoren variabiliteit veroorzaken in de succespercentages <em>tussen</em> expedities. Meer dan 75 van onze 200 expedities hadden een 0% succesratio - m.a.w. geen enkele klimmer in deze expedities slaagde erin de top te bereiken. Daarentegen hadden bijna 20 expedities een 100% succespercentage. Tussen deze extremen in, is er heel wat variatie in het succespercentage van de expedities.</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre><code>[1] 0.08530422 0.26468037</code></pre>
-</div>
-<p>Hoewel een 95%-niveau een gebruikelijke keuze is, is het enigszins arbitrair en gewoon ingebakken door decennia van traditie. Er is niet één “juist” geloofwaardigheidsniveau. Je kunt net zo makkelijk 50%, 80% of 95% niveaus gebruiken, afhankelijk van de context van de analyse. Elk geeft een ander posterior begrip.</p>
-<h2 id="posterior-hypothese-testing">Posterior hypothese testing</h2>
-<h3 id="eenzijdige-tests">Eenzijdige tests</h3>
-<p>Het testen van hypothesen is een andere veel voorkomende taak bij posterior analyse. Bijvoorbeeld, stel dat we een artikel lezen waarin wordt beweerd dat minder dan 20% van de museumkunstenaars Gen X of jonger zijn. Twee aanwijzingen die we hebben waargenomen uit ons posterior model van <span class="math inline">\(\pi\)</span> wijzen erop dat deze bewering op zijn minst voor een deel plausibel is:</p>
-<ol type="1">
-<li>Het grootste deel van de posterior pdf in figuur hieronder valt onder 0.2.<br />
-</li>
-<li>Het 95% CI voor <span class="math inline">\(\pi\)</span> (0.1, 0.24) zit <em>vooral</em> onder 0.2.</li>
-</ol>
-<p>Deze waarnemingen zijn een goed begin. Maar we kunnen nog preciezer zijn. Om precies te evalueren hoe aannemelijk het is dat <span class="math inline">\(\pi&lt;0.2\)</span>, kunnen we de <strong>posterior waarschijnlijkheid</strong> van dit scenario berekenen, $P(&lt;0.2|Y=14). Deze posterior waarschijnlijkheid wordt weergegeven door het gearceerde gebied onder de posterior pdf in xxxxx. Het wordt wiskundig berekend door de posterior pdf te integreren in het gebied van 0 tot 0,2:</p>
-<p><span class="math display">\[P(\pi&lt;0.2|Y=14)=\int_{0}^{0.2}f(\pi|y=14)d\pi\]</span> We zullen de integratie omzeilen en deze Beta(18,92) posterior waarschijnlijkheid verkrijgen met <code>pbeta()</code> hieronder. Het resultaat toont een sterk bewijs ten gunste van onze bewering: er is ongeveer 84,9% posterior kans dat Gen X-ers minder dan 20% van de moderne kunst museumkunstenaars uitmaken.</p>
-<div class="layout-chunk" data-layout="l-body">
-<pre><code>[1] 0.8489856</code></pre>
-</div>
-<p>De analyse van onze bewering is verfrissend eenvoudig. Wij hebben eenvoudigweg de posterior waarschijnlijkheid van het scenario van belang berekend. Hoewel dit niet altijd nodig is, formaliseren mensen uit de praktijk deze procedure vaak in een raamwerk voor <strong>het testen van hypothesen</strong>. Wij kunnen onze analyse bijvoorbeeld omkaderen met twee concurrerende hypothesen: <strong>de nulhypothese <span class="math inline">\(H_0\)</span></strong> stelt dat minstens 20% van de museumkunstenaars Gen X of jonger zijn (de status quo hier), terwijl de <strong>alternatieve hypothese <span class="math inline">\(H_{\alpha}\)</span></strong> (onze bewering) stelt dat dit cijfer lager is dan 20%. In wiskundige notatie:</p>
-<p><span class="math display">\[H_0:\pi\geq 0.2 \\
-  H_{\alpha}:\pi&lt; 0.2\]</span> Merk op dat <span class="math inline">\(H_{\alpha}\)</span> beweert dat <span class="math inline">\(\pi\)</span> aan <em>één kant</em> van 0,2 ligt (<span class="math inline">\(\pi&lt;0.2\)</span>) in tegenstelling tot gewoon <em>verschillend zijn</em> dan 0.2 (<span class="math inline">\(\pi\ne0.2\)</span>). We noemen dit dus een <em>eenzijdige hypothesetoets</em>. We hebben de posterior waarschijnlijkheid van de alternatieve hypothese al berekend als <span class="math inline">\(P(H_{\alpha}|Y=14=0.849\)</span>. De posterieure waarschijnlijkheid van de nulhypothese is dus <span class="math inline">\(P(H_0|Y=14)=0.151\)</span>. Samengenomen is de <strong>posterior odds</strong> dat <span class="math inline">\(\pi&lt;0.2\)</span> ruwweg 5,62 zijn. Dat wil zeggen, onze posterieure beoordeling is dat <span class="math inline">\(\pi\)</span> bijna 6 keer meer kans heeft om <em>onder</em> 0,2 te liggen dan om <em>boven</em> 0,2 te liggen:</p>
-<p><span class="math display">\[posterior odds=\frac{P(H_{alpha}|Y=14)}{P(H_0|Y=14)}\approx5.62\]</span></p>
-<div class="layout-chunk" data-layout="l-body">
-<pre><code>[1] 5.621883</code></pre>
+
 </div>
 <div class="layout-chunk" data-layout="l-body">
-<pre><code>[1] 0.08564173</code></pre>
+<p><img src="hierarchische-logistische-regressie-met-bayes_files/figure-html5/unnamed-chunk-7-1.png" width="624" /></p>
 </div>
+<h3 id="model-bouw-en-simulatie">Model bouw en simulatie</h3>
+<p>Om de ‘gegroepeerde’ aard van onze gegevens te weerspiegelen, laat <span class="math inline">\(Y_ij\)</span> aangeven of klimmer <span class="math inline">\(i\)</span> in expeditie<br />
+<span class="math inline">\(j\)</span> succesvol de top van hun piek bereikt:</p>
+<p><span class="math display">\[\
+Y_ij = \begin{cases}
+1 Ja \\
+0 Nee\\
+\end{cases}
+\]\]</span> Er zijn verschillende potentiële voorspellers voor het succes van klimmers in onze dataset. We kijken hier naar slechts twee voorspellers: de leeftijd van de klimmer en of hij extra zuurstof heeft gekregen om gemakkelijker te kunnen ademen op grote hoogte. Als zodanig, definiëren we: <span class="math display">\[ X_ij1=leeftijd van klimmer *i* in expeditie *j*\]</span></p>
+<p><span class="math display">\[X_ij2=of de klimmer in *i* in expeditie *j* zuurstof (oxygen) heeft gekregen\]</span> Door het aandeel van succes te berekenen bij elke combinatie van leeftijd en zuurstofgebruik, krijgen we een idee van hoe deze factoren gerelateerd zijn aan het klimmerssucces (zij het een wankel idee gezien de kleine steekproefgroottes van sommige combinaties). Kort samengevat lijkt het erop dat het succes van klimmers afneemt met de leeftijd en sterk toeneemt met het gebruik van zuurstof:</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre><code>[1] 0.09366321</code></pre>
+<p><img src="hierarchische-logistische-regressie-met-bayes_files/figure-html5/unnamed-chunk-8-1.png" width="624" /></p>
 </div>
-<div class="layout-chunk" data-layout="l-body">
-<pre><code>[1] 60.02232</code></pre>
-</div>
-<h3 id="tweezijdige-tests">Tweezijdige tests</h3>
-<h2 id="posterior-voorspelling">Posterior voorspelling</h2>
-<h2 id="posterior-analyse-met-mcmc">Posterior analyse met MCMC</h2>
-<p>Het is goed te weten dat er enige theorie achter Bayesiaanse posterior analyse zit. En wanneer we werken met modellen die zo eenvoudig zijn als de Beta-Binomiaal, kunnen we deze theorie direct implementeren - dat wil zeggen, we kunnen exacte posterior geloofwaardige intervallen, waarschijnlijkheden, en voorspellende modellen berekenen. Maar het is duidelijk dat dit mooie terrein ook betreden kan worden bij scenario’s waarin we geen posterior modellen kunnen specificeren, laat staan exacte samenvattingen van hun eigenschappen kunnen berekenen. In deze scenario’s kunnen we posteriores <em>benaderen</em> met behulp van MCMC methoden. Laten we nu eens onderzoeken hoe we dit soort Markov chain steekproefwaarden ook kunnen worden gebruikt om specifieke posterior kenmerken te benaderen. Laten we eens zien hoe we dit soort methodes kunnen gebruiken om posterior analyses uit te voeren.</p>
-<p>Hieronder worden vier parallelle Markovketens uitgevoerd van <span class="math inline">\(\pi\)</span> voor 10.000 iteraties elk. Na het weggooien van de eerste 5.000 iteraties van elke keten, houden we nog vier afzonderlijke Markovketens van 5.000 over, {<span class="math inline">\({\pi^{1}, \pi^{(2)}, ..., \pi^{(5000)}}\)</span>}, of een gecombineerde Markov-keten steekproefgrootte van 20.000.</p>
-<h3 id="posterior-simulatie">Posterior simulatie</h3>
+<p>Om een Bayesiaans model van deze relatie op te stellen, erkennen we eerst dat het Bernoulli model redelijk is voor onze binaire responsvariabele <span class="math inline">\(Y_ij\)</span>. Stel <span class="math inline">\(\pi_ij\)</span> de <em>waarschijnlijkheid</em> is dat klimmer<span class="math inline">\(i\)</span> in expeditie<span class="math inline">\(j\)</span> zijn piek succesvol beklimt, d.w.z. dat <span class="math inline">\(Y_ij=1\)</span>,</p>
+<p><span class="math display">\[Y_ij|\pi_ij \sim \Bern{\pi_ij}\]</span> Dit is een <strong>complete pooling</strong> benadering waarbij een simpel model wordt omgezet in een <strong>logistisch regressie model</strong> van <span class="math inline">\(Y\)</span> met enkele voorspellers <span class="math inline">\(X\)</span></p>
+<p><span class="math display">\[Y_ij|\beta_0,\beta_1,beta_2 \sim^{ind} \Bernoulli(\pi_ij) with log(\frac{\pi_ij}{1-\pi_ij})=\beta_0+\beta_1X_ij1+\beta_2X_ij2) \\
+ \beta_0c \sim N(m_0,s_0^2) \\
+ \beta_1 \sim N(m_1, s_1^2) \\
+ \beta_2 \sim N(m_2, s_1^2)\]</span></p>
+<p>Dit is een goed begin, MAAR het houdt geen rekening met de groepsstructuur van onze data. Overweeg in plaats daarvan het volgende hiërarchische alternatief met onafhankelijke, zwak informatieve priors hieronder afgestemd via <code>stan_glmer()</code> en met een prior model voor <span class="math inline">\(beta_0\)</span> uitgedrukt via het gecentreerde intercept <span class="math inline">\(beta_0c\)</span>. Het is immers zinvoller om na te denken over de baseline succesratio bij de <em>typische/gemiddelde</em> klimmer, <span class="math inline">\(\beta_0c\)</span>, dan bij 0-jarige klimmers die geen zuurstof gebruiken, <span class="math inline">\(\beta_0\)</span>$. Daarom begonnen we onze analyse met de zwakke veronderstelling dat de typische klimmer een kans op succes heeft van 0,5, of met log(kans op succes)=0.</p>
+<p><em>Net zo goed</em> kunnen we dit logistische regressiemodel met <strong>willekeurige intercepts</strong> omvormen door de expeditiespecifieke intercepties uit te drukken als <em>aanpassingen</em> op het algemene intercept,</p>
+<p><span class="math display">\[log(\frac{\pi_ij}{1-\pi_ij})=(\beta_0+b_0j) +\beta_1X_ij1 + \beta_2X_ij2\]</span> met <span class="math inline">\(\beta_0j|\sigma_0 \sim^{ind} N(0,\sigma_0^2)\)</span> Laten we eens naar de betekenis van en de veronderstellingen achter de modelparameters kijken:</p>
+<ul>
+<li><p>De <strong>expeditie-specifieke</strong> intercepten <span class="math inline">\(\beta_0j\)</span> beschrijven de onderliggende succespercentages, zoals gemeten door de log(kans op succes), voor elke expeditie<span class="math inline">\(j\)</span>. Hiermee wordt erkend dat sommige expedities inherent succesvoller zijn dan andere.</p></li>
+<li><p>De expeditiespecifieke intervallen <span class="math inline">\(\beta_0j\)</span> worden verondersteld normaal verdeeld te zijn rond een gemiddeld intercept <span class="math inline">\(\beta_0\)</span> met standaardafwijking <span class="math inline">\(\sigma_0\)</span>. Daarmee beschrijft <span class="math inline">\(\beta_0\)</span> het <em>typische</em> basissucces over alle expedities, en <span class="math inline">\(\sigma_0\)</span> de <strong>tussen-groep variabiliteit</strong> in succespercentages van expeditie tot expeditie.</p></li>
+<li><p>Beta_1$ beschrijft het <strong>gemiddelde</strong> verband tussen succes en leeftijd wanneer gecontroleerd wordt voor zuurstofgebruik. Op dezelfde manier beschrijft <span class="math inline">\(beta_2\)</span> de gemiddelde relatie tussen succes en zuurstofverbruik wanneer gecontroleerd wordt voor leeftijd.</p></li>
+</ul>
+<p>Samengevat maakt ons logistisch regressiemodel met willekeurige intercepten de vereenvoudigende (maar volgens ons redelijke) veronderstelling dat expedities <em>unieke intercepten</em> <span class="math inline">\(\beta_0j\)</span> kunnen hebben, maar delen de <em>gemeenschappelijke</em> regressieparameters <span class="math inline">\(\beta_1\)</span> en <span class="math inline">\(\beta_2\)</span>. Anders gezegd, hoewel de onderliggende succespercentages kunnen verschillen van expeditie tot expeditie, zijn jonger zijn of zuurstof gebruiken niet voordeliger in de ene expeditie dan in de andere.</p>
+<p>Om de posterior van het model te simuleren, combineert de <code>stan_glmer()</code> code hieronder het beste van twee werelden: <code>family = binomial</code> geeft aan dat het om een <em>logistisch</em> regressiemodel gaat (à la Hoofdstuk 13) en de <code>(1 | expeditie_id)</code> term in de modelformule incorporeert onze hiërarchische groeperingsstructuur (à la Hoofdstuk 17): Consider the meaning of, and assumptions behind, the model parameters:</p>
+<ul>
+<li><p>De <strong>expeditie-specifieke</strong> intercepts <span class="math inline">\(\beta_0j\)</span> beschrijven de onderliggende succespercentages, zoals gemeten door de log(kans op succes), voor elke expeditie<span class="math inline">\(j\)</span>. Hiermee wordt erkend dat sommige expedities inherent succesvoller zijn dan andere.</p></li>
+<li><p>De expeditiespecifieke intervallen <span class="math inline">\(\beta_0j\)</span> worden verondersteld normaal verdeeld te zijn rond een globaal intercept <span class="math inline">\(\beta_0\)</span> met standaardafwijking <span class="math inline">\(\sigma_0\)</span>. Daarmee beschrijft <span class="math inline">\(\beta_0\)</span> het <em>typische</em> basissucces over alle expedities, en <span class="math inline">\(\sigma_0\)</span> de <strong>tussen-groep variabiliteit</strong> in succespercentages van expeditie tot expeditie.</p></li>
+<li><p>Beta_1$ beschrijft het <strong>globale</strong> verband tussen succes en leeftijd wanneer gecontroleerd wordt voor zuurstofgebruik. Op dezelfde manier beschrijft <span class="math inline">\(beta_2\)</span> de globale relatie tussen succes en zuurstofverbruik wanneer gecontroleerd wordt voor leeftijd.</p></li>
+</ul>
+<p>Samengevat maakt ons logistisch regressiemodel met willekeurige intercepten de vereenvoudigende (maar volgens ons redelijke) veronderstelling dat expedities <em>unieke intercepten</em> <span class="math inline">\(\beta_0j\)</span> kunnen hebben, maar <em>gemeenschappelijke</em> regressieparameters <span class="math inline">\(\beta_1\)</span> en <span class="math inline">\(\beta_2\)</span> delen. In gewone taal, hoewel de onderliggende succespercentages kunnen verschillen van expeditie tot expeditie, zijn jonger zijn of zuurstof gebruiken niet voordeliger in de ene expeditie dan in de andere.</p>
+<p>Om de posterior van het model te simuleren, combineert de <code>stan_glmer()</code> code, zie hieronder, het beste van twee werelden: <code>family = binomial</code> geeft aan dat het om een <em>logistisch</em> regressiemodel gaat en de <code>(1 | expeditie_id)</code> term in de modelformule incorporeert onze hiërarchische groepstructuur:</p>
 <div class="layout-chunk" data-layout="l-body">
 <pre><code>
-SAMPLING FOR MODEL &#39;55ec3099e16ca06fa44f4c9f6d6ebcf4&#39; NOW (CHAIN 1).
+SAMPLING FOR MODEL &#39;bernoulli&#39; NOW (CHAIN 1).
 Chain 1: 
 Chain 1: Gradient evaluation took 0 seconds
 Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0 seconds.
@@ -2214,15 +2200,15 @@ Chain 1: Iteration: 8000 / 10000 [ 80%]  (Sampling)
 Chain 1: Iteration: 9000 / 10000 [ 90%]  (Sampling)
 Chain 1: Iteration: 10000 / 10000 [100%]  (Sampling)
 Chain 1: 
-Chain 1:  Elapsed Time: 0.035 seconds (Warm-up)
-Chain 1:                0.037 seconds (Sampling)
-Chain 1:                0.072 seconds (Total)
+Chain 1:  Elapsed Time: 83.034 seconds (Warm-up)
+Chain 1:                91.697 seconds (Sampling)
+Chain 1:                174.731 seconds (Total)
 Chain 1: 
 
-SAMPLING FOR MODEL &#39;55ec3099e16ca06fa44f4c9f6d6ebcf4&#39; NOW (CHAIN 2).
+SAMPLING FOR MODEL &#39;bernoulli&#39; NOW (CHAIN 2).
 Chain 2: 
-Chain 2: Gradient evaluation took 0 seconds
-Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0 seconds.
+Chain 2: Gradient evaluation took 0.001 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 10 seconds.
 Chain 2: Adjust your expectations accordingly!
 Chain 2: 
 Chain 2: 
@@ -2239,12 +2225,12 @@ Chain 2: Iteration: 8000 / 10000 [ 80%]  (Sampling)
 Chain 2: Iteration: 9000 / 10000 [ 90%]  (Sampling)
 Chain 2: Iteration: 10000 / 10000 [100%]  (Sampling)
 Chain 2: 
-Chain 2:  Elapsed Time: 0.036 seconds (Warm-up)
-Chain 2:                0.039 seconds (Sampling)
-Chain 2:                0.075 seconds (Total)
+Chain 2:  Elapsed Time: 88.463 seconds (Warm-up)
+Chain 2:                77.247 seconds (Sampling)
+Chain 2:                165.71 seconds (Total)
 Chain 2: 
 
-SAMPLING FOR MODEL &#39;55ec3099e16ca06fa44f4c9f6d6ebcf4&#39; NOW (CHAIN 3).
+SAMPLING FOR MODEL &#39;bernoulli&#39; NOW (CHAIN 3).
 Chain 3: 
 Chain 3: Gradient evaluation took 0 seconds
 Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0 seconds.
@@ -2264,12 +2250,12 @@ Chain 3: Iteration: 8000 / 10000 [ 80%]  (Sampling)
 Chain 3: Iteration: 9000 / 10000 [ 90%]  (Sampling)
 Chain 3: Iteration: 10000 / 10000 [100%]  (Sampling)
 Chain 3: 
-Chain 3:  Elapsed Time: 0.035 seconds (Warm-up)
-Chain 3:                0.037 seconds (Sampling)
-Chain 3:                0.072 seconds (Total)
+Chain 3:  Elapsed Time: 84.377 seconds (Warm-up)
+Chain 3:                77.284 seconds (Sampling)
+Chain 3:                161.661 seconds (Total)
 Chain 3: 
 
-SAMPLING FOR MODEL &#39;55ec3099e16ca06fa44f4c9f6d6ebcf4&#39; NOW (CHAIN 4).
+SAMPLING FOR MODEL &#39;bernoulli&#39; NOW (CHAIN 4).
 Chain 4: 
 Chain 4: Gradient evaluation took 0 seconds
 Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0 seconds.
@@ -2289,118 +2275,94 @@ Chain 4: Iteration: 8000 / 10000 [ 80%]  (Sampling)
 Chain 4: Iteration: 9000 / 10000 [ 90%]  (Sampling)
 Chain 4: Iteration: 10000 / 10000 [100%]  (Sampling)
 Chain 4: 
-Chain 4:  Elapsed Time: 0.036 seconds (Warm-up)
-Chain 4:                0.035 seconds (Sampling)
-Chain 4:                0.071 seconds (Total)
+Chain 4:  Elapsed Time: 83.91 seconds (Warm-up)
+Chain 4:                71.386 seconds (Sampling)
+Chain 4:                155.296 seconds (Total)
 Chain 4: </code></pre>
 </div>
-<p>Bekijk de numerieke en visuele diagnostiek in de figuur hieronder eens. Ten eerste duiden de willekeurigheid in de sporenplots (links), de overeenstemming in de dichtheidplots van de vier parallelle ketens (midden) en een Rhat-waarde van effectief 1 erop dat onze simulatie uiterst stabiel is. Verder gedragen onze afhankelijke ketens zich elk “genoeg” als een onafhankelijk sample. De autocorrelatie, rechts weergegeven voor slechts één keten, neemt snel af en de verhouding van de effectieve steekproefgrootte is bevredigend hoog - onze 20.000 Markov-ketenwaarden zijn even effectief als 7600 onafhankelijke steekproeven (0,38 ⋅ 20000).</p>
+<p>Je wordt aangemoedigd deze simulatie te volgen met de uitvoering van de code hierboven en te kijken naar enkele MCMC-diagnoses die hieronder staan. De r:</p>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="wat-kun-je-met-bayes_files/figure-html5/unnamed-chunk-13-1.png" width="624" /><img src="wat-kun-je-met-bayes_files/figure-html5/unnamed-chunk-13-2.png" width="624" /><img src="wat-kun-je-met-bayes_files/figure-html5/unnamed-chunk-13-3.png" width="624" /></p>
+<p><img src="hierarchische-logistische-regressie-met-bayes_files/figure-html5/unnamed-chunk-10-1.png" width="624" /><img src="hierarchische-logistische-regressie-met-bayes_files/figure-html5/unnamed-chunk-10-2.png" width="624" /><img src="hierarchische-logistische-regressie-met-bayes_files/figure-html5/unnamed-chunk-10-3.png" width="624" /></p>
 </div>
+<p>Terwijl deze diagnostiek bevestigt dat onze MCMC simulatie op het juiste spoor zit, geeft een <strong>posterior predictive check</strong> hieronder aan dat ons model op het juiste spoor zit. Van elk van de 100 posterior gesimuleerde datasets, stellen we de proportie klimmers vast die succesvol waren met de <code>success_rate()</code> functie. Deze succespercentages variëren van ruwweg 37% tot 41%, in een klein venster rond het werkelijk waargenomen succespercentage van 38.9% in de <code>klimmers</code> data.</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre><code>[1] 1.000508</code></pre>
-<pre><code>[1] 0.4032414</code></pre>
+<p><img src="hierarchische-logistische-regressie-met-bayes_files/figure-html5/unnamed-chunk-11-1.png" width="624" /></p>
 </div>
-<h3 id="posterior-schatting-en-hypothese-testen">Posterior schatting en hypothese testen</h3>
-<p>We kunnen nu de <em>gecombineerde</em> 20.000 Markovketenwaarden gebruiken, met vertrouwen, om het Beta(18, 92) posterior model te benaderen van <span class="math inline">\(\pi\)</span>. Het figuur hieronder bevestigt inderdaad dat de volledige MCMC-benadering (rechts) de werkelijke posterior (links) dicht benadert.</p>
+<h3 id="posterior-analyse">Posterior analyse</h3>
+<p>In onze posterior analyse van het succes van bergbeklimmers, concentreren we ons op het geheel. Behalve dat we gerustgesteld zijn door het feit dat we correct rekening houden met de groepsstructuur van onze gegevens, zijn we niet geïnteresseerd in een specifieke expeditie. Hieronder volgen enkele posterior samenvattingen voor onze regressieparameters <span class="math inline">\(\beta_0\)</span>, <span class="math inline">\(\beta_1\)</span> en <span class="math inline">\(\beta_2\)</span>.</p>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="wat-kun-je-met-bayes_files/figure-html5/unnamed-chunk-15-1.png" width="624" /><img src="wat-kun-je-met-bayes_files/figure-html5/unnamed-chunk-15-2.png" width="624" /></p>
+<pre><code># A tibble: 3 x 5
+  term            estimate std.error conf.low conf.high
+  &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+1 (Intercept)      -1.41     0.476    -2.04     -0.802 
+2 age              -0.0475   0.00940  -0.0596   -0.0358
+3 oxygen_usedTRUE   5.80     0.485     5.21      6.46  </code></pre>
 </div>
-<p>Als zodanig kunnen wij elk kenmerk van het Beta(18, 92) posterior model benaderen door het overeenkomstige kenmerk van de Markov-keten. Wij kunnen bijvoorbeeld het posterieure gemiddelde benaderen door het gemiddelde van de MCMC-steekproefwaarden, of het 2,5-percentiel posterior benaderen door het 2,5-percentiel van de MCMC-steekproefwaarden. Hiertoe levert de <code>tidy()</code> functie in het <strong>broom.mixed</strong> pakket (Bolker en Robinson 2021. Broom.mixed: Tidying Methods for Mixed Models)[<a href="https://github.com/bbolker/broom.mixed" class="uri">https://github.com/bbolker/broom.mixed</a>] een aantal handige statistieken voor de gecombineerde 20.000 Markov chain waarden die zijn opgeslagen in art_sim:</p>
+<p>Om te beginnen zien we dat het 80% posterior ‘çredible’ (geloofwaardigheids) interval (CI) voor de <code>age</code> coëfficiënt <span class="math inline">\(\beta_1\)</span> ruim onder 0 ligt. We hebben dus <em>significant</em> posterior bewijs dat, wanneer we controleren of een klimmer al dan niet zuurstof gebruikt, de kans op succes afneemt met de leeftijd. Meer specifiek, als we de informatie in <span class="math inline">\(\beta_1\)</span> vertalen van de <em>log</em>(kansen) naar de <em>kans</em> schaal, is er 80% kans dat de kans op een succesvolle beklimming daalt tussen 3,5% en 5,8% voor elk jaar extra leeftijd: <span class="math inline">\(e^{-0,0594}, e^{-0,0358}=(0,942, 0,965)\)</span>.</p>
+<p>Op dezelfde manier levert het 80% posterior geloofwaardig interval voor de oxygen_usedTRUE coëfficiënt <span class="math inline">\(beta_2\)</span> <em>significant</em> posterior bewijs dat, wanneer gecontroleerd wordt voor leeftijd, het gebruik van zuurstof de kans op het beklimmen van de top drastisch verhoogt. Er is een kans van 80% dat het gebruik van zuurstof kan overeenkomen met een 182- tot 617-voudige toename van de kans op succes: <span class="math inline">\(e^{5.2}}, e^{6.43}=(182,617)\)</span>, Zuurstof alstublieft!</p>
+<p>Door onze waarnemingen voor <span class="math inline">\(\beta_1\)</span> en <span class="math inline">\(\beta_2\)</span> te combineren, wordt het posterior mediaan model voor de relatie tussen de log(kans op succes) van de klimmers en hun leeftijd (<span class="math inline">\(X_1\)</span>)en zuurstofgebruik (<span class="math inline">\(X_2\)</span>) <span class="math display">\[log(\frac{\pi}{1-\pi})=-1.42-0.0474X_1+5.79X_2\]</span></p>
+<p>Of, op de schaal van waarschijnlijkheid: <span class="math display">\[\pi=\frac{e^{-1.42-0.0474X_1+5.79X_2}}{1+e^{-1.42-0.0474X_1+5.79X_2}}\]</span> Dit posterior mediaan model vertegenwoordigt slechts het <em>midden</em> van een <em>bereik</em> van posterior plausibele relaties tussen succes, leeftijd en zuurstofgebruik. Om een idee te krijgen van dit bereik, toont figuur hieronder 100 posterior plausibele alternatieve modellen. Zowel met als zonder zuurstof neemt de kans op succes af met de leeftijd. Bovendien, op elke leeftijd, is de kans op succes <em>dramatisch</em> hoger wanneer klimmers zuurstof gebruiken. Echter, onze zekerheid over deze trends varieert nogal per leeftijd. We hebben <em>veel</em> minder zekerheid over de slaagkans voor oudere klimmers met zuurstof dan voor jongere klimmers met zuurstof, voor wie de slaagkans over het geheel hoog is. Op dezelfde manier, maar minder drastisch, hebben we minder zekerheid over de slaagkans voor jongere klimmers die geen zuurstof gebruiken dan voor oudere klimmers die geen zuurstof gebruiken, voor wie de slaagkans uniform laag is.</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre><code># A tibble: 1 x 5
-  term  estimate std.error conf.low conf.high
-  &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
-1 pi       0.161    0.0352    0.100     0.239</code></pre>
+<p><img src="hierarchische-logistische-regressie-met-bayes_files/figure-html5/unnamed-chunk-13-1.png" width="624" /></p>
 </div>
-<p>En de <code>mcmc_areas()</code>-functie in het <strong>bayesplot</strong>-pakket biedt een visuele aanvulling (zie de figuur hieronder)</p>
+<h3 id="posterior-classificatie">Posterior classificatie</h3>
+<p>Stel dat vier klimmers op een nieuwe expeditie gaan. Twee van hen zijn 20 jaar oud en twee zijn 60 jaar. Van beide leeftijdsgroepen is één klimmer van plan zuurstof te gebruiken en de andere niet:</p>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="wat-kun-je-met-bayes_files/figure-html5/unnamed-chunk-17-1.png" width="624" /></p>
+<pre><code>  age oxygen_used expedition_id
+1  20       FALSE           new
+2  20        TRUE           new
+3  60       FALSE           new
+4  60        TRUE           new</code></pre>
 </div>
-<p>In de <code>tidy()</code> samenvatting geven <code>conf.low</code> en <code>conf.high</code> de 2,5e en 97,5e percentielen van de Markov-ketenwaarden aan, respectievelijk 0,101 en 0,239. Deze vormen bij benadering het midden 95%- geloofwaardigheidsinterval voor <span class="math inline">\(\pi\)</span> dat wordt weergegeven door het gearceerde gebied in de <code>mcmc_areas()</code>-plot. Verder meldt de schatting dat de mediaan van onze 20.000 Markov chain-waarden, en dus onze <em>benadering</em> van de werkelijke posterieure mediaan, 0,162 is. Deze mediaan wordt weergegeven door de verticale lijn in de mcmc_areas()-plot. Net als het gemiddelde en de modus geeft de mediaan een andere maat voor een “typische” posterior <span class="math inline">\(\pi\)</span> waarde. Hij komt overeen met het 50ste posterior percentiel - 50% van posterior <span class="math inline">\(\pi\)</span> waarden liggen boven de mediaan en 50% liggen eronder. Maar in tegenstelling tot het gemiddelde en de modus, bestaat er geen eenduidige formule voor een Beta(<span class="math inline">\(\alpha, \beta\)</span>)-mediaan. Dit legt nog meer moois bloot van MCMC simulatie: zelfs als een formule ongrijpbaar is, kunnen we een posterior eenheid schatten door de overeenkomstige eigenschap van onze waargenomen Markov chain steekproefwaarden.</p>
-<p>Hoewel het een mooie eerste stop is, geeft de <code>tidy()</code> functie niet altijd elke samenvattende statistiek die van belang is. Hij rapporteert bijvoorbeeld niet het gemiddelde of de modus van onze Markov chain steekproefwaarden. Geen probleem. We kunnen samenvattende statistieken rechtstreeks uit de Markov chain waarden berekenen. De eerste stap is het omzetten van een matrix van de vier parallelle ketens in een enkel <em>dataframe</em> van de gecombineerde ketens:</p>
+<p>Natuurlijk willen ze allemaal weten hoe groot de kans is dat ze de top zullen bereiken. Om dit vast te stellen werken we hier met de <code>posterior_predict()</code> snelkoppelingsfunctie om 20.000 posterior voorspellingen (0 of 1) te simuleren voor elk van onze 4 nieuwe klimmers:</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre><code>[1] 20000     1</code></pre>
+<pre><code>     1 2 3 4
+[1,] 0 1 0 0
+[2,] 1 1 0 1
+[3,] 1 1 0 1</code></pre>
 </div>
-<p>Met de ketens in dataframe-vorm kunnen wij op de gebruikelijke manier te werk gaan en onze <code>dplyr</code> gereedschappen gebruiken om een en ander te transformeren en samen te vatten. Wij kunnen bijvoorbeeld direct het steekproefgemiddelde, de mediaan, de modus en de kwantielen van de gecombineerde Markov-ketenwaarden berekenen. De mediaan- en kwantielwaarden zijn precies die welke door <code>tidy()</code> hierboven worden gerapporteerd, en elimineren dus elk mysterie over die functie!</p>
+<p>Voor elke klimmer wordt de kans op succes benaderd door het geobserveerde aandeel van succes onder hun 20.000 posterieure voorspellingen. Aangezien deze kansen de onzekerheid in het basissuccespercentage van de nieuwe expeditie omvatten, zijn ze gematigder dan de algemene trends die we eerder zichtbaar maakten.</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre><code>  post_mean post_median post_mode  lower_95  upper_95
-1 0.1635785   0.1614223 0.1549176 0.1004316 0.2389237</code></pre>
+<pre><code>      1       2       3       4 
+0.27815 0.80110 0.14630 0.64710 </code></pre>
 </div>
-<p>Wij kunnen de ruwe kettingwaarden ook gebruiken om de volgende taak in onze posterior analyse aan te pakken - het testen van de bewering dat minder dan 20% van de grote museumkunstenaars Gen X zijn. Daartoe kunnen wij de posterior waarschijnlijkheid van dit scenario <strong>benaderen</strong>, <span class="math inline">\(P(\pi&lt;0.20|Y=14)\)</span>, door het aandeel Markovketen <span class="math inline">\(\pi\)</span>πwaarden die onder 0,20 vallen. Volgens deze benadering is er een kans van 84,6% dat de vertegenwoordiging van Gen X-artiesten onder 0,20 ligt:</p>
+<p>Deze voorspellingen geven meer inzicht in de verbanden tussen leeftijd, zuurstof, en succes. Bijvoorbeeld, onze posterior voorspelling is dat klimmer 1, die 20 jaar oud is en <em>niet</em> van plan is om zuurstof te gebruiken, 27.88% kans heeft om de top te halen. Deze kans is natuurlijk lager dan voor klimmer 2, die ook 20 is maar <em>wel</em> van plan is om zuurstof te gebruiken. Het is hoger dan de posterior voorspelling van succes voor klimmer 3, die ook niet van plan is zuurstof te gebruiken maar wel 60 jaar oud is. Over het algemeen is de voorspelling van succes <em>het hoogst</em> voor klimmer 2, die jonger is en van plan is zuurstof te gebruiken, en <em>het laagst</em> voor klimmer 3, die ouder is en niet van plan is zuurstof te gebruiken.</p>
+<p>Posterior <em>kans</em> voorspellingen kunnen omgezet worden in <strong>posterior classificaties</strong> van binaire uitkomsten: ja of nee, verwachtingen of de klimmer zal slagen of niet? Als we een eenvoudige cut-off van 0,5 zouden gebruiken om dit te bepalen, dan zouden we klimmers 1 en 3 aanraden <em>niet</em> aan de expeditie deel te nemen (tenminste, niet zonder zuurstof) en klimmers 2 en 4 het groene licht geven. Maar in deze specifieke context moeten we het waarschijnlijk aan de individuele klimmers overlaten om hun eigen resultaten te interpreteren en hun eigen ja-of-nee beslissingen te nemen over het al dan niet voortzetten van hun expeditie. Zo kan een kans op succes van 65,16% voor sommigen de moeite en het risico waard zijn, maar voor anderen niet.</p>
+<h3 id="model-evaluatie">Model evaluatie</h3>
+<p>Om onze klimanalyse af te ronden, vragen we ons af: Is ons hiërarchisch-logistisch model een goed model? Lang verhaal kort, het antwoord is ja. - Ten eerste, ons model is <strong>eerlijk</strong>. De gegevens die we hebben gebruikt zijn openbaar en we verwachten niet dat onze analyse een negatief effect zal hebben op individuen of de samenleving. (Nogmaals, saaie antwoorden op de vraag naar eerlijkheid zijn de beste soort.)<br />
+- Ten tweede Posterior Predictive Checque controle toonde aan dat ons model <strong>niet al te verkeerd</strong> lijkt - onze posterior gesimuleerde succespercentages schommelen rond de waargenomen succespercentages in onze gegevens.<br />
+- Tenslotte, voor de vraag naar <strong>posterior classificatie nauwkeurigheid</strong>, kunnen we onze posterior classificaties van succes vergelijken met de werkelijke uitkomsten voor de 2076 klimmers in onze dataset. Standaard beginnen we met een <strong>kans cut-off</strong> van 0.5 - als de kans op succes van een klimmer groter is dan 0.5, voorspellen we dat hij zal slagen. We implementeren en evalueren deze classificatieregel met <code>classification_summary()</code> hieronder.</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre><code> exceeds     n percent
-   FALSE  3043 0.15215
-    TRUE 16957 0.84785</code></pre>
+<pre><code>$confusion_matrix
+     y    0   1
+ FALSE 1172  97
+  TRUE   77 730
+
+$accuracy_rates
+                          
+sensitivity      0.9045849
+specificity      0.9235619
+overall_accuracy 0.9161850</code></pre>
 </div>
-<p>Laat het op je inwerken en onthoud het punt. We hebben onze MCMC simulatie gebruikt om het posterior model van <span class="math inline">\(\pi\)</span> te benaderen samen met de eigenschappen van belang. Ter vergelijking, de tabel hieronder toont de Beta(18,92) posterior kenmerken die we eerder hebben berekend naast hun overeenkomstige MCMC-benaderingen. De clou is dit: MCMC werkte. De benaderingen zijn vrij nauwkeurig. Laat dit u geruststellen - ook als modellen te ingewikkeld zijn om te specificeren, kunnen we vertrouwen hebben in onze MCMC-benaderingen van deze modellen (zolang de diagnostiek maar klopt!).</p>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th>gemiddelde</th>
-<th>modus</th>
-<th>2.5</th>
-<th>97.5</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>posterior</td>
-<td>0.16</td>
-<td>0.16</td>
-<td>0.1</td>
-<td>0.24</td>
-</tr>
-<tr class="even">
-<td>MCMC</td>
-<td>0.1642</td>
-<td>0.1598</td>
-<td>0.1011</td>
-<td>0.2388</td>
-</tr>
-</tbody>
-</table>
-<h3 id="posterior-voorspelling-1">Posterior voorspelling</h3>
-<p>Tenslotte kunnen wij onze Markov-ketenwaarden gebruiken om het posterior voorspellingsmodel van <span class="math inline">\(Y^{&#39;}\)</span> het aantal van de volgende 20 artiesten uit de steekproef dat Gen X of jonger zal zijn. Bonus: het simuleren van dit model helpt ons ook intuïtie op te bouwen voor de theorie die ten grondslag ligt aan de posterior voorspelling. Herinner je dat het posterior voorspellingsmodel twee bronnen van variabiliteit weerspiegelt:</p>
-<ul>
-<li><strong>Steekproefvariabiliteit in de gegevens</strong><br />
-<span class="math inline">\(Y^{&#39;}\)</span> kan een willekeurig aantal kunstenaars in {0,1,…,20} en hangt af van het onderliggende aandeel van kunstenaars die Gen X zijn, <span class="math inline">\(\pi:Y^{&#39;}|\pi\sim Bin(20,\pi)\)</span>.<br />
-</li>
-<li><strong>Posterieure variabiliteit in <span class="math inline">\(\pi\)</span>π</strong> De verzameling van 20.000 Markovketens <span class="math inline">\(\pi\)</span> waarden geeft bij benadering een idee van de variabiliteit en het bereik in plausibele <span class="math inline">\(\pi\)</span>waarden.</li>
-</ul>
-<p>Om beide bronnen van variabiliteit in posterieure voorspellingen te vatten <span class="math inline">\(Y^{&#39;}\)</span> kunnen we <code>rbinom()</code> gebruiken om één <span class="math inline">\(Bin(20,\pi\)</span> uitkomst <span class="math inline">\(Y^{&#39;}\)</span> van elk van de 20.000<span class="math inline">\(\pi\)</span> ketenwaarden. De eerste drie resultaten weerspiegelen een algemene trend: kleinere waarden van <span class="math inline">\(\pi\)</span> zullen meestal kleinere waarden van <span class="math inline">\(Y^{&#39;}\)</span> geven. Dit is logisch. Hoe lager de onderliggende vertegenwoordiging van Gen X-kunstenaars in het museum, hoe minder Gen X-kunstenaars we mogen verwachten in onze volgende steekproef van 20 kunstwerken.</p>
+<p>In het algemeen voorspelt ons model met deze classificatieregel de resultaten goed voor 91,61% van onze klimmers. Dit ziet er behoorlijk fantastisch uit gezien het feit dat we enkel informatie gebruiken over de leeftijd en het zuurstofverbruik van de klimmers (terwijl er nog andere voorspellers te bedenken zijn (bv. bestemming, seizoen, enz.). Maar gezien de gevolgen van een foute classificatie in deze specifieke context (bv. risico op verwondingen), moeten we voorrang geven aan <strong>specificiteit</strong>, ons vermogen om te anticiperen wanneer een klimmer <em>niet</em> zou slagen. Om dit te bereiken voorspelde ons model slechts 92.51% van de mislukte beklimmingen correct. Om dit percentage te verhogen, kunnen we de waarschijnlijkheidsgrens in onze classificatieregel aanpassen.</p>
+<p>In het algemeen kunnen we, om de specificiteit te verhogen, de waarschijnlijkheidsdrempel <em>verhogen</em>, waardoor het <em>moeilijker</em> wordt om “succes” te voorspellen. Na wat trial and error lijkt het erop dat cut-offs van ruwweg 0.65 of hoger een gewenst specificiteitsniveau van 95% zullen bereiken. Deze overschakeling naar 0.65 verlaagt natuurlijk de gevoeligheid van onze posterior classificaties, van 90.46% naar 81.54%, en dus ons vermogen om te detecteren wanneer een klimmer <em>succesvol</em> zal zijn. Wij denken dat de extra voorzichtigheid hier van belang is.</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre><code>         pi y_predict
-1 0.1300704         2
-2 0.1755149         3
-3 0.2214144         5</code></pre>
+<pre><code>$confusion_matrix
+     y    0   1
+ FALSE 1213  56
+  TRUE  149 658
+
+$accuracy_rates
+                          
+sensitivity      0.8153656
+specificity      0.9558708
+overall_accuracy 0.9012524</code></pre>
 </div>
-<div class="layout-chunk" data-layout="l-body">
-<p><img src="wat-kun-je-met-bayes_files/figure-html5/unnamed-chunk-22-1.png" width="624" /></p>
-</div>
-<div class="layout-chunk" data-layout="l-body">
-<pre><code>   mean lower_80 upper_80
-1 3.274        1        6</code></pre>
-</div>
-<h2 id="bayesiaanse-voordelen">Bayesiaanse voordelen</h2>
-<p>Zoals je waarschijnlijk merkte, is het moeilijkste deel van een <strong>Bayesiaanse analyse</strong> vaak het bouwen of simuleren van het posterior model. Zodra je dat stuk op zijn plaats hebt, is het vrij eenvoudig om deze posterior te gebruiken voor schatting, hypothese toetsing en voorspelling. Daarentegen is het opbouwen van de formules om de analoge frequentistische berekeningen uit te voeren vaak minder intuïtief.</p>
-<p>We kunnen ons ook koesteren in het gemak waarmee Bayesiaanse resultaten kunnen worden geïnterpreteerd. In het algemeen beoordeelt een Bayesiaanse analyse de onzekerheid over een <em>onbekende</em> parameter <span class="math inline">\(\pi\)</span> in het licht van de waargenomen gegevens <span class="math inline">\(Y\)</span>. Neem bijvoorbeeld de studie van de kunstenaars zoals hierboven gepresenteerd. In het licht van de waarneming dat <span class="math inline">\(Y=14\)</span> van de 100 kunstenaars in de steekproef Gen X of jonger waren, stelden we vast dat er een 84,9% posterior kans was dat Gen X vertegenwoordigd was in het hele museum,<br />
-<span class="math inline">\(π\)</span> lager is dan 0,20:</p>
-<p><span class="math display">\[P(\pi&lt;0.20|Y=14)=0.849\]</span> Deze berekening heeft geen zin in een frequentistische analyse. Omgekeerd beoordeelt een frequentistische analyse de onzekerheid van de waargenomen gegevens <span class="math inline">\(Y\)</span> in het licht van veronderstelde waarden van <span class="math inline">\(π\)</span>. De frequentistische tegenhanger van de Bayesiaanse posterior waarschijnlijkheid hierboven is bijvoorbeeld de p-waarde, waarvan we de formule hier niet zullen behandelen:</p>
-<p><span class="math display">\[PY(\leq14|\pi=0.20)=0.08\]</span> De omgekeerde volgorde van de conditionering in deze waarschijnlijkheid, <span class="math inline">\(Y\)</span> gegeven <span class="math inline">\(π\)</span> (<span class="math inline">\(Y|\pi\)</span>) in plaats van <span class="math inline">\(π\)</span> gegeven <span class="math inline">\(Y\)</span> (<span class="math inline">\(\pi|Y)\)</span>) leidt tot een andere berekening en interpretatie dan de Bayesiaanse waarschijnlijkheid: als <span class="math inline">\(π\)</span> slechts 0,20 zou zijn, dan is er slechts een kans van 8% dat we een steekproef zouden hebben waargenomen waarin ten hoogste <span class="math inline">\(Y=14\)</span> van de 100 kunstenaars Gen X waren. Het is niet onze manier van schrijven die onhandig is, het is de p-waarde. Hoewel het ons interessante informatie verschaft, is de vraag die het beantwoordt een beetje minder natuurlijk voor het menselijk brein: aangezien we de gegevens eigenlijk hebben <em>geobserveerd</em>, maar <span class="math inline">\(\pi\)</span> <em>niet weten</em>, kan het een breinbreker zijn om een berekening te interpreteren die het tegendeel veronderstelt. Voornamelijk bij het testen van hypothesen is het natuurlijker om te vragen “hoe waarschijnlijk is mijn hypothese?” (wat de Bayesiaanse waarschijnlijkheid antwoordt) dan “hoe waarschijnlijk zijn mijn data als mijn hypothese niet waar zou zijn?” (wat de frequentistische waarschijnlijkheid antwoordt). Aangezien p-waarden zo vaak verkeerd worden geïnterpreteerd, en dus verkeerd worden gebruikt, worden zij in het hele frequentistische en Bayesiaanse spectrum steeds minder benadrukt.</p>
-<p>Deze blog leert je hoe je een posterior model in antwoorden kunt omzetten. Dat wil zeggen dat je gebruik maakte van posterior modellen, exact of bij benadering, om drie posterior analyse taken uit te voeren voor een onbekende parameter <span class="math inline">\(\pi\)</span>:</p>
-<ol type="1">
-<li><strong>Posterior schatting</strong><br />
-Een posterior geloofwaardigheidsinterval (CI) geeft een reeks van posterior aannemelijke waarden van <span class="math inline">\(\pi\)</span> en dus een idee van zowel de posterior typische waarden als de onzekerheid in <span class="math inline">\(\pi\)</span>.<br />
-</li>
-<li><strong>Posterior toetsing van hypothesen</strong> Posterior waarschijnlijkheden geven inzicht in overeenkomstige hypothesen betreffende <span class="math inline">\(\pi\)</span>.<br />
-</li>
-<li><strong>Posterior voorspelling</strong><br />
-Het posterior voorspellingsmodel voor een nieuw gegevenspunt <span class="math inline">\(Y\)</span> houdt rekening met zowel de steekproefvariabiliteit in <span class="math inline">\(Y\)</span> en de <em>posterior variabiliteit</em> in <span class="math inline">\(\pi\)</span>.</li>
-</ol>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<h2 id="literatuur">Literatuur</h2>
+<p>Fast, Shannon, and Thomas Hegland. 2011. “Book Challenges: A Statistical Examination.” <em>Project for Statistics 316-Advanced Statistical Modeling, St. Olaf College</em>.</p>
+<p>Legler, Julie, and Paul Roback. 2021. <em>Beyond Multiple Linear Regression: Applied Generalized Linear Models and Multilevel Models in R.</em> Chapman; Hall/CRC. <a href="https://bookdown.org/roback/bookdown-BeyondMLR/" class="uri">https://bookdown.org/roback/bookdown-BeyondMLR/</a>. ———. 2020b. “Himalayan Climbing Expeditions.” <em>TidyTuesday Github Repostitory</em>. <a href="https://github.com/rfordatascience/tidytuesday/tree/master/data/2020/2020-09-22" class="uri">https://github.com/rfordatascience/tidytuesday/tree/master/data/2020/2020-09-22</a>.</p>
+<p>The Himalayan Database. 2020. <a href="https://www.himalayandatabase.com/" class="uri">https://www.himalayandatabase.com/</a>. Trinh, Ly, and Pony Ameri. 2016. “AirBnB Price Determinants: A Multilevel Modeling Approach.” <em>Project for Statistics 316-Advanced Statistical Modeling, St. Olaf College</em>.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
