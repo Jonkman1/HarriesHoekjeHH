@@ -1,0 +1,2445 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007ba5; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #007ba5; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #007ba5; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #5e5e5e; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+</style>
+
+
+  <!--radix_placeholder_meta_tags-->
+  <title>Missende waarden</title>
+
+  <meta property="description" itemprop="description" content="Over het pakket `mice` en missende waarden"/>
+
+
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2022-05-05"/>
+  <meta property="article:created" itemprop="dateCreated" content="2022-05-05"/>
+  <meta name="article:author" content="Michy Allice, bewerking HarrieJonkman"/>
+
+  <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+  <meta property="og:title" content="Missende waarden"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:description" content="Over het pakket `mice` en missende waarden"/>
+  <meta property="og:locale" content="en_US"/>
+
+  <!--  https://dev.twitter.com/cards/types/summary -->
+  <meta property="twitter:card" content="summary"/>
+  <meta property="twitter:title" content="Missende waarden"/>
+  <meta property="twitter:description" content="Over het pakket `mice` en missende waarden"/>
+
+  <!--/radix_placeholder_meta_tags-->
+  <!--radix_placeholder_rmarkdown_metadata-->
+
+  <script type="text/json" id="radix-rmarkdown-metadata">
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Missende waarden"]},{"type":"character","attributes":{},"value":["Over het pakket `mice` en missende waarden\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Michy Allice, bewerking HarrieJonkman"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":[]}},"value":[]}]}]},{"type":"character","attributes":{},"value":["2022-05-05"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
+  </script>
+  <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["missende-waarden_files/figure-html5/unnamed-chunk-11-1.png","missende-waarden_files/figure-html5/unnamed-chunk-12-1.png","missende-waarden_files/figure-html5/unnamed-chunk-13-1.png","missende-waarden_files/figure-html5/unnamed-chunk-4-1.png","missende-waarden_files/figure-html5/unnamed-chunk-5-1.png","missende-waarden_files/figure-html5/unnamed-chunk-6-1.png"]}
+  </script>
+  <!--radix_placeholder_navigation_in_header-->
+  <!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+
+  <style type="text/css">
+
+  body {
+    background-color: white;
+  }
+
+  .pandoc-table {
+    width: 100%;
+  }
+
+  .pandoc-table>caption {
+    margin-bottom: 10px;
+  }
+
+  .pandoc-table th:not([align]) {
+    text-align: left;
+  }
+
+  .pagedtable-footer {
+    font-size: 15px;
+  }
+
+  d-byline .byline {
+    grid-template-columns: 2fr 2fr;
+  }
+
+  d-byline .byline h3 {
+    margin-block-start: 1.5em;
+  }
+
+  d-byline .byline .authors-affiliations h3 {
+    margin-block-start: 0.5em;
+  }
+
+  .authors-affiliations .orcid-id {
+    width: 16px;
+    height:16px;
+    margin-left: 4px;
+    margin-right: 4px;
+    vertical-align: middle;
+    padding-bottom: 2px;
+  }
+
+  d-title .dt-tags {
+    margin-top: 1em;
+    grid-column: text;
+  }
+
+  .dt-tags .dt-tag {
+    text-decoration: none;
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0em 0.4em;
+    margin-right: 0.5em;
+    margin-bottom: 0.4em;
+    font-size: 70%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  d-article table.gt_table td,
+  d-article table.gt_table th {
+    border-bottom: none;
+  }
+
+  .html-widget {
+    margin-bottom: 2.0em;
+  }
+
+  .l-screen-inset {
+    padding-right: 16px;
+  }
+
+  .l-screen .caption {
+    margin-left: 10px;
+  }
+
+  .shaded {
+    background: rgb(247, 247, 247);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .html-widget {
+    margin-bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .shaded-content {
+    background: white;
+  }
+
+  .text-output {
+    margin-top: 0;
+    line-height: 1.5em;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  d-article {
+    padding-top: 2.5rem;
+    padding-bottom: 30px;
+  }
+
+  d-appendix {
+    padding-top: 30px;
+  }
+
+  d-article>p>img {
+    width: 100%;
+  }
+
+  d-article h2 {
+    margin: 1rem 0 1.5rem 0;
+  }
+
+  d-article h3 {
+    margin-top: 1.5rem;
+  }
+
+  d-article iframe {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 2.0em;
+    width: 100%;
+  }
+
+  /* Tweak code blocks */
+
+  d-article div.sourceCode code,
+  d-article pre code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: auto;
+  }
+
+  d-article div.sourceCode {
+    background-color: white;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 10px;
+    font-size: 12px;
+    border-left: 2px solid rgba(0,0,0,0.1);
+  }
+
+  d-article pre {
+    font-size: 12px;
+    color: black;
+    background: none;
+    margin-top: 0;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  d-article pre a {
+    border-bottom: none;
+  }
+
+  d-article pre a:hover {
+    border-bottom: none;
+    text-decoration: underline;
+  }
+
+  d-article details {
+    grid-column: text;
+    margin-bottom: 0.8em;
+  }
+
+  @media(min-width: 768px) {
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: visible !important;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 18px;
+    font-size: 14px;
+  }
+
+  d-article pre {
+    font-size: 14px;
+  }
+
+  }
+
+  figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  /* CSS for d-contents */
+
+  .d-contents {
+    grid-column: text;
+    color: rgba(0,0,0,0.8);
+    font-size: 0.9em;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+    padding-left: 0.25em;
+    justify-self: start;
+  }
+
+  @media(min-width: 1000px) {
+    .d-contents.d-contents-float {
+      height: 0;
+      grid-column-start: 1;
+      grid-column-end: 4;
+      justify-self: center;
+      padding-right: 3em;
+      padding-left: 2em;
+    }
+  }
+
+  .d-contents nav h3 {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+
+  .d-contents li {
+    list-style-type: none
+  }
+
+  .d-contents nav > ul {
+    padding-left: 0;
+  }
+
+  .d-contents ul {
+    padding-left: 1em
+  }
+
+  .d-contents nav ul li {
+    margin-top: 0.6em;
+    margin-bottom: 0.2em;
+  }
+
+  .d-contents nav a {
+    font-size: 13px;
+    border-bottom: none;
+    text-decoration: none
+    color: rgba(0, 0, 0, 0.8);
+  }
+
+  .d-contents nav a:hover {
+    text-decoration: underline solid rgba(0, 0, 0, 0.6)
+  }
+
+  .d-contents nav > ul > li > a {
+    font-weight: 600;
+  }
+
+  .d-contents nav > ul > li > ul {
+    font-weight: inherit;
+  }
+
+  .d-contents nav > ul > li > ul > li {
+    margin-top: 0.2em;
+  }
+
+
+  .d-contents nav ul {
+    margin-top: 0;
+    margin-bottom: 0.25em;
+  }
+
+  .d-article-with-toc h2:nth-child(2) {
+    margin-top: 0;
+  }
+
+
+  /* Figure */
+
+  .figure {
+    position: relative;
+    margin-bottom: 2.5em;
+    margin-top: 1.5em;
+  }
+
+  .figure img {
+    width: 100%;
+  }
+
+  .figure .caption {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    line-height: 1.5em;
+  }
+
+  .figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  .figure .caption a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .figure .caption b,
+  .figure .caption strong, {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1.0);
+  }
+
+  /* Citations */
+
+  d-article .citation {
+    color: inherit;
+    cursor: inherit;
+  }
+
+  div.hanging-indent{
+    margin-left: 1em; text-indent: -1em;
+  }
+
+  /* Citation hover box */
+
+  .tippy-box[data-theme~=light-border] {
+    background-color: rgba(250, 250, 250, 0.95);
+  }
+
+  .tippy-content > p {
+    margin-bottom: 0;
+    padding: 2px;
+  }
+
+
+  /* Tweak 1000px media break to show more text */
+
+  @media(min-width: 1000px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 16px;
+    }
+
+    .grid {
+      grid-column-gap: 16px;
+    }
+
+    d-article {
+      font-size: 1.06rem;
+      line-height: 1.7em;
+    }
+    figure .caption, .figure .caption, figure figcaption {
+      font-size: 13px;
+    }
+  }
+
+  @media(min-width: 1180px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 32px;
+    }
+
+    .grid {
+      grid-column-gap: 32px;
+    }
+  }
+
+
+  /* Get the citation styles for the appendix (not auto-injected on render since
+     we do our own rendering of the citation appendix) */
+
+  d-appendix .citation-appendix,
+  .d-appendix .citation-appendix {
+    font-size: 11px;
+    line-height: 15px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 18px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.02);
+    padding: 10px 18px;
+    border-radius: 3px;
+    color: rgba(150, 150, 150, 1);
+    overflow: hidden;
+    margin-top: -12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  /* Include appendix styles here so they can be overridden */
+
+  d-appendix {
+    contain: layout style;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-top: 60px;
+    margin-bottom: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    color: rgba(0,0,0,0.5);
+    padding-top: 60px;
+    padding-bottom: 48px;
+  }
+
+  d-appendix h3 {
+    grid-column: page-start / text-start;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 1em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.65);
+  }
+
+  d-appendix h3 + * {
+    margin-top: 1em;
+  }
+
+  d-appendix ol {
+    padding: 0 0 0 15px;
+  }
+
+  @media (min-width: 768px) {
+    d-appendix ol {
+      padding: 0 0 0 30px;
+      margin-left: -30px;
+    }
+  }
+
+  d-appendix li {
+    margin-bottom: 1em;
+  }
+
+  d-appendix a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  d-appendix > * {
+    grid-column: text;
+  }
+
+  d-appendix > d-footnote-list,
+  d-appendix > d-citation-list,
+  d-appendix > distill-appendix {
+    grid-column: screen;
+  }
+
+  /* Include footnote styles here so they can be overridden */
+
+  d-footnote-list {
+    contain: layout style;
+  }
+
+  d-footnote-list > * {
+    grid-column: text;
+  }
+
+  d-footnote-list a.footnote-backlink {
+    color: rgba(0,0,0,0.3);
+    padding-left: 0.5em;
+  }
+
+
+
+  /* Anchor.js */
+
+  .anchorjs-link {
+    /*transition: all .25s linear; */
+    text-decoration: none;
+    border-bottom: none;
+  }
+  *:hover > .anchorjs-link {
+    margin-left: -1.125em !important;
+    text-decoration: none;
+    border-bottom: none;
+  }
+
+  /* Social footer */
+
+  .social_footer {
+    margin-top: 30px;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.67);
+  }
+
+  .disqus-comments {
+    margin-right: 30px;
+  }
+
+  .disqus-comment-count {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+
+  #disqus_thread {
+    margin-top: 30px;
+  }
+
+  .article-sharing a {
+    border-bottom: none;
+    margin-right: 8px;
+  }
+
+  .article-sharing a:hover {
+    border-bottom: none;
+  }
+
+  .sidebar-section.subscribe {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .subscribe p {
+    margin-bottom: 0.5em;
+  }
+
+
+  .article-footer .subscribe {
+    font-size: 15px;
+    margin-top: 45px;
+  }
+
+
+  .sidebar-section.custom {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .custom p {
+    margin-bottom: 0.5em;
+  }
+
+  /* Styles for listing layout (hide title) */
+  .layout-listing d-title, .layout-listing .d-title {
+    display: none;
+  }
+
+  /* Styles for posts lists (not auto-injected) */
+
+
+  .posts-with-sidebar {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+
+  .posts-list .description h2,
+  .posts-list .description p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  .posts-list .description h2 {
+    font-weight: 700;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .posts-list h2.post-tag {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 12px;
+  }
+  .posts-list {
+    margin-top: 60px;
+    margin-bottom: 24px;
+  }
+
+  .posts-list .post-preview {
+    text-decoration: none;
+    overflow: hidden;
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 24px 0;
+  }
+
+  .post-preview-last {
+    border-bottom: none !important;
+  }
+
+  .posts-list .posts-list-caption {
+    grid-column: screen;
+    font-weight: 400;
+  }
+
+  .posts-list .post-preview h2 {
+    margin: 0 0 6px 0;
+    line-height: 1.2em;
+    font-style: normal;
+    font-size: 24px;
+  }
+
+  .posts-list .post-preview p {
+    margin: 0 0 12px 0;
+    line-height: 1.4em;
+    font-size: 16px;
+  }
+
+  .posts-list .post-preview .thumbnail {
+    box-sizing: border-box;
+    margin-bottom: 24px;
+    position: relative;
+    max-width: 500px;
+  }
+  .posts-list .post-preview img {
+    width: 100%;
+    display: block;
+  }
+
+  .posts-list .metadata {
+    font-size: 12px;
+    line-height: 1.4em;
+    margin-bottom: 18px;
+  }
+
+  .posts-list .metadata > * {
+    display: inline-block;
+  }
+
+  .posts-list .metadata .publishedDate {
+    margin-right: 2em;
+  }
+
+  .posts-list .metadata .dt-authors {
+    display: block;
+    margin-top: 0.3em;
+    margin-right: 2em;
+  }
+
+  .posts-list .dt-tags {
+    display: block;
+    line-height: 1em;
+  }
+
+  .posts-list .dt-tags .dt-tag {
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0.3em 0.4em;
+    margin-right: 0.2em;
+    margin-bottom: 0.4em;
+    font-size: 60%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .posts-list img {
+    opacity: 1;
+  }
+
+  .posts-list img[data-src] {
+    opacity: 0;
+  }
+
+  .posts-more {
+    clear: both;
+  }
+
+
+  .posts-sidebar {
+    font-size: 16px;
+  }
+
+  .posts-sidebar h3 {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .sidebar-section {
+    margin-bottom: 30px;
+  }
+
+  .categories ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .categories li {
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 0;
+  }
+
+  .categories li>a {
+    border-bottom: none;
+  }
+
+  .categories li>a:hover {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  }
+
+  .categories .active {
+    font-weight: 600;
+  }
+
+  .categories .category-count {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+
+  @media(min-width: 768px) {
+    .posts-list .post-preview h2 {
+      font-size: 26px;
+    }
+    .posts-list .post-preview .thumbnail {
+      float: right;
+      width: 30%;
+      margin-bottom: 0;
+    }
+    .posts-list .post-preview .description {
+      float: left;
+      width: 45%;
+    }
+    .posts-list .post-preview .metadata {
+      float: left;
+      width: 20%;
+      margin-top: 8px;
+    }
+    .posts-list .post-preview p {
+      margin: 0 0 12px 0;
+      line-height: 1.5em;
+      font-size: 16px;
+    }
+    .posts-with-sidebar .posts-list {
+      float: left;
+      width: 75%;
+    }
+    .posts-with-sidebar .posts-sidebar {
+      float: right;
+      width: 20%;
+      margin-top: 60px;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+  }
+
+
+  /* Improve display for browsers without grid (IE/Edge <= 15) */
+
+  .downlevel {
+    line-height: 1.6em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+  }
+
+  .downlevel .d-title {
+    padding-top: 6rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .downlevel .d-title h1 {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.1em;
+    margin: 0 0 0.5rem;
+  }
+
+  .downlevel .d-title p {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.55em;
+    margin-top: 0;
+  }
+
+  .downlevel .d-byline {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    font-size: 0.8rem;
+    line-height: 1.8em;
+  }
+
+  .downlevel .section-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .downlevel .d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+
+
+  .downlevel .d-appendix {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.5);
+    padding-top: 40px;
+    padding-bottom: 48px;
+  }
+
+  .downlevel .footnotes ol {
+    padding-left: 13px;
+  }
+
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @media(min-width: 768px) {
+    .downlevel .base-grid,
+    .downlevel .distill-header,
+    .downlevel .d-title,
+    .downlevel .d-abstract,
+    .downlevel .d-article,
+    .downlevel .d-appendix,
+    .downlevel .distill-appendix,
+    .downlevel .d-byline,
+    .downlevel .d-footnote-list,
+    .downlevel .d-citation-list,
+    .downlevel .distill-footer,
+    .downlevel .appendix-bottom,
+    .downlevel .posts-container {
+    padding-left: 150px;
+    padding-right: 150px;
+    max-width: 900px;
+  }
+  }
+
+  .downlevel pre code {
+    display: block;
+    border-left: 2px solid rgba(0, 0, 0, .1);
+    padding: 0 0 0 20px;
+    font-size: 14px;
+  }
+
+  .downlevel code, .downlevel pre {
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  .downlevel .posts-list .post-preview {
+    color: inherit;
+  }
+
+
+
+  </style>
+
+  <script type="application/javascript">
+
+  function is_downlevel_browser() {
+    if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                   window.navigator.userAgent)) {
+      return true;
+    } else {
+      return window.load_distill_framework === undefined;
+    }
+  }
+
+  // show body when load is complete
+  function on_load_complete() {
+
+    // add anchors
+    if (window.anchors) {
+      window.anchors.options.placement = 'left';
+      window.anchors.add('d-article > h2, d-article > h3, d-article > h4, d-article > h5');
+    }
+
+
+    // set body to visible
+    document.body.style.visibility = 'visible';
+
+    // force redraw for leaflet widgets
+    if (window.HTMLWidgets) {
+      var maps = window.HTMLWidgets.findAll(".leaflet");
+      $.each(maps, function(i, el) {
+        var map = this.getMap();
+        map.invalidateSize();
+        map.eachLayer(function(layer) {
+          if (layer instanceof L.TileLayer)
+            layer.redraw();
+        });
+      });
+    }
+
+    // trigger 'shown' so htmlwidgets resize
+    $('d-article').trigger('shown');
+  }
+
+  function init_distill() {
+
+    init_common();
+
+    // create front matter
+    var front_matter = $('<d-front-matter></d-front-matter>');
+    $('#distill-front-matter').wrap(front_matter);
+
+    // create d-title
+    $('.d-title').changeElementType('d-title');
+
+    // create d-byline
+    var byline = $('<d-byline></d-byline>');
+    $('.d-byline').replaceWith(byline);
+
+    // create d-article
+    var article = $('<d-article></d-article>');
+    $('.d-article').wrap(article).children().unwrap();
+
+    // move posts container into article
+    $('.posts-container').appendTo($('d-article'));
+
+    // create d-appendix
+    $('.d-appendix').changeElementType('d-appendix');
+
+    // flag indicating that we have appendix items
+    var appendix = $('.appendix-bottom').children('h3').length > 0;
+
+    // replace footnotes with <d-footnote>
+    $('.footnote-ref').each(function(i, val) {
+      appendix = true;
+      var href = $(this).attr('href');
+      var id = href.replace('#', '');
+      var fn = $('#' + id);
+      var fn_p = $('#' + id + '>p');
+      fn_p.find('.footnote-back').remove();
+      var text = fn_p.html();
+      var dtfn = $('<d-footnote></d-footnote>');
+      dtfn.html(text);
+      $(this).replaceWith(dtfn);
+    });
+    // remove footnotes
+    $('.footnotes').remove();
+
+    // move refs into #references-listing
+    $('#references-listing').replaceWith($('#refs'));
+
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      var id = $(this).attr('id');
+      $('.d-contents a[href="#' + id + '"]').parent().remove();
+      appendix = true;
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+    });
+
+    // show d-appendix if we have appendix content
+    $("d-appendix").css('display', appendix ? 'grid' : 'none');
+
+    // localize layout chunks to just output
+    $('.layout-chunk').each(function(i, val) {
+
+      // capture layout
+      var layout = $(this).attr('data-layout');
+
+      // apply layout to markdown level block elements
+      var elements = $(this).children().not('details, div.sourceCode, pre, script');
+      elements.each(function(i, el) {
+        var layout_div = $('<div class="' + layout + '"></div>');
+        if (layout_div.hasClass('shaded')) {
+          var shaded_content = $('<div class="shaded-content"></div>');
+          $(this).wrap(shaded_content);
+          $(this).parent().wrap(layout_div);
+        } else {
+          $(this).wrap(layout_div);
+        }
+      });
+
+
+      // unwrap the layout-chunk div
+      $(this).children().unwrap();
+    });
+
+    // remove code block used to force  highlighting css
+    $('.distill-force-highlighting-css').parent().remove();
+
+    // remove empty line numbers inserted by pandoc when using a
+    // custom syntax highlighting theme
+    $('code.sourceCode a:empty').remove();
+
+    // load distill framework
+    load_distill_framework();
+
+    // wait for window.distillRunlevel == 4 to do post processing
+    function distill_post_process() {
+
+      if (!window.distillRunlevel || window.distillRunlevel < 4)
+        return;
+
+      // hide author/affiliations entirely if we have no authors
+      var front_matter = JSON.parse($("#distill-front-matter").html());
+      var have_authors = front_matter.authors && front_matter.authors.length > 0;
+      if (!have_authors)
+        $('d-byline').addClass('hidden');
+
+      // article with toc class
+      $('.d-contents').parent().addClass('d-article-with-toc');
+
+      // strip links that point to #
+      $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+
+      // add orcid ids
+      $('.authors-affiliations').find('.author').each(function(i, el) {
+        var orcid_id = front_matter.authors[i].orcidID;
+        if (orcid_id) {
+          var a = $('<a></a>');
+          a.attr('href', 'https://orcid.org/' + orcid_id);
+          var img = $('<img></img>');
+          img.addClass('orcid-id');
+          img.attr('alt', 'ORCID ID');
+          img.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==');
+          a.append(img);
+          $(this).append(a);
+        }
+      });
+
+      // hide elements of author/affiliations grid that have no value
+      function hide_byline_column(caption) {
+        $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+      }
+
+      // affiliations
+      var have_affiliations = false;
+      for (var i = 0; i<front_matter.authors.length; ++i) {
+        var author = front_matter.authors[i];
+        if (author.affiliation !== "&nbsp;") {
+          have_affiliations = true;
+          break;
+        }
+      }
+      if (!have_affiliations)
+        $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+
+      // published date
+      if (!front_matter.publishedDate)
+        hide_byline_column("Published");
+
+      // document object identifier
+      var doi = $('d-byline').find('h3:contains("DOI")');
+      var doi_p = doi.next().empty();
+      if (!front_matter.doi) {
+        // if we have a citation and valid citationText then link to that
+        if ($('#citation').length > 0 && front_matter.citationText) {
+          doi.html('Citation');
+          $('<a href="#citation"></a>')
+            .text(front_matter.citationText)
+            .appendTo(doi_p);
+        } else {
+          hide_byline_column("DOI");
+        }
+      } else {
+        $('<a></a>')
+           .attr('href', "https://doi.org/" + front_matter.doi)
+           .html(front_matter.doi)
+           .appendTo(doi_p);
+      }
+
+       // change plural form of authors/affiliations
+      if (front_matter.authors.length === 1) {
+        var grid = $('.authors-affiliations');
+        grid.children('h3:contains("Authors")').text('Author');
+        grid.children('h3:contains("Affiliations")').text('Affiliation');
+      }
+
+      // remove d-appendix and d-footnote-list local styles
+      $('d-appendix > style:first-child').remove();
+      $('d-footnote-list > style:first-child').remove();
+
+      // move appendix-bottom entries to the bottom
+      $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+      $('.appendix-bottom').remove();
+
+      // hoverable references
+      $('span.citation[data-cites]').each(function() {
+        var refs = $(this).attr('data-cites').split(" ");
+        var refHtml = refs.map(function(ref) {
+          return "<p>" + $('#ref-' + ref).html() + "</p>";
+        }).join("\n");
+        window.tippy(this, {
+          allowHTML: true,
+          content: refHtml,
+          maxWidth: 500,
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        });
+      });
+
+      // clear polling timer
+      clearInterval(tid);
+
+      // show body now that everything is ready
+      on_load_complete();
+    }
+
+    var tid = setInterval(distill_post_process, 50);
+    distill_post_process();
+
+  }
+
+  function init_downlevel() {
+
+    init_common();
+
+     // insert hr after d-title
+    $('.d-title').after($('<hr class="section-separator"/>'));
+
+    // check if we have authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+
+    // manage byline/border
+    if (!have_authors)
+      $('.d-byline').remove();
+    $('.d-byline').after($('<hr class="section-separator"/>'));
+    $('.d-byline a').remove();
+
+    // remove toc
+    $('.d-contents').remove();
+
+    // move appendix elements
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+    });
+
+
+    // inject headers into references and footnotes
+    var refs_header = $('<h3></h3>');
+    refs_header.text('References');
+    $('#refs').prepend(refs_header);
+
+    var footnotes_header = $('<h3></h3');
+    footnotes_header.text('Footnotes');
+    $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+
+    // remove appendix if it's empty
+    if ($('.d-appendix').children().length === 0)
+      $('.d-appendix').remove();
+
+    // prepend separator above appendix
+    $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+
+    // trim code
+    $('pre>code').each(function(i, val) {
+      $(this).html($.trim($(this).html()));
+    });
+
+    // move posts-container right before article
+    $('.posts-container').insertBefore($('.d-article'));
+
+    $('body').addClass('downlevel');
+
+    on_load_complete();
+  }
+
+
+  function init_common() {
+
+    // jquery plugin to change element types
+    (function($) {
+      $.fn.changeElementType = function(newType) {
+        var attrs = {};
+
+        $.each(this[0].attributes, function(idx, attr) {
+          attrs[attr.nodeName] = attr.nodeValue;
+        });
+
+        this.replaceWith(function() {
+          return $("<" + newType + "/>", attrs).append($(this).contents());
+        });
+      };
+    })(jQuery);
+
+    // prevent underline for linked images
+    $('a > img').parent().css({'border-bottom' : 'none'});
+
+    // mark non-body figures created by knitr chunks as 100% width
+    $('.layout-chunk').each(function(i, val) {
+      var figures = $(this).find('img, .html-widget');
+      if ($(this).attr('data-layout') !== "l-body") {
+        figures.css('width', '100%');
+      } else {
+        figures.css('max-width', '100%');
+        figures.filter("[width]").each(function(i, val) {
+          var fig = $(this);
+          fig.css('width', fig.attr('width') + 'px');
+        });
+
+      }
+    });
+
+    // auto-append index.html to post-preview links in file: protocol
+    // and in rstudio ide preview
+    $('.post-preview').each(function(i, val) {
+      if (window.location.protocol === "file:")
+        $(this).attr('href', $(this).attr('href') + "index.html");
+    });
+
+    // get rid of index.html references in header
+    if (window.location.protocol !== "file:") {
+      $('.distill-site-header a[href]').each(function(i,val) {
+        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+      });
+    }
+
+    // add class to pandoc style tables
+    $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+    $('.kable-table').children('table').addClass('pandoc-table');
+
+    // add figcaption style to table captions
+    $('caption').parent('table').addClass("figcaption");
+
+    // initialize posts list
+    if (window.init_posts_list)
+      window.init_posts_list();
+
+    // implmement disqus comment link
+    $('.disqus-comment-count').click(function() {
+      window.headroom_prevent_pin = true;
+      $('#disqus_thread').toggleClass('hidden');
+      if (!$('#disqus_thread').hasClass('hidden')) {
+        var offset = $(this).offset();
+        $(window).resize();
+        $('html, body').animate({
+          scrollTop: offset.top - 35
+        });
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    if (is_downlevel_browser())
+      init_downlevel();
+    else
+      window.addEventListener('WebComponentsReady', init_distill);
+  });
+
+  </script>
+
+  <!--/radix_placeholder_distill-->
+  <script src="missende-waarden_files/header-attrs-2.14/header-attrs.js"></script>
+  <script src="missende-waarden_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+  <script src="missende-waarden_files/popper-2.6.0/popper.min.js"></script>
+  <link href="missende-waarden_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="missende-waarden_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="missende-waarden_files/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="missende-waarden_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="missende-waarden_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="missende-waarden_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="missende-waarden_files/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+  <!--/radix_placeholder_site_in_header-->
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"Missende waarden","description":"Over het pakket `mice` en missende waarden","authors":[{"author":"Michy Allice, bewerking HarrieJonkman","authorURL":{},"affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-05-05T00:00:00.000+02:00","citationText":"HarrieJonkman, 2022"}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>Missende waarden</h1>
+<!--radix_placeholder_categories-->
+<!--/radix_placeholder_categories-->
+<p><p>Over het pakket <code>mice</code> en missende waarden</p></p>
+</div>
+
+<div class="d-byline">
+  Michy Allice, bewerking HarrieJonkman true 
+  
+<br/>2022-05-05
+</div>
+
+<div class="d-article">
+<h2 id="data-imputeren-met-r-het-mice-pakket">Data imputeren met R; het
+<code>MICE</code> pakket</h2>
+<h2 id="inleiding">Inleiding</h2>
+<p>Onlangs gaf Stef van Buuren een verhelderende introductie op het
+pakket <code>mice</code> dat hij de laatste jaren ontwikkeld heeft en
+dat een standaardpakket geworden is om missende data om te gaan. Zijn
+presentatie is hier te vinden <a
+href="https://nscrweb.netlify.app/posts/2022-04-28-multiple-imputation-in-r/">slides</a>.
+Hij verwees tijdens de presentatie naar het artikel dat hij hierover
+eerder schreef (Van Buuren, and Groothuis-Oudshoorn, 2011)[hier](<a
+href="https://www.jstatsoft.org/article/view/v045i03">mice: Multivariate
+Imputation by Chained Equations in R by Stef van Buuren</a>, het boek
+dat hij hierover maakte <a
+href="https://stefvanbuuren.name/fimd/">hier</a> en ook verwees hij naar
+een korte Nederlandse talige introductie <a
+href="https://stefvanbuuren.name/publications/2012%20Vogelvlucht%20-%20STAtOR.pdf">hier</a>.
+Na zijn presentatie las ik via Rbloggers de korte post van Michy Allice
+<a
+href="https://www.r-bloggers.com/2015/10/imputing-missing-data-with-r-mice-package/">hier</a>.Voor
+deze blog heb ik dat artile van Allice bewerkt. Tot slot las ik ook nog
+het boek van Heymans en Eekhout over dit onderwerp <a
+href="https://bookdown.org/mwheymans/bookmi/">hier</a> dat ook goed
+is.</p>
+<h2 id="het-mice-pakket">Het <code>mice</code>-pakket</h2>
+<p>Ontbrekende gegevens zijn niet zo’n triviaal probleem bij de analyse
+van een dataset. Het is meestal ook niet zo eenvoudig om er rekening mee
+te houden.</p>
+<p>Als de hoeveelheid ontbrekende gegevens zeer klein is in verhouding
+tot de grootte van de dataset, dan kan het weglaten van de weinige data
+met ontbrekende kenmerken de beste strategie zijn om de analyse niet te
+vertekenen,. Met hety weglaten van beschikbare datapunten verdwijnt een
+bepaalde hoeveelheid informatie. Afhankelijk van de situatie waarmee u
+te maken hebt, kunt u op zoek gaan naar andere oplossingen voordat u
+potentieel nuttige datapunten uit uw dataset verwijdert.</p>
+<p>Hoewel sommige snelle oplossingen zoals het vervangen door het
+gemiddelde in sommige gevallen goed kunnen zijn, heb je met zulke
+eenvoudige benaderingen gewoonlijk bias in de data. Het toepassen van
+gemiddelde-substitutie laat het gemiddelde onveranderd (wat wenselijk
+is), maar vermindert de variantie, wat onwenselijk kan zijn.</p>
+<blockquote>
+<p>Het <code>mice</code>pakket in R helpt bij het imputeren van
+ontbrekende waarden met plausibele gegevenswaarden. Deze plausibele
+waarden worden getrokken uit een distributie die speciaal ontworpen is
+voor elk ontbrekend datapunt.</p>
+</blockquote>
+<p>Hieronder gaan we ontbrekende waarden imputeren met behulp van de
+dataset <code>airquality</code> (standaard beschikbaar in R). Voor dit
+blog verwijder ik een aantal datapunten uit de dataset.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/amices/mice'>mice</a></span><span class='op'>)</span>
+<span class='va'>data</span> <span class='op'>&lt;-</span> <span class='va'>airquality</span>
+<span class='va'>data</span><span class='op'>[</span><span class='fl'>4</span><span class='op'>:</span><span class='fl'>10</span>,<span class='fl'>3</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='cn'>NA</span>,<span class='fl'>7</span><span class='op'>)</span>
+<span class='va'>data</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>,<span class='fl'>4</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='cn'>NA</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>     Ozone           Solar.R           Wind             Temp      
+ Min.   :  1.00   Min.   :  7.0   Min.   : 1.700   Min.   :57.00  
+ 1st Qu.: 18.00   1st Qu.:115.8   1st Qu.: 7.400   1st Qu.:73.00  
+ Median : 31.50   Median :205.0   Median : 9.700   Median :79.00  
+ Mean   : 42.13   Mean   :185.9   Mean   : 9.806   Mean   :78.28  
+ 3rd Qu.: 63.25   3rd Qu.:258.8   3rd Qu.:11.500   3rd Qu.:85.00  
+ Max.   :168.00   Max.   :334.0   Max.   :20.700   Max.   :97.00  
+ NA&#39;s   :37       NA&#39;s   :7       NA&#39;s   :7        NA&#39;s   :5      
+     Month            Day      
+ Min.   :5.000   Min.   : 1.0  
+ 1st Qu.:6.000   1st Qu.: 8.0  
+ Median :7.000   Median :16.0  
+ Mean   :6.993   Mean   :15.8  
+ 3rd Qu.:8.000   3rd Qu.:23.0  
+ Max.   :9.000   Max.   :31.0  
+                               </code></pre>
+</div>
+<p>Wat categorische variabelen betreft, is het vervangen van
+categorische variabelen gewoonlijk niet aan te bevelen. Het is wel
+gebruikelijk om ontbrekende categorische variabelen te vervangen door de
+modus van de waargenomen variabelen, maar het is de vraag of dat een
+goede keuze is. Ook al ontbreken er in dit geval geen datapunten van de
+categorische variabelen (Month, Day), we verwijderen ze uit onze dataset
+(we kunnen ze later weer toevoegen als dat nodig is) en bekijken de
+gegevens met <code>summary()</code>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>data</span> <span class='op'>&lt;-</span> <span class='va'>data</span><span class='op'>[</span><span class='op'>-</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>5</span>,<span class='fl'>6</span><span class='op'>)</span><span class='op'>]</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>     Ozone           Solar.R           Wind             Temp      
+ Min.   :  1.00   Min.   :  7.0   Min.   : 1.700   Min.   :57.00  
+ 1st Qu.: 18.00   1st Qu.:115.8   1st Qu.: 7.400   1st Qu.:73.00  
+ Median : 31.50   Median :205.0   Median : 9.700   Median :79.00  
+ Mean   : 42.13   Mean   :185.9   Mean   : 9.806   Mean   :78.28  
+ 3rd Qu.: 63.25   3rd Qu.:258.8   3rd Qu.:11.500   3rd Qu.:85.00  
+ Max.   :168.00   Max.   :334.0   Max.   :20.700   Max.   :97.00  
+ NA&#39;s   :37       NA&#39;s   :7       NA&#39;s   :7        NA&#39;s   :5      </code></pre>
+</div>
+<p>Ozon is blijkbaar de variabele met de meeste ontbrekende datapunten.
+Hieronder gaan we dieper in op de ontbrekende datapatronen.</p>
+<h2 id="snelle-classificatie-van-ontbrekende-gegevens">Snelle
+classificatie van ontbrekende gegevens</h2>
+<p>Er zijn twee soorten ontbrekende gegevens:</p>
+<ul>
+<li>MCAR: volledig willekeurig ontbrekend. Dit is het wenselijke
+scenario in geval van ontbrekende data.<br />
+</li>
+<li>MNAR: missing not at random. Niet-willekeurig ontbrekende gegevens
+zijn een ernstiger probleem en in dit geval kan het verstandig zijn het
+proces van gegevensverzameling verder te controleren en te proberen te
+begrijpen waarom de informatie ontbreekt. Als bijvoorbeeld de meeste
+mensen in een enquête een bepaalde vraag niet hebben beantwoord, waarom
+hebben zij dat dan gedaan? Was de vraag onduidelijk?</li>
+</ul>
+<p>Ervan uitgaande dat de gegevens MCAR zijn, kan een teveel aan
+ontbrekende gegevens ook een probleem zijn. Gewoonlijk is een veilige
+maximumdrempel 5% van het totaal voor grote datasets. Als de ontbrekende
+gegevens voor een bepaald kenmerk of een bepaalde steekproef meer dan 5%
+bedragen, moet u dat kenmerk of die steekproef waarschijnlijk weglaten.
+Daarom controleren we op kenmerken (kolommen) en steekproeven (rijen)
+waar meer dan 5% van de data ontbreekt met een eenvoudige functie</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>pMiss</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>{</span><span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>)</span><span class='op'>/</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>*</span><span class='fl'>100</span><span class='op'>}</span>
+<span class='fu'><a href='https://rdrr.io/r/base/apply.html'>apply</a></span><span class='op'>(</span><span class='va'>data</span>,<span class='fl'>2</span>,<span class='va'>pMiss</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>    Ozone   Solar.R      Wind      Temp 
+24.183007  4.575163  4.575163  3.267974 </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/apply.html'>apply</a></span><span class='op'>(</span><span class='va'>data</span>,<span class='fl'>1</span>,<span class='va'>pMiss</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>  [1]  25  25  25  50 100  50  25  25  25  50  25   0   0   0   0   0
+ [17]   0   0   0   0   0   0   0   0  25  25  50   0   0   0   0  25
+ [33]  25  25  25  25  25   0  25   0   0  25  25   0  25  25   0   0
+ [49]   0   0   0  25  25  25  25  25  25  25  25  25  25   0   0   0
+ [65]  25   0   0   0   0   0   0  25   0   0  25   0   0   0   0   0
+ [81]   0   0  25  25   0   0   0   0   0   0   0   0   0   0   0  25
+ [97]  25  25   0   0   0  25  25   0   0   0  25   0   0   0   0   0
+[113]   0   0  25   0   0   0  25   0   0   0   0   0   0   0   0   0
+[129]   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+[145]   0   0   0   0   0  25   0   0   0</code></pre>
+</div>
+<p>We zien dat Ozon bijna 25% van de datapunten mist, dus we kunnen
+overwegen om het uit de analyse te laten of meer metingen te verzamelen.
+De andere variabelen blijven onder de drempel van 5%, zodat we ze kunnen
+behouden. Wat de data betreft, leidt het ontbreken van slechts één
+kenmerk tot 25% ontbrekende gegevens per dataset.</p>
+<h2
+id="gebruik-mice-voor-het-bekijken-van-ontbrekende-data-patronen">Gebruik
+`mice voor het bekijken van ontbrekende data patronen</h2>
+<p>Het <code>mice</code> pakket biedt een mooie functie
+<code>md.pattern()</code> om een beter inzicht te krijgen in het patroon
+van ontbrekende gegevens.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://amices.org/mice/reference/md.pattern.html'>md.pattern</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="missende-waarden_files/figure-html5/unnamed-chunk-4-1.png" width="624" /></p>
+<pre><code>    Temp Solar.R Wind Ozone   
+104    1       1    1     1  0
+34     1       1    1     0  1
+3      1       1    0     1  1
+1      1       1    0     0  2
+4      1       0    1     1  1
+1      1       0    1     0  2
+1      1       0    0     1  2
+3      0       1    1     1  1
+1      0       1    0     1  2
+1      0       0    0     0  4
+       5       7    7    37 56</code></pre>
+</div>
+<p>De output vertelt ons dat 104 gegevens compleet zijn, 34 data missen
+alleen de Ozonmeting, 3 data missen alleen de Solar.R waarde
+enzovoort.</p>
+<p>Een wellicht meer behulpzame visuele weergave kan worden verkregen
+met behulp van het VIM pakket als volgt</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/statistikat/VIM'>VIM</a></span><span class='op'>)</span>
+<span class='va'>aggr_plot</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/VIM/man/aggr.html'>aggr</a></span><span class='op'>(</span><span class='va'>data</span>, col<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'navyblue'</span>,<span class='st'>'red'</span><span class='op'>)</span>, numbers<span class='op'>=</span><span class='cn'>TRUE</span>, sortVars<span class='op'>=</span><span class='cn'>TRUE</span>, labels<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span>, cex.axis<span class='op'>=</span><span class='fl'>.7</span>, gap<span class='op'>=</span><span class='fl'>3</span>, ylab<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Histogram van missende data"</span>,<span class='st'>"Patroon"</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="missende-waarden_files/figure-html5/unnamed-chunk-5-1.png" width="624" /></p>
+<pre><code>
+ Variables sorted by number of missings: 
+ Variable      Count
+    Ozone 0.24183007
+  Solar.R 0.04575163
+     Wind 0.04575163
+     Temp 0.03267974</code></pre>
+</div>
+<p>Uit de grafiek kunnen we opmaken dat bij bijna 70% van de data geen
+informatie ontbreekt, bij 22% ontbreekt de ozonwaarde en bij de overige
+variabelen ontbreekt zo’n 5%. Door deze aanpak ziet de situatie er naar
+mijn mening een stuk duidelijker uit.</p>
+<p>Een andere (hopelijk) behulpzame visuele benadering is een speciale
+boxplot</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/VIM/man/marginplot.html'>marginplot</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>2</span><span class='op'>)</span><span class='op'>]</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="missende-waarden_files/figure-html5/unnamed-chunk-6-1.png" width="624" /></p>
+</div>
+<p>Uiteraard zijn we hier beperkt tot het plotten van slechts 2
+variabelen tegelijk, maar desalniettemin kunnen we hier een aantal
+interessante inzichten uit verkrijgen. De rode boxplot links toont de
+verdeling van Solar.R waarbij Ozone ontbreekt, terwijl de blauwe boxplot
+de verdeling van de resterende datapunten toont. Hetzelfde geldt voor de
+boxplots van Ozone onderaan de grafiek. Als onze aanname van
+MCAR-gegevens juist is, dan verwachten we dat de rode en blauwe boxplots
+sterk op elkaar lijken.</p>
+<h2 id="imputeren-van-missende-data">Imputeren van missende data</h2>
+<p>De <code>mice()</code> functie zorgt voor het imputatieprocess</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>tempData</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://amices.org/mice/reference/mice.html'>mice</a></span><span class='op'>(</span><span class='va'>data</span>,m<span class='op'>=</span><span class='fl'>5</span>,maxit<span class='op'>=</span><span class='fl'>50</span>,meth<span class='op'>=</span><span class='st'>'pmm'</span>,seed<span class='op'>=</span><span class='fl'>500</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+ iter imp variable
+  1   1  Ozone  Solar.R  Wind  Temp
+  1   2  Ozone  Solar.R  Wind  Temp
+  1   3  Ozone  Solar.R  Wind  Temp
+  1   4  Ozone  Solar.R  Wind  Temp
+  1   5  Ozone  Solar.R  Wind  Temp
+  2   1  Ozone  Solar.R  Wind  Temp
+  2   2  Ozone  Solar.R  Wind  Temp
+  2   3  Ozone  Solar.R  Wind  Temp
+  2   4  Ozone  Solar.R  Wind  Temp
+  2   5  Ozone  Solar.R  Wind  Temp
+  3   1  Ozone  Solar.R  Wind  Temp
+  3   2  Ozone  Solar.R  Wind  Temp
+  3   3  Ozone  Solar.R  Wind  Temp
+  3   4  Ozone  Solar.R  Wind  Temp
+  3   5  Ozone  Solar.R  Wind  Temp
+  4   1  Ozone  Solar.R  Wind  Temp
+  4   2  Ozone  Solar.R  Wind  Temp
+  4   3  Ozone  Solar.R  Wind  Temp
+  4   4  Ozone  Solar.R  Wind  Temp
+  4   5  Ozone  Solar.R  Wind  Temp
+  5   1  Ozone  Solar.R  Wind  Temp
+  5   2  Ozone  Solar.R  Wind  Temp
+  5   3  Ozone  Solar.R  Wind  Temp
+  5   4  Ozone  Solar.R  Wind  Temp
+  5   5  Ozone  Solar.R  Wind  Temp
+  6   1  Ozone  Solar.R  Wind  Temp
+  6   2  Ozone  Solar.R  Wind  Temp
+  6   3  Ozone  Solar.R  Wind  Temp
+  6   4  Ozone  Solar.R  Wind  Temp
+  6   5  Ozone  Solar.R  Wind  Temp
+  7   1  Ozone  Solar.R  Wind  Temp
+  7   2  Ozone  Solar.R  Wind  Temp
+  7   3  Ozone  Solar.R  Wind  Temp
+  7   4  Ozone  Solar.R  Wind  Temp
+  7   5  Ozone  Solar.R  Wind  Temp
+  8   1  Ozone  Solar.R  Wind  Temp
+  8   2  Ozone  Solar.R  Wind  Temp
+  8   3  Ozone  Solar.R  Wind  Temp
+  8   4  Ozone  Solar.R  Wind  Temp
+  8   5  Ozone  Solar.R  Wind  Temp
+  9   1  Ozone  Solar.R  Wind  Temp
+  9   2  Ozone  Solar.R  Wind  Temp
+  9   3  Ozone  Solar.R  Wind  Temp
+  9   4  Ozone  Solar.R  Wind  Temp
+  9   5  Ozone  Solar.R  Wind  Temp
+  10   1  Ozone  Solar.R  Wind  Temp
+  10   2  Ozone  Solar.R  Wind  Temp
+  10   3  Ozone  Solar.R  Wind  Temp
+  10   4  Ozone  Solar.R  Wind  Temp
+  10   5  Ozone  Solar.R  Wind  Temp
+  11   1  Ozone  Solar.R  Wind  Temp
+  11   2  Ozone  Solar.R  Wind  Temp
+  11   3  Ozone  Solar.R  Wind  Temp
+  11   4  Ozone  Solar.R  Wind  Temp
+  11   5  Ozone  Solar.R  Wind  Temp
+  12   1  Ozone  Solar.R  Wind  Temp
+  12   2  Ozone  Solar.R  Wind  Temp
+  12   3  Ozone  Solar.R  Wind  Temp
+  12   4  Ozone  Solar.R  Wind  Temp
+  12   5  Ozone  Solar.R  Wind  Temp
+  13   1  Ozone  Solar.R  Wind  Temp
+  13   2  Ozone  Solar.R  Wind  Temp
+  13   3  Ozone  Solar.R  Wind  Temp
+  13   4  Ozone  Solar.R  Wind  Temp
+  13   5  Ozone  Solar.R  Wind  Temp
+  14   1  Ozone  Solar.R  Wind  Temp
+  14   2  Ozone  Solar.R  Wind  Temp
+  14   3  Ozone  Solar.R  Wind  Temp
+  14   4  Ozone  Solar.R  Wind  Temp
+  14   5  Ozone  Solar.R  Wind  Temp
+  15   1  Ozone  Solar.R  Wind  Temp
+  15   2  Ozone  Solar.R  Wind  Temp
+  15   3  Ozone  Solar.R  Wind  Temp
+  15   4  Ozone  Solar.R  Wind  Temp
+  15   5  Ozone  Solar.R  Wind  Temp
+  16   1  Ozone  Solar.R  Wind  Temp
+  16   2  Ozone  Solar.R  Wind  Temp
+  16   3  Ozone  Solar.R  Wind  Temp
+  16   4  Ozone  Solar.R  Wind  Temp
+  16   5  Ozone  Solar.R  Wind  Temp
+  17   1  Ozone  Solar.R  Wind  Temp
+  17   2  Ozone  Solar.R  Wind  Temp
+  17   3  Ozone  Solar.R  Wind  Temp
+  17   4  Ozone  Solar.R  Wind  Temp
+  17   5  Ozone  Solar.R  Wind  Temp
+  18   1  Ozone  Solar.R  Wind  Temp
+  18   2  Ozone  Solar.R  Wind  Temp
+  18   3  Ozone  Solar.R  Wind  Temp
+  18   4  Ozone  Solar.R  Wind  Temp
+  18   5  Ozone  Solar.R  Wind  Temp
+  19   1  Ozone  Solar.R  Wind  Temp
+  19   2  Ozone  Solar.R  Wind  Temp
+  19   3  Ozone  Solar.R  Wind  Temp
+  19   4  Ozone  Solar.R  Wind  Temp
+  19   5  Ozone  Solar.R  Wind  Temp
+  20   1  Ozone  Solar.R  Wind  Temp
+  20   2  Ozone  Solar.R  Wind  Temp
+  20   3  Ozone  Solar.R  Wind  Temp
+  20   4  Ozone  Solar.R  Wind  Temp
+  20   5  Ozone  Solar.R  Wind  Temp
+  21   1  Ozone  Solar.R  Wind  Temp
+  21   2  Ozone  Solar.R  Wind  Temp
+  21   3  Ozone  Solar.R  Wind  Temp
+  21   4  Ozone  Solar.R  Wind  Temp
+  21   5  Ozone  Solar.R  Wind  Temp
+  22   1  Ozone  Solar.R  Wind  Temp
+  22   2  Ozone  Solar.R  Wind  Temp
+  22   3  Ozone  Solar.R  Wind  Temp
+  22   4  Ozone  Solar.R  Wind  Temp
+  22   5  Ozone  Solar.R  Wind  Temp
+  23   1  Ozone  Solar.R  Wind  Temp
+  23   2  Ozone  Solar.R  Wind  Temp
+  23   3  Ozone  Solar.R  Wind  Temp
+  23   4  Ozone  Solar.R  Wind  Temp
+  23   5  Ozone  Solar.R  Wind  Temp
+  24   1  Ozone  Solar.R  Wind  Temp
+  24   2  Ozone  Solar.R  Wind  Temp
+  24   3  Ozone  Solar.R  Wind  Temp
+  24   4  Ozone  Solar.R  Wind  Temp
+  24   5  Ozone  Solar.R  Wind  Temp
+  25   1  Ozone  Solar.R  Wind  Temp
+  25   2  Ozone  Solar.R  Wind  Temp
+  25   3  Ozone  Solar.R  Wind  Temp
+  25   4  Ozone  Solar.R  Wind  Temp
+  25   5  Ozone  Solar.R  Wind  Temp
+  26   1  Ozone  Solar.R  Wind  Temp
+  26   2  Ozone  Solar.R  Wind  Temp
+  26   3  Ozone  Solar.R  Wind  Temp
+  26   4  Ozone  Solar.R  Wind  Temp
+  26   5  Ozone  Solar.R  Wind  Temp
+  27   1  Ozone  Solar.R  Wind  Temp
+  27   2  Ozone  Solar.R  Wind  Temp
+  27   3  Ozone  Solar.R  Wind  Temp
+  27   4  Ozone  Solar.R  Wind  Temp
+  27   5  Ozone  Solar.R  Wind  Temp
+  28   1  Ozone  Solar.R  Wind  Temp
+  28   2  Ozone  Solar.R  Wind  Temp
+  28   3  Ozone  Solar.R  Wind  Temp
+  28   4  Ozone  Solar.R  Wind  Temp
+  28   5  Ozone  Solar.R  Wind  Temp
+  29   1  Ozone  Solar.R  Wind  Temp
+  29   2  Ozone  Solar.R  Wind  Temp
+  29   3  Ozone  Solar.R  Wind  Temp
+  29   4  Ozone  Solar.R  Wind  Temp
+  29   5  Ozone  Solar.R  Wind  Temp
+  30   1  Ozone  Solar.R  Wind  Temp
+  30   2  Ozone  Solar.R  Wind  Temp
+  30   3  Ozone  Solar.R  Wind  Temp
+  30   4  Ozone  Solar.R  Wind  Temp
+  30   5  Ozone  Solar.R  Wind  Temp
+  31   1  Ozone  Solar.R  Wind  Temp
+  31   2  Ozone  Solar.R  Wind  Temp
+  31   3  Ozone  Solar.R  Wind  Temp
+  31   4  Ozone  Solar.R  Wind  Temp
+  31   5  Ozone  Solar.R  Wind  Temp
+  32   1  Ozone  Solar.R  Wind  Temp
+  32   2  Ozone  Solar.R  Wind  Temp
+  32   3  Ozone  Solar.R  Wind  Temp
+  32   4  Ozone  Solar.R  Wind  Temp
+  32   5  Ozone  Solar.R  Wind  Temp
+  33   1  Ozone  Solar.R  Wind  Temp
+  33   2  Ozone  Solar.R  Wind  Temp
+  33   3  Ozone  Solar.R  Wind  Temp
+  33   4  Ozone  Solar.R  Wind  Temp
+  33   5  Ozone  Solar.R  Wind  Temp
+  34   1  Ozone  Solar.R  Wind  Temp
+  34   2  Ozone  Solar.R  Wind  Temp
+  34   3  Ozone  Solar.R  Wind  Temp
+  34   4  Ozone  Solar.R  Wind  Temp
+  34   5  Ozone  Solar.R  Wind  Temp
+  35   1  Ozone  Solar.R  Wind  Temp
+  35   2  Ozone  Solar.R  Wind  Temp
+  35   3  Ozone  Solar.R  Wind  Temp
+  35   4  Ozone  Solar.R  Wind  Temp
+  35   5  Ozone  Solar.R  Wind  Temp
+  36   1  Ozone  Solar.R  Wind  Temp
+  36   2  Ozone  Solar.R  Wind  Temp
+  36   3  Ozone  Solar.R  Wind  Temp
+  36   4  Ozone  Solar.R  Wind  Temp
+  36   5  Ozone  Solar.R  Wind  Temp
+  37   1  Ozone  Solar.R  Wind  Temp
+  37   2  Ozone  Solar.R  Wind  Temp
+  37   3  Ozone  Solar.R  Wind  Temp
+  37   4  Ozone  Solar.R  Wind  Temp
+  37   5  Ozone  Solar.R  Wind  Temp
+  38   1  Ozone  Solar.R  Wind  Temp
+  38   2  Ozone  Solar.R  Wind  Temp
+  38   3  Ozone  Solar.R  Wind  Temp
+  38   4  Ozone  Solar.R  Wind  Temp
+  38   5  Ozone  Solar.R  Wind  Temp
+  39   1  Ozone  Solar.R  Wind  Temp
+  39   2  Ozone  Solar.R  Wind  Temp
+  39   3  Ozone  Solar.R  Wind  Temp
+  39   4  Ozone  Solar.R  Wind  Temp
+  39   5  Ozone  Solar.R  Wind  Temp
+  40   1  Ozone  Solar.R  Wind  Temp
+  40   2  Ozone  Solar.R  Wind  Temp
+  40   3  Ozone  Solar.R  Wind  Temp
+  40   4  Ozone  Solar.R  Wind  Temp
+  40   5  Ozone  Solar.R  Wind  Temp
+  41   1  Ozone  Solar.R  Wind  Temp
+  41   2  Ozone  Solar.R  Wind  Temp
+  41   3  Ozone  Solar.R  Wind  Temp
+  41   4  Ozone  Solar.R  Wind  Temp
+  41   5  Ozone  Solar.R  Wind  Temp
+  42   1  Ozone  Solar.R  Wind  Temp
+  42   2  Ozone  Solar.R  Wind  Temp
+  42   3  Ozone  Solar.R  Wind  Temp
+  42   4  Ozone  Solar.R  Wind  Temp
+  42   5  Ozone  Solar.R  Wind  Temp
+  43   1  Ozone  Solar.R  Wind  Temp
+  43   2  Ozone  Solar.R  Wind  Temp
+  43   3  Ozone  Solar.R  Wind  Temp
+  43   4  Ozone  Solar.R  Wind  Temp
+  43   5  Ozone  Solar.R  Wind  Temp
+  44   1  Ozone  Solar.R  Wind  Temp
+  44   2  Ozone  Solar.R  Wind  Temp
+  44   3  Ozone  Solar.R  Wind  Temp
+  44   4  Ozone  Solar.R  Wind  Temp
+  44   5  Ozone  Solar.R  Wind  Temp
+  45   1  Ozone  Solar.R  Wind  Temp
+  45   2  Ozone  Solar.R  Wind  Temp
+  45   3  Ozone  Solar.R  Wind  Temp
+  45   4  Ozone  Solar.R  Wind  Temp
+  45   5  Ozone  Solar.R  Wind  Temp
+  46   1  Ozone  Solar.R  Wind  Temp
+  46   2  Ozone  Solar.R  Wind  Temp
+  46   3  Ozone  Solar.R  Wind  Temp
+  46   4  Ozone  Solar.R  Wind  Temp
+  46   5  Ozone  Solar.R  Wind  Temp
+  47   1  Ozone  Solar.R  Wind  Temp
+  47   2  Ozone  Solar.R  Wind  Temp
+  47   3  Ozone  Solar.R  Wind  Temp
+  47   4  Ozone  Solar.R  Wind  Temp
+  47   5  Ozone  Solar.R  Wind  Temp
+  48   1  Ozone  Solar.R  Wind  Temp
+  48   2  Ozone  Solar.R  Wind  Temp
+  48   3  Ozone  Solar.R  Wind  Temp
+  48   4  Ozone  Solar.R  Wind  Temp
+  48   5  Ozone  Solar.R  Wind  Temp
+  49   1  Ozone  Solar.R  Wind  Temp
+  49   2  Ozone  Solar.R  Wind  Temp
+  49   3  Ozone  Solar.R  Wind  Temp
+  49   4  Ozone  Solar.R  Wind  Temp
+  49   5  Ozone  Solar.R  Wind  Temp
+  50   1  Ozone  Solar.R  Wind  Temp
+  50   2  Ozone  Solar.R  Wind  Temp
+  50   3  Ozone  Solar.R  Wind  Temp
+  50   4  Ozone  Solar.R  Wind  Temp
+  50   5  Ozone  Solar.R  Wind  Temp</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>tempData</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Class: mids
+Number of multiple imputations:  5 
+Imputation methods:
+  Ozone Solar.R    Wind    Temp 
+  &quot;pmm&quot;   &quot;pmm&quot;   &quot;pmm&quot;   &quot;pmm&quot; 
+PredictorMatrix:
+        Ozone Solar.R Wind Temp
+Ozone       0       1    1    1
+Solar.R     1       0    1    1
+Wind        1       1    0    1
+Temp        1       1    1    0</code></pre>
+</div>
+<p>Een paar opmerkingen over de parameters:</p>
+<ul>
+<li><code>m=5</code> verwijst naar het aantal geïmputeerde datasets.
+Vijf is de standaard waarde.<br />
+</li>
+<li><code>meth='pmm'</code> verwijst naar de imputatie methode. In dit
+geval gebruiken we pmm (predictive mean matching) als imputatiemethode.
+Er kunnen ook andere imputatiemethoden worden gebruikt, type
+<code>methods(mice)</code> voor een lijst van de beschikbare
+imputatiemethoden.</li>
+</ul>
+<p>Als u de geïmputeerde gegevens wilt controleren, bijvoorbeeld voor de
+variabele Ozon, moet u de volgende regel code invoeren</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>tempData</span><span class='op'>$</span><span class='va'>imp</span><span class='op'>$</span><span class='va'>Ozone</span>
+</code></pre>
+</div>
+<pre><code>     1   2   3   4   5
+5   13  19  12 115  63
+10  30  12  13  21   7
+25   8  28   6  18  28
+26   9  32   4  18  37
+27  37  21   4  32  32
+32  40  39  35  32  47
+33  44  28  36  52  20
+34  20  23  37  37  19
+35  32  28  16  32  35
+36  89  80  48  49 115
+37  18   7  16  30  22
+39  96  77 135  76  85
+42  50 168  64  50  41
+43  96  78  96  96  78
+45  63  20  18  24  31
+46  71  37  20  20  28
+52  20  35  37  63  63
+53  16  78  73  48 115
+54  59  35  46  44  23
+55  16  39  28  40  49
+56  24  36  52  21  44
+57  36  20  20  18  23
+58  11  11  24   7  23
+59  44  13  23  23  27
+60  23   4  19   4  32
+61  44  16  46  37  35
+65  30  23  65  30  30
+72  45  37  63  63  44
+75  39  46  32  39  28
+83  37  40  59  32  35
+84  40  59  28  28  35
+102 61  85  96  79  78
+103 31  59  20  31  36
+107 32  24  11  21  21
+115 52  16  11  14  13
+119 78  96 168  76  50
+150 14  12  13  23  11</code></pre>
+</div>
+<p>De uitvoer toont de geïmputeerde data voor elke observatie (eerste
+kolom links) binnen elke geïmputeerde dataset (eerste rij bovenaan). Als
+u de gebruikte imputatiemethode voor elke variabele wilt controleren,
+kunt u dat met <code>mice</code> heel eenvoudig doen</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>tempData</span><span class='op'>$</span><span class='va'>meth</span>
+</code></pre>
+</div>
+<pre><code>  Ozone Solar.R    Wind    Temp 
+  &quot;pmm&quot;   &quot;pmm&quot;   &quot;pmm&quot;   &quot;pmm&quot; </code></pre>
+</div>
+<p>Nu kunnen we de voltooide dataset terugkrijgen met de
+<code>complete()</code>functie. Het is bijna gewoon Engels:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>completedData</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://amices.org/mice/reference/complete.mids.html'>complete</a></span><span class='op'>(</span><span class='va'>tempData</span>,<span class='fl'>1</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>De ontbrekende waarden zijn vervangen door de geïmputeerde waarden in
+de eerste van de vijf datasets. Als je een andere wilt gebruiken,
+verander dan de tweede parameter in de <code>complete()</code>
+functie.</p>
+<h2 id="de-verdeling-van-de-originele-en-geïmputeerde-data-bekijken">De
+verdeling van de originele en geïmputeerde data bekijken</h2>
+<p>Laten we de verdelingen van de originele en geïmputeerde data
+vergelijken met behulp van een aantal handige plots. Allereerst kunnen
+we een scatterplot gebruiken en Ozon uitzetten tegen alle andere
+variabelen.</p>
+<p>Hier is dat het geval:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://amices.org/mice/reference/xyplot.mids.html'>xyplot</a></span><span class='op'>(</span><span class='va'>tempData</span>,<span class='va'>Ozone</span> <span class='op'>~</span> <span class='va'>Wind</span><span class='op'>+</span><span class='va'>Temp</span><span class='op'>+</span><span class='va'>Solar.R</span>,pch<span class='op'>=</span><span class='fl'>18</span>,cex<span class='op'>=</span><span class='fl'>1</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="missende-waarden_files/figure-html5/unnamed-chunk-11-1.png" width="624" /></p>
+</div>
+<p>Wat wij willen zien is dat de vorm van de magenta punten
+(geïmputeerd) overeenkomt met de vorm van de blauwe punten
+(waargenomen). De overeenkomstige vorm zegt ons dat de geïmputeerde
+waarden inderdaad “plausibele waarden” zijn. Een andere nuttige grafiek
+is de densitygrafiek:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://amices.org/mice/reference/densityplot.mids.html'>densityplot</a></span><span class='op'>(</span><span class='va'>tempData</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="missende-waarden_files/figure-html5/unnamed-chunk-12-1.png" width="624" /></p>
+</div>
+<p>De dichtheid van de geïmputeerde gegevens voor elke geïmputeerde
+dataset wordt getoond in magenta, terwijl de dichtheid van de
+waargenomen gegevens in blauw wordt getoond. Nogmaals, onder onze
+eerdere aannames verwachten we dat de verdelingen vergelijkbaar
+zijn.</p>
+<p>Een andere nuttige visuele kijk op de verdelingen kan worden
+verkregen met de <code>stripplot()</code> functie die de verdelingen van
+de variabelen als afzonderlijke punten toont</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://amices.org/mice/reference/stripplot.mids.html'>stripplot</a></span><span class='op'>(</span><span class='va'>tempData</span>, pch <span class='op'>=</span> <span class='fl'>20</span>, cex <span class='op'>=</span> <span class='fl'>1.2</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="missende-waarden_files/figure-html5/unnamed-chunk-13-1.png" width="624" /></p>
+</div>
+<h2 id="pooling">Pooling</h2>
+<p>Veronderstel dat de volgende stap in onze analyse erin bestaat een
+lineair model op de gegevens toe te passen. Dan kun je je afvragen welke
+geïmputeerde dataset je moet kiezen. Het <code>mice</code> pakket maakt
+het weer heel gemakkelijk om een model te passen op elk van de
+geïmputeerde datasets en dan deze resultaten samen te voegen</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>modelFit1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span><span class='op'>(</span><span class='va'>tempData</span>,<span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>Temp</span><span class='op'>~</span> <span class='va'>Ozone</span><span class='op'>+</span><span class='va'>Solar.R</span><span class='op'>+</span><span class='va'>Wind</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='fu'><a href='https://amices.org/mice/reference/pool.html'>pool</a></span><span class='op'>(</span><span class='va'>modelFit1</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>         term    estimate   std.error statistic        df
+1 (Intercept) 72.70719792 2.761360433 26.330209 117.27936
+2       Ozone  0.15924872 0.025914423  6.145177  49.30693
+3     Solar.R  0.01252384 0.008678358  1.443112  18.19046
+4        Wind -0.34547006 0.207866970 -1.661977 123.65905
+       p.value
+1 0.000000e+00
+2 1.367056e-07
+3 1.659893e-01
+4 9.905045e-02</code></pre>
+</div>
+<p>De variabele <code>modelFit1</code> bevat de resultaten van de
+aanpassing die is uitgevoerd over de geïmputeerde datasets, terwijl de
+<code>pool()</code> functie ze allemaal samenvoegt. Blijkbaar is alleen
+de Ozon variabele statistisch significant.</p>
+<p>Vergeet niet dat we de <code>mice</code>-functie hebben
+geïnitialiseerd met een specifieke ‘seed’-instelling. Daarom zijn de
+resultaten enigszins afhankelijk van onze initiële keuze. Om dit effect
+te verminderen, kunnen we een hoger aantal datasets toerekenen, door de
+standaard <code>m=5</code> parameter in de <code>mice()</code> functie
+als volgt te wijzigen</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>tempData2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://amices.org/mice/reference/mice.html'>mice</a></span><span class='op'>(</span><span class='va'>data</span>,m<span class='op'>=</span><span class='fl'>50</span>,seed<span class='op'>=</span><span class='fl'>245435</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+ iter imp variable
+  1   1  Ozone  Solar.R  Wind  Temp
+  1   2  Ozone  Solar.R  Wind  Temp
+  1   3  Ozone  Solar.R  Wind  Temp
+  1   4  Ozone  Solar.R  Wind  Temp
+  1   5  Ozone  Solar.R  Wind  Temp
+  1   6  Ozone  Solar.R  Wind  Temp
+  1   7  Ozone  Solar.R  Wind  Temp
+  1   8  Ozone  Solar.R  Wind  Temp
+  1   9  Ozone  Solar.R  Wind  Temp
+  1   10  Ozone  Solar.R  Wind  Temp
+  1   11  Ozone  Solar.R  Wind  Temp
+  1   12  Ozone  Solar.R  Wind  Temp
+  1   13  Ozone  Solar.R  Wind  Temp
+  1   14  Ozone  Solar.R  Wind  Temp
+  1   15  Ozone  Solar.R  Wind  Temp
+  1   16  Ozone  Solar.R  Wind  Temp
+  1   17  Ozone  Solar.R  Wind  Temp
+  1   18  Ozone  Solar.R  Wind  Temp
+  1   19  Ozone  Solar.R  Wind  Temp
+  1   20  Ozone  Solar.R  Wind  Temp
+  1   21  Ozone  Solar.R  Wind  Temp
+  1   22  Ozone  Solar.R  Wind  Temp
+  1   23  Ozone  Solar.R  Wind  Temp
+  1   24  Ozone  Solar.R  Wind  Temp
+  1   25  Ozone  Solar.R  Wind  Temp
+  1   26  Ozone  Solar.R  Wind  Temp
+  1   27  Ozone  Solar.R  Wind  Temp
+  1   28  Ozone  Solar.R  Wind  Temp
+  1   29  Ozone  Solar.R  Wind  Temp
+  1   30  Ozone  Solar.R  Wind  Temp
+  1   31  Ozone  Solar.R  Wind  Temp
+  1   32  Ozone  Solar.R  Wind  Temp
+  1   33  Ozone  Solar.R  Wind  Temp
+  1   34  Ozone  Solar.R  Wind  Temp
+  1   35  Ozone  Solar.R  Wind  Temp
+  1   36  Ozone  Solar.R  Wind  Temp
+  1   37  Ozone  Solar.R  Wind  Temp
+  1   38  Ozone  Solar.R  Wind  Temp
+  1   39  Ozone  Solar.R  Wind  Temp
+  1   40  Ozone  Solar.R  Wind  Temp
+  1   41  Ozone  Solar.R  Wind  Temp
+  1   42  Ozone  Solar.R  Wind  Temp
+  1   43  Ozone  Solar.R  Wind  Temp
+  1   44  Ozone  Solar.R  Wind  Temp
+  1   45  Ozone  Solar.R  Wind  Temp
+  1   46  Ozone  Solar.R  Wind  Temp
+  1   47  Ozone  Solar.R  Wind  Temp
+  1   48  Ozone  Solar.R  Wind  Temp
+  1   49  Ozone  Solar.R  Wind  Temp
+  1   50  Ozone  Solar.R  Wind  Temp
+  2   1  Ozone  Solar.R  Wind  Temp
+  2   2  Ozone  Solar.R  Wind  Temp
+  2   3  Ozone  Solar.R  Wind  Temp
+  2   4  Ozone  Solar.R  Wind  Temp
+  2   5  Ozone  Solar.R  Wind  Temp
+  2   6  Ozone  Solar.R  Wind  Temp
+  2   7  Ozone  Solar.R  Wind  Temp
+  2   8  Ozone  Solar.R  Wind  Temp
+  2   9  Ozone  Solar.R  Wind  Temp
+  2   10  Ozone  Solar.R  Wind  Temp
+  2   11  Ozone  Solar.R  Wind  Temp
+  2   12  Ozone  Solar.R  Wind  Temp
+  2   13  Ozone  Solar.R  Wind  Temp
+  2   14  Ozone  Solar.R  Wind  Temp
+  2   15  Ozone  Solar.R  Wind  Temp
+  2   16  Ozone  Solar.R  Wind  Temp
+  2   17  Ozone  Solar.R  Wind  Temp
+  2   18  Ozone  Solar.R  Wind  Temp
+  2   19  Ozone  Solar.R  Wind  Temp
+  2   20  Ozone  Solar.R  Wind  Temp
+  2   21  Ozone  Solar.R  Wind  Temp
+  2   22  Ozone  Solar.R  Wind  Temp
+  2   23  Ozone  Solar.R  Wind  Temp
+  2   24  Ozone  Solar.R  Wind  Temp
+  2   25  Ozone  Solar.R  Wind  Temp
+  2   26  Ozone  Solar.R  Wind  Temp
+  2   27  Ozone  Solar.R  Wind  Temp
+  2   28  Ozone  Solar.R  Wind  Temp
+  2   29  Ozone  Solar.R  Wind  Temp
+  2   30  Ozone  Solar.R  Wind  Temp
+  2   31  Ozone  Solar.R  Wind  Temp
+  2   32  Ozone  Solar.R  Wind  Temp
+  2   33  Ozone  Solar.R  Wind  Temp
+  2   34  Ozone  Solar.R  Wind  Temp
+  2   35  Ozone  Solar.R  Wind  Temp
+  2   36  Ozone  Solar.R  Wind  Temp
+  2   37  Ozone  Solar.R  Wind  Temp
+  2   38  Ozone  Solar.R  Wind  Temp
+  2   39  Ozone  Solar.R  Wind  Temp
+  2   40  Ozone  Solar.R  Wind  Temp
+  2   41  Ozone  Solar.R  Wind  Temp
+  2   42  Ozone  Solar.R  Wind  Temp
+  2   43  Ozone  Solar.R  Wind  Temp
+  2   44  Ozone  Solar.R  Wind  Temp
+  2   45  Ozone  Solar.R  Wind  Temp
+  2   46  Ozone  Solar.R  Wind  Temp
+  2   47  Ozone  Solar.R  Wind  Temp
+  2   48  Ozone  Solar.R  Wind  Temp
+  2   49  Ozone  Solar.R  Wind  Temp
+  2   50  Ozone  Solar.R  Wind  Temp
+  3   1  Ozone  Solar.R  Wind  Temp
+  3   2  Ozone  Solar.R  Wind  Temp
+  3   3  Ozone  Solar.R  Wind  Temp
+  3   4  Ozone  Solar.R  Wind  Temp
+  3   5  Ozone  Solar.R  Wind  Temp
+  3   6  Ozone  Solar.R  Wind  Temp
+  3   7  Ozone  Solar.R  Wind  Temp
+  3   8  Ozone  Solar.R  Wind  Temp
+  3   9  Ozone  Solar.R  Wind  Temp
+  3   10  Ozone  Solar.R  Wind  Temp
+  3   11  Ozone  Solar.R  Wind  Temp
+  3   12  Ozone  Solar.R  Wind  Temp
+  3   13  Ozone  Solar.R  Wind  Temp
+  3   14  Ozone  Solar.R  Wind  Temp
+  3   15  Ozone  Solar.R  Wind  Temp
+  3   16  Ozone  Solar.R  Wind  Temp
+  3   17  Ozone  Solar.R  Wind  Temp
+  3   18  Ozone  Solar.R  Wind  Temp
+  3   19  Ozone  Solar.R  Wind  Temp
+  3   20  Ozone  Solar.R  Wind  Temp
+  3   21  Ozone  Solar.R  Wind  Temp
+  3   22  Ozone  Solar.R  Wind  Temp
+  3   23  Ozone  Solar.R  Wind  Temp
+  3   24  Ozone  Solar.R  Wind  Temp
+  3   25  Ozone  Solar.R  Wind  Temp
+  3   26  Ozone  Solar.R  Wind  Temp
+  3   27  Ozone  Solar.R  Wind  Temp
+  3   28  Ozone  Solar.R  Wind  Temp
+  3   29  Ozone  Solar.R  Wind  Temp
+  3   30  Ozone  Solar.R  Wind  Temp
+  3   31  Ozone  Solar.R  Wind  Temp
+  3   32  Ozone  Solar.R  Wind  Temp
+  3   33  Ozone  Solar.R  Wind  Temp
+  3   34  Ozone  Solar.R  Wind  Temp
+  3   35  Ozone  Solar.R  Wind  Temp
+  3   36  Ozone  Solar.R  Wind  Temp
+  3   37  Ozone  Solar.R  Wind  Temp
+  3   38  Ozone  Solar.R  Wind  Temp
+  3   39  Ozone  Solar.R  Wind  Temp
+  3   40  Ozone  Solar.R  Wind  Temp
+  3   41  Ozone  Solar.R  Wind  Temp
+  3   42  Ozone  Solar.R  Wind  Temp
+  3   43  Ozone  Solar.R  Wind  Temp
+  3   44  Ozone  Solar.R  Wind  Temp
+  3   45  Ozone  Solar.R  Wind  Temp
+  3   46  Ozone  Solar.R  Wind  Temp
+  3   47  Ozone  Solar.R  Wind  Temp
+  3   48  Ozone  Solar.R  Wind  Temp
+  3   49  Ozone  Solar.R  Wind  Temp
+  3   50  Ozone  Solar.R  Wind  Temp
+  4   1  Ozone  Solar.R  Wind  Temp
+  4   2  Ozone  Solar.R  Wind  Temp
+  4   3  Ozone  Solar.R  Wind  Temp
+  4   4  Ozone  Solar.R  Wind  Temp
+  4   5  Ozone  Solar.R  Wind  Temp
+  4   6  Ozone  Solar.R  Wind  Temp
+  4   7  Ozone  Solar.R  Wind  Temp
+  4   8  Ozone  Solar.R  Wind  Temp
+  4   9  Ozone  Solar.R  Wind  Temp
+  4   10  Ozone  Solar.R  Wind  Temp
+  4   11  Ozone  Solar.R  Wind  Temp
+  4   12  Ozone  Solar.R  Wind  Temp
+  4   13  Ozone  Solar.R  Wind  Temp
+  4   14  Ozone  Solar.R  Wind  Temp
+  4   15  Ozone  Solar.R  Wind  Temp
+  4   16  Ozone  Solar.R  Wind  Temp
+  4   17  Ozone  Solar.R  Wind  Temp
+  4   18  Ozone  Solar.R  Wind  Temp
+  4   19  Ozone  Solar.R  Wind  Temp
+  4   20  Ozone  Solar.R  Wind  Temp
+  4   21  Ozone  Solar.R  Wind  Temp
+  4   22  Ozone  Solar.R  Wind  Temp
+  4   23  Ozone  Solar.R  Wind  Temp
+  4   24  Ozone  Solar.R  Wind  Temp
+  4   25  Ozone  Solar.R  Wind  Temp
+  4   26  Ozone  Solar.R  Wind  Temp
+  4   27  Ozone  Solar.R  Wind  Temp
+  4   28  Ozone  Solar.R  Wind  Temp
+  4   29  Ozone  Solar.R  Wind  Temp
+  4   30  Ozone  Solar.R  Wind  Temp
+  4   31  Ozone  Solar.R  Wind  Temp
+  4   32  Ozone  Solar.R  Wind  Temp
+  4   33  Ozone  Solar.R  Wind  Temp
+  4   34  Ozone  Solar.R  Wind  Temp
+  4   35  Ozone  Solar.R  Wind  Temp
+  4   36  Ozone  Solar.R  Wind  Temp
+  4   37  Ozone  Solar.R  Wind  Temp
+  4   38  Ozone  Solar.R  Wind  Temp
+  4   39  Ozone  Solar.R  Wind  Temp
+  4   40  Ozone  Solar.R  Wind  Temp
+  4   41  Ozone  Solar.R  Wind  Temp
+  4   42  Ozone  Solar.R  Wind  Temp
+  4   43  Ozone  Solar.R  Wind  Temp
+  4   44  Ozone  Solar.R  Wind  Temp
+  4   45  Ozone  Solar.R  Wind  Temp
+  4   46  Ozone  Solar.R  Wind  Temp
+  4   47  Ozone  Solar.R  Wind  Temp
+  4   48  Ozone  Solar.R  Wind  Temp
+  4   49  Ozone  Solar.R  Wind  Temp
+  4   50  Ozone  Solar.R  Wind  Temp
+  5   1  Ozone  Solar.R  Wind  Temp
+  5   2  Ozone  Solar.R  Wind  Temp
+  5   3  Ozone  Solar.R  Wind  Temp
+  5   4  Ozone  Solar.R  Wind  Temp
+  5   5  Ozone  Solar.R  Wind  Temp
+  5   6  Ozone  Solar.R  Wind  Temp
+  5   7  Ozone  Solar.R  Wind  Temp
+  5   8  Ozone  Solar.R  Wind  Temp
+  5   9  Ozone  Solar.R  Wind  Temp
+  5   10  Ozone  Solar.R  Wind  Temp
+  5   11  Ozone  Solar.R  Wind  Temp
+  5   12  Ozone  Solar.R  Wind  Temp
+  5   13  Ozone  Solar.R  Wind  Temp
+  5   14  Ozone  Solar.R  Wind  Temp
+  5   15  Ozone  Solar.R  Wind  Temp
+  5   16  Ozone  Solar.R  Wind  Temp
+  5   17  Ozone  Solar.R  Wind  Temp
+  5   18  Ozone  Solar.R  Wind  Temp
+  5   19  Ozone  Solar.R  Wind  Temp
+  5   20  Ozone  Solar.R  Wind  Temp
+  5   21  Ozone  Solar.R  Wind  Temp
+  5   22  Ozone  Solar.R  Wind  Temp
+  5   23  Ozone  Solar.R  Wind  Temp
+  5   24  Ozone  Solar.R  Wind  Temp
+  5   25  Ozone  Solar.R  Wind  Temp
+  5   26  Ozone  Solar.R  Wind  Temp
+  5   27  Ozone  Solar.R  Wind  Temp
+  5   28  Ozone  Solar.R  Wind  Temp
+  5   29  Ozone  Solar.R  Wind  Temp
+  5   30  Ozone  Solar.R  Wind  Temp
+  5   31  Ozone  Solar.R  Wind  Temp
+  5   32  Ozone  Solar.R  Wind  Temp
+  5   33  Ozone  Solar.R  Wind  Temp
+  5   34  Ozone  Solar.R  Wind  Temp
+  5   35  Ozone  Solar.R  Wind  Temp
+  5   36  Ozone  Solar.R  Wind  Temp
+  5   37  Ozone  Solar.R  Wind  Temp
+  5   38  Ozone  Solar.R  Wind  Temp
+  5   39  Ozone  Solar.R  Wind  Temp
+  5   40  Ozone  Solar.R  Wind  Temp
+  5   41  Ozone  Solar.R  Wind  Temp
+  5   42  Ozone  Solar.R  Wind  Temp
+  5   43  Ozone  Solar.R  Wind  Temp
+  5   44  Ozone  Solar.R  Wind  Temp
+  5   45  Ozone  Solar.R  Wind  Temp
+  5   46  Ozone  Solar.R  Wind  Temp
+  5   47  Ozone  Solar.R  Wind  Temp
+  5   48  Ozone  Solar.R  Wind  Temp
+  5   49  Ozone  Solar.R  Wind  Temp
+  5   50  Ozone  Solar.R  Wind  Temp</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>modelFit2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span><span class='op'>(</span><span class='va'>tempData2</span>,<span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>Temp</span><span class='op'>~</span> <span class='va'>Ozone</span><span class='op'>+</span><span class='va'>Solar.R</span><span class='op'>+</span><span class='va'>Wind</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='fu'><a href='https://amices.org/mice/reference/pool.html'>pool</a></span><span class='op'>(</span><span class='va'>modelFit2</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>         term    estimate   std.error statistic        df
+1 (Intercept) 72.60178955 2.915916315 24.898448 105.59368
+2       Ozone  0.16345639 0.026054628  6.273603  99.86352
+3     Solar.R  0.01193645 0.007134344  1.673097 120.41496
+4        Wind -0.33592048 0.222350762 -1.510768 107.41496
+       p.value
+1 0.000000e+00
+2 9.122568e-09
+3 9.690433e-02
+4 1.337838e-01</code></pre>
+</div>
+<p>Na aanpassing, krijgen we (in dit geval) min of meer dezelfde
+resultaten als voorheen, waarbij alleen Ozone statistische significantie
+vertoont.</p>
+<p>De code kun je <a
+href="https://gist.github.com/mick001/df77b69b30ef6ff9fc0b">hier</a>
+vinden.</p>
+<h2 id="literatuur">Literatuur</h2>
+<p>Alice, M. (2015). Imputing missing data with R;
+<code>mice</code>package. R-bloggers, 4-10-2015. <a
+href="https://www.r-bloggers.com/2015/10/imputing-missing-data-with-r-mice-package/"
+class="uri">https://www.r-bloggers.com/2015/10/imputing-missing-data-with-r-mice-package/</a></p>
+<p>Heymans, M. en Eekhout, I. (2019). <em>Applied Missing Data Analysis
+With SPSS and (R)Studio</em>. Amsterdam. <a
+href="https://bookdown.org/mwheymans/bookmi/"
+class="uri">https://bookdown.org/mwheymans/bookmi/</a></p>
+<p>Van Buuren, S. and Groothuis-Oudshoorn, C.G.M.
+(2011).<code>mice</code>: Multivariate Imputation by Chained Equations
+in R. <em>Journal of Statistical Software, 45(3)</em>, 1–67.</p>
+<p>Van Buuren (2012). <em>Multiple imputatie in vogelvlucht</em>. <a
+href="https://stefvanbuuren.name/publications/2012%20Vogelvlucht%20-%20STAtOR.pdf"
+class="uri">https://stefvanbuuren.name/publications/2012%20Vogelvlucht%20-%20STAtOR.pdf</a></p>
+<p>Van Buuren, S. (2018). <em>Flexible Imputation of Missing Data</em>.
+Second Edition. Chapman &amp; Hall/CRC, Boca Raton, FL</p>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<!--radix_placeholder_article_footer-->
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom"></div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+</body>
+
+</html>
