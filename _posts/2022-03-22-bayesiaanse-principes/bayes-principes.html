@@ -1438,7 +1438,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="bayes-principes_files/header-attrs-2.11/header-attrs.js"></script>
+  <script src="bayes-principes_files/header-attrs-2.14/header-attrs.js"></script>
   <script src="bayes-principes_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
   <script src="bayes-principes_files/popper-2.6.0/popper.min.js"></script>
   <link href="bayes-principes_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
@@ -1483,47 +1483,190 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 <div class="d-article">
 <figure>
-<img src="Screenshot.PNG" style="width:50.0%" alt="Bayes Rules!" /><figcaption aria-hidden="true">Bayes Rules!</figcaption>
+<img src="Screenshot.PNG" style="width:50.0%" alt="Bayes Rules!" />
+<figcaption aria-hidden="true">Bayes Rules!</figcaption>
 </figure>
 <h2 id="inleiding">Inleiding</h2>
-<p>Onlangs verscheen een prachtig boek van Alicia A. Johnson, Miles Q. Ot en Mine Dogucu onder de titel <em>Bayes Rules! An Introduction to Applied Bayesian Modeling</em> en het verscheen bij CRC Press (2022). Eerdere versies kon je al via bookdown bekijken (<a href="https://www.bayesrulesbook.com/" class="uri">https://www.bayesrulesbook.com/</a>) en vanaf de eerste keer dat ik het zag, was ik hier heel enthousiast over. Het boek heb ik direct besteld en vorige week kon ik het ophalen.</p>
-<p>Het boek bestaat uit vier duidelijke delen. Het eerste deel gaat in op de fundamenten van het Bayesiaanse perspectief. Het leert je denken als een Bayesiaan en het gaat in op die belangrijke Bayesiaanse regel <span class="math inline">\(posterior=\frac{prior.likelihood}{normaliserende constante}\)</span>. Aan de hand van enkele voorbeelden gaan Johnson e.a. in op hoe het in de praktijk werkt. Daarna gaat het in op hoe kennis en data op elkaar inwerken en het laat enkele basisanalyses zien en hoe dat in deze vorm van statistiek werkt (normaal, binair en poisson). Het tweede deel is een meer technisch hoofdstuk en laat je ook onder de moterkap van deze techniek kijken. Het gaat ook op de wetenschappelijke principes van de benadering, waar je hier op moet letten, hoe je hiermee hypothesen kunt testen (niet alleen tov van een nulhypothese, maar hoeveel beter de ene hypothese is ten opzichte van de andere hyposthese) en hoe je hiermee ook kunt voorspellen. De twee volgende delen (Deel drie en vier) zijn praktische delen. Deel drie gaat in op regressieanalyses voor continue variabelen en classificatieanalyses voor binaire variabelen. Het vierde deel, ten slotte, gaat in op geclusterde datasets en hoe je hierarchische Bayesiaanse regressie en classificatieanalyses uitvoert.</p>
-<p>Natuurlijk, er zijn onderhand al verschillende interessante boeken te krijgen die je laten zien hoe Bayesiaanse denken in de praktijk kan werken. De boeken van Gelman, McElreath, Spiegelhalter en Kruschke verschenen de afgelopen tien/vijftien jaar en leren je dit. Maar <em>Bayes Rules!</em> vind ik op dit moment als introductieboek mogelijk wel het beste.</p>
-<p>Nu het boek bij mij op het bureau ligt, kan ik er binnenkort een keer een korte recensie over schrijven. Voor nu heb ik uit elk deel een hoofdstuk genomen en het vertaald en bewerkt. Hieronder zie je een bewerking van het het vierde hoofdstuk van het eerste deel (<em>Balance and Sequentiallity in Bayesian Analysis</em>).Deze hoofdstukken zo overzetten is voor mij niet alleen een goede manier om het mij eigen te maken, maar ook een manier om het boek anderen aan te raden. Dus lezen en gebruiken deze <em>Bayes Rules! An Introduction to Applied Bayesian Modeling</em></p>
-<h2 id="balans-en-opeenvolging-in-bayesiaanse-analyses">Balans en opeenvolging in Bayesiaanse Analyses</h2>
-<p>In Alison Bechdels stripverhaal <em>The Rule</em> uit 1985 zegt een personage dat ze alleen naar een film gaan als die aan de volgende drie regels voldoet (Bechdel 1986):</p>
+<p>Onlangs verscheen een prachtig boek van Alicia A. Johnson, Miles Q.
+Ot en Mine Dogucu onder de titel <em>Bayes Rules! An Introduction to
+Applied Bayesian Modeling</em> en het verscheen bij CRC Press (2022).
+Eerdere versies kon je al via bookdown bekijken (<a
+href="https://www.bayesrulesbook.com/"
+class="uri">https://www.bayesrulesbook.com/</a>) en vanaf de eerste keer
+dat ik het zag, was ik hier heel enthousiast over. Het boek heb ik
+direct besteld en vorige week kon ik het ophalen.</p>
+<p>Het boek bestaat uit vier duidelijke delen. Het eerste deel gaat in
+op de fundamenten van het Bayesiaanse perspectief. Het leert je denken
+als een Bayesiaan en het gaat in op die belangrijke Bayesiaanse regel
+<span
+class="math inline">\(posterior=\frac{prior.likelihood}{normaliserende
+constante}\)</span>. Aan de hand van enkele voorbeelden gaan Johnson
+e.a. in op hoe het in de praktijk werkt. Daarna gaat het in op hoe
+kennis en data op elkaar inwerken en het laat enkele basisanalyses zien
+en hoe dat in deze vorm van statistiek werkt (normaal, binair en
+poisson). Het tweede deel is een meer technisch hoofdstuk en laat je ook
+onder de moterkap van deze techniek kijken. Het gaat ook op de
+wetenschappelijke principes van de benadering, waar je hier op moet
+letten, hoe je hiermee hypothesen kunt testen (niet alleen tov van een
+nulhypothese, maar hoeveel beter de ene hypothese is ten opzichte van de
+andere hyposthese) en hoe je hiermee ook kunt voorspellen. De twee
+volgende delen (Deel drie en vier) zijn praktische delen. Deel drie gaat
+in op regressieanalyses voor continue variabelen en
+classificatieanalyses voor binaire variabelen. Het vierde deel, ten
+slotte, gaat in op geclusterde datasets en hoe je hierarchische
+Bayesiaanse regressie en classificatieanalyses uitvoert.</p>
+<p>Natuurlijk, er zijn onderhand al verschillende interessante boeken te
+krijgen die je laten zien hoe Bayesiaanse denken in de praktijk kan
+werken. De boeken van Gelman, McElreath, Spiegelhalter en Kruschke
+verschenen de afgelopen tien/vijftien jaar en leren je dit. Maar
+<em>Bayes Rules!</em> vind ik op dit moment als introductieboek mogelijk
+wel het beste.</p>
+<p>Nu het boek bij mij op het bureau ligt, kan ik er binnenkort een keer
+een korte recensie over schrijven. Voor nu heb ik uit elk deel een
+hoofdstuk genomen en het vertaald en bewerkt. Hieronder zie je een
+bewerking van het het vierde hoofdstuk van het eerste deel (<em>Balance
+and Sequentiallity in Bayesian Analysis</em>).Deze hoofdstukken zo
+overzetten is voor mij niet alleen een goede manier om het mij eigen te
+maken, maar ook een manier om het boek anderen aan te raden. Dus lezen
+en gebruiken deze <em>Bayes Rules! An Introduction to Applied Bayesian
+Modeling</em></p>
+<h2 id="balans-en-opeenvolging-in-bayesiaanse-analyses">Balans en
+opeenvolging in Bayesiaanse Analyses</h2>
+<p>In Alison Bechdels stripverhaal <em>The Rule</em> uit 1985 zegt een
+personage dat ze alleen naar een film gaan als die aan de volgende drie
+regels voldoet (Bechdel 1986):</p>
 <ul>
 <li>er moeten minstens twee vrouwen in de film voorkomen;<br />
 </li>
 <li>deze twee vrouwen praten met elkaar; en<br />
 </li>
 <li>ze praten over iets anders dan een man.<br />
-Deze criteria vormen de <strong>Bechdel-test</strong> voor de vertegenwoordiging van vrouwen in films. Als je aan films denkt die je hebt gezien, welk percentage van alle recente films slaagt dan volgens jou voor de Bechdel-test? Ligt dat dichter bij 10%, 50%, 80%, of 100%?</li>
+Deze criteria vormen de <strong>Bechdel-test</strong> voor de
+vertegenwoordiging van vrouwen in films. Als je aan films denkt die je
+hebt gezien, welk percentage van alle recente films slaagt dan volgens
+jou voor de Bechdel-test? Ligt dat dichter bij 10%, 50%, 80%, of
+100%?</li>
 </ul>
-<p>Laat <span class="math inline">\(\pi\)</span>, een willekeurige waarde tussen 0 en 1, het onbekende aandeel van recente films zijn die de Bechdel test doorstaan. Drie vrienden - de feminist, de onwetende, en de optimist - hebben enkele vooroordelen over <span class="math inline">\(\pi\)</span>. Nadenkend over films die zij in het verleden heeft gezien, begrijpt de <em>feminist</em> dat het in de meeste films ontbreekt aan sterke vrouwelijke personages. De <em>onwetende</em> herinnert zich niet echt de films die hij gezien heeft, en weet dus niet zeker of het halen van de Bechdel test gebruikelijk of ongewoon is. De <em>optimist</em> ten slotte denkt dat de Bechdel-test een erg lage lat is voor de vertegenwoordiging van vrouwen in films, en gaat er dus van uit dat bijna alle films de test doorstaan. Dit alles om te zeggen dat drie vrienden drie verschillende voorafgaande modellen hebben van <span class="math inline">\(\pi\)</span>. Geen probleem! Een Beta kan voorafgaand aan het opstellen van een model worden afgestemd op iemands voorkennis (zie de figuur hieronder).</p>
-<p>Door de grootste aannemelijkheid vooraf te geven aan de waarden van <span class="math inline">\(\pi\)</span> die lager zijn dan 0,5, weerspiegelt de Beta(5,11) prior het inzicht van de feminist: de meerderheid van de films doorstaat de Bechdel test niet. De Beta(14,1) daarentegen plaatst een grotere aannemelijkheid vooraf op waarden van <span class="math inline">\(\pi\)</span> in de buurt van 1, en komt dus overeen met de vooronderstelling van de optimist. Dan blijft de Beta(1,1) of Unif(0,1) over die, door een gelijke aannemelijkheid te geven aan alle waarden van <span class="math inline">\(\pi\)</span> tussen 0 en 1, dat overeenkomt met het figuurlijke schouderophalen van de onwetende - het enige dat zij weet is dat <span class="math inline">\(\pi\)</span> een proportie is, en dus ergens tussen 0 en 1 ligt.</p>
-<p>De drie analisten komen overeen een steekproef te nemen van <span class="math inline">\(n\)</span> recente films en noteren <span class="math inline">\(Y\)</span>, het aantal dat de Bechdel test doorstaat. Herkenning van <span class="math inline">\(Y\)</span> als het aantal “successen” in een vast aantal onafhankelijke proeven, specificeren zij de afhankelijkheid van <span class="math inline">\(Y\)</span> van <span class="math inline">\(\pi\)</span> met behulp van een binomiaal model. Elke analist heeft dus een uniek Beta-Binomiaal model van <span class="math inline">\(\pi\)</span> met verschillende voorafgaande hyperparameters<br />
-<span class="math inline">\(\alpha\)</span> en <span class="math inline">\(\beta\)</span>:</p>
+<p>Laat <span class="math inline">\(\pi\)</span>, een willekeurige
+waarde tussen 0 en 1, het onbekende aandeel van recente films zijn die
+de Bechdel test doorstaan. Drie vrienden - de feminist, de onwetende, en
+de optimist - hebben enkele vooroordelen over <span
+class="math inline">\(\pi\)</span>. Nadenkend over films die zij in het
+verleden heeft gezien, begrijpt de <em>feminist</em> dat het in de
+meeste films ontbreekt aan sterke vrouwelijke personages. De
+<em>onwetende</em> herinnert zich niet echt de films die hij gezien
+heeft, en weet dus niet zeker of het halen van de Bechdel test
+gebruikelijk of ongewoon is. De <em>optimist</em> ten slotte denkt dat
+de Bechdel-test een erg lage lat is voor de vertegenwoordiging van
+vrouwen in films, en gaat er dus van uit dat bijna alle films de test
+doorstaan. Dit alles om te zeggen dat drie vrienden drie verschillende
+voorafgaande modellen hebben van <span
+class="math inline">\(\pi\)</span>. Geen probleem! Een Beta kan
+voorafgaand aan het opstellen van een model worden afgestemd op iemands
+voorkennis (zie de figuur hieronder).</p>
+<p>Door de grootste aannemelijkheid vooraf te geven aan de waarden van
+<span class="math inline">\(\pi\)</span> die lager zijn dan 0,5,
+weerspiegelt de Beta(5,11) prior het inzicht van de feminist: de
+meerderheid van de films doorstaat de Bechdel test niet. De Beta(14,1)
+daarentegen plaatst een grotere aannemelijkheid vooraf op waarden van
+<span class="math inline">\(\pi\)</span> in de buurt van 1, en komt dus
+overeen met de vooronderstelling van de optimist. Dan blijft de
+Beta(1,1) of Unif(0,1) over die, door een gelijke aannemelijkheid te
+geven aan alle waarden van <span class="math inline">\(\pi\)</span>
+tussen 0 en 1, dat overeenkomt met het figuurlijke schouderophalen van
+de onwetende - het enige dat zij weet is dat <span
+class="math inline">\(\pi\)</span> een proportie is, en dus ergens
+tussen 0 en 1 ligt.</p>
+<p>De drie analisten komen overeen een steekproef te nemen van <span
+class="math inline">\(n\)</span> recente films en noteren <span
+class="math inline">\(Y\)</span>, het aantal dat de Bechdel test
+doorstaat. Herkenning van <span class="math inline">\(Y\)</span> als het
+aantal “successen” in een vast aantal onafhankelijke proeven,
+specificeren zij de afhankelijkheid van <span
+class="math inline">\(Y\)</span> van <span
+class="math inline">\(\pi\)</span> met behulp van een binomiaal model.
+Elke analist heeft dus een uniek Beta-Binomiaal model van <span
+class="math inline">\(\pi\)</span> met verschillende voorafgaande
+hyperparameters<br />
+<span class="math inline">\(\alpha\)</span> en <span
+class="math inline">\(\beta\)</span>:</p>
 <p><span class="math display">\[Y|\pi \sim (Bin(n, \pi) \\
   \pi \sim Beta(\alpha, \beta)\]</span></p>
-<p>We weten dat elke analist een <em>uniek</em> posterior model heeft van <span class="math inline">\(\pi\)</span> dat afhangt van zijn of haar <em>unieke</em> prior (via <span class="math inline">\(\alpha\)</span> en <span class="math inline">\(\beta\)</span>) en de <em>gemeenschappelijke</em> waargenomen gegevens (via <span class="math inline">\(Y\)</span> en <span class="math inline">\(n\)</span>)</p>
-<p><span class="math display">\[\pi|(Y=y) \sim Beta (\alpha + y, \beta +n - Y)\]</span> Als je denkt “Kan <em>iedereen</em> zijn eigen voorkeuren hebben?! Zal dit altijd zo subjectief zijn?!” dan stel je de juiste vragen! En de vragen houden daar niet op. In hoeverre zouden hun verschillende priors van de analisten kunnen leiden tot drie verschillende posterior conclusies over de Bechdel test? Hoe zou dit kunnen afhangen van de steekproefgrootte en de uitkomsten van de filmgegevens die ze verzamelen? In hoeverre zullen de posterior inzichten van de analisten evolueren naarmate ze meer en meer gegevens verzamelen? Zullen ze het ooit eens worden over de vertegenwoordiging van vrouwen in film? We zullen deze fundamentele vragen hier onderzoeken en wij kijken naar ons vermogen om het Bayesiaanse denken verder te ontwikkelen.</p>
+<p>We weten dat elke analist een <em>uniek</em> posterior model heeft
+van <span class="math inline">\(\pi\)</span> dat afhangt van zijn of
+haar <em>unieke</em> prior (via <span
+class="math inline">\(\alpha\)</span> en <span
+class="math inline">\(\beta\)</span>) en de <em>gemeenschappelijke</em>
+waargenomen gegevens (via <span class="math inline">\(Y\)</span> en
+<span class="math inline">\(n\)</span>)</p>
+<p><span class="math display">\[\pi|(Y=y) \sim Beta (\alpha + y, \beta
++n - Y)\]</span> Als je denkt “Kan <em>iedereen</em> zijn eigen
+voorkeuren hebben?! Zal dit altijd zo subjectief zijn?!” dan stel je de
+juiste vragen! En de vragen houden daar niet op. In hoeverre zouden hun
+verschillende priors van de analisten kunnen leiden tot drie
+verschillende posterior conclusies over de Bechdel test? Hoe zou dit
+kunnen afhangen van de steekproefgrootte en de uitkomsten van de
+filmgegevens die ze verzamelen? In hoeverre zullen de posterior
+inzichten van de analisten evolueren naarmate ze meer en meer gegevens
+verzamelen? Zullen ze het ooit eens worden over de vertegenwoordiging
+van vrouwen in film? We zullen deze fundamentele vragen hier onderzoeken
+en wij kijken naar ons vermogen om het Bayesiaanse denken verder te
+ontwikkelen.</p>
 <p>Dus:<br />
-- <strong>We onderzoek de evenwichtige invloed van de prior en data op de posterior.</strong><br />
-- <strong>We voeren verschillende achtereenvolgende Bayesiaanse analyses uit.</strong></p>
+- <strong>We onderzoek de evenwichtige invloed van de prior en data op
+de posterior.</strong><br />
+- <strong>We voeren verschillende achtereenvolgende Bayesiaanse analyses
+uit.</strong></p>
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
-<h3 id="verschillende-priors-verschillende-posteriors">Verschillende priors, verschillende posteriors</h3>
-<p>De voorafgaande modellen van <span class="math inline">\(\pi\)</span> (het percentage recente films dat de Bechdel test doorstaat) zijn afgestemd op de onwetende, de feministe, en de optimist. Niet alleen weerspiegelen de verschillende prior gemiddelden onenigheid over de vraag of <span class="math inline">\(\pi\)</span> dichter bij 0 of 1 ligt, maar ook weerspiegelen hun verschillende niveaus van variabiliteit het feit dat de drie analisten niet allemaal even zeker zijn van hun kennis en informatie. Hoe zekerder ze daarover zijn, hoe kleiner de voorafgaande variabiliteit. Maar ook, hoe vager de prior-informatie, hoe groter de prior-variabiliteit. De priors van de optimist en de onwetende vertegenwoordigen hier twee uitersten. Een Beta(14,1) prior vertoont de kleinste variabiliteit en daarmee is de optimist het meest zeker in zijn prioriteitsbegrip van <span class="math inline">\(\pi\)</span> (of om duidelijker te zijn, dat bijna alle films de Bechdel test zullen doorstaan). Dergelijke priors noemen we informatief.</p>
+<h3 id="verschillende-priors-verschillende-posteriors">Verschillende
+priors, verschillende posteriors</h3>
+<p>De voorafgaande modellen van <span class="math inline">\(\pi\)</span>
+(het percentage recente films dat de Bechdel test doorstaat) zijn
+afgestemd op de onwetende, de feministe, en de optimist. Niet alleen
+weerspiegelen de verschillende prior gemiddelden onenigheid over de
+vraag of <span class="math inline">\(\pi\)</span> dichter bij 0 of 1
+ligt, maar ook weerspiegelen hun verschillende niveaus van variabiliteit
+het feit dat de drie analisten niet allemaal even zeker zijn van hun
+kennis en informatie. Hoe zekerder ze daarover zijn, hoe kleiner de
+voorafgaande variabiliteit. Maar ook, hoe vager de prior-informatie, hoe
+groter de prior-variabiliteit. De priors van de optimist en de onwetende
+vertegenwoordigen hier twee uitersten. Een Beta(14,1) prior vertoont de
+kleinste variabiliteit en daarmee is de optimist het meest zeker in zijn
+prioriteitsbegrip van <span class="math inline">\(\pi\)</span> (of om
+duidelijker te zijn, dat bijna alle films de Bechdel test zullen
+doorstaan). Dergelijke priors noemen we informatief.</p>
 <blockquote>
-<p>Een <strong>informatieve</strong> prior reflecteert specifieke informatie over de onbekende variabele met grote zekerheid, bv. lage variabiliteit.</p>
+<p>Een <strong>informatieve</strong> prior reflecteert specifieke
+informatie over de onbekende variabele met grote zekerheid, bv. lage
+variabiliteit.</p>
 </blockquote>
-<p>Met de grootste prioriteitsvariabiliteit is de onwetende het minst zeker over <span class="math inline">\(\pi\)</span>. In feite kent deze Beta(1,1) prior evenveel prior plausibiliteit toe aan elke waarde van <span class="math inline">\(\pi\)</span> tussen 0 en 1. Dit type prior model van “schouderophalen” (van “ik weet het echt niet”) heeft een officiële naam: het is een vage prior.</p>
+<p>Met de grootste prioriteitsvariabiliteit is de onwetende het minst
+zeker over <span class="math inline">\(\pi\)</span>. In feite kent deze
+Beta(1,1) prior evenveel prior plausibiliteit toe aan elke waarde van
+<span class="math inline">\(\pi\)</span> tussen 0 en 1. Dit type prior
+model van “schouderophalen” (van “ik weet het echt niet”) heeft een
+officiële naam: het is een vage prior.</p>
 <blockquote>
-<p>Een <strong>vage</strong> of <strong>diffuse</strong> prior reflecteert weinig specifieke informatie over de onbekende variabele. Een <strong>vlakke</strong> prior die gelijke plausibiliteit toekent aan alle mogelijke waarden van de variabele, is een speciaal geval.</p>
+<p>Een <strong>vage</strong> of <strong>diffuse</strong> prior
+reflecteert weinig specifieke informatie over de onbekende variabele.
+Een <strong>vlakke</strong> prior die gelijke plausibiliteit toekent aan
+alle mogelijke waarden van de variabele, is een speciaal geval.</p>
 </blockquote>
-<p>De volgende voor de hand liggende vraag is dan: hoe zullen hun verschillende priors de posterior conclusies van de feminist, de onwetende en de optimist beïnvloeden? Om deze vraag te beantwoorden, hebben we gegevens nodig. Onze analisten besluiten een willekeurige steekproef te nemen van <span class="math inline">\(n=20\)</span> recente films te bekijken, gebruikmakend van gegevens die verzameld zijn voor het FiveThirtyEight-artikel over de Bechdel-test Het <code>bayesrules</code>-pakket bevat een gedeeltelijke versie van deze dataset, genaamd <code>bechdel</code>. Een volledige versie wordt geleverd door het <code>fivethirtyeight</code> R-pakket (Kim, Ismay, and Chunn 2020). Samen met de <code>titel</code> en het <code>jaar</code> van elke film in deze dataset, geeft de <code>binaire</code> variabele aan of de film slaagde of niet voor de Bechdel test:</p>
+<p>De volgende voor de hand liggende vraag is dan: hoe zullen hun
+verschillende priors de posterior conclusies van de feminist, de
+onwetende en de optimist beïnvloeden? Om deze vraag te beantwoorden,
+hebben we gegevens nodig. Onze analisten besluiten een willekeurige
+steekproef te nemen van <span class="math inline">\(n=20\)</span>
+recente films te bekijken, gebruikmakend van gegevens die verzameld zijn
+voor het FiveThirtyEight-artikel over de Bechdel-test Het
+<code>bayesrules</code>-pakket bevat een gedeeltelijke versie van deze
+dataset, genaamd <code>bechdel</code>. Een volledige versie wordt
+geleverd door het <code>fivethirtyeight</code> R-pakket (Kim, Ismay, and
+Chunn 2020). Samen met de <code>titel</code> en het <code>jaar</code>
+van elke film in deze dataset, geeft de <code>binaire</code> variabele
+aan of de film slaagde of niet voor de Bechdel test:</p>
 <div class="layout-chunk" data-layout="l-body">
 <pre><code># A tibble: 3 x 3
    year title      binary
@@ -1532,14 +1675,22 @@ Deze criteria vormen de <strong>Bechdel-test</strong> voor de vertegenwoordiging
 2  1983 Flashdance PASS  
 3  2013 The Purge  FAIL  </code></pre>
 </div>
-<p>Van de 20 films in deze steekproef slaagden er slechts 9 (45%) voor de test:</p>
+<p>Van de 20 films in deze steekproef slaagden er slechts 9 (45%) voor
+de test:</p>
 <div class="layout-chunk" data-layout="l-body">
 <pre><code> binary  n percent
    FAIL 11    0.55
    PASS  9    0.45
   Total 20    1.00</code></pre>
 </div>
-<p>De posterior modellen van de drie analisten voor<span class="math inline">\(\pi\)</span> die volgen uit de formule <span class="math inline">\(\pi|(Y=y) \sim Beta(\alpha+y, \beta+n-y)\)</span> op hun unieke voorgaande modellen en gemeenschappelijke filmgegevens, zijn samengevat in tabel hieronder en de figuur hierboven. Bijvoorbeeld, de posterior parameters van de feminist worden berekend door <span class="math inline">\(\alpha+y=5+9=14\)</span> en <span class="math inline">\(\beta+n-y=11+20-9=22\)</span></p>
+<p>De posterior modellen van de drie analisten voor<span
+class="math inline">\(\pi\)</span> die volgen uit de formule <span
+class="math inline">\(\pi|(Y=y) \sim Beta(\alpha+y, \beta+n-y)\)</span>
+op hun unieke voorgaande modellen en gemeenschappelijke filmgegevens,
+zijn samengevat in tabel hieronder en de figuur hierboven. Bijvoorbeeld,
+de posterior parameters van de feminist worden berekend door <span
+class="math inline">\(\alpha+y=5+9=14\)</span> en <span
+class="math inline">\(\beta+n-y=11+20-9=22\)</span></p>
 <table>
 <thead>
 <tr class="header">
@@ -1566,38 +1717,96 @@ Deze criteria vormen de <strong>Bechdel-test</strong> voor de vertegenwoordiging
 </tr>
 </tbody>
 </table>
-<p>Had je instinct gelijk? Herinner je dat de optimist begon met het vasthoudend optimistisme vooraf over <span class="math inline">\(\pi\)</span> - zijn prior model had een hoog gemiddelde met lage variabiliteit. Het is dan ook niet verwonderlijk dat zijn posterior model niet zo synchroon loopt met de gegevens als de posteriors van de andere analisten. De trieste gegevens waarbij slechts 45% van de 20 films de test doorstonden was niet genoeg om hem ervan te overtuigen dat er een probleem is in Hollywood - hij denkt nog steeds dat de waarden van <span class="math inline">\(\pi\)</span> boven 0,5 het meest plausibel is. Aan het andere uiterste staat de onwetende die begon met een vlak, vaag model van <span class="math inline">\(\pi\)</span>. Zonder enige voorinformatie weerspiegelt zijn posterior model direct de inzichten die zijn verkregen uit de waargenomen filmgegevens. In feite is zijn posterior niet te onderscheiden van de geschaalde likelihood functie.</p>
+<p>Had je instinct gelijk? Herinner je dat de optimist begon met het
+vasthoudend optimistisme vooraf over <span
+class="math inline">\(\pi\)</span> - zijn prior model had een hoog
+gemiddelde met lage variabiliteit. Het is dan ook niet verwonderlijk dat
+zijn posterior model niet zo synchroon loopt met de gegevens als de
+posteriors van de andere analisten. De trieste gegevens waarbij slechts
+45% van de 20 films de test doorstonden was niet genoeg om hem ervan te
+overtuigen dat er een probleem is in Hollywood - hij denkt nog steeds
+dat de waarden van <span class="math inline">\(\pi\)</span> boven 0,5
+het meest plausibel is. Aan het andere uiterste staat de onwetende die
+begon met een vlak, vaag model van <span
+class="math inline">\(\pi\)</span>. Zonder enige voorinformatie
+weerspiegelt zijn posterior model direct de inzichten die zijn verkregen
+uit de waargenomen filmgegevens. In feite is zijn posterior niet te
+onderscheiden van de geschaalde likelihood functie.</p>
 <figure>
-<img src="Screenshot1.PNG" alt="Posterior models" /><figcaption aria-hidden="true">Posterior models</figcaption>
+<img src="Screenshot1.PNG" alt="Posterior models" />
+<figcaption aria-hidden="true">Posterior models</figcaption>
 </figure>
-<h2 id="verschillende-data-verschillende-posteriors">Verschillende data, verschillende posteriors</h2>
-<p>Als jij je zorgen maakt over het feit dat onze drie analisten achteraf verschillende opvattingen hebben over <span class="math inline">\(\pi\)</span>, de proportie van recente films die de Bechdel halen, wanhoop dan nog niet. Vergeet niet dat data ook een rol spelen in een Bayesiaanse analyse. Om deze dynamiek te onderzoeken, beschouwen we drie nieuwe analisten - Morteza, Nadide, en Ursula - die allen de optimistische Beta(14,1) prior voor <span class="math inline">\(\pi\)</span> delen maar elk toegang hebben tot andere gegevens. Morteza beoordeelt <span class="math inline">\(n=13\)</span> films uit het jaar 1991, waarvan <span class="math inline">\(Y=6\)</span> (ongeveer 46%) door de Bechdel komen:</p>
+<h2 id="verschillende-data-verschillende-posteriors">Verschillende data,
+verschillende posteriors</h2>
+<p>Als jij je zorgen maakt over het feit dat onze drie analisten
+achteraf verschillende opvattingen hebben over <span
+class="math inline">\(\pi\)</span>, de proportie van recente films die
+de Bechdel halen, wanhoop dan nog niet. Vergeet niet dat data ook een
+rol spelen in een Bayesiaanse analyse. Om deze dynamiek te onderzoeken,
+beschouwen we drie nieuwe analisten - Morteza, Nadide, en Ursula - die
+allen de optimistische Beta(14,1) prior voor <span
+class="math inline">\(\pi\)</span> delen maar elk toegang hebben tot
+andere gegevens. Morteza beoordeelt <span
+class="math inline">\(n=13\)</span> films uit het jaar 1991, waarvan
+<span class="math inline">\(Y=6\)</span> (ongeveer 46%) door de Bechdel
+komen:</p>
 <div class="layout-chunk" data-layout="l-body">
 <pre><code> binary  n   percent
    FAIL  7 0.5384615
    PASS  6 0.4615385
   Total 13 1.0000000</code></pre>
 </div>
-<p>Nadide beoordeelt <span class="math inline">\(n=63\)</span> films uit 2000, waaronder <span class="math inline">\(Y=29\)</span> (ongeveer 46%) door de Bechdel komen:</p>
+<p>Nadide beoordeelt <span class="math inline">\(n=63\)</span> films uit
+2000, waaronder <span class="math inline">\(Y=29\)</span> (ongeveer 46%)
+door de Bechdel komen:</p>
 <div class="layout-chunk" data-layout="l-body">
 <pre><code> binary  n   percent
    FAIL 34 0.5396825
    PASS 29 0.4603175
   Total 63 1.0000000</code></pre>
 </div>
-<p>Tot slot, beoordeelt Ursula <span class="math inline">\(n=99\)</span> films uit 2013, waarvan er <span class="math inline">\(Y=46\)</span> (ongeveer 46%) door de Bechdel komen:</p>
+<p>Tot slot, beoordeelt Ursula <span class="math inline">\(n=99\)</span>
+films uit 2013, waarvan er <span class="math inline">\(Y=46\)</span>
+(ongeveer 46%) door de Bechdel komen:</p>
 <div class="layout-chunk" data-layout="l-body">
 <pre><code> binary  n   percent
    FAIL 53 0.5353535
    PASS 46 0.4646465
   Total 99 1.0000000</code></pre>
 </div>
-<p>Wat een toeval! Hoewel Morteza, Nadide, en Ursula verschillende gegevens hebben verzameld, constateren ze elk een Bechdel slaagpercentage van ongeveer 46%. Toch is hun steekproefomvang <span class="math inline">\(n\)</span> verschillend - Morteza bekeek slechts 13 films terwijl Ursula er 99 bekeek.</p>
-<p>De posterior modellen van de drie analisten voor <span class="math inline">\(\pi\)</span> die volgen uit de toepassing van hun gegevens op hun gemeenschappelijke Beta(14,1) voormodel en unieke filmgegevens, zijn samengevat in de figuur en tabel hieronder. Merk op dat hoe groter de steekproefgrootte <span class="math inline">\(n\)</span> hoe “indringender” de likelihoodfunctie. Bijvoorbeeld, de waarschijnlijkheidsfunctie die het slagingspercentage van 46% in Morteza’s kleine steekproef van 13 films weergeeft is vrij breed - deze gegevens zijn relatief plausibel voor elke <span class="math inline">\(\pi\)</span> tussen 15% en 75%. Ursula’s waarschijnlijkheidsfunctie daarentegen, met het slagingspercentage van 46% in een veel grotere steekproef van 99 films weergeeft, is smal - haar gegevens zijn onwaarschijnlijk voor <span class="math inline">\(\pi\)</span> waarden buiten het bereik van 35% tot 55%. We zien dat hoe groter de waarschijnlijkheid, hoe meer invloed de gegevens hebben op de posterior. Morteza blijft het minst overtuigd door het lage Bechdel-slaagpercentage dat in zijn kleine steekproef wordt waargenomen, terwijl Ursula het meest overtuigd is. Haar vroege optimisme evolueerde naar een posterior begrip dat <span class="math inline">\(\p\)</span> waarschijnlijk tussen 40% en 55% ligt.</p>
+<p>Wat een toeval! Hoewel Morteza, Nadide, en Ursula verschillende
+gegevens hebben verzameld, constateren ze elk een Bechdel
+slaagpercentage van ongeveer 46%. Toch is hun steekproefomvang <span
+class="math inline">\(n\)</span> verschillend - Morteza bekeek slechts
+13 films terwijl Ursula er 99 bekeek.</p>
+<p>De posterior modellen van de drie analisten voor <span
+class="math inline">\(\pi\)</span> die volgen uit de toepassing van hun
+gegevens op hun gemeenschappelijke Beta(14,1) voormodel en unieke
+filmgegevens, zijn samengevat in de figuur en tabel hieronder. Merk op
+dat hoe groter de steekproefgrootte <span
+class="math inline">\(n\)</span> hoe “indringender” de
+likelihoodfunctie. Bijvoorbeeld, de waarschijnlijkheidsfunctie die het
+slagingspercentage van 46% in Morteza’s kleine steekproef van 13 films
+weergeeft is vrij breed - deze gegevens zijn relatief plausibel voor
+elke <span class="math inline">\(\pi\)</span> tussen 15% en 75%.
+Ursula’s waarschijnlijkheidsfunctie daarentegen, met het
+slagingspercentage van 46% in een veel grotere steekproef van 99 films
+weergeeft, is smal - haar gegevens zijn onwaarschijnlijk voor <span
+class="math inline">\(\pi\)</span> waarden buiten het bereik van 35% tot
+55%. We zien dat hoe groter de waarschijnlijkheid, hoe meer invloed de
+gegevens hebben op de posterior. Morteza blijft het minst overtuigd door
+het lage Bechdel-slaagpercentage dat in zijn kleine steekproef wordt
+waargenomen, terwijl Ursula het meest overtuigd is. Haar vroege
+optimisme evolueerde naar een posterior begrip dat <span
+class="math inline">\(\p\)</span> waarschijnlijk tussen 40% en 55%
+ligt.</p>
 <figure>
-<img src="Screenshot2.PNG" alt="Posterior models" /><figcaption aria-hidden="true">Posterior models</figcaption>
+<img src="Screenshot2.PNG" alt="Posterior models" />
+<figcaption aria-hidden="true">Posterior models</figcaption>
 </figure>
-<p>Tabel: De prior en posterior modellen voor <span class="math inline">\(\pi\)</span> zijn geconstrueerd in het licht van een gemeenschappelijke Beta(14,1)-prior en verschillende gegevens.</p>
+<p>Tabel: De prior en posterior modellen voor <span
+class="math inline">\(\pi\)</span> zijn geconstrueerd in het licht van
+een gemeenschappelijke Beta(14,1)-prior en verschillende gegevens.</p>
 <table>
 <thead>
 <tr class="header">
@@ -1624,25 +1833,114 @@ Deze criteria vormen de <strong>Bechdel-test</strong> voor de vertegenwoordiging
 </tr>
 </tbody>
 </table>
-<h2 id="het-vinden-van-de-balans-tussen-de-prior-en-de-data">Het vinden van de balans tussen de prior en de data</h2>
-<h3 id="observaties-aan-concepten-verbinden">Observaties aan concepten verbinden</h3>
-<p>We hebben gekeken naar de invloed die verschillende priors en verschillende gegevens kunnen hebben op ons posterior begrip van een onbekende variabele. De posterior is echter een meer genuanceerd touwtrekken tussen deze twee kanten. De figuren hieronder illustreren het evenwicht dat het posterior model vindt tussen de prior en de gegevens. Elke rij komt overeen met een uniek prior model en elke kolom met een unieke reeks gegevens.</p>
-<p>Van links naar rechts neemt de steekproefgrootte toe van <span class="math inline">\(n=13\)</span> tot <span class="math inline">\(n=99\)</span> films met behoud van het aandeel films dat de Bechdel-test doorstaat: <span class="math inline">\(Y/n\sim0.46\)</span> . De waarschijnlijkheid en, dienovereenkomstig, de invloed van de gegevens op de posterior nemen toe met de steekproefgrootte <span class="math inline">\(n\)</span>. Dit betekent ook dat de invloed van onze voorkennis afneemt naarmate we nieuwe gegevens vergaren. Verder hangt de snelheid waarmee de posterior balans doorslaat in het voordeel van de gegevens af van de prior. Van boven naar beneden over het rooster gaan de priors van informatief (Beta(14,1)) naar vaag (Beta(1,1)). Het spreekt vanzelf dat hoe informatiever de prior is, hoe groter zijn invloed op de posterior is.</p>
-<p>Door deze waarnemingen te combineren levert de laatste kolom in het rooster een zeer belangrijke Bayesiaanse clou op: ongeacht de sterkte van en discrepanties tussen hun prioriteitsbegrip van <span class="math inline">\(\pi\)</span> zullen drie analisten tot een gemeenschappelijke posterior interpretatie komen in het licht van sterke gegevens. Deze vaststelling is een opluchting. Als Bayesiaanse modellen niets zouden betekenen in het licht van steeds meer gegevens, zouden we een probleem hebben.</p>
-<p>Met dit soort gegevens kun je spelen en kijken naar de rol die de prior en de data spelen in een posterior analyse, gebruik je de <code>plot_beta_binomial()</code> en <code>summarize_beta_binomial()</code> functies in het <code>bayesrules</code> pakket om het Beta-Binomial posterior model van <span class="math inline">\(\pi\)</span> onder verschillende combinaties van voorafgaande Beta(<span class="math inline">\(\alpha, \beta\)</span>) modellen en waargenomen gegevens, <span class="math inline">\(Y\)</span> successen in <span class="math inline">\(n\)</span> proeven:</p>
+<h2 id="het-vinden-van-de-balans-tussen-de-prior-en-de-data">Het vinden
+van de balans tussen de prior en de data</h2>
+<h3 id="observaties-aan-concepten-verbinden">Observaties aan concepten
+verbinden</h3>
+<p>We hebben gekeken naar de invloed die verschillende priors en
+verschillende gegevens kunnen hebben op ons posterior begrip van een
+onbekende variabele. De posterior is echter een meer genuanceerd
+touwtrekken tussen deze twee kanten. De figuren hieronder illustreren
+het evenwicht dat het posterior model vindt tussen de prior en de
+gegevens. Elke rij komt overeen met een uniek prior model en elke kolom
+met een unieke reeks gegevens.</p>
+<p>Van links naar rechts neemt de steekproefgrootte toe van <span
+class="math inline">\(n=13\)</span> tot <span
+class="math inline">\(n=99\)</span> films met behoud van het aandeel
+films dat de Bechdel-test doorstaat: <span
+class="math inline">\(Y/n\sim0.46\)</span> . De waarschijnlijkheid en,
+dienovereenkomstig, de invloed van de gegevens op de posterior nemen toe
+met de steekproefgrootte <span class="math inline">\(n\)</span>. Dit
+betekent ook dat de invloed van onze voorkennis afneemt naarmate we
+nieuwe gegevens vergaren. Verder hangt de snelheid waarmee de posterior
+balans doorslaat in het voordeel van de gegevens af van de prior. Van
+boven naar beneden over het rooster gaan de priors van informatief
+(Beta(14,1)) naar vaag (Beta(1,1)). Het spreekt vanzelf dat hoe
+informatiever de prior is, hoe groter zijn invloed op de posterior
+is.</p>
+<p>Door deze waarnemingen te combineren levert de laatste kolom in het
+rooster een zeer belangrijke Bayesiaanse clou op: ongeacht de sterkte
+van en discrepanties tussen hun prioriteitsbegrip van <span
+class="math inline">\(\pi\)</span> zullen drie analisten tot een
+gemeenschappelijke posterior interpretatie komen in het licht van sterke
+gegevens. Deze vaststelling is een opluchting. Als Bayesiaanse modellen
+niets zouden betekenen in het licht van steeds meer gegevens, zouden we
+een probleem hebben.</p>
+<p>Met dit soort gegevens kun je spelen en kijken naar de rol die de
+prior en de data spelen in een posterior analyse, gebruik je de
+<code>plot_beta_binomial()</code> en
+<code>summarize_beta_binomial()</code> functies in het
+<code>bayesrules</code> pakket om het Beta-Binomial posterior model van
+<span class="math inline">\(\pi\)</span> onder verschillende combinaties
+van voorafgaande Beta(<span class="math inline">\(\alpha,
+\beta\)</span>) modellen en waargenomen gegevens, <span
+class="math inline">\(Y\)</span> successen in <span
+class="math inline">\(n\)</span> proeven:</p>
 <pre><code># Plot the Beta-Binomial model
 plot_beta_binomial(alpha = ___, beta = ___, y = ___, n = ___)
 
 # Obtain numerical summaries of the Beta-Binomial model
 summarize_beta_binomial(alpha = ___, beta = ___, y = ___, n = ___)</code></pre>
-<h3 id="concepten-met-theorie-verbinden">Concepten met theorie verbinden</h3>
-<p>De patronen die we hebben waargenomen in het posterior evenwicht tussen de prior en de data zijn intuïtief. Ze worden ook ondersteund door een elegant wiskundig resultaat. Daar moet je het boek maar voor lezen.</p>
-<h2 id="sequentiële-analyse-evolueren-met-dat">Sequentiële analyse: Evolueren met dat</h2>
-<p>We hebben de toenemende invloed van de gegevens en de afnemende invloed van de prior op de posterior onderzocht naarmate er meer en meer gegevens binnenkomen. Overweeg de nuances van dit concept. De uitdrukking “naarmate er meer gegevens binnenkomen” roept het idee op dat het verzamelen van gegevens, en daarmee de evolutie in ons begrip van de posterior, stapsgewijs gebeurt. Zo is het inzicht van wetenschappers in de klimaatverandering in de loop van tientallen jaren geëvolueerd naarmate zij nieuwe informatie kregen. Het inzicht van presidentskandidaten in hun kansen om een verkiezing te winnen evolueert in de loop van maanden naarmate nieuwe opiniepeilingen beschikbaar komen. Het bieden van een formeel kader voor deze evolutie is een van de meest krachtige eigenschappen van Bayesiaanse statistiek!</p>
-<p>In een eerder hoofdstuk gingen ze in op Milgram’s gedragsstudie over gehoorzaamheid. Daar gaat <span class="math inline">\(\pi\)</span> om het aandeel van de mensen die het gezag zullen gehoorzamen zelfs als dit betekent dat ze anderen schade toebrengen. In de studie van Milgram betekende gehoorzamen aan het gezag het toedienen van een zware elektrische schok aan een andere deelnemer (wat in feite een list was). Voorafgaand aan de experimenten van Milgram verwachtte een fictieve psycholoog dat weinig mensen gezag zouden gehoorzamen als ze een ander zouden schaden:<br />
-<span class="math inline">\(\pi\sim Beta(1,10)\)</span>. In het onderzoek stelden we vast dat 26 van de 40 deelnemers aan het onderzoek een schok toebrachten die zij opvatten als een zware schok.</p>
-<p>Stel nu dat de psycholoog deze gegevens stapsgewijs, dag na dag, over een periode van drie dagen verzamelde. Elke dag, evalueerde ze <span class="math inline">\(n\)</span> proefpersonen en registreerde ze <span class="math inline">\(Y\)</span>, het aantal dat de zwaarste schok kreeg (dus <span class="math inline">\(Y|\pi \sim Bin(n,\pi)\)</span>Y. Van de <span class="math inline">\(n=10\)</span> dag-één deelnemers, alleen <span class="math inline">\(Y=1\)</span> de zwaarste schok. Dus aan het eind van de eerste dag is het begrip van de psycholoog van <span class="math inline">\(\pi\)</span> al geëvolueerd en blijkt <span class="math display">\[\pi|Y=1) \sim Beta(2,19)\]</span></p>
-<p>Dag twee was veel drukker en de resultaten grimmiger: onder <span class="math inline">\(n=20\)</span> deelnemers, gaf <span class="math inline">\(Y=17\)</span> de zwaarste schok. Aan het eind van dag twee was het begrip van de psycholoog van <span class="math inline">\(\pi\)</span> opnieuw geëvolueerd - <span class="math inline">\(\pi\)</span> was waarschijnlijk groter dan zij hadden verwacht. Dus, het posterior model van <span class="math inline">\(\pi\)</span> aan het eind van dag twee is <span class="math inline">\(Beta(19,22)\)</span>. Op dag drie heeft <span class="math inline">\(Y=8\)</span> van <span class="math inline">\(n=10\)</span> deelnemers de zwaarste schok toegediend, en dus is het model geëvolueerd van een <span class="math inline">\(Beta(19,22)\)</span> prior naar een <span class="math inline">\(Beta(27,24)\)</span> posterior. De volledige evolutie van de oorspronkelijke <span class="math inline">\(Beta(1,10)\)</span> prior van de psycholoog naar een <span class="math inline">\(Beta(27,24)\)</span> posterior aan het einde van de driedaagse studie is samengevat in de tabel hieronder.</p>
+<h3 id="concepten-met-theorie-verbinden">Concepten met theorie
+verbinden</h3>
+<p>De patronen die we hebben waargenomen in het posterior evenwicht
+tussen de prior en de data zijn intuïtief. Ze worden ook ondersteund
+door een elegant wiskundig resultaat. Daar moet je het boek maar voor
+lezen.</p>
+<h2 id="sequentiële-analyse-evolueren-met-dat">Sequentiële analyse:
+Evolueren met dat</h2>
+<p>We hebben de toenemende invloed van de gegevens en de afnemende
+invloed van de prior op de posterior onderzocht naarmate er meer en meer
+gegevens binnenkomen. Overweeg de nuances van dit concept. De
+uitdrukking “naarmate er meer gegevens binnenkomen” roept het idee op
+dat het verzamelen van gegevens, en daarmee de evolutie in ons begrip
+van de posterior, stapsgewijs gebeurt. Zo is het inzicht van
+wetenschappers in de klimaatverandering in de loop van tientallen jaren
+geëvolueerd naarmate zij nieuwe informatie kregen. Het inzicht van
+presidentskandidaten in hun kansen om een verkiezing te winnen evolueert
+in de loop van maanden naarmate nieuwe opiniepeilingen beschikbaar
+komen. Het bieden van een formeel kader voor deze evolutie is een van de
+meest krachtige eigenschappen van Bayesiaanse statistiek!</p>
+<p>In een eerder hoofdstuk gingen ze in op Milgram’s gedragsstudie over
+gehoorzaamheid. Daar gaat <span class="math inline">\(\pi\)</span> om
+het aandeel van de mensen die het gezag zullen gehoorzamen zelfs als dit
+betekent dat ze anderen schade toebrengen. In de studie van Milgram
+betekende gehoorzamen aan het gezag het toedienen van een zware
+elektrische schok aan een andere deelnemer (wat in feite een list was).
+Voorafgaand aan de experimenten van Milgram verwachtte een fictieve
+psycholoog dat weinig mensen gezag zouden gehoorzamen als ze een ander
+zouden schaden:<br />
+<span class="math inline">\(\pi\sim Beta(1,10)\)</span>. In het
+onderzoek stelden we vast dat 26 van de 40 deelnemers aan het onderzoek
+een schok toebrachten die zij opvatten als een zware schok.</p>
+<p>Stel nu dat de psycholoog deze gegevens stapsgewijs, dag na dag, over
+een periode van drie dagen verzamelde. Elke dag, evalueerde ze <span
+class="math inline">\(n\)</span> proefpersonen en registreerde ze <span
+class="math inline">\(Y\)</span>, het aantal dat de zwaarste schok kreeg
+(dus <span class="math inline">\(Y|\pi \sim Bin(n,\pi)\)</span>Y. Van de
+<span class="math inline">\(n=10\)</span> dag-één deelnemers, alleen
+<span class="math inline">\(Y=1\)</span> de zwaarste schok. Dus aan het
+eind van de eerste dag is het begrip van de psycholoog van <span
+class="math inline">\(\pi\)</span> al geëvolueerd en blijkt <span
+class="math display">\[\pi|Y=1) \sim Beta(2,19)\]</span></p>
+<p>Dag twee was veel drukker en de resultaten grimmiger: onder <span
+class="math inline">\(n=20\)</span> deelnemers, gaf <span
+class="math inline">\(Y=17\)</span> de zwaarste schok. Aan het eind van
+dag twee was het begrip van de psycholoog van <span
+class="math inline">\(\pi\)</span> opnieuw geëvolueerd - <span
+class="math inline">\(\pi\)</span> was waarschijnlijk groter dan zij
+hadden verwacht. Dus, het posterior model van <span
+class="math inline">\(\pi\)</span> aan het eind van dag twee is <span
+class="math inline">\(Beta(19,22)\)</span>. Op dag drie heeft <span
+class="math inline">\(Y=8\)</span> van <span
+class="math inline">\(n=10\)</span> deelnemers de zwaarste schok
+toegediend, en dus is het model geëvolueerd van een <span
+class="math inline">\(Beta(19,22)\)</span> prior naar een <span
+class="math inline">\(Beta(27,24)\)</span> posterior. De volledige
+evolutie van de oorspronkelijke <span
+class="math inline">\(Beta(1,10)\)</span> prior van de psycholoog naar
+een <span class="math inline">\(Beta(27,24)\)</span> posterior aan het
+einde van de driedaagse studie is samengevat in de tabel hieronder.</p>
 <table>
 <thead>
 <tr class="header">
@@ -1674,9 +1972,29 @@ summarize_beta_binomial(alpha = ___, beta = ___, y = ___, n = ___)</code></pre>
 </tr>
 </tbody>
 </table>
-<p>Het proces dat we zojuist hebben doorlopen, het incrementeel bijwerken van het posterior model van de psycholoog wordt meer algemeen een <strong>sequentiële Bayesiaanse analyse</strong> of <strong>Bayesiaans leren</strong> genoemd.</p>
-<p>De mogelijkheid om te evolueren naarmate nieuwe gegevens binnenkomen, is een van de krachtigste kenmerken van het Bayesiaanse raamwerk. Dit soort sequentiële analyses heeft ook twee fundamentele en gemeenschappelijke sensitieve eigenschappen. Ten eerste is het uiteindelijke posterior model <strong>invariant t.a.v. data volgorde</strong>: het wordt niet beïnvloed door de volgorde waarin we de data observeren. Bijvoorbeeld, stel dat de psycholoog de studiegegevens van Milgram in omgekeerde volgorde had geobserveerd: <span class="math inline">\(Y=8\)</span> van<br />
-<span class="math inline">\(n=10\)</span> op dag één, <span class="math inline">\(Y=17\)</span> van <span class="math inline">\(n=20\)</span> op dag twee, en <span class="math inline">\(Y=1\)</span> van <span class="math inline">\(n=10\)</span> op dag drie. De resulterende evolutie in hun begrip van <span class="math inline">\(\pi\)</span> is samengevat in de tabel hieronder. Het evoluerende begrip van de psycholoog van <span class="math inline">\(\pi\)</span> verloopt een ander pad. Het eindigt echter nog steeds op dezelfde plaats - de Beta(27,24) posterior.</p>
+<p>Het proces dat we zojuist hebben doorlopen, het incrementeel
+bijwerken van het posterior model van de psycholoog wordt meer algemeen
+een <strong>sequentiële Bayesiaanse analyse</strong> of
+<strong>Bayesiaans leren</strong> genoemd.</p>
+<p>De mogelijkheid om te evolueren naarmate nieuwe gegevens binnenkomen,
+is een van de krachtigste kenmerken van het Bayesiaanse raamwerk. Dit
+soort sequentiële analyses heeft ook twee fundamentele en
+gemeenschappelijke sensitieve eigenschappen. Ten eerste is het
+uiteindelijke posterior model <strong>invariant t.a.v. data
+volgorde</strong>: het wordt niet beïnvloed door de volgorde waarin we
+de data observeren. Bijvoorbeeld, stel dat de psycholoog de
+studiegegevens van Milgram in omgekeerde volgorde had geobserveerd:
+<span class="math inline">\(Y=8\)</span> van<br />
+<span class="math inline">\(n=10\)</span> op dag één, <span
+class="math inline">\(Y=17\)</span> van <span
+class="math inline">\(n=20\)</span> op dag twee, en <span
+class="math inline">\(Y=1\)</span> van <span
+class="math inline">\(n=10\)</span> op dag drie. De resulterende
+evolutie in hun begrip van <span class="math inline">\(\pi\)</span> is
+samengevat in de tabel hieronder. Het evoluerende begrip van de
+psycholoog van <span class="math inline">\(\pi\)</span> verloopt een
+ander pad. Het eindigt echter nog steeds op dezelfde plaats - de
+Beta(27,24) posterior.</p>
 <table>
 <thead>
 <tr class="header">
@@ -1708,23 +2026,78 @@ summarize_beta_binomial(alpha = ___, beta = ___, y = ___, n = ___)</code></pre>
 </tr>
 </tbody>
 </table>
-<p>Het tweede fundamentele kenmerk van een sequentiële analyse is dat de uiteindelijke posterior alleen afhangt van de <em>cumulatieve</em> gegevens. Bijvoorbeeld, in de <em>gecombineerde</em> drie dagen van Milgram’s experiment, waren er <span class="math inline">\(n=10+20+20=40\)</span> deelnemers die <span class="math inline">\(Y=1+17+8=26\)</span> de zwaarste schok opleverde. In paragraaf 3.6 evalueerden wij deze gegevens in één keer, niet stapsgewijs. Daarbij sprongen wij rechtstreeks van het oorspronkelijke Beta(1,10) model van de psycholoog naar het Beta(27,24) posterior model van <span class="math inline">\(\pi\)</span>. Dat wil zeggen, of we de gegevens nu incrementeel of in één keer evalueren, we komen op dezelfde plaats uit.</p>
-<h2 id="bewijs-van-invariantie-van-gegevensvolgorde">Bewijs van invariantie van gegevensvolgorde</h2>
-<p>In de vorige sectie zag je het bewijs van datavolgorde invariantie in actie. Hier zullen we bewijzen dat alle Bayesiaanse modellen van deze eigenschap genieten. Dit deel is leuk, maar hoef je niet echt te weten voor je toekomstige werk.Hier gaan we daar niet verder op in (ook voor dit meer technische deel moet je het boek lezen).</p>
-<h2 id="een-opmerking-over-subjectiviteit">Een opmerking over subjectiviteit</h2>
-<p>We zinspeelden eerder op een veelgehoorde kritiek op Bayesiaanse statistiek - het is te subjectief. In het bijzonder zijn sommigen bezorgd dat het “subjectief” afstemmen van een prior model een Bayesiaanse analist in staat stelt om tot elke conclusie te komen die hij wil. In het licht van wat we hier hebben geleerd, kunnen we deze kritiek meer rigoureus bestrijden. Voordat we dat doen, willen we eerst een aantal concepten nog eens nader bekijken en uitbreiden.</p>
-<p>Bevestigd is dat een Bayesiaan inderdaad een prior kan bouwen op basis van “subjectieve” ervaring. Heel zelden is dit een slechte zaak, en heel vaak is het een goede zaak! In het beste geval kan een subjectieve prioriteit een schat aan ervaringen uit het verleden weerspiegelen die in onze analyse moeten worden opgenomen - het zou jammer zijn dat niet te doen. Zelfs als een subjectieve prior ingaat tegen het feitelijk waargenomen bewijs, verdwijnt zijn invloed op de posterior naarmate dit bewijs zich opstapelt. We hebben één uitzondering gezien in het ergste geval. En het was te voorkomen. Als een subjectieve prioriteit koppig genoeg is om de waarschijnlijkheid van 0 toe te kennen aan een mogelijke parameterwaarde, zal geen hoeveelheid tegenbewijs genoeg zijn om het te veranderen.</p>
-<p>Tenslotte, hoewel we je aanmoedigen om kritisch te zijn in je toepassing van Bayesiaanse methoden, maak je alsjeblieft geen zorgen dat ze subjectiever zijn dan frequentistische methoden. Geen mens is in staat om alle subjectiviteit uit een analyse te halen. De levenservaringen en kennis die we met ons meedragen bepalen alles, van de onderzoeksvragen die we stellen tot de data die we verzamelen. Het is belangrijk om zowel bij Bayesiaanse als bij frequentistische analyses rekening te houden met de mogelijke implicaties van deze subjectiviteit.</p>
+<p>Het tweede fundamentele kenmerk van een sequentiële analyse is dat de
+uiteindelijke posterior alleen afhangt van de <em>cumulatieve</em>
+gegevens. Bijvoorbeeld, in de <em>gecombineerde</em> drie dagen van
+Milgram’s experiment, waren er <span
+class="math inline">\(n=10+20+20=40\)</span> deelnemers die <span
+class="math inline">\(Y=1+17+8=26\)</span> de zwaarste schok opleverde.
+In paragraaf 3.6 evalueerden wij deze gegevens in één keer, niet
+stapsgewijs. Daarbij sprongen wij rechtstreeks van het oorspronkelijke
+Beta(1,10) model van de psycholoog naar het Beta(27,24) posterior model
+van <span class="math inline">\(\pi\)</span>. Dat wil zeggen, of we de
+gegevens nu incrementeel of in één keer evalueren, we komen op dezelfde
+plaats uit.</p>
+<h2 id="bewijs-van-invariantie-van-gegevensvolgorde">Bewijs van
+invariantie van gegevensvolgorde</h2>
+<p>In de vorige sectie zag je het bewijs van datavolgorde invariantie in
+actie. Hier zullen we bewijzen dat alle Bayesiaanse modellen van deze
+eigenschap genieten. Dit deel is leuk, maar hoef je niet echt te weten
+voor je toekomstige werk.Hier gaan we daar niet verder op in (ook voor
+dit meer technische deel moet je het boek lezen).</p>
+<h2 id="een-opmerking-over-subjectiviteit">Een opmerking over
+subjectiviteit</h2>
+<p>We zinspeelden eerder op een veelgehoorde kritiek op Bayesiaanse
+statistiek - het is te subjectief. In het bijzonder zijn sommigen
+bezorgd dat het “subjectief” afstemmen van een prior model een
+Bayesiaanse analist in staat stelt om tot elke conclusie te komen die
+hij wil. In het licht van wat we hier hebben geleerd, kunnen we deze
+kritiek meer rigoureus bestrijden. Voordat we dat doen, willen we eerst
+een aantal concepten nog eens nader bekijken en uitbreiden.</p>
+<p>Bevestigd is dat een Bayesiaan inderdaad een prior kan bouwen op
+basis van “subjectieve” ervaring. Heel zelden is dit een slechte zaak,
+en heel vaak is het een goede zaak! In het beste geval kan een
+subjectieve prioriteit een schat aan ervaringen uit het verleden
+weerspiegelen die in onze analyse moeten worden opgenomen - het zou
+jammer zijn dat niet te doen. Zelfs als een subjectieve prior ingaat
+tegen het feitelijk waargenomen bewijs, verdwijnt zijn invloed op de
+posterior naarmate dit bewijs zich opstapelt. We hebben één uitzondering
+gezien in het ergste geval. En het was te voorkomen. Als een subjectieve
+prioriteit koppig genoeg is om de waarschijnlijkheid van 0 toe te kennen
+aan een mogelijke parameterwaarde, zal geen hoeveelheid tegenbewijs
+genoeg zijn om het te veranderen.</p>
+<p>Tenslotte, hoewel we je aanmoedigen om kritisch te zijn in je
+toepassing van Bayesiaanse methoden, maak je alsjeblieft geen zorgen dat
+ze subjectiever zijn dan frequentistische methoden. Geen mens is in
+staat om alle subjectiviteit uit een analyse te halen. De
+levenservaringen en kennis die we met ons meedragen bepalen alles, van
+de onderzoeksvragen die we stellen tot de data die we verzamelen. Het is
+belangrijk om zowel bij Bayesiaanse als bij frequentistische analyses
+rekening te houden met de mogelijke implicaties van deze
+subjectiviteit.</p>
 <h2 id="samenvatting">Samenvatting</h2>
-<p>Wij hebben het evenwicht onderzocht dat een posterior model aanbrengt tussen een prior model en de gegevens. In het algemeen zagen wij de volgende tendensen:</p>
+<p>Wij hebben het evenwicht onderzocht dat een posterior model aanbrengt
+tussen een prior model en de gegevens. In het algemeen zagen wij de
+volgende tendensen:</p>
 <ul>
 <li><p><strong>Invloed van de prior</strong><br />
-Hoe minder vaag en hoe informatiever de prior, d.w.z. hoe groter onze priorzekerheid, hoe meer invloed de prior op de posterior heeft.</p></li>
+Hoe minder vaag en hoe informatiever de prior, d.w.z. hoe groter onze
+priorzekerheid, hoe meer invloed de prior op de posterior
+heeft.</p></li>
 <li><p><strong>Invloed van de gegevens</strong><br />
-Hoe meer gegevens we hebben, hoe meer invloed de gegevens hebben op de posterior. Dus, als twee onderzoekers voldoende gegevens hebben, zullen ze met verschillende priors vergelijkbare posteriors hebben.</p></li>
+Hoe meer gegevens we hebben, hoe meer invloed de gegevens hebben op de
+posterior. Dus, als twee onderzoekers voldoende gegevens hebben, zullen
+ze met verschillende priors vergelijkbare posteriors hebben.</p></li>
 </ul>
-<p>Verder hebben we gezien dat we in een <strong>sequentiële Bayesiaanse analyse</strong> ons posterior model incrementeel bijwerken naarmate er meer en meer gegevens binnenkomen. De uiteindelijke bestemming van deze posterior wordt niet beïnvloed door de volgorde waarin we deze gegevens observeren (d.w.z. de posterior is <strong>datavolgorde invariant</strong>) of door de vraag of we de gegevens in één keer of opbouwend observeren.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>Verder hebben we gezien dat we in een <strong>sequentiële Bayesiaanse
+analyse</strong> ons posterior model incrementeel bijwerken naarmate er
+meer en meer gegevens binnenkomen. De uiteindelijke bestemming van deze
+posterior wordt niet beïnvloed door de volgorde waarin we deze gegevens
+observeren (d.w.z. de posterior is <strong>datavolgorde
+invariant</strong>) of door de vraag of we de gegevens in één keer of
+opbouwend observeren.</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
