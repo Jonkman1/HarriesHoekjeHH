@@ -22,7 +22,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Eigen inleiding
 De afgelopen maand toch nog weer eens naar datavisualisatie gekeken en hoe je dat met R het beste kunt doen. Twee boeken nogeens gelezen hierover. Allereerst het boek van Rob Kabacoff [Data Visualization with R](https://rkabacoff.github.io/datavis/). Het is een handige introducte op `ggplot`en vooral een handige tutorial voor het visualiseren van data met R. Daarnaast het boek van Clause Wilke [Fundamentals of Data Visualization](https://clauswilke.com/dataviz/) dat meer een algemene reflectie is op data visualisatie. Het ga je op verschillende manieren van data naar visualisatie, wat zijn de onderliggende principes en waaraan moeten we bij datavisualisatie vooral denken. 
-Toch heb ik de afgelopen maand vooral veel geleerd van Cédric Scherer. Ik zag dat hij op de conferentie van R binnenkort een inleiding geeft op het onderwerp datavisualisatie en zo zag ik via zijn Github site verschillend materiaal over datavisualisatie. Mooie en duidelijke inleidingen en twee ervan heb ik in het Nederlands overgezet. Hier een algemene inleiding op `ggplot`. 
+Toch heb ik de afgelopen maand vooral veel geleerd van Cédric Scherer. Ik zag dat hij op de conferentie van R binnenkort een inleiding geeft op het onderwerp datavisualisatie en zo zag ik via zijn Github site verschillend materiaal over datavisualisatie. Mooie en duidelijke inleidingen en twee ervan heb ik in het Nederlands overgezet. Hier vind je in ieder geval een algemene inleiding op `ggplot`. 
 [zie](https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/)
 
 ## Cédrics inleiding
