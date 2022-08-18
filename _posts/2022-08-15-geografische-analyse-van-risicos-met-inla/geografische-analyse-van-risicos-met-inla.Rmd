@@ -16,6 +16,8 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+![Paula Moraga's boek](Screenshot.PNG){width=50%}
+
 ## 1. Introductie
 *Geospatial Health Data: Modeling and Visualization with R-INLA and Shiny* beschrijft hoe je geografische gezondheidsgegevens in R analyseert en visualiseert. Het is een goede introductie op hoe je ziekten en ziektelast in kaart kunt brengen en hoe nieuwe computertechnieken als de **integrated nested Laplace approximation (INLA)** werken om plaatselijke en geostatistische gegevens te analyseren en te visualiseren. Deze nieuwe benadering maakt het mogelijk de ziektelast te kwantificeren, geografische patronen en veranderingen in de tijd te begrijpen, risicofactoren te identificeren en ongelijkheden tussen bevolkingsgroepen te meten. Het boek van Paula Moraga laat ook zien hoe interactieve en statische visualisaties kunnen worden gemaakt, zoals ziektekaarten en tijdplots en beschrijft verschillende R-pakketten die kunnen worden gebruikt om analyses eenvoudig om te zetten in informatieve en interactieve rapporten, dashboards, en Shiny webapplicaties. Dit alles vergemakkelijkt de communicatie van inzichten naar medewerkers en beleidsmakers.
 
