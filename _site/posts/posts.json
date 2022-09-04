@@ -1,5 +1,22 @@
 [
   {
+    "path": "posts/2022-08-18-bayes-en-stan/",
+    "title": "Bayes en Stan",
+    "description": "Over het werken met Bayesiaanse analyse in Stan.",
+    "author": [
+      {
+        "name": "Jim Albert/Harrie Jonkman",
+        "url": {}
+      }
+    ],
+    "date": "2022-08-18",
+    "categories": [],
+    "contents": "\r\nOnlangs las ik Probability and Bayesian Modeling van Albert\r\nen Hu. Dat boek gaat over waarschijnlijkheid en bayesiaanse statistiek.\r\nOm concepten en werkwijzen duidelijk te maken gebruiken Albert en Hu het\r\nprogramma JAGS. Later plaatste Jim Albert ook een blog op\r\ninternet waarin hij een deel van de analyses overdeed en daarbij het\r\nprogramma Stan en de R-interface Brms.\r\ngebruikt. Deze blog van Albert heb ik bewerkt en wat ingekort. Zo kon ik\r\noefenen met Stan en Brms. In deze blog heb ik\r\ntegelijk geoefend met het nieuwe programma Quatrodat\r\ngemaakt is voor het maken van eigentijdse wetenschappelijke producten;\r\nvoor het maken van boeken bijvoorbeeld. In deze blog heb ik voor dit\r\nkeer een klein html-boekje gemaakt van Alberts tutorial dat uit acht\r\nhoofdstukken bestaat. Zo was het dit keer niet alleen oefenen met\r\nbayesiaanse analyse maar ook met wetenschappelijke opmaak.\r\nHier vind je\r\nhet boekje. Alle documenten vind je weer in deze map\r\n\r\n\r\n\r\n",
+    "preview": {},
+    "last_modified": "2022-08-21T21:42:20+02:00",
+    "input_file": {}
+  },
+  {
     "path": "posts/2022-08-15-geografische-analyse-van-risicos-met-inla/",
     "title": "Geografische analyse van risico's met INLA",
     "description": "Paula Moraga laat zien hoe je geografische gegevens kunt analyseren met het programma INLA",
